@@ -319,7 +319,7 @@ class LoadOp final : public Operator<Context> {
 };
 
 namespace internal {
-class TORCH_API SaveOpImpl {
+class SaveOpImpl {
  public:
   SaveOpImpl(OperatorBase* op, const OperatorDef& operator_def, Workspace* ws);
 

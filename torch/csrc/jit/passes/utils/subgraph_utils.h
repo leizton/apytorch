@@ -19,11 +19,11 @@ namespace SubgraphUtils {
 // `n` is destroyed.
 //
 // Returns the new subgraph node.
-TORCH_API Node* createSingletonSubgraph(Node* n, Symbol subgraphKind);
+Node* createSingletonSubgraph(Node* n, Symbol subgraphKind);
 
 // Creates a new subgraph that only contains `n`, amd updates the new outputs
 // of the subgraph to have the aliasing properties of the original `n` outputs
-TORCH_API Node* createSingletonSubgraphAndUpdateAliasing(
+Node* createSingletonSubgraphAndUpdateAliasing(
     Node* to_merge,
     Symbol subgraphKind,
     AliasDb& db);
@@ -33,7 +33,7 @@ TORCH_API Node* createSingletonSubgraphAndUpdateAliasing(
 // If `destroyNode` is true `toMerge` is destroyed.
 // An optional argument 'vmap' could be used to retrieve value mappings.
 // Values will be mapped to their new subgraph values
-TORCH_API void mergeNodeIntoSubgraph(
+void mergeNodeIntoSubgraph(
     Node* toMerge,
     Node* subgraphNode,
     bool destroyNode = true);
@@ -41,31 +41,31 @@ TORCH_API void mergeNodeIntoSubgraph(
 // Merges a node into a subgraph node, and updates the new outputs of the
 // subgraph to have the aliasing properties of the corresponding `to_merge`
 // outputs
-TORCH_API void mergeNodeIntoSubgraphAndUpdateAliasing(
+void mergeNodeIntoSubgraphAndUpdateAliasing(
     Node* to_merge,
     Node* subgraphNode,
     AliasDb& db);
 
-TORCH_API std::vector<Node*> unmergeAliasedOutputs(
+std::vector<Node*> unmergeAliasedOutputs(
     Node* subgraphNode,
     AliasDb& db);
 
 // Move nodes from a subgraph node to the outer graph.
 // `subgraphNode` is destroyed.
-TORCH_API void unmergeSubgraph(Node* subgraphNode);
+void unmergeSubgraph(Node* subgraphNode);
 
 // Move `node_to_unmerge` and its descendants after `subgraphNode`
 // promotes any dependencies of `node_to_unmerge` to subgraphNode outputs
-TORCH_API void unmergeNode(Node* node_to_unmerge, Node* subgraphNode);
+void unmergeNode(Node* node_to_unmerge, Node* subgraphNode);
 
-TORCH_API bool unmergeOutputsAlisingInputs(Node* subgraphNode);
+bool unmergeOutputsAlisingInputs(Node* subgraphNode);
 
-TORCH_API bool unmergeAliasedOutputs(Node* subgraphNode);
+bool unmergeAliasedOutputs(Node* subgraphNode);
 
 // Convenience function
 std::shared_ptr<Graph> getSubgraph(Node* n);
 
-TORCH_API std::string generateNameForGraph(
+std::string generateNameForGraph(
     const std::shared_ptr<Graph>& graph,
     size_t maxlen = 40,
     const std::string& prefix = "fused");

@@ -13,7 +13,7 @@
 namespace torch {
 namespace jit {
 
-TORCH_API void EliminateRedundantGuards(std::shared_ptr<Graph> graph);
+void EliminateRedundantGuards(std::shared_ptr<Graph> graph);
 
 } // namespace jit
 } // namespace torch

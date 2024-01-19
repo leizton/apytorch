@@ -26,7 +26,7 @@ using SugaredValuePtr = std::shared_ptr<SugaredValue>;
 // that separates their behavior from the AST -> IR converter itself.
 // This allows us to keep dependencies on python minimal.
 
-struct TORCH_API SugaredValue
+struct SugaredValue
     : public std::enable_shared_from_this<SugaredValue> {
   // what is this node? for error reporting (e.g. Module, python function)
   virtual std::string kind() const = 0;
@@ -155,7 +155,7 @@ struct TORCH_API SugaredValue
 
 // most things in the environment are just simple value types
 // and not special python syntax sugar types
-struct TORCH_API SimpleValue : public SugaredValue {
+struct SimpleValue : public SugaredValue {
   SimpleValue(Value* value) : value_(value) {}
   std::string kind() const override {
     std::stringstream ss;
@@ -212,7 +212,7 @@ struct TORCH_API SimpleValue : public SugaredValue {
   Value* value_;
 };
 
-struct TORCH_API BuiltinFunction : public SugaredValue {
+struct BuiltinFunction : public SugaredValue {
   BuiltinFunction(Symbol symbol, c10::optional<NamedValue> self)
       : symbol(symbol), self(std::move(self)) {}
 
@@ -239,7 +239,7 @@ struct TORCH_API BuiltinFunction : public SugaredValue {
       c10::optional<NamedValue> self);
 };
 
-struct TORCH_API SugaredTupleValue : public SugaredValue {
+struct SugaredTupleValue : public SugaredValue {
   explicit SugaredTupleValue(std::vector<std::shared_ptr<SugaredValue>> tup)
       : tup_(std::move(tup)){};
 
@@ -304,7 +304,7 @@ struct TORCH_API SugaredTupleValue : public SugaredValue {
   std::vector<std::shared_ptr<SugaredValue>> tup_;
 };
 
-struct TORCH_API BuiltinModule : public SugaredValue {
+struct BuiltinModule : public SugaredValue {
   BuiltinModule(std::string name, c10::optional<int64_t> version = at::nullopt)
       : name(std::move(name)), version(version) {}
 
@@ -335,7 +335,7 @@ struct TORCH_API BuiltinModule : public SugaredValue {
 
 // Represents a class, analagous to `int` or `dict`. Instances of classes,
 // like `1` or `{"foo": 5}`, are represented as SimpleValues
-struct TORCH_API ClassValue : public SugaredValue {
+struct ClassValue : public SugaredValue {
   explicit ClassValue(ClassTypePtr type) : type_(std::move(type)) {}
 
   // Call the type's constructor, as in:
@@ -359,7 +359,7 @@ struct TORCH_API ClassValue : public SugaredValue {
   ClassTypePtr type_;
 };
 
-struct TORCH_API NamedTupleConstructor : public SugaredValue {
+struct NamedTupleConstructor : public SugaredValue {
   explicit NamedTupleConstructor(TupleTypePtr type) : type_(std::move(type)) {}
 
   std::shared_ptr<SugaredValue> call(
@@ -426,7 +426,7 @@ struct FunctionValue : public SugaredValue {
   std::shared_ptr<CompilationUnit> cu_;
 };
 
-struct TORCH_API ClosureValue : public SugaredValue {
+struct ClosureValue : public SugaredValue {
   ClosureValue(Value* value) : value_(value) {
     TORCH_INTERNAL_ASSERT(value_->node()->kind() == prim::Closure);
   }
@@ -489,7 +489,7 @@ struct MethodValue : public SugaredValue {
   std::vector<std::string> method_names_;
 };
 
-struct TORCH_API PrintValue : public SugaredValue {
+struct PrintValue : public SugaredValue {
   std::string kind() const override {
     return "print";
   }
@@ -504,7 +504,7 @@ struct TORCH_API PrintValue : public SugaredValue {
 // expressions like int(x)
 // these are the same as call prim::Int or equivalent except it
 // is a noop when the input is a subtype of 'type'
-struct TORCH_API CastValue : public BuiltinFunction {
+struct CastValue : public BuiltinFunction {
   CastValue(TypePtr type, c10::Symbol method)
       : BuiltinFunction(method, c10::nullopt), type_(std::move(type)) {}
   std::shared_ptr<SugaredValue> call(
@@ -537,7 +537,7 @@ struct TORCH_API CastValue : public BuiltinFunction {
   TypePtr type_;
 };
 
-struct TORCH_API TensorCastValue : public SugaredValue {
+struct TensorCastValue : public SugaredValue {
   TensorCastValue(at::ScalarType type, NamedValue self)
       : dtype_(type), self_(std::move(self)) {}
 
@@ -569,7 +569,7 @@ struct TORCH_API TensorCastValue : public SugaredValue {
 
 // builtins operators and functions that call a method if it exists
 // on a class type, like 'len(x)' and 'x + y'
-struct TORCH_API MagicMethod : public SugaredValue {
+struct MagicMethod : public SugaredValue {
   MagicMethod(std::string desugared_name, SugaredValuePtr base)
       : base_value_(std::move(base)),
         desugared_name_(std::move(desugared_name)) {}
@@ -597,7 +597,7 @@ struct TORCH_API MagicMethod : public SugaredValue {
 //   fork(fn)
 //   annotate(int, 3)
 // The implementation of each value is handled by a case inside emitApplyExpr
-struct TORCH_API SpecialFormValue : public SugaredValue {
+struct SpecialFormValue : public SugaredValue {
   SpecialFormValue(Symbol form) : form_(form) {}
   std::string kind() const override {
     return form_.toUnqualString();
@@ -613,7 +613,7 @@ struct TORCH_API SpecialFormValue : public SugaredValue {
   Symbol form_;
 };
 
-struct TORCH_API LegacyTensorConstructor : public SpecialFormValue {
+struct LegacyTensorConstructor : public SpecialFormValue {
   LegacyTensorConstructor(Symbol form, at::ScalarType dtype, at::Device device)
       : SpecialFormValue(form), device_(device), dtype_(dtype) {}
 
@@ -633,7 +633,7 @@ struct TORCH_API LegacyTensorConstructor : public SpecialFormValue {
 };
 
 // matched against for special handling of range expressions
-struct TORCH_API RangeValue : SugaredValue {
+struct RangeValue : SugaredValue {
   RangeValue(
       const SourceRange& loc,
       GraphFunction& m,
@@ -682,7 +682,7 @@ struct TORCH_API RangeValue : SugaredValue {
 // Iterables can contain lists of SugaredValues like ModuleLists. If it
 // does, then we emit it unrolled and require that all values it contains
 // have a statically-determinable length.
-struct TORCH_API IterableTree : SugaredValue {
+struct IterableTree : SugaredValue {
   IterableTree() = default;
   IterableTree(
       const SourceRange& range,
@@ -757,7 +757,7 @@ struct SimpleSelf : public Self {
 
 // This is not a SimpleValue so it can not pass through the code paths that
 // expect a SimpleValue as a sugared value.
-struct TORCH_API ExceptionMessageValue : public SugaredValue {
+struct ExceptionMessageValue : public SugaredValue {
   explicit ExceptionMessageValue(
       Value* value,
       Value* qualified_class_name = nullptr)
@@ -781,7 +781,7 @@ struct TORCH_API ExceptionMessageValue : public SugaredValue {
   Value* qualified_class_name_;
 };
 
-struct TORCH_API ExceptionValue : public SugaredValue {
+struct ExceptionValue : public SugaredValue {
   explicit ExceptionValue(std::string message) : message_(std::move(message)) {}
 
   std::string kind() const override {
@@ -810,7 +810,7 @@ struct TORCH_API ExceptionValue : public SugaredValue {
   std::string message_;
 };
 
-struct TORCH_API SugaredEnumClass : public SugaredValue {
+struct SugaredEnumClass : public SugaredValue {
   explicit SugaredEnumClass(EnumTypePtr enum_type)
       : enum_type_(std::move(enum_type)) {}
 
@@ -829,7 +829,7 @@ struct TORCH_API SugaredEnumClass : public SugaredValue {
   EnumTypePtr enum_type_;
 };
 
-struct TORCH_API SliceValue : public SugaredValue {
+struct SliceValue : public SugaredValue {
   explicit SliceValue(Value* start, Value* stop, Value* step)
       : start_(start), stop_(stop), step_(step) {}
 

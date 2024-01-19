@@ -21,12 +21,12 @@
 
 namespace at {
 namespace compositeimplicitautogradnestedtensor {
-TORCH_API at::Tensor randn_like(const at::Tensor & self, at::TensorOptions options={}, c10::optional<at::MemoryFormat> memory_format=c10::nullopt);
-TORCH_API at::Tensor randn_like(const at::Tensor & self, c10::optional<at::ScalarType> dtype, c10::optional<at::Layout> layout, c10::optional<at::Device> device, c10::optional<bool> pin_memory, c10::optional<at::MemoryFormat> memory_format);
-TORCH_API at::Tensor reshape(const at::Tensor & self, at::IntArrayRef shape);
-TORCH_API at::Tensor reshape_symint(const at::Tensor & self, c10::SymIntArrayRef shape);
-TORCH_API at::Tensor reshape_as(const at::Tensor & self, const at::Tensor & other);
-TORCH_API at::Tensor zeros_like(const at::Tensor & self, at::TensorOptions options={}, c10::optional<at::MemoryFormat> memory_format=c10::nullopt);
-TORCH_API at::Tensor zeros_like(const at::Tensor & self, c10::optional<at::ScalarType> dtype, c10::optional<at::Layout> layout, c10::optional<at::Device> device, c10::optional<bool> pin_memory, c10::optional<at::MemoryFormat> memory_format);
+at::Tensor randn_like(const at::Tensor & self, at::TensorOptions options={}, c10::optional<at::MemoryFormat> memory_format=c10::nullopt);
+at::Tensor randn_like(const at::Tensor & self, c10::optional<at::ScalarType> dtype, c10::optional<at::Layout> layout, c10::optional<at::Device> device, c10::optional<bool> pin_memory, c10::optional<at::MemoryFormat> memory_format);
+at::Tensor reshape(const at::Tensor & self, at::IntArrayRef shape);
+at::Tensor reshape_symint(const at::Tensor & self, c10::SymIntArrayRef shape);
+at::Tensor reshape_as(const at::Tensor & self, const at::Tensor & other);
+at::Tensor zeros_like(const at::Tensor & self, at::TensorOptions options={}, c10::optional<at::MemoryFormat> memory_format=c10::nullopt);
+at::Tensor zeros_like(const at::Tensor & self, c10::optional<at::ScalarType> dtype, c10::optional<at::Layout> layout, c10::optional<at::Device> device, c10::optional<bool> pin_memory, c10::optional<at::MemoryFormat> memory_format);
 } // namespace compositeimplicitautogradnestedtensor
 } // namespace at

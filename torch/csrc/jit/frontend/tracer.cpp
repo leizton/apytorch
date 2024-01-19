@@ -764,7 +764,7 @@ void addInputs(
   }
   n->addInput(list_node->output());
 }
-TORCH_API void addInputs(
+void addInputs(
     Node* n,
     const char* name,
     const List<c10::optional<at::Tensor>>& value) {

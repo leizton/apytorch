@@ -11,7 +11,7 @@
 namespace torch {
 namespace lazy {
 
-class TORCH_API LazyGraphExecutor {
+class LazyGraphExecutor {
  public:
   struct DeviceDataInfo : public BackendData::Info {
     DeviceDataInfo(int64_t tensor_id, bool read_only)

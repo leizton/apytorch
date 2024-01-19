@@ -16,8 +16,8 @@ namespace jit {
 //   are erased.
 //
 // The pass assumes that DCE will be called sometime after.
-TORCH_API void EraseNumberTypes(const std::shared_ptr<Graph>& graph);
-TORCH_API void EraseNumberTypesOnBlock(Block* block);
+void EraseNumberTypes(const std::shared_ptr<Graph>& graph);
+void EraseNumberTypesOnBlock(Block* block);
 
 } // namespace jit
 } // namespace torch

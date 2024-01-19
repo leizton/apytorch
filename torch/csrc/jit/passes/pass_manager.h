@@ -31,24 +31,24 @@ using GraphPassNameType = unsigned int;
 using GraphPassEntry = std::pair<GraphPass, GraphPassNameType>;
 
 // Return currently registered passes. Passes are stored in a static vector
-TORCH_API std::vector<std::pair<GraphPass, GraphPassNameType>>&
+std::vector<std::pair<GraphPass, GraphPassNameType>>&
 getCustomPostPasses();
-TORCH_API std::vector<std::pair<GraphPass, GraphPassNameType>>&
+std::vector<std::pair<GraphPass, GraphPassNameType>>&
 getCustomPrePasses();
 
-TORCH_API GraphPassNameType registerPostPass(GraphPass p);
-TORCH_API GraphPassNameType registerPrePass(GraphPass p);
+GraphPassNameType registerPostPass(GraphPass p);
+GraphPassNameType registerPrePass(GraphPass p);
 
 // Look up pass by name passed in, remove it from registered passes
-TORCH_API void clearPostPass(GraphPassNameType p);
-TORCH_API void clearPrePass(GraphPassNameType p);
+void clearPostPass(GraphPassNameType p);
+void clearPrePass(GraphPassNameType p);
 
 // Remove all passes
-TORCH_API void clearAllPostPasses();
-TORCH_API void clearAllPrePasses();
+void clearAllPostPasses();
+void clearAllPrePasses();
 
 // LEGACY CALL
-struct TORCH_API RegisterPostPass {
+struct RegisterPostPass {
   RegisterPostPass(GraphPass p);
 };
 

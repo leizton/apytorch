@@ -32,7 +32,7 @@ using MatchFilter = std::function<
  * recognized patterns (see SubgraphRewriter::RegisterDefaultPatterns for the
  * list of these patterns).
  */
-TORCH_API Module PatternBasedRewrite(const Module& module);
+Module PatternBasedRewrite(const Module& module);
 
 /** A class implementing API for pattern-based subgraph rewrites.
  *
@@ -45,7 +45,7 @@ TORCH_API Module PatternBasedRewrite(const Module& module);
  * To enable rewrites of custom patterns, the custom patterns must be registered
  * with `RegisterRewritePattern`.
  */
-class TORCH_API SubgraphRewriter {
+class SubgraphRewriter {
  public:
   // Run pattern-based subgraph rewrite pass on the module.
   Module runOnModule(const Module& module);

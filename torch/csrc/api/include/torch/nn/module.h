@@ -61,7 +61,7 @@ namespace nn {
 /// are registered separately via `register_buffer`. These methods are part of
 /// the public API of `Module` and are typically invoked from within a
 /// concrete `Module`s constructor.
-class TORCH_API Module : public std::enable_shared_from_this<Module> {
+class Module : public std::enable_shared_from_this<Module> {
  public:
   using ModuleApplyFunction = std::function<void(Module&)>;
   using ConstModuleApplyFunction = std::function<void(const Module&)>;
@@ -562,7 +562,7 @@ class TORCH_API Module : public std::enable_shared_from_this<Module> {
   friend struct AnyModuleHolder;
 
   /// Pretty prints the given `Module` into the `ostream`.
-  TORCH_API friend std::ostream& operator<<(
+  friend std::ostream& operator<<(
       std::ostream& stream,
       const nn::Module& module);
 
@@ -611,12 +611,12 @@ class TORCH_API Module : public std::enable_shared_from_this<Module> {
 };
 
 /// Serialize a `Module` pointer into an `OutputArchive`.
-TORCH_API serialize::OutputArchive& operator<<(
+serialize::OutputArchive& operator<<(
     serialize::OutputArchive& archive,
     const std::shared_ptr<nn::Module>& module);
 
 /// Deserializes a `Module` from an `InputArchive`.
-TORCH_API serialize::InputArchive& operator>>(
+serialize::InputArchive& operator>>(
     serialize::InputArchive& archive,
     const std::shared_ptr<nn::Module>& module);
 

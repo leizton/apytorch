@@ -23,7 +23,7 @@ class Block;
 class Store;
 class Dtype;
 
-class TORCH_API LoopNest {
+class LoopNest {
  public:
   // A constructor for building a LoopNest from a list of Tensors
   LoopNest(
@@ -579,7 +579,7 @@ class TORCH_API LoopNest {
   std::unordered_set<BufPtr> output_bufs_;
 };
 
-TORCH_API StmtPtr FlattenIndexes(StmtPtr s);
+StmtPtr FlattenIndexes(StmtPtr s);
 
 // TODO: Revisit this once we decide on how dependencies analysis should look
 // like. Maybe we would choose to use a different API and BufUse would be
@@ -599,7 +599,7 @@ std::unordered_map<BufPtr, std::vector<BufLoadOrStoreUse>> findLoadOrStoreUses(
     StmtPtr s);
 
 // replaces all invalid characters with underscore
-TORCH_API std::string sanitizeName(const std::string& input_name);
+std::string sanitizeName(const std::string& input_name);
 
 } // namespace tensorexpr
 } // namespace jit

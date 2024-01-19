@@ -121,7 +121,7 @@ using BackendDebugInfoMapType =
  * handles. When lowering process finishes, calling stopRecording will
  * return debug info map from debug_handle_manager
  */
-class TORCH_API BackendDebugInfoRecorder {
+class BackendDebugInfoRecorder {
  public:
   BackendDebugInfoRecorder() = default;
   int64_t getNextDebugHandle(const Node* node);

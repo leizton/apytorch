@@ -49,7 +49,7 @@ DECLARE_DISPATCH(void (*)(const Tensor&, int64_t, bool, Tensor&, Tensor&), aminm
 DECLARE_DISPATCH(void (*)(const Tensor&, Tensor&, Tensor&), aminmax_allreduce_stub);
 
 // Used in cuda/Normalization.cu
-TORCH_API std::tuple<Tensor&,Tensor&> var_mean_out(
+std::tuple<Tensor&,Tensor&> var_mean_out(
     Tensor &result1, Tensor &result2, const Tensor &self, IntArrayRef dim,
     int64_t correction, bool keepdim);
 

@@ -31,7 +31,7 @@ namespace nn {
 /// ```
 /// Transformer trans(TransformerOptions(512, 8));
 /// ```
-class TORCH_API TransformerImpl : public Cloneable<TransformerImpl> {
+class TransformerImpl : public Cloneable<TransformerImpl> {
  public:
   explicit TransformerImpl(TransformerOptions options_);
 

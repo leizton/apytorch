@@ -104,7 +104,7 @@ class class_;
 ///
 /// This class erases the type of the passed in function, but durably records
 /// the type via an inferred schema for the function.
-class TORCH_API CppFunction final {
+class CppFunction final {
   // TODO: This is morally the same thing as KernelRegistrationConfig, but it's
   // opaque to the user.
 
@@ -537,7 +537,7 @@ class SelectiveStr {
 /// }
 /// ```
 ///
-class TORCH_API Library final {
+class Library final {
  public:
   /// \private
   ///

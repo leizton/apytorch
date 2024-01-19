@@ -61,7 +61,7 @@ class SourceRangeUnpickler {
   virtual ~SourceRangeUnpickler() = default;
 };
 
-TORCH_API void setShouldUseFormatWithStringTable(
+void setShouldUseFormatWithStringTable(
     bool should_use_format_with_string_table);
 
 } // namespace jit

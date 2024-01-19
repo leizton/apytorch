@@ -21,7 +21,7 @@ namespace c10d {
   } while (0)
 
 // interfaces to collect communication traces
-class TORCH_API CommTraceLogger : public torch::CustomClassHolder {
+class CommTraceLogger : public torch::CustomClassHolder {
  private:
   std::vector<std::string> comms_trace_;
   std::vector<std::string> curBlocks_; /* unused */

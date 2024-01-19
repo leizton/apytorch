@@ -40,7 +40,7 @@ void MergeInferredTypeAndSetMap(
 // Axes that are marked as dynamic will be assigned as dynamic ShapeSymbol.
 // Note it is possible for multiple axes to share the same ShapeSymbol,
 // if they are defined as such in dynamic_axes.
-TORCH_API void ONNXSetDynamicInputShape(
+void ONNXSetDynamicInputShape(
     std::shared_ptr<Graph>& graph,
     const std::unordered_map<
         std::string,
@@ -51,7 +51,7 @@ TORCH_API void ONNXSetDynamicInputShape(
 // If onnx_shape_inference is true, types of output Tensors will be compared and
 // merged with inferred types. It is possible that inferred types contain
 // dynamic axes, hence it takes precedence over types of output Tensors.
-TORCH_API void ONNXAssignOutputShape(
+void ONNXAssignOutputShape(
     std::shared_ptr<Graph>& graph,
     at::ArrayRef<at::Tensor> outputs,
     const python::IODescriptor& desc,
@@ -72,7 +72,7 @@ Node* ONNXOptionalNodeForNone(std::shared_ptr<Graph>& graph);
 // The node must have ONNX namespace, and is valid ONNX node according to spec.
 // On successful ONNX shape inference runs, the function updates output types of
 // n with inferred shape and type. Otherwise n is unchanged.
-TORCH_API void ONNXShapeTypeInference(
+void ONNXShapeTypeInference(
     Node* n,
     const ParamMap& params_dict,
     int opset_version);
@@ -81,7 +81,7 @@ TORCH_API void ONNXShapeTypeInference(
 // Internally calls ONNXShapeTypeInference for each node, to achieve more
 // coverage that skips only individual nodes if illegal, instead of skipping for
 // the entire graph.
-TORCH_API void ONNXShapeTypeInference(
+void ONNXShapeTypeInference(
     std::shared_ptr<Graph>& g,
     const ParamMap& params_dict,
     int opset_version);

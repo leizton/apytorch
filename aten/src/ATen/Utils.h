@@ -24,7 +24,7 @@
 
 namespace at {
 
-TORCH_API int _crash_if_asan(int);
+int _crash_if_asan(int);
 
 // Converts a TensorList (i.e. ArrayRef<Tensor> to vector of TensorImpl*)
 // NB: This is ONLY used by legacy TH bindings, and ONLY used by cat.
@@ -120,18 +120,18 @@ using at::detail::check_size_nonnegative;
 namespace detail {
 
 template <typename T>
-TORCH_API Tensor tensor_cpu(ArrayRef<T> values, const TensorOptions& options);
+Tensor tensor_cpu(ArrayRef<T> values, const TensorOptions& options);
 
 template <typename T>
-TORCH_API Tensor
+Tensor
 tensor_backend(ArrayRef<T> values, const TensorOptions& options);
 
 template <typename T>
-TORCH_API Tensor
+Tensor
 tensor_complex_cpu(ArrayRef<T> values, const TensorOptions& options);
 
 template <typename T>
-TORCH_API Tensor
+Tensor
 tensor_complex_backend(ArrayRef<T> values, const TensorOptions& options);
 } // namespace detail
 

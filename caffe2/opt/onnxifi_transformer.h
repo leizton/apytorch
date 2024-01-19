@@ -19,7 +19,7 @@ class OnnxExporter;
 
 // Split SparseLengthsSumSparse into SparseLengthsSumSparseLookup +
 // SparseLengthsSum
-TORCH_API void splitSparseLengthsSumSparse(NetDef* net, const Workspace& ws);
+void splitSparseLengthsSumSparse(NetDef* net, const Workspace& ws);
 
 struct OnnxifiTransformerOptions final : public BackendTransformOptions {
   explicit OnnxifiTransformerOptions() : BackendTransformOptions() {}
@@ -56,7 +56,7 @@ struct OnnxifiTransformerOptions final : public BackendTransformOptions {
   bool use_onnxifi_batch_size{false};
 };
 
-class TORCH_API OnnxifiOptionHelper final {
+class OnnxifiOptionHelper final {
  public:
   OnnxifiOptionHelper();
 
@@ -71,7 +71,7 @@ class TORCH_API OnnxifiOptionHelper final {
   onnxifi_library* lib_{nullptr};
 };
 
-class TORCH_API OnnxifiTransformer final : public BackendTransformerBase {
+class OnnxifiTransformer final : public BackendTransformerBase {
  public:
   explicit OnnxifiTransformer(const OnnxifiTransformerOptions& opts);
   ~OnnxifiTransformer() override;

@@ -39,7 +39,7 @@ class Tensor;
 class TensorBase;
 
 // Convert Tensor to TensorBase without any need to include Tensor.h
-TORCH_API const TensorBase& get_tensor_base(const Tensor& t);
+const TensorBase& get_tensor_base(const Tensor& t);
 
 namespace impl {
 inline bool variable_excluded_from_dispatch() {
@@ -78,7 +78,7 @@ inline bool variable_excluded_from_dispatch() {
 //   but this requires a reference-count bump. OptionalTensorRef on
 //   the other hand can materialize a `const Tensor &` without
 //   touching the reference-count.
-class TORCH_API TensorBase {
+class TensorBase {
  public:
   struct unsafe_borrow_t { explicit unsafe_borrow_t() = default; };
 

@@ -180,7 +180,7 @@ class ConvNdImpl : public torch::nn::Cloneable<Derived> {
 /// ```
 /// Conv1d model(Conv1dOptions(3, 2, 3).stride(1).bias(false));
 /// ```
-class TORCH_API Conv1dImpl : public ConvNdImpl<1, Conv1dImpl> {
+class Conv1dImpl : public ConvNdImpl<1, Conv1dImpl> {
  public:
   Conv1dImpl(
       int64_t input_channels,
@@ -212,7 +212,7 @@ TORCH_MODULE(Conv1d);
 /// ```
 /// Conv2d model(Conv2dOptions(3, 2, 3).stride(1).bias(false));
 /// ```
-class TORCH_API Conv2dImpl : public ConvNdImpl<2, Conv2dImpl> {
+class Conv2dImpl : public ConvNdImpl<2, Conv2dImpl> {
  public:
   Conv2dImpl(
       int64_t input_channels,
@@ -247,7 +247,7 @@ TORCH_MODULE(Conv2d);
 /// ```
 /// Conv3d model(Conv3dOptions(3, 2, 3).stride(1).bias(false));
 /// ```
-class TORCH_API Conv3dImpl : public ConvNdImpl<3, Conv3dImpl> {
+class Conv3dImpl : public ConvNdImpl<3, Conv3dImpl> {
  public:
   Conv3dImpl(
       int64_t input_channels,
@@ -338,7 +338,7 @@ class ConvTransposeNdImpl : public ConvNdImpl<D, Derived> {
 /// ConvTranspose1d model(ConvTranspose1dOptions(3, 2,
 /// 3).stride(1).bias(false));
 /// ```
-class TORCH_API ConvTranspose1dImpl
+class ConvTranspose1dImpl
     : public ConvTransposeNdImpl<1, ConvTranspose1dImpl> {
  public:
   ConvTranspose1dImpl(
@@ -380,7 +380,7 @@ TORCH_MODULE(ConvTranspose1d);
 /// ConvTranspose2d model(ConvTranspose2dOptions(3, 2,
 /// 3).stride(1).bias(false));
 /// ```
-class TORCH_API ConvTranspose2dImpl
+class ConvTranspose2dImpl
     : public ConvTransposeNdImpl<2, ConvTranspose2dImpl> {
  public:
   ConvTranspose2dImpl(
@@ -422,7 +422,7 @@ TORCH_MODULE(ConvTranspose2d);
 /// ConvTranspose3d model(ConvTranspose3dOptions(2, 2,
 /// 2).stride(1).bias(false));
 /// ```
-class TORCH_API ConvTranspose3dImpl
+class ConvTranspose3dImpl
     : public ConvTransposeNdImpl<3, ConvTranspose3dImpl> {
  public:
   ConvTranspose3dImpl(

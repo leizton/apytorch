@@ -13,7 +13,7 @@ namespace fuser {
 
 // Runs the fusion associated with the key (see registerFusion() in interface.h)
 // on the inputs taken from the given Stack.
-TORCH_API bool runFusion(
+bool runFusion(
     const int64_t key,
     Stack& stack,
     std::string* code_out = nullptr);

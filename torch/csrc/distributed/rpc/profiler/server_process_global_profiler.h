@@ -71,8 +71,8 @@ using wLockType = std::unique_lock<std::shared_timed_mutex>;
 #endif
 
 // This is the global stack of ``State``s.
-TORCH_API extern std::shared_ptr<StateStackEntry> currentStateStackEntryPtr;
-TORCH_API extern mutexType currentStateStackEntryMutex;
+extern std::shared_ptr<StateStackEntry> currentStateStackEntryPtr;
+extern mutexType currentStateStackEntryMutex;
 
 // This class is used to implement a stack of ``State``s.
 // It has 2 members.
@@ -110,7 +110,7 @@ class StateStackEntry {
 
 // Push the result to ``State``s of current profile range and recursively outer
 // profile ranges.
-TORCH_API void pushResultRecursive(
+void pushResultRecursive(
     std::shared_ptr<StateStackEntry> stateStackEntryPtr,
     const thread_event_lists& result);
 
@@ -119,13 +119,13 @@ TORCH_API void pushResultRecursive(
 // Enter a server-side process-global profiling range.
 // Profiling range can be neste, so it's ok to call this API for multiple
 // times. This enables all RPC threads running server-side request callbacks.
-TORCH_API void enableServer(const ProfilerConfig& new_config);
+void enableServer(const ProfilerConfig& new_config);
 //
 // Exit a server-side process-global profiling range.
 // Profiling range can be neste, so it's possible that profiler is still on
 // after calling this API.
 // This enables all RPC threads running server-side request callbacks.
-TORCH_API std::vector<thread_event_lists> disableServer();
+std::vector<thread_event_lists> disableServer();
 
 } // namespace processglobal
 } // namespace profiler

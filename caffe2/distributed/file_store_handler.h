@@ -4,7 +4,7 @@
 
 namespace caffe2 {
 
-class TORCH_API FileStoreHandler : public StoreHandler {
+class FileStoreHandler : public StoreHandler {
  public:
   explicit FileStoreHandler(const std::string& path, const std::string& prefix);
   ~FileStoreHandler() override;

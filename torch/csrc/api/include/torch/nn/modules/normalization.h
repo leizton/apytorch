@@ -28,7 +28,7 @@ namespace nn {
 /// LayerNorm model(LayerNormOptions({2,
 /// 2}).elementwise_affine(false).eps(2e-5));
 /// ```
-class TORCH_API LayerNormImpl : public torch::nn::Cloneable<LayerNormImpl> {
+class LayerNormImpl : public torch::nn::Cloneable<LayerNormImpl> {
  public:
   LayerNormImpl(std::vector<int64_t> normalized_shape)
       : LayerNormImpl(LayerNormOptions(normalized_shape)) {}
@@ -89,7 +89,7 @@ TORCH_MODULE(LayerNorm);
 /// LocalResponseNorm
 /// model(LocalResponseNormOptions(2).alpha(0.0002).beta(0.85).k(2.));
 /// ```
-class TORCH_API LocalResponseNormImpl
+class LocalResponseNormImpl
     : public Cloneable<LocalResponseNormImpl> {
  public:
   LocalResponseNormImpl(int64_t size)
@@ -123,7 +123,7 @@ TORCH_MODULE(LocalResponseNorm);
 /// ```
 /// CrossMapLRN2d model(CrossMapLRN2dOptions(3).alpha(1e-5).beta(0.1).k(10));
 /// ```
-class TORCH_API CrossMapLRN2dImpl
+class CrossMapLRN2dImpl
     : public torch::nn::Cloneable<CrossMapLRN2dImpl> {
  public:
   CrossMapLRN2dImpl(int64_t size)
@@ -162,7 +162,7 @@ TORCH_MODULE(CrossMapLRN2d);
 /// ```
 /// GroupNorm model(GroupNormOptions(2, 2).eps(2e-5).affine(false));
 /// ```
-class TORCH_API GroupNormImpl : public torch::nn::Cloneable<GroupNormImpl> {
+class GroupNormImpl : public torch::nn::Cloneable<GroupNormImpl> {
  public:
   GroupNormImpl(int64_t num_groups, int64_t num_channels)
       : GroupNormImpl(GroupNormOptions(num_groups, num_channels)) {}

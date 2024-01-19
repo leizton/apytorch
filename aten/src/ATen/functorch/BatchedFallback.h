@@ -36,13 +36,13 @@ void vmapErrorFallback(const c10::OperatorHandle& op, torch::jit::Stack* stack);
 
 // The vmap fallback emits a warning by default, but it may be disabled if
 // the user finds it to be too annoying.
-TORCH_API bool isVmapFallbackWarningEnabled();
-TORCH_API void setVmapFallbackWarningEnabled(bool enabled);
+bool isVmapFallbackWarningEnabled();
+void setVmapFallbackWarningEnabled(bool enabled);
 
 // Used for testing. The vmap fallback is enabled by default. When it is disabled,
 // it raises an error.
-TORCH_API bool isVmapFallbackEnabled();
-TORCH_API void setVmapFallbackEnabled(bool enabled);
+bool isVmapFallbackEnabled();
+void setVmapFallbackEnabled(bool enabled);
 
 template <typename A> A vector_to_result(const std::vector<IValue>& buffer) {
   return buffer[0].to<A>();

@@ -5,7 +5,7 @@
 
 namespace at::native {
 
-TORCH_API at::Tensor clone_preserve_strides(const at::Tensor& self);
+at::Tensor clone_preserve_strides(const at::Tensor& self);
 
 inline bool cat_should_skip_tensor(const Tensor& t) {
   return t.numel() == 0 && t.dim() == 1;

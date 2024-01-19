@@ -30,7 +30,7 @@ constexpr int TYPE_IDX = 6; // index of parent in the tuple
 constexpr int RFD_TUPLE_SIZE = 7; // number of RRefForkData fields in py::tuple
 
 // Represents fork of an RRef to be sent over the wire.
-struct TORCH_API RRefForkData {
+struct RRefForkData {
   const worker_id_t ownerId_;
   const RRefId rrefId_;
   const ForkId forkId_;
@@ -188,7 +188,7 @@ struct TORCH_API RRefForkData {
 //
 // ``RRef`` is the base type for both ``UserRRef`` and ``OwnerRRef``.
 // Each ``RRef`` has a globally unique ``RRefId``.
-class TORCH_API RRef : public RRefInterface {
+class RRef : public RRefInterface {
  public:
   // RRef is made NOT copyable NOT movable to prevent messing up reference
   // counting.
@@ -285,7 +285,7 @@ class TORCH_API RRef : public RRefInterface {
 // also has a globally unique ``ForkId`` to identify this user. ``UserRRef``
 // never owns the real value, the only way to get the value of the ``RRef`` is
 // to call ``to_here()`` and get a copy..
-class TORCH_API UserRRef final : public RRef {
+class UserRRef final : public RRef {
  public:
   UserRRef(const UserRRef& other) = delete;
   UserRRef(UserRRef&& other) = delete;
@@ -349,7 +349,7 @@ class TORCH_API UserRRef final : public RRef {
 
 // Keep the template only on the derived class because ``RRefContext`` needs to
 // erase the type on ``RRef`` and keep them in one map.
-class TORCH_API OwnerRRef final : public RRef {
+class OwnerRRef final : public RRef {
  public:
   OwnerRRef(const OwnerRRef& other) = delete;
   OwnerRRef(OwnerRRef&& other) = delete;
@@ -401,16 +401,16 @@ class TORCH_API OwnerRRef final : public RRef {
   c10::intrusive_ptr<JitFuture> future_;
 };
 
-TORCH_API std::ostream& operator<<(std::ostream& os, const RRef& rref);
+std::ostream& operator<<(std::ostream& os, const RRef& rref);
 
 // Helper function that casts from c10::RRefInterface to OwnerRRef
-inline TORCH_API c10::intrusive_ptr<OwnerRRef> fromRRefInterface(
+inline c10::intrusive_ptr<OwnerRRef> fromRRefInterface(
     const c10::intrusive_ptr<c10::RRefInterface>& rrefInterface) {
   return c10::static_intrusive_pointer_cast<OwnerRRef>(rrefInterface);
 }
 
 // Helper function that casts from OwnerRRef to c10::RRefInterface
-inline TORCH_API c10::intrusive_ptr<c10::RRefInterface> fromOwnerRRef(
+inline c10::intrusive_ptr<c10::RRefInterface> fromOwnerRRef(
     const c10::intrusive_ptr<RRef>& ownerRRef) {
   return c10::static_intrusive_pointer_cast<c10::RRefInterface>(ownerRRef);
 }

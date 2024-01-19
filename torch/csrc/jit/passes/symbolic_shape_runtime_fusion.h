@@ -26,11 +26,11 @@ namespace jit {
 // shape propagation fails to propagate # of dims or if complete shapes on
 // inputs not set
 
-TORCH_API bool GenerateGuard(
+bool GenerateGuard(
     Node* tensorexpr_graph_node,
     bool add_composed_op = false);
 
-TORCH_API void runTensorExprDynamicGroup(const Code& code, Stack& stack);
+void runTensorExprDynamicGroup(const Code& code, Stack& stack);
 
 enum class StrideInput {
   // Tensors natively store whether they are contiguous or not as a property
@@ -48,8 +48,8 @@ enum class StrideInput {
   S_AS_ARG, // STRIDE_AS_ARG: stride passed in as runtime value
 };
 
-TORCH_API std::string toString(StrideInput si);
-TORCH_API StrideInput strideInputFromString(const std::string& si);
+std::string toString(StrideInput si);
+StrideInput strideInputFromString(const std::string& si);
 
 } // namespace jit
 } // namespace torch

@@ -11,7 +11,7 @@ struct FunctionSchema;
 };
 
 namespace at {
-TORCH_API void launch(std::function<void()> func);
+void launch(std::function<void()> func);
 }
 
 namespace torch {
@@ -29,13 +29,13 @@ using Kwargs = std::unordered_map<std::string, at::IValue>;
 struct RecursiveMethodCallError : public std::exception {};
 using TaskLauncher = std::function<void(std::function<void()>)>;
 
-TORCH_API void preoptimizeGraph(std::shared_ptr<Graph>& graph, bool disable_autocast=false);
+void preoptimizeGraph(std::shared_ptr<Graph>& graph, bool disable_autocast=false);
 
 // A Function is a pure Graph with no implicit `self` object bound.
 // It contains schema information and the executor that manages the
 // execution of the function. Method is a wrapper around an
 // underlying Function that also provides a `self` object.
-struct TORCH_API Function {
+struct Function {
   Function() = default;
   Function(const Function&) = default;
   Function& operator=(const Function&) = default;

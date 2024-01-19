@@ -434,7 +434,7 @@ auto& mobileInterfaceCallExport() {
 
 } // namespace
 
-TORCH_API void enableMobileInterfaceCallExport() {
+void enableMobileInterfaceCallExport() {
   mobileInterfaceCallExport().store(true, std::memory_order_relaxed);
 }
 bool getMobileInterfaceCallExport() {

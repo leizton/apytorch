@@ -13,7 +13,7 @@ namespace jit {
  * @param[in] use_flatbuffer If true, use Flatbuffers to serialize the data.
  *     If false, use Pickle.
  */
-TORCH_API void _save_parameters(
+void _save_parameters(
     const std::map<std::string, at::Tensor>& map,
     std::ostream& out,
     bool use_flatbuffer = false);
@@ -28,7 +28,7 @@ TORCH_API void _save_parameters(
  * @param[in] use_flatbuffer If true, use Flatbuffers to serialize the data.
  *     If false, use Pickle.
  */
-TORCH_API void _save_parameters(
+void _save_parameters(
     const std::map<std::string, at::Tensor>& map,
     const std::string& filename,
     bool use_flatbuffer = false);
@@ -37,7 +37,7 @@ namespace mobile {
 
 // NOTE: Please prefer using _save_parameters directly over using the 2
 // functions below.
-TORCH_API mobile::Module tensor_dict_to_mobile(
+mobile::Module tensor_dict_to_mobile(
     const c10::Dict<std::string, at::Tensor>& dict);
 
 c10::Dict<std::string, at::Tensor> tensor_map_to_dict(

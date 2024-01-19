@@ -8,7 +8,7 @@
 
 namespace at {
 template <typename OpaqueHandle>
-struct TORCH_API MetalTensorImpl : public OpaqueTensorImpl<OpaqueHandle> {
+struct MetalTensorImpl : public OpaqueTensorImpl<OpaqueHandle> {
   MetalTensorImpl(
       at::DispatchKeySet key_set,
       const caffe2::TypeMeta& data_type,

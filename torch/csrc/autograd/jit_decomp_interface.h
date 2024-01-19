@@ -31,7 +31,7 @@ namespace torch {
 namespace autograd {
 namespace impl {
 
-struct TORCH_API JitDecompInterface {
+struct JitDecompInterface {
   virtual ~JitDecompInterface() = default;
   virtual bool has_jit_decomposition(
       const c10::FunctionSchema& schema) const = 0;
@@ -40,10 +40,10 @@ struct TORCH_API JitDecompInterface {
       jit::Stack* stack) const = 0;
 };
 
-TORCH_API void setJitDecompImpl(JitDecompInterface* impl);
-TORCH_API JitDecompInterface* getJitDecompImpl();
+void setJitDecompImpl(JitDecompInterface* impl);
+JitDecompInterface* getJitDecompImpl();
 
-struct TORCH_API JitDecompRegisterer {
+struct JitDecompRegisterer {
   explicit JitDecompRegisterer(JitDecompInterface* impl) {
     setJitDecompImpl(impl);
   }

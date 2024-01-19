@@ -22,7 +22,7 @@ using function_constructor = std::function<std::shared_ptr<Node>(edge_list&&)>;
  * Wraps the tensor outputs in variables and creates the grad_fn and sets the
  * grad_fn if necessary.
  */
-TORCH_API variable_list wrap_outputs(
+variable_list wrap_outputs(
     const variable_list& inputs,
     tensor_list&& outputs,
     const function_constructor& ctr);
@@ -30,7 +30,7 @@ TORCH_API variable_list wrap_outputs(
 ///  Checks that inputs contains exactly `args` items and that the first
 ///  `required_args`
 /// items are not nullptr. If not specified, `required_args` defaults to `args`.
-TORCH_API void check_input_variables(
+void check_input_variables(
     const char* name,
     const variable_list& inputs,
     int args,

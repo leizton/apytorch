@@ -17,7 +17,7 @@ struct IrBuilder;
 /**
  * Work in progress- don't treat this as a stable interface yet!
  */
-class TORCH_API BackendImplInterface {
+class BackendImplInterface {
  public:
   virtual ~BackendImplInterface() = default;
 
@@ -144,15 +144,15 @@ class TORCH_API BackendImplInterface {
       const ComputationPtr computation) const = 0;
 };
 
-class TORCH_API BackendRegistrar {
+class BackendRegistrar {
  public:
   BackendRegistrar(const BackendImplInterface* backend_impl_interface);
 };
 
-TORCH_API bool hasBackend();
-TORCH_API const BackendImplInterface* getBackend();
+bool hasBackend();
+const BackendImplInterface* getBackend();
 
-TORCH_API const IrBuilder* getIrBuilder();
+const IrBuilder* getIrBuilder();
 
 } // namespace lazy
 } // namespace torch

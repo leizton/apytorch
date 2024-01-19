@@ -35,7 +35,7 @@ namespace jit {
 //      3. The last part of conversion is to find and return, in the same order,
 //         the ONNX outputs corresponding to the original output for the
 //         placeholder node.
-TORCH_API std::vector<Value*> ConvertPatternFromSubblock(
+std::vector<Value*> ConvertPatternFromSubblock(
     Block* new_block,
     Node* old_node,
     std::unordered_map<Value*, Value*>& env);

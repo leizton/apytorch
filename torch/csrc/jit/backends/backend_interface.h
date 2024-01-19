@@ -6,7 +6,7 @@ namespace torch {
 namespace jit {
 
 // Interface for a JIT backend.
-class TORCH_API PyTorchBackendInterface : public torch::CustomClassHolder {
+class PyTorchBackendInterface : public torch::CustomClassHolder {
  public:
   PyTorchBackendInterface() noexcept;
   ~PyTorchBackendInterface() override;

@@ -20,7 +20,7 @@ namespace samplers {
 
 /// A wrapper around a batch size value, which implements the
 /// `CustomBatchRequest` interface.
-struct TORCH_API BatchSize : public CustomBatchRequest {
+struct BatchSize : public CustomBatchRequest {
   explicit BatchSize(size_t size);
   size_t size() const noexcept override;
   operator size_t() const noexcept;
@@ -32,7 +32,7 @@ struct TORCH_API BatchSize : public CustomBatchRequest {
 /// The major feature of the `StreamSampler` is that it does not return
 /// particular indices, but instead only the number of elements to fetch from
 /// the dataset. The dataset has to decide how to produce those elements.
-class TORCH_API StreamSampler : public Sampler<BatchSize> {
+class StreamSampler : public Sampler<BatchSize> {
  public:
   /// Constructs the `StreamSampler` with the number of individual examples that
   /// should be fetched until the sampler is exhausted.

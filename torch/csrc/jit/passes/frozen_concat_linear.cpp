@@ -245,7 +245,7 @@ class ConcatLinearLayers {
 };
 } // namespace
 
-TORCH_API bool FrozenConcatLinear(std::shared_ptr<Graph>& graph) {
+bool FrozenConcatLinear(std::shared_ptr<Graph>& graph) {
   ConcatLinearLayers concatLayers(graph);
   GRAPH_DUMP("Before FrozenConcatLinear", graph);
   bool changed = concatLayers.run();

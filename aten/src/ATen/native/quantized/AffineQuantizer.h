@@ -114,13 +114,13 @@ DECLARE_DISPATCH(
     dequantize_tensor_per_tensor_affine_sub_byte_stub);
 
 template <typename T>
-TORCH_API Tensor quantize_tensor(
+Tensor quantize_tensor(
     Tensor rtensor,
     Tensor qtensor,
     double scale,
     int64_t zero_point);
 template <typename T>
-TORCH_API Tensor dequantize_tensor(
+Tensor dequantize_tensor(
     Tensor qtensor,
     Tensor rtensor,
     double scale,

@@ -66,7 +66,7 @@ struct DispatchStub;
  * template expansion), since it causes size bloat if there are a significant
  * number of specialization of the DispatchStub<> class.
  */
-struct TORCH_API DispatchStubImpl {
+struct DispatchStubImpl {
   void* get_call_ptr(
     c10::DeviceType device_type
     , void *DEFAULT
@@ -174,18 +174,18 @@ public:
     impl.privateuse1_dispatch_ptr = reinterpret_cast<void*>(fn_ptr);
   }
 
-  static TORCH_API FnPtr DEFAULT;
+  static FnPtr DEFAULT;
 #ifdef HAVE_AVX512_CPU_DEFINITION
-  static TORCH_API FnPtr AVX512;
+  static FnPtr AVX512;
 #endif
 #ifdef HAVE_AVX2_CPU_DEFINITION
-  static TORCH_API FnPtr AVX2;
+  static FnPtr AVX2;
 #endif
 #ifdef HAVE_VSX_CPU_DEFINITION
-  static TORCH_API FnPtr VSX;
+  static FnPtr VSX;
 #endif
 #ifdef HAVE_ZVECTOR_CPU_DEFINITION
-  static TORCH_API FnPtr ZVECTOR;
+  static FnPtr ZVECTOR;
 #endif
 private:
   DispatchStubImpl impl;
@@ -233,12 +233,12 @@ struct RegisterPRIVATEUSE1Dispatch {
     name(const name&) = delete;            \
     name& operator=(const name&) = delete; \
   };                                       \
-  extern TORCH_API struct name name
+  extern struct name name
 
 #define DEFINE_DISPATCH(name) struct name name
 
 #define REGISTER_ARCH_DISPATCH(name, arch, fn) \
-  template <> name::FnPtr TORCH_API DispatchStub<name::FnPtr, struct name>::arch = fn;
+  template <> name::FnPtr DispatchStub<name::FnPtr, struct name>::arch = fn;
 
 #ifdef HAVE_AVX512_CPU_DEFINITION
 #define REGISTER_AVX512_DISPATCH(name, fn) REGISTER_ARCH_DISPATCH(name, AVX512, fn)

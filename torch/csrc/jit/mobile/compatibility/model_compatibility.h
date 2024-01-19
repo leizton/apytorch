@@ -19,11 +19,11 @@ namespace jit {
 
 // The family of methods below to get bytecode version from a model
 // Throws if not passed in a well formed model
-TORCH_API uint64_t _get_model_bytecode_version(std::istream& in);
+uint64_t _get_model_bytecode_version(std::istream& in);
 
-TORCH_API uint64_t _get_model_bytecode_version(const std::string& filename);
+uint64_t _get_model_bytecode_version(const std::string& filename);
 
-TORCH_API uint64_t _get_model_bytecode_version(
+uint64_t _get_model_bytecode_version(
     std::shared_ptr<caffe2::serialize::ReadAdapterInterface> rai);
 
 uint64_t _get_model_bytecode_version(
@@ -31,11 +31,11 @@ uint64_t _get_model_bytecode_version(
 
 // The family of methods below to get the operator version from a model
 // Throws if not passed in a well formed model
-TORCH_API uint64_t _get_model_operator_version(std::istream& in);
+uint64_t _get_model_operator_version(std::istream& in);
 
-TORCH_API uint64_t _get_model_operator_version(const std::string& filename);
+uint64_t _get_model_operator_version(const std::string& filename);
 
-TORCH_API uint64_t _get_model_operator_version(
+uint64_t _get_model_operator_version(
     std::shared_ptr<caffe2::serialize::ReadAdapterInterface> rai);
 
 // Utility Functions
@@ -50,24 +50,24 @@ bool check_zip_file(
     std::shared_ptr<caffe2::serialize::ReadAdapterInterface> rai);
 
 // The family of methods below to get the root ops and information from a model
-TORCH_API std::unordered_map<std::string, OperatorInfo> _get_model_ops_and_info(
+std::unordered_map<std::string, OperatorInfo> _get_model_ops_and_info(
     std::istream& in);
 
-TORCH_API std::unordered_map<std::string, OperatorInfo> _get_model_ops_and_info(
+std::unordered_map<std::string, OperatorInfo> _get_model_ops_and_info(
     const std::string& filename);
 
-TORCH_API std::unordered_map<std::string, OperatorInfo> _get_model_ops_and_info(
+std::unordered_map<std::string, OperatorInfo> _get_model_ops_and_info(
     std::shared_ptr<caffe2::serialize::ReadAdapterInterface> rai);
 
 // The family of methods below to get contained types from a model
 // Throws if not passed in a well formed model
-TORCH_API std::unordered_set<std::string> _get_mobile_model_contained_types(
+std::unordered_set<std::string> _get_mobile_model_contained_types(
     std::istream& in);
 
-TORCH_API std::unordered_set<std::string> _get_mobile_model_contained_types(
+std::unordered_set<std::string> _get_mobile_model_contained_types(
     const std::string& filename);
 
-TORCH_API std::unordered_set<std::string> _get_mobile_model_contained_types(
+std::unordered_set<std::string> _get_mobile_model_contained_types(
     std::shared_ptr<caffe2::serialize::ReadAdapterInterface> rai);
 
 std::unordered_set<std::string> _get_mobile_model_contained_types(
@@ -81,9 +81,9 @@ struct ModelCompatibilityInfo {
   uint64_t operator_version;
 
   // Factory Methods
-  static TORCH_API ModelCompatibilityInfo get(std::istream& in);
-  static TORCH_API ModelCompatibilityInfo get(const std::string& filename);
-  static TORCH_API ModelCompatibilityInfo
+  static ModelCompatibilityInfo get(std::istream& in);
+  static ModelCompatibilityInfo get(const std::string& filename);
+  static ModelCompatibilityInfo
   get(std::shared_ptr<caffe2::serialize::ReadAdapterInterface> rai);
 };
 
@@ -98,7 +98,7 @@ struct ModelCompatCheckResult {
 };
 // Takes in information about a runtime and a model and returns if the two are
 // compatible with one another.
-TORCH_API ModelCompatCheckResult is_compatible(
+ModelCompatCheckResult is_compatible(
     RuntimeCompatibilityInfo runtime_info,
     ModelCompatibilityInfo model_info);
 

@@ -19,7 +19,7 @@ namespace jit {
  * support heteogeneous lookup, and also shared_ptr is an implementation detail
  * which should be encapsulated.
  */
-class TORCH_API SourceRef : public CustomClassHolder {
+class SourceRef : public CustomClassHolder {
  public:
   explicit SourceRef(std::shared_ptr<Source> source_view)
       : source_view_(std::move(source_view)) {}

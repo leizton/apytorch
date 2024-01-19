@@ -17,7 +17,7 @@ class InputArchive;
 namespace torch {
 namespace optim {
 
-struct TORCH_API AdamOptions : public OptimizerCloneableOptions<AdamOptions> {
+struct AdamOptions : public OptimizerCloneableOptions<AdamOptions> {
   AdamOptions(double lr = 1e-3);
   TORCH_ARG(double, lr) = 1e-3;
   typedef std::tuple<double, double> betas_t;
@@ -29,14 +29,14 @@ struct TORCH_API AdamOptions : public OptimizerCloneableOptions<AdamOptions> {
  public:
   void serialize(torch::serialize::InputArchive& archive) override;
   void serialize(torch::serialize::OutputArchive& archive) const override;
-  TORCH_API friend bool operator==(
+  friend bool operator==(
       const AdamOptions& lhs,
       const AdamOptions& rhs);
   double get_lr() const override;
   void set_lr(const double lr) override;
 };
 
-struct TORCH_API AdamParamState
+struct AdamParamState
     : public OptimizerCloneableParamState<AdamParamState> {
   TORCH_ARG(int64_t, step) = 0;
   TORCH_ARG(torch::Tensor, exp_avg);
@@ -46,12 +46,12 @@ struct TORCH_API AdamParamState
  public:
   void serialize(torch::serialize::InputArchive& archive) override;
   void serialize(torch::serialize::OutputArchive& archive) const override;
-  TORCH_API friend bool operator==(
+  friend bool operator==(
       const AdamParamState& lhs,
       const AdamParamState& rhs);
 };
 
-class TORCH_API Adam : public Optimizer {
+class Adam : public Optimizer {
  public:
   explicit Adam(
       std::vector<OptimizerParamGroup> param_groups,

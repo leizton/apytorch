@@ -5,7 +5,7 @@
 namespace torch {
 namespace jit {
 
-TORCH_API void DecomposeOps(std::shared_ptr<Graph>& graph);
+void DecomposeOps(std::shared_ptr<Graph>& graph);
 
 }
 } // namespace torch

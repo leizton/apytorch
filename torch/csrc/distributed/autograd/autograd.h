@@ -30,7 +30,7 @@ using torch::autograd::variable_list;
 ///                     option to `true` is not needed and often can be worked
 ///                     around in a much more efficient way. Usually, you need
 ///                     to set this to `true` to run backward multiple times.
-TORCH_API void backward(
+void backward(
     int64_t context_id,
     const variable_list& roots,
     bool retain_graph = false);

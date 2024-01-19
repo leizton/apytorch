@@ -18,20 +18,20 @@ namespace fuser {
 // Performs device-independent "upfront" compilation of the given fusion_group,
 // if it has not been registered already.
 // Returns a key that can be used to run the fusion later
-TORCH_API int64_t registerFusion(const Node* fusion_group);
+int64_t registerFusion(const Node* fusion_group);
 
 // Performs device-specific "runtime" compilation of the given kernel
 //  with the runtime arguments specified in ArgSpec.
 //  Outputs are allocated using map_size on the specified device.
-TORCH_API std::shared_ptr<FusedKernel> compileKernel(
+std::shared_ptr<FusedKernel> compileKernel(
     const KernelSpec& spec,
     const ArgSpec& arg_spec,
     const std::vector<int64_t>& map_size,
     const at::Device device);
 
-TORCH_API size_t nCompiledKernels();
+size_t nCompiledKernels();
 
-TORCH_API int debugFuser();
+int debugFuser();
 
 using FusedKernelConstructor = std::function<std::shared_ptr<FusedKernel>(
     int16_t device,
@@ -43,11 +43,11 @@ using FusedKernelConstructor = std::function<std::shared_ptr<FusedKernel>(
     std::vector<PartitionDesc> concat_desc,
     bool has_random)>;
 
-TORCH_API void registerFusionBackend(
+void registerFusionBackend(
     at::Device::Type backend_type,
     FusedKernelConstructor ctor);
-TORCH_API bool hasFusionBackend(at::Device::Type backend_type);
-struct TORCH_API RegisterFusionBackend {
+bool hasFusionBackend(at::Device::Type backend_type);
+struct RegisterFusionBackend {
   RegisterFusionBackend(
       at::Device::Type backend_type,
       FusedKernelConstructor ctor) {

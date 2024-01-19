@@ -11,20 +11,20 @@ inline int64_t divup(int64_t x, int64_t y) {
 }
 
 // Called during new thread initialization
-TORCH_API void init_num_threads();
+void init_num_threads();
 
 // Sets the number of threads to be used in parallel region
-TORCH_API void set_num_threads(int);
+void set_num_threads(int);
 
 // Returns the maximum number of threads that may be used in a parallel region
-TORCH_API int get_num_threads();
+int get_num_threads();
 
 // Returns the current thread number (starting from 0)
 // in the current parallel region, or 0 in the sequential region
-TORCH_API int get_thread_num();
+int get_thread_num();
 
 // Checks whether the code runs in parallel region
-TORCH_API bool in_parallel_region();
+bool in_parallel_region();
 
 namespace internal {
 
@@ -37,9 +37,9 @@ inline void lazy_init_num_threads() {
   }
 }
 
-TORCH_API void set_thread_num(int);
+void set_thread_num(int);
 
-class TORCH_API ThreadIdGuard {
+class ThreadIdGuard {
  public:
   ThreadIdGuard(int new_id) : old_id_(at::get_thread_num()) {
     set_thread_num(new_id);
@@ -127,25 +127,25 @@ inline scalar_t parallel_reduce(
     const SF& sf);
 
 // Returns a detailed string describing parallelization settings
-TORCH_API std::string get_parallel_info();
+std::string get_parallel_info();
 
 // Sets number of threads used for inter-op parallelism
-TORCH_API void set_num_interop_threads(int);
+void set_num_interop_threads(int);
 
 // Returns the number of threads used for inter-op parallelism
-TORCH_API int get_num_interop_threads();
+int get_num_interop_threads();
 
 // Launches inter-op parallel task
-TORCH_API void launch(std::function<void()> func);
+void launch(std::function<void()> func);
 namespace internal {
 void launch_no_thread_state(std::function<void()> fn);
 } // namespace internal
 
 // Launches intra-op parallel task
-TORCH_API void intraop_launch(std::function<void()> func);
+void intraop_launch(std::function<void()> func);
 
 // Returns number of intra-op threads used by default
-TORCH_API int intraop_default_num_threads();
+int intraop_default_num_threads();
 
 } // namespace at
 

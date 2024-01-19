@@ -10,7 +10,7 @@ namespace autograd {
 
 // Internal system RPC to invoke distributed backward pass on remote nodes when
 // 'rref.backward()' is invoked.
-class TORCH_API RRefBackwardReq : public rpc::RpcCommandBase {
+class RRefBackwardReq : public rpc::RpcCommandBase {
  public:
   RRefBackwardReq(
       const rpc::RRefId& rrefId,

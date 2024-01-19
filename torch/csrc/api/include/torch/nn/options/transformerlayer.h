@@ -19,7 +19,7 @@ using activation_t = std::variant<
 /// ```
 /// auto options = TransformerEncoderLayer(512, 8).dropout(0.2);
 /// ```
-struct TORCH_API TransformerEncoderLayerOptions {
+struct TransformerEncoderLayerOptions {
   /* implicit */ TransformerEncoderLayerOptions(int64_t d_model, int64_t nhead);
 
   /// the number of expected features in the input
@@ -48,7 +48,7 @@ struct TORCH_API TransformerEncoderLayerOptions {
 /// TransformerDecoderLayer model(TransformerDecoderLayerOptions(512,
 /// 8).dropout(0.2));
 /// ```
-struct TORCH_API TransformerDecoderLayerOptions {
+struct TransformerDecoderLayerOptions {
   TransformerDecoderLayerOptions(int64_t d_model, int64_t nhead);
 
   /// number of expected features in the input

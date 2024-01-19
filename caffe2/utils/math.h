@@ -28,7 +28,7 @@ class Tensor;
 
 // An empty class as a placeholder for a math function that has no specific
 // engine specified.
-class TORCH_API DefaultEngine {};
+class DefaultEngine {};
 
 namespace math {
 
@@ -118,7 +118,7 @@ C10_DECLARE_BINARY_OP(BitwiseXor)
 
 // Broadcasts X with X_dims to Y with Y_dims.
 template <typename T, class Context>
-TORCH_API void Broadcast(
+void Broadcast(
     const int X_ndim,
     const int* X_dims,
     const int Y_ndim,
@@ -131,7 +131,7 @@ TORCH_API void Broadcast(
 
 // Computes inv_std from variance.
 template <typename T, class Context>
-TORCH_API void InvStd(
+void InvStd(
     const int N,
     const T epsilon,
     const T* var,
@@ -141,7 +141,7 @@ TORCH_API void InvStd(
 // Adds batch sub-tensors elementwise to output. Stripe is the stripe length
 // and N is the number of elements to add (size of Y).
 template <typename T, class Context>
-TORCH_API void AddStripedBatch(
+void AddStripedBatch(
     const int N,
     const T* first,
     T* y,
@@ -152,24 +152,24 @@ TORCH_API void AddStripedBatch(
 // Compute the row-wise max of a N*D matrix X, and write it to a N
 // dimensional vector y.
 template <typename T, class Context>
-TORCH_API void
+void
 RowwiseMax(const int N, const int D, const T* x, T* y, Context* context);
 
 // Compute the column-wise max of a N*D matrix X, and write it to a D
 // dimensional vector y.
 template <typename T, class Context>
-TORCH_API void
+void
 ColwiseMax(const int N, const int D, const T* x, T* y, Context* context);
 
 // Elemwise maximum of vector x and scalar alpha. y[i] = max(x[i], alpha)
 template <typename T, class Context>
-TORCH_API void
+void
 Maximum(const int N, const float alpha, const T* x, T* y, Context* context);
 
 // Decaf gemm provides a simpler interface to the gemm functions, with the
 // limitation that the data has to be contiguous in memory.
 template <typename T, class Context, class Engine = DefaultEngine>
-TORCH_API void Gemm(
+void Gemm(
     const CBLAS_TRANSPOSE trans_A,
     const CBLAS_TRANSPOSE trans_B,
     const int M,
@@ -186,7 +186,7 @@ TORCH_API void Gemm(
 // We also provide a gemm that has explicit lda, ldb and ldc specified.
 // In most cases you probably want to use the function above, though.
 template <typename T, class Context, class Engine = DefaultEngine>
-TORCH_API void GemmEx(
+void GemmEx(
     const CBLAS_TRANSPOSE trans_A,
     const CBLAS_TRANSPOSE trans_B,
     const int M,
@@ -204,7 +204,7 @@ TORCH_API void GemmEx(
 
 // GemmBatched provides a simple abstraction into library routines
 template <typename T, class Context, class Engine = DefaultEngine>
-TORCH_API void GemmBatched(
+void GemmBatched(
     const CBLAS_TRANSPOSE trans_A,
     const CBLAS_TRANSPOSE trans_B,
     const int batch_size,
@@ -220,7 +220,7 @@ TORCH_API void GemmBatched(
     TensorProto::DataType math_type = TensorProto_DataType_FLOAT);
 
 template <typename T, class Context, class Engine = DefaultEngine>
-TORCH_API void GemmStridedBatched(
+void GemmStridedBatched(
     const CBLAS_TRANSPOSE trans_A,
     const CBLAS_TRANSPOSE trans_B,
     const int batch_size,
@@ -243,7 +243,7 @@ TORCH_API void GemmStridedBatched(
 // CblasNoTrans: x is an N dim vector and y is an M dim vector.
 // CblasTrans:   x is an M dim vector and y is an N dim vector.
 template <typename T, class Context, class Engine = DefaultEngine>
-TORCH_API void Gemv(
+void Gemv(
     const CBLAS_TRANSPOSE trans_A,
     const int M,
     const int N,
@@ -256,13 +256,13 @@ TORCH_API void Gemv(
     TensorProto::DataType math_type = TensorProto_DataType_FLOAT);
 
 template <typename T, class Context>
-TORCH_API void
+void
 RandUniform(const size_t n, const T a, const T b, T* r, Context* context);
 
 // Generate n values that sum up to a fixed sum
 // and subject to a restriction a <= x <= b for each x generated
 template <typename T, class Context>
-TORCH_API void RandFixedSum(
+void RandFixedSum(
     const size_t n,
     const T a,
     const T b,
@@ -271,7 +271,7 @@ TORCH_API void RandFixedSum(
     Context* context);
 
 template <typename T, class Context>
-TORCH_API void RandUniformUnique(
+void RandUniformUnique(
     const size_t n,
     const T a,
     const T b,
@@ -283,21 +283,21 @@ TORCH_API void RandUniformUnique(
 // Generate n values from synthetic data distribution,
 // define by unique accesses and stack distances
 template <typename T, class Context>
-TORCH_API void
+void
 RandSyntheticData(const size_t n, const T a, const T b, T* r, Context* context);
 
 template <typename T, class Context>
-TORCH_API void
+void
 RandGaussian(const size_t n, const T mean, const T std, T* r, Context* context);
 
 // Dot matrix of vector a and b, and writes the result to a single value y.
 template <typename T, class Context>
-TORCH_API void
+void
 Dot(const int N, const T* a, const T* b, T* y, Context* context);
 
 // Sum of vector x, and writes the result to a single value y.
 template <typename T, class Context>
-TORCH_API void Sum(
+void Sum(
     const int N,
     const T* x,
     T* y,
@@ -306,7 +306,7 @@ TORCH_API void Sum(
 
 // Sum of squares of vector x, and writes the result to a single value y.
 template <typename T, class Context>
-TORCH_API void SumSqr(
+void SumSqr(
     const int N,
     const T* x,
     T* y,
@@ -316,7 +316,7 @@ TORCH_API void SumSqr(
 // Select does index selection of the rows a N*D matrix x, and gives the N
 // dimensional vector y that contains the selected data.
 template <typename T, class Context>
-TORCH_API void Select(
+void Select(
     const int N,
     const int D,
     const T* x,
@@ -330,7 +330,7 @@ TORCH_API void Select(
 // For NCHW order, groups doesn't make any difference because we're doing Im2Col
 // for each N and C is the slowest moving dimension among CHW.
 template <typename T, class Context, StorageOrder kOrder>
-TORCH_API void Im2Col(
+void Im2Col(
     const int channels,
     const int height,
     const int width,
@@ -351,7 +351,7 @@ TORCH_API void Im2Col(
 
 // groups must be 1 for GPU
 template <typename T, class Context, StorageOrder kOrder>
-TORCH_API void Im2ColNd(
+void Im2ColNd(
     const int N,
     const int img_size,
     const int col_size,
@@ -372,7 +372,7 @@ TORCH_API void Im2ColNd(
 // For NCHW order, groups doesn't make any difference because we're doing Im2Col
 // for each N and C is the slowest moving dimension among CHW.
 template <typename T, class Context, StorageOrder kOrder>
-TORCH_API void Col2Im(
+void Col2Im(
     const int channels,
     const int height,
     const int width,
@@ -397,7 +397,7 @@ TORCH_API void Col2Im(
 // For NCHW order, groups doesn't make any difference because we're doing Im2Col
 // for each N and C is the slowest moving dimension among CHW.
 template <typename T, class Context, StorageOrder kOrder>
-TORCH_API void Col2ImNd(
+void Col2ImNd(
     const int N,
     const int img_size,
     const int col_size,
@@ -415,7 +415,7 @@ TORCH_API void Col2ImNd(
 // Applies a per-channel bias value to each channel of the input
 // image. image_size is H * W
 template <typename T, class Context>
-TORCH_API void BiasCHW(
+void BiasCHW(
     const T* bias,
     const T* bias_multiplier,
     const int bias_channels,
@@ -424,7 +424,7 @@ TORCH_API void BiasCHW(
     Context* context);
 
 template <class Context>
-TORCH_API void CopyMatrix(
+void CopyMatrix(
     const size_t item_size,
     const int M,
     const int N,
@@ -436,7 +436,7 @@ TORCH_API void CopyMatrix(
     TypeMeta::Copy copy = nullptr);
 
 template <typename T, class Context>
-TORCH_API void CopyMatrix(
+void CopyMatrix(
     const int M,
     const int N,
     const T* A,
@@ -446,7 +446,7 @@ TORCH_API void CopyMatrix(
     Context* context);
 
 template <typename T, class Context>
-TORCH_API void CopyMatrix(
+void CopyMatrix(
     const int M,
     const int N,
     const T* A,
@@ -458,7 +458,7 @@ TORCH_API void CopyMatrix(
     Context* context);
 
 template <typename T, class Context>
-TORCH_API void CopyVector(const int N, const T* A, T* B, Context* context);
+void CopyVector(const int N, const T* A, T* B, Context* context);
 
 } // namespace math
 } // namespace caffe2

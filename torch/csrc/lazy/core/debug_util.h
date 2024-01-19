@@ -8,12 +8,12 @@
 namespace torch {
 namespace lazy {
 
-TORCH_API std::function<std::vector<SourceLocation>()>&
+std::function<std::vector<SourceLocation>()>&
 GetPythonFramesFunction();
 
-TORCH_API std::string GetFirstUserFrameInPython();
+std::string GetFirstUserFrameInPython();
 
-class TORCH_API DebugUtil {
+class DebugUtil {
  public:
   enum GraphFormat {
     kText,

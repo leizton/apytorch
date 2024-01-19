@@ -22,30 +22,30 @@ using ValueToParamPairMap = std::map<Value*, std::pair<std::string, IValue>>;
 
 using ParamMap = std::map<std::string, IValue>;
 
-TORCH_API void buildParamsMapFromValueToParamsMap(
+void buildParamsMapFromValueToParamsMap(
     const ValueToParamPairMap& valsToParamsMap,
     ParamMap& paramsDict);
-TORCH_API ValueToParamPairMap
+ValueToParamPairMap
 buildValueToParamsMap(Block* b, const ParamMap& paramsDict);
-TORCH_API void eraseUnusedValuesFromMap(ValueToParamPairMap& valsToParamsMap);
-TORCH_API void eraseUnusedBlockInputs(Block* b);
-TORCH_API void buildParamsMapFromValueToParamsMap(
+void eraseUnusedValuesFromMap(ValueToParamPairMap& valsToParamsMap);
+void eraseUnusedBlockInputs(Block* b);
+void buildParamsMapFromValueToParamsMap(
     const ValueToParamPairMap& valsToParamsMap,
     ParamMap& paramsDict);
 
-TORCH_API Node* addNodeToBlock(
+Node* addNodeToBlock(
     Block* block,
     Symbol kind,
     ArrayRef<Value*> inputs);
 
-TORCH_API Value* addInputToBlock(Block* block);
+Value* addInputToBlock(Block* block);
 
-TORCH_API c10::optional<at::ScalarType> ONNXTypeToATenType(int32_t onnx_type);
+c10::optional<at::ScalarType> ONNXTypeToATenType(int32_t onnx_type);
 
 // Use int return type as no sable way exists to forward declare protobuf enum
-TORCH_API int ATenTypeToOnnxType(at::ScalarType at_type);
+int ATenTypeToOnnxType(at::ScalarType at_type);
 
-TORCH_API void ONNXLintGraph(const std::shared_ptr<Graph>& graph);
+void ONNXLintGraph(const std::shared_ptr<Graph>& graph);
 
 Node* createONNXUnsqueeze(
     Graph* graph,

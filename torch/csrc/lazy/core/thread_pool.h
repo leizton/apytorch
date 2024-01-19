@@ -14,7 +14,7 @@
 namespace torch {
 namespace lazy {
 
-class TORCH_API Completion {
+class Completion {
  public:
   class Data;
 
@@ -29,8 +29,8 @@ class TORCH_API Completion {
 };
 
 // Schedules a closure which might wait for IO or other events/conditions.
-TORCH_API void ScheduleIoClosure(std::function<void()> closure);
-TORCH_API Completion
+void ScheduleIoClosure(std::function<void()> closure);
+Completion
 ScheduleIoClosureWithCompletion(std::function<void()> closure);
 
 } // namespace lazy

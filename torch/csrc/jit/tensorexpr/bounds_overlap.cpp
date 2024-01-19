@@ -137,7 +137,7 @@ OverlapKind boundOverlap(Bound a, Bound b) {
   return OverlapKind::PartialOverlap;
 }
 
-CmpEvalResult TORCH_API compareBound(
+CmpEvalResult compareBound(
     const Bound& a,
     const Bound& b,
     const CompareSelectOperation& cmp_op) {

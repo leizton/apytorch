@@ -13,8 +13,8 @@ using fused_sdp_choice_fn = int64_t (*)(const Tensor& query_, const Tensor& key,
 
 DECLARE_DISPATCH(fused_sdp_choice_fn, _fused_sdp_choice_stub);
 
-TORCH_API Tensor bmm_nt(const Tensor& a, const Tensor& b);
-TORCH_API Tensor masked_softmax(
+Tensor bmm_nt(const Tensor& a, const Tensor& b);
+Tensor masked_softmax(
     Tensor& attn_scores,
     c10::optional<Tensor> attn_mask,
     const Tensor& query,
@@ -32,17 +32,17 @@ using transform_bias_rescale_qkv_fn = void(*)(
 
 DECLARE_DISPATCH(transform_bias_rescale_qkv_fn, transform_bias_rescale_qkv_stub);
 
-TORCH_API Tensor transform0213_gemm_nt_bias(
+Tensor transform0213_gemm_nt_bias(
     const Tensor& a,
     const Tensor& b,
     const Tensor& c,
     const Tensor& query);
 
-TORCH_API Tensor bmm_nn(Tensor& out, const Tensor& a, const Tensor& b);
+Tensor bmm_nn(Tensor& out, const Tensor& a, const Tensor& b);
 
-TORCH_API void debug_assert_shape(int line, const Tensor& t, c10::IntArrayRef shape);
+void debug_assert_shape(int line, const Tensor& t, c10::IntArrayRef shape);
 
-TORCH_API Tensor qkv_projection(
+Tensor qkv_projection(
     const Tensor& query,
     const Tensor& key,
     const Tensor& value,

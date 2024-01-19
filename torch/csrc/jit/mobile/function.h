@@ -15,7 +15,7 @@ struct OperatorString;
 
 namespace mobile {
 
-class TORCH_API Function : public torch::jit::Function {
+class Function : public torch::jit::Function {
  public:
   explicit Function(c10::QualifiedName name);
   Function(
@@ -79,7 +79,7 @@ c10::optional<std::function<void(Stack&)>> makeOperatorFunction(
     c10::OperatorName opname,
     c10::optional<int> num_specified_args);
 
-TORCH_API std::string operator_str(const c10::OperatorName& opname);
+std::string operator_str(const c10::OperatorName& opname);
 
 } // namespace mobile
 } // namespace jit

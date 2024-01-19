@@ -7,7 +7,7 @@
 
 namespace at::native::sparse {
 
-TORCH_API void sparse_sampled_addmm_check_inputs(
+void sparse_sampled_addmm_check_inputs(
     const Tensor& self,
     const Tensor& mat1,
     const Tensor& mat2,

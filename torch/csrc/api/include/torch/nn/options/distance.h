@@ -13,7 +13,7 @@ namespace nn {
 /// ```
 /// CosineSimilarity model(CosineSimilarityOptions().dim(0).eps(0.5));
 /// ```
-struct TORCH_API CosineSimilarityOptions {
+struct CosineSimilarityOptions {
   /// Dimension where cosine similarity is computed. Default: 1
   TORCH_ARG(int64_t, dim) = 1;
   /// Small value to avoid division by zero. Default: 1e-8
@@ -44,7 +44,7 @@ using CosineSimilarityFuncOptions = CosineSimilarityOptions;
 /// PairwiseDistance
 /// model(PairwiseDistanceOptions().p(3).eps(0.5).keepdim(true));
 /// ```
-struct TORCH_API PairwiseDistanceOptions {
+struct PairwiseDistanceOptions {
   /// The norm degree. Default: 2
   TORCH_ARG(double, p) = 2.0;
   /// Small value to avoid division by zero. Default: 1e-6

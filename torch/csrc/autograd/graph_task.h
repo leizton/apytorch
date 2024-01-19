@@ -230,13 +230,13 @@ class GraphTaskGuard {
   std::shared_ptr<GraphTask> last_graph_task_;
 };
 
-TORCH_API const std::unordered_map<Node*, GraphTask::ExecInfo>*
+const std::unordered_map<Node*, GraphTask::ExecInfo>*
 get_current_graph_task_exec_info();
-TORCH_API const std::unordered_set<Node*>*
+const std::unordered_set<Node*>*
 get_current_graph_task_nodes_in_graph();
-TORCH_API bool get_current_graph_task_keep_graph();
-TORCH_API std::vector<Node*> get_current_graph_task_execution_order();
-TORCH_API int get_current_graph_task_id();
+bool get_current_graph_task_keep_graph();
+std::vector<Node*> get_current_graph_task_execution_order();
+int get_current_graph_task_id();
 void add_node_to_current_graph_task_exec_info(Node* fn);
 
 } // namespace autograd

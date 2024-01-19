@@ -47,9 +47,9 @@ FUNCTION_DECLARATION = CodeTemplate(
     """\
 #ifdef _WIN32
 struct ${op} : public ${superclass} {
-  TORCH_API ${op}() = default;
+  ${op}() = default;
 #else
-struct TORCH_API ${op} : public ${superclass} {
+struct ${op} : public ${superclass} {
 #endif
   using ${superclass}::${superclass};
   variable_list apply(variable_list&& grads) override;

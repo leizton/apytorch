@@ -78,7 +78,7 @@ namespace internal {
 constexpr int64_t GRAIN_SIZE = 32768;
 
 // Storage for a non-owning Tensor, without needing to include Tensor.h
-class TORCH_API OpaqueOptionalTensorRef {
+class OpaqueOptionalTensorRef {
   alignas(alignof(TensorBase)) std::array<char, sizeof(TensorBase)> data_;
 
  public:
@@ -114,7 +114,7 @@ class TORCH_API OpaqueOptionalTensorRef {
 };
 } // namespace internal
 
-struct TORCH_API OperandInfo {
+struct OperandInfo {
   using StrideVector = SmallVector<int64_t, 6>;
   OperandInfo() = default;
   C10_ALWAYS_INLINE explicit OperandInfo(c10::MaybeOwned<TensorBase>&& t) {
@@ -232,7 +232,7 @@ enum class FastSetupType : uint8_t {
 class TensorIteratorConfig;
 struct TensorIterator;
 
-struct TORCH_API TensorIteratorBase : public impl::MetaBase {
+struct TensorIteratorBase : public impl::MetaBase {
   using DimMask = std::bitset<64>;
   using PtrVector = SmallVector<char*, 4>;
   using StrideVector = SmallVector<int64_t, 6>;
@@ -704,7 +704,7 @@ struct TORCH_API TensorIteratorBase : public impl::MetaBase {
   bool is_meta_ = false;
 };
 
-struct TORCH_API TensorIterator final : public TensorIteratorBase {
+struct TensorIterator final : public TensorIteratorBase {
   TensorIterator() : TensorIteratorBase() {}
   // Slicing is OK, TensorIterator guaranteed NOT to have any fields
   TensorIterator(const TensorIteratorBase& iter) : TensorIteratorBase(iter) {}
@@ -751,7 +751,7 @@ struct TORCH_API TensorIterator final : public TensorIteratorBase {
       DimnameList names) override;
 };
 
-class TORCH_API TensorIteratorConfig final {
+class TensorIteratorConfig final {
  public:
   friend struct TensorIteratorBase;
   friend struct TensorIterator;
@@ -952,8 +952,8 @@ class TORCH_API TensorIteratorConfig final {
 /// A container-like struct that acts as if it contains splits of a
 /// TensorIterator that can use 32-bit indexing. Taken together the splits cover
 /// the original TensorIterator.
-struct TORCH_API SplitUntil32Bit {
-  struct TORCH_API iterator {
+struct SplitUntil32Bit {
+  struct iterator {
     iterator() = default;
     iterator(const TensorIteratorBase& iter);
     iterator(iterator&&) = default;

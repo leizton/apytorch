@@ -19,7 +19,7 @@ namespace nn {
 /// TransformerOptions options(16, 4);
 /// auto options = TransformerOptions().d_model(4).nhead(2).dropout(0.0);
 /// ```
-struct TORCH_API TransformerOptions {
+struct TransformerOptions {
   // The following constructors are commonly used
   // Please don't add more unless it is proved as a common usage
   TransformerOptions() = default;

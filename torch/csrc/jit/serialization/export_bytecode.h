@@ -16,7 +16,7 @@
 namespace torch {
 namespace jit {
 
-struct TORCH_API CompilationOptions {
+struct CompilationOptions {
   bool incl_interface_call = false;
   bool enable_default_value_for_unspecified_arg = false;
   bool enable_default_args_before_out_args = true;
@@ -24,7 +24,7 @@ struct TORCH_API CompilationOptions {
   int model_version = caffe2::serialize::kProducedBytecodeVersion;
 };
 
-TORCH_API mobile::Module jitModuleToMobile(
+mobile::Module jitModuleToMobile(
     const Module& module,
     const CompilationOptions& options);
 
@@ -34,11 +34,11 @@ mobile::Code compileGraphToMobileCode(
     const CompilationOptions& compilation_options,
     BackendDebugInfoRecorder& debug_info_recorder);
 
-TORCH_API std::unique_ptr<mobile::Function> convertJitFunctionToMobileFunction(
+std::unique_ptr<mobile::Function> convertJitFunctionToMobileFunction(
     const GraphFunction& function,
     const CompilationOptions& options);
 
-TORCH_API IValue convertMobileFunctionToCodeTable(
+IValue convertMobileFunctionToCodeTable(
     const mobile::Function& func,
     const CompilationOptions& compilation_options);
 

@@ -10,7 +10,7 @@ namespace jit {
 // provided for the upgrader name.
 std::shared_ptr<Graph> getUpgraderGraph(const std::string& upgrader_name);
 
-TORCH_API void ReplaceOldOperatorsWithUpgraders(std::shared_ptr<Graph> graph);
+void ReplaceOldOperatorsWithUpgraders(std::shared_ptr<Graph> graph);
 
 } // namespace jit
 } // namespace torch

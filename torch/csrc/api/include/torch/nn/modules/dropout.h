@@ -51,7 +51,7 @@ class _DropoutNd : public torch::nn::Cloneable<Derived> {
 /// ```
 /// Dropout model(DropoutOptions().p(0.42).inplace(true));
 /// ```
-class TORCH_API DropoutImpl : public detail::_DropoutNd<DropoutImpl> {
+class DropoutImpl : public detail::_DropoutNd<DropoutImpl> {
  public:
   using detail::_DropoutNd<DropoutImpl>::_DropoutNd;
 
@@ -81,7 +81,7 @@ TORCH_MODULE(Dropout);
 /// ```
 /// Dropout2d model(Dropout2dOptions().p(0.42).inplace(true));
 /// ```
-class TORCH_API Dropout2dImpl : public detail::_DropoutNd<Dropout2dImpl> {
+class Dropout2dImpl : public detail::_DropoutNd<Dropout2dImpl> {
  public:
   using detail::_DropoutNd<Dropout2dImpl>::_DropoutNd;
 
@@ -111,7 +111,7 @@ TORCH_MODULE(Dropout2d);
 /// ```
 /// Dropout3d model(Dropout3dOptions().p(0.42).inplace(true));
 /// ```
-class TORCH_API Dropout3dImpl : public detail::_DropoutNd<Dropout3dImpl> {
+class Dropout3dImpl : public detail::_DropoutNd<Dropout3dImpl> {
  public:
   using detail::_DropoutNd<Dropout3dImpl>::_DropoutNd;
 
@@ -141,7 +141,7 @@ TORCH_MODULE(Dropout3d);
 /// ```
 /// AlphaDropout model(AlphaDropoutOptions(0.2).inplace(true));
 /// ```
-class TORCH_API AlphaDropoutImpl : public detail::_DropoutNd<AlphaDropoutImpl> {
+class AlphaDropoutImpl : public detail::_DropoutNd<AlphaDropoutImpl> {
  public:
   using detail::_DropoutNd<AlphaDropoutImpl>::_DropoutNd;
 
@@ -168,7 +168,7 @@ TORCH_MODULE(AlphaDropout);
 /// ```
 /// FeatureAlphaDropout model(FeatureAlphaDropoutOptions(0.2).inplace(true));
 /// ```
-class TORCH_API FeatureAlphaDropoutImpl
+class FeatureAlphaDropoutImpl
     : public detail::_DropoutNd<FeatureAlphaDropoutImpl> {
  public:
   using detail::_DropoutNd<FeatureAlphaDropoutImpl>::_DropoutNd;

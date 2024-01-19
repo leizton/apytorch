@@ -12,7 +12,7 @@ C10_DECLARE_bool(ltc_enable_symbolic_shapes);
 namespace torch {
 namespace lazy {
 
-class TORCH_API Shape {
+class Shape {
  public:
   Shape() = default;
 
@@ -67,12 +67,12 @@ class TORCH_API Shape {
   c10::optional<std::vector<bool>> is_symbolic_ = c10::nullopt;
 };
 
-TORCH_API std::ostream& operator<<(std::ostream& out, const Shape& shape);
+std::ostream& operator<<(std::ostream& out, const Shape& shape);
 
-TORCH_API bool symbolicShapeEnabled();
+bool symbolicShapeEnabled();
 // Calculate and applies symbolic shapes onto the
 // Shape objects passed to result_shapes
-TORCH_API void applySymbolicShapesOnLT(
+void applySymbolicShapesOnLT(
     const char* schema_str,
     std::vector<c10::IValue> args,
     std::vector<Shape>& result_shapes);

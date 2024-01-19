@@ -133,18 +133,18 @@ class SkipIndices<> {
 // linked. This function should not be used in static initialization functions
 // as the underlying boolean variable is going to be switched on when one
 // loads libtorch_gpu.so.
-TORCH_API bool HasCudaRuntime();
-TORCH_API bool HasHipRuntime();
+bool HasCudaRuntime();
+bool HasHipRuntime();
 namespace internal {
 // Sets the Cuda Runtime flag that is used by HasCudaRuntime(). You should
 // never use this function - it is only used by the Caffe2 gpu code to notify
 // Caffe2 core that cuda runtime has been loaded.
-TORCH_API void SetCudaRuntimeFlag();
-TORCH_API void SetHipRuntimeFlag();
+void SetCudaRuntimeFlag();
+void SetHipRuntimeFlag();
 } // namespace internal
 // Returns which setting Caffe2 was configured and built with (exported from
 // CMake)
-TORCH_API const std::map<string, string>& GetBuildOptions();
+const std::map<string, string>& GetBuildOptions();
 
 } // namespace caffe2
 

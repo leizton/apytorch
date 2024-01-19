@@ -18,8 +18,8 @@ class Stmt;
 
 // Forward declarations of functions
 namespace std {
-TORCH_API std::string to_string(const torch::jit::tensorexpr::ExprPtr);
-TORCH_API std::string to_string(const torch::jit::tensorexpr::StmtPtr);
+std::string to_string(const torch::jit::tensorexpr::ExprPtr);
+std::string to_string(const torch::jit::tensorexpr::StmtPtr);
 } // namespace std
 
 namespace torch {
@@ -84,7 +84,7 @@ class malformed_ir : public std::runtime_error {
             "MALFORMED IR: " + err + " - " + std::to_string(stmt)) {}
 };
 
-TORCH_API std::string buildErrorMessage(const std::string& s = "");
+std::string buildErrorMessage(const std::string& s = "");
 
 } // namespace tensorexpr
 } // namespace jit

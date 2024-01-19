@@ -13,7 +13,7 @@ namespace nn {
 /// ```
 /// Dropout model(DropoutOptions().p(0.42).inplace(true));
 /// ```
-struct TORCH_API DropoutOptions {
+struct DropoutOptions {
   /* implicit */ DropoutOptions(double p = 0.5);
 
   /// The probability of an element to be zeroed. Default: 0.5
@@ -64,7 +64,7 @@ namespace functional {
 /// namespace F = torch::nn::functional;
 /// F::dropout(input, F::DropoutFuncOptions().p(0.5));
 /// ```
-struct TORCH_API DropoutFuncOptions {
+struct DropoutFuncOptions {
   /// The probability of an element to be zeroed. Default: 0.5
   TORCH_ARG(double, p) = 0.5;
 
@@ -100,7 +100,7 @@ using Dropout3dFuncOptions = DropoutFuncOptions;
 /// F::alpha_dropout(input,
 /// F::AlphaDropoutFuncOptions().p(0.5).training(false));
 /// ```
-struct TORCH_API AlphaDropoutFuncOptions {
+struct AlphaDropoutFuncOptions {
   TORCH_ARG(double, p) = 0.5;
 
   TORCH_ARG(bool, training) = false;
@@ -116,7 +116,7 @@ struct TORCH_API AlphaDropoutFuncOptions {
 /// F::feature_alpha_dropout(input,
 /// F::FeatureAlphaDropoutFuncOptions().p(0.5).training(false));
 /// ```
-struct TORCH_API FeatureAlphaDropoutFuncOptions {
+struct FeatureAlphaDropoutFuncOptions {
   TORCH_ARG(double, p) = 0.5;
 
   TORCH_ARG(bool, training) = false;

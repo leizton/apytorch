@@ -366,7 +366,7 @@ class TestGenFunctionsDeclarations(unittest.TestCase):
 namespace custom_1 {
 
 // custom_1::op_1() -> bool
-TORCH_API inline bool op_1(torch::executor::KernelRuntimeContext & context) {
+inline bool op_1(torch::executor::KernelRuntimeContext & context) {
     return ::at::native::kernel_1(context);
 }
 
@@ -380,7 +380,7 @@ TORCH_API inline bool op_1(torch::executor::KernelRuntimeContext & context) {
 namespace custom_2 {
 
 // custom_2::op_2() -> bool
-TORCH_API inline bool op_2(torch::executor::KernelRuntimeContext & context) {
+inline bool op_2(torch::executor::KernelRuntimeContext & context) {
     return ::at::native::kernel_2(context);
 }
 
@@ -403,7 +403,7 @@ TORCH_API inline bool op_2(torch::executor::KernelRuntimeContext & context) {
 namespace custom_1 {
 
 // custom_1::op_1() -> bool
-TORCH_API inline bool op_1(torch::executor::KernelRuntimeContext & context) {
+inline bool op_1(torch::executor::KernelRuntimeContext & context) {
     return at::op_1();
 }
 

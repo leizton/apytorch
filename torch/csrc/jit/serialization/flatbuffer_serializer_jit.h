@@ -5,7 +5,7 @@
 namespace torch {
 namespace jit {
 
-TORCH_API bool register_flatbuffer_all();
+bool register_flatbuffer_all();
 
 } // namespace jit
 } // namespace torch

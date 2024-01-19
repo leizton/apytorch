@@ -49,7 +49,7 @@
   _(nnc_prepacked_linear_clamp_run)
 
 #define DECLARE_EXTERNAL_FUNCTION(NAME) \
-  TORCH_API void NAME(                  \
+  void NAME(                  \
       int64_t bufs_num,                 \
       void** buf_data,                  \
       int64_t* buf_ranks,               \
@@ -102,7 +102,7 @@ FOR_ALL_EXTERNAL_FUNCTIONS(DECLARE_EXTERNAL_FUNCTION)
 DECLARE_EXTERNAL_FUNCTION(nnc_mkldnn_prepacked_conv_run);
 #endif
 
-TORCH_API void nnc_aten_free(int64_t bufs_num, void** ptrs) noexcept;
+void nnc_aten_free(int64_t bufs_num, void** ptrs) noexcept;
 
 #ifdef C10_MOBILE
 } // extern "C"

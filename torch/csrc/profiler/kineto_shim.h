@@ -140,11 +140,11 @@ namespace autograd {
 namespace profiler {
 c10::DeviceType deviceTypeFromActivity(libkineto::ActivityType activity_type);
 
-TORCH_API void addMetadataJson(
+void addMetadataJson(
     const std::string& key,
     const std::string& value);
 
-TORCH_API void profilerStep();
+void profilerStep();
 
 } // namespace profiler
 } // namespace autograd

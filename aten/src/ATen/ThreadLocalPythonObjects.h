@@ -6,7 +6,7 @@
 
 namespace at::impl {
 
-struct TORCH_API ThreadLocalPythonObjects {
+struct ThreadLocalPythonObjects {
   static void set(const std::string& key, std::shared_ptr<SafePyObject> value);
   static const std::shared_ptr<SafePyObject>& get(const std::string& key);
   static bool contains(const std::string& key);

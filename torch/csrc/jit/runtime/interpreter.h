@@ -14,7 +14,7 @@ C10_DECLARE_bool(torch_jit_enable_rethrow_caught_exception);
 
 namespace at {
 class Tensor;
-TORCH_API void launch(std::function<void()> func);
+void launch(std::function<void()> func);
 } // namespace at
 namespace c10 {
 struct IValue;
@@ -40,7 +40,7 @@ using Stack = std::vector<c10::IValue>;
 using c10::ivalue::Future;
 using TaskLauncher = std::function<void(std::function<void()>)>;
 
-struct TORCH_API Code {
+struct Code {
   Code() = default;
   explicit Code(interpreter::CodeImpl* pImpl);
   // remaining_bailout_depth is irrelevant in a `Code` object unless the `Code`
@@ -75,7 +75,7 @@ struct TORCH_API Code {
   friend std::ostream& operator<<(std::ostream& out, const Code& code);
 };
 
-struct TORCH_API MobileCode : Code {
+struct MobileCode : Code {
   explicit MobileCode(
       const std::shared_ptr<Graph>& graph,
       std::string function_name,
@@ -86,11 +86,11 @@ struct TORCH_API MobileCode : Code {
 };
 
 struct InterpreterState {
-  TORCH_API InterpreterState(
+  InterpreterState(
       const Code& code,
       TaskLauncher taskLauncher = at::launch);
-  TORCH_API void run(Stack& stack);
-  TORCH_API c10::intrusive_ptr<Future> runAsync(Stack& stack);
+  void run(Stack& stack);
+  c10::intrusive_ptr<Future> runAsync(Stack& stack);
   c10::intrusive_ptr<Future> getFuture();
 
  private:
@@ -148,11 +148,11 @@ struct InterpreterContinuation {
 // what is the tensors type, including state from the current execution context
 // that modifies how the tensor behaves. For instance if no_grad is enabled
 // this will cause the TensorType to have requires_grad=False.
-TORCH_API at::TensorTypePtr tensorTypeInCurrentExecutionContext(
+at::TensorTypePtr tensorTypeInCurrentExecutionContext(
     const at::Tensor& t);
 
 // current (TLS) TorchScript interpreter callstack
-TORCH_API std::vector<StackEntry> currentCallstack();
-TORCH_API std::vector<std::string> currentModuleHierarchy();
+std::vector<StackEntry> currentCallstack();
+std::vector<std::string> currentModuleHierarchy();
 
 } // namespace torch::jit

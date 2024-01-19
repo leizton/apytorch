@@ -20,7 +20,7 @@ namespace mobile {
 
 /// A lighter `Sampler` that returns indices sequentially and cannot be
 /// serialized.
-class TORCH_API SequentialSampler : public torch::data::samplers::Sampler<> {
+class SequentialSampler : public torch::data::samplers::Sampler<> {
  public:
   /// Creates a `SequentialSampler` that will return indices in the range
   /// `0...size - 1`.

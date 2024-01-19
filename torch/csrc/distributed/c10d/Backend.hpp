@@ -21,13 +21,13 @@ constexpr auto kBackendDefaultTimeout =
 
 namespace c10d {
 
-class TORCH_API Backend : public torch::CustomClassHolder {
+class Backend : public torch::CustomClassHolder {
  public:
   // Backend Options is a base struct that defines the basic options
   // when constructing a Backend. Each Backend subclass should
   // extend this struct and define its options if it wants to provide more
   // config options (beyond basic ones defined here) to end user.
-  struct TORCH_API Options : torch::CustomClassHolder {
+  struct Options : torch::CustomClassHolder {
     explicit Options(
         std::string backend,
         std::chrono::milliseconds timeout = kBackendDefaultTimeout)

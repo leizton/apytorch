@@ -20,7 +20,7 @@ class InputArchive;
 namespace torch {
 namespace optim {
 
-struct TORCH_API SGDOptions : public OptimizerCloneableOptions<SGDOptions> {
+struct SGDOptions : public OptimizerCloneableOptions<SGDOptions> {
   SGDOptions(double lr);
   TORCH_ARG(double, lr);
   TORCH_ARG(double, momentum) = 0;
@@ -31,26 +31,26 @@ struct TORCH_API SGDOptions : public OptimizerCloneableOptions<SGDOptions> {
  public:
   void serialize(torch::serialize::InputArchive& archive) override;
   void serialize(torch::serialize::OutputArchive& archive) const override;
-  TORCH_API friend bool operator==(
+  friend bool operator==(
       const SGDOptions& lhs,
       const SGDOptions& rhs);
   double get_lr() const override;
   void set_lr(const double lr) override;
 };
 
-struct TORCH_API SGDParamState
+struct SGDParamState
     : public OptimizerCloneableParamState<SGDParamState> {
   TORCH_ARG(torch::Tensor, momentum_buffer);
 
  public:
   void serialize(torch::serialize::InputArchive& archive) override;
   void serialize(torch::serialize::OutputArchive& archive) const override;
-  TORCH_API friend bool operator==(
+  friend bool operator==(
       const SGDParamState& lhs,
       const SGDParamState& rhs);
 };
 
-class TORCH_API SGD : public Optimizer {
+class SGD : public Optimizer {
  public:
   explicit SGD(
       std::vector<OptimizerParamGroup> param_groups,

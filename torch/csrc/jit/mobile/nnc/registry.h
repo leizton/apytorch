@@ -10,7 +10,7 @@ namespace nnc {
 
 using nnc_kernel_function_type = int(void**);
 
-struct TORCH_API NNCKernel {
+struct NNCKernel {
   virtual ~NNCKernel() = default;
   virtual int execute(void** /* args */) = 0;
 };

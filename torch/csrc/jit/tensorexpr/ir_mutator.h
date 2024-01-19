@@ -8,7 +8,7 @@ namespace torch {
 namespace jit {
 namespace tensorexpr {
 
-class TORCH_API IRMutator {
+class IRMutator {
  public:
   virtual ~IRMutator() = default;
   virtual ExprPtr mutate(AddPtr v);

@@ -124,7 +124,7 @@ namespace detail {
  *   Note - this should maintain identical impl to the py dispatcher key extraction logic
  *   at pytorch/torch/dispatcher.py
  */
-struct TORCH_API DispatchKeyExtractor final {
+struct DispatchKeyExtractor final {
 public:
   static DispatchKeyExtractor make(const FunctionSchema& schema) {
     return DispatchKeyExtractor(makeBitsetForDispatchArgs(schema));

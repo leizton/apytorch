@@ -15,7 +15,7 @@ namespace fuser {
 
 // Creates a CPU or CUDA kernel for the given graph.
 // Returns the C++ or CUDA string implementing the kernel.
-TORCH_API std::string generateKernel(
+std::string generateKernel(
     const std::string& name,
     const Graph& graph,
     const std::vector<std::pair<const Value*, const c10::optional<TensorDesc>>>&

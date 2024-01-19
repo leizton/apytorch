@@ -17,7 +17,7 @@ using SparseBitVector = ::c10::SparseBitVector<256>;
 
 // BuildLivenessSets computes "bailout" liveness which is equivalent to
 // "{LIVE_IN} or {GEN}" or "{LIVE_OUT} - {KILL}"
-TORCH_API std::unordered_map<Node*, std::vector<Value*>> BuildLivenessSets(
+std::unordered_map<Node*, std::vector<Value*>> BuildLivenessSets(
     std::shared_ptr<Graph> graph);
 } // namespace jit
 } // namespace torch

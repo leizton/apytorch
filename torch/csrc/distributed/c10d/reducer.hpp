@@ -41,7 +41,7 @@ struct BucketAccumulator {
   size_t size_limit = 0;
 };
 
-class TORCH_API Reducer {
+class Reducer {
  public:
   // The constructor takes a list of variables (i.e. parameters) for this
   // process's single model replica (as DDP assumes single-process
@@ -572,7 +572,7 @@ class TORCH_API Reducer {
 // The index of tensors[i] assigned to bucket is tensor_indices[i],
 // when tensor_indices is empty, the index of tensors[i] assigned to
 // bucket is i.
-TORCH_API std::tuple<std::vector<std::vector<size_t>>, std::vector<size_t>>
+std::tuple<std::vector<std::vector<size_t>>, std::vector<size_t>>
 compute_bucket_assignment_by_size(
     const std::vector<at::Tensor>& tensors,
     const std::vector<size_t>& bucket_size,
@@ -582,7 +582,7 @@ compute_bucket_assignment_by_size(
 
 // Verify models across all processes are the same as model on rank 0 with
 // respect to no. of params and matching dtype/size/layout.
-TORCH_API void verify_params_across_processes(
+void verify_params_across_processes(
     const c10::intrusive_ptr<c10d::ProcessGroup>& process_group,
     const std::vector<at::Tensor>& params,
     const c10::optional<std::weak_ptr<c10d::Logger>>& logger);

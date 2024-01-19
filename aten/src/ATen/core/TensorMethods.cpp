@@ -20,19 +20,19 @@ void check_type(const TensorBase& tensor, ScalarType type, c10::string_view type
 
 #define DEFINE_CAST(T, name)                                         \
    template <>                                                       \
-   TORCH_API const T* TensorBase::const_data_ptr() const {           \
+   const T* TensorBase::const_data_ptr() const {           \
      check_type(*this, ScalarType::name, #name);                     \
      return this->unsafeGetTensorImpl()->data_ptr_impl<T>();         \
    }                                                                 \
                                                                      \
    template <>                                                       \
-   TORCH_API T* TensorBase::mutable_data_ptr() const {               \
+   T* TensorBase::mutable_data_ptr() const {               \
      check_type(*this, ScalarType::name, #name);                     \
      return this->unsafeGetTensorImpl()->mutable_data_ptr_impl<T>(); \
    }                                                                 \
                                                                      \
    template <>                                                       \
-   TORCH_API T* TensorBase::data_ptr() const {                       \
+   T* TensorBase::data_ptr() const {                       \
      return mutable_data_ptr<T>();                                   \
    }                                                                 \
 
@@ -45,7 +45,7 @@ void check_type(const TensorBase& tensor, ScalarType type, c10::string_view type
 
  #define DEFINE_ITEM(T, name)      \
    template <>                     \
-   TORCH_API T Tensor::item() const { \
+   T Tensor::item() const { \
      return item().to##name();     \
    }
 

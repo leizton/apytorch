@@ -17,7 +17,7 @@ namespace torch {
 namespace lazy {
 
 // Support waiting for a number of tasks to complete.
-class TORCH_API MultiWait {
+class MultiWait {
  public:
   explicit MultiWait(size_t count) : count_(count) {}
 

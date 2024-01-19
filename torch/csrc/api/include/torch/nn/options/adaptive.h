@@ -14,7 +14,7 @@ namespace nn {
 /// AdaptiveLogSoftmaxWithLoss model(AdaptiveLogSoftmaxWithLossOptions(8, 10,
 /// {4, 8}).div_value(2.).head_bias(true));
 /// ```
-struct TORCH_API AdaptiveLogSoftmaxWithLossOptions {
+struct AdaptiveLogSoftmaxWithLossOptions {
   /* implicit */ AdaptiveLogSoftmaxWithLossOptions(
       int64_t in_features,
       int64_t n_classes,

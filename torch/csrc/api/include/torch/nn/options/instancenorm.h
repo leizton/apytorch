@@ -9,7 +9,7 @@ namespace torch {
 namespace nn {
 
 /// Options for the `InstanceNorm` module.
-struct TORCH_API InstanceNormOptions {
+struct InstanceNormOptions {
   /* implicit */ InstanceNormOptions(int64_t num_features);
 
   /// The number of features of the input tensor.
@@ -67,7 +67,7 @@ namespace functional {
 /// F::instance_norm(input,
 /// F::InstanceNormFuncOptions().running_mean(mean).running_var(variance).weight(weight).bias(bias).momentum(0.1).eps(1e-5));
 /// ```
-struct TORCH_API InstanceNormFuncOptions {
+struct InstanceNormFuncOptions {
   TORCH_ARG(Tensor, running_mean) = Tensor();
 
   TORCH_ARG(Tensor, running_var) = Tensor();

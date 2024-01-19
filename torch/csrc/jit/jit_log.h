@@ -50,36 +50,36 @@ enum class JitLoggingLevels {
   GRAPH_DEBUG,
 };
 
-TORCH_API std::string get_jit_logging_levels();
+std::string get_jit_logging_levels();
 
-TORCH_API void set_jit_logging_levels(std::string level);
+void set_jit_logging_levels(std::string level);
 
-TORCH_API void set_jit_logging_output_stream(std::ostream& out_stream);
+void set_jit_logging_output_stream(std::ostream& out_stream);
 
-TORCH_API std::ostream& get_jit_logging_output_stream();
+std::ostream& get_jit_logging_output_stream();
 
-TORCH_API std::string getHeader(const Node* node);
+std::string getHeader(const Node* node);
 
-TORCH_API std::string log_function(const std::shared_ptr<Graph>& graph);
+std::string log_function(const std::shared_ptr<Graph>& graph);
 
-TORCH_API ::torch::jit::JitLoggingLevels jit_log_level();
+::torch::jit::JitLoggingLevels jit_log_level();
 
 // Prefix every line in a multiline string \p IN_STR with \p PREFIX.
-TORCH_API std::string jit_log_prefix(
+std::string jit_log_prefix(
     const std::string& prefix,
     const std::string& in_str);
 
-TORCH_API std::string jit_log_prefix(
+std::string jit_log_prefix(
     ::torch::jit::JitLoggingLevels level,
     const char* fn,
     int l,
     const std::string& in_str);
 
-TORCH_API bool is_enabled(
+bool is_enabled(
     const char* cfname,
     ::torch::jit::JitLoggingLevels level);
 
-TORCH_API std::ostream& operator<<(
+std::ostream& operator<<(
     std::ostream& out,
     ::torch::jit::JitLoggingLevels level);
 

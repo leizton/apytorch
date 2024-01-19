@@ -20,7 +20,7 @@ namespace at {
 // which we may want to call into from CPU code (and thus must be dynamically
 // dispatched, to allow for separate compilation of HIP code).  See
 // CUDAHooksInterface for more detailed motivation.
-struct TORCH_API HIPHooksInterface {
+struct HIPHooksInterface {
   // This should never actually be implemented, but it is used to
   // squelch -Werror=non-virtual-dtor
   virtual ~HIPHooksInterface() = default;
@@ -57,14 +57,14 @@ struct TORCH_API HIPHooksInterface {
 
 // NB: dummy argument to suppress "ISO C++11 requires at least one argument
 // for the "..." in a variadic macro"
-struct TORCH_API HIPHooksArgs {};
+struct HIPHooksArgs {};
 
 TORCH_DECLARE_REGISTRY(HIPHooksRegistry, HIPHooksInterface, HIPHooksArgs);
 #define REGISTER_HIP_HOOKS(clsname) \
   C10_REGISTER_CLASS(HIPHooksRegistry, clsname, clsname)
 
 namespace detail {
-TORCH_API const HIPHooksInterface& getHIPHooks();
+const HIPHooksInterface& getHIPHooks();
 
 } // namespace detail
 } // namespace at

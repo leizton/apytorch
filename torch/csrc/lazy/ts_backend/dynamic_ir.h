@@ -45,7 +45,7 @@ namespace lazy {
  */
 
 // Represents the result of calling `size` on a Tensor
-class TORCH_API SizeNode : public TsNode, public DimensionNode {
+class SizeNode : public TsNode, public DimensionNode {
  public:
   SizeNode(Value input, size_t dim);
   int64_t getStaticValue() const override;
@@ -57,7 +57,7 @@ class TORCH_API SizeNode : public TsNode, public DimensionNode {
       TSLoweringContext* loctx) const override;
 };
 
-class TORCH_API SizeAdd : public TsNode, public DimensionNode {
+class SizeAdd : public TsNode, public DimensionNode {
  public:
   SizeAdd(Value a, Value b);
   int64_t getStaticValue() const override;
@@ -65,7 +65,7 @@ class TORCH_API SizeAdd : public TsNode, public DimensionNode {
   std::string ToString() const override;
 };
 
-class TORCH_API SizeMul : public TsNode, public DimensionNode {
+class SizeMul : public TsNode, public DimensionNode {
  public:
   SizeMul(Value a, Value b);
   int64_t getStaticValue() const override;
@@ -73,7 +73,7 @@ class TORCH_API SizeMul : public TsNode, public DimensionNode {
   std::string ToString() const override;
 };
 
-class TORCH_API SizeDiv : public TsNode, public DimensionNode {
+class SizeDiv : public TsNode, public DimensionNode {
  public:
   SizeDiv(Value a, Value b);
   int64_t getStaticValue() const override;

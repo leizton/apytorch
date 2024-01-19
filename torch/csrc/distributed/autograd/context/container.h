@@ -23,7 +23,7 @@ namespace autograd {
 // id, which is used to associate send/recv autograd function pairs. The format
 // is similar to the autograd_context_id where we have a 64 bit integer with
 // first 16 bits being the worker id and next 48 bits are auto-incrementing.
-class TORCH_API DistAutogradContainer {
+class DistAutogradContainer {
  public:
   explicit DistAutogradContainer(uint32_t num_shards);
 

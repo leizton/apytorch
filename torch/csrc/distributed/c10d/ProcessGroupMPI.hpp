@@ -79,7 +79,7 @@ struct WorkEntry {
 //
 // CUDA tensor can be supported if the MPI used is CUDA-aware MPI, and
 // ProcessGroupMPI will automatically detect this support.
-class TORCH_API ProcessGroupMPI : public Backend {
+class ProcessGroupMPI : public Backend {
  public:
   class WorkMPI : public Work {
    public:

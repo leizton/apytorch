@@ -35,7 +35,7 @@ using QConfigDict = std::unordered_map<std::string, c10::optional<QConfig>>;
  * or clone the module
  * \param is_dynamic whether the dynamic quantization script is being used.
  */
-TORCH_API Module InsertObservers(
+Module InsertObservers(
     Module& module,
     const std::string& method_name,
     const QConfigDict& qconfig_dict,
@@ -57,7 +57,7 @@ TORCH_API Module InsertObservers(
  * or clone the module
  * \param is_dynamic whether the dynamic quantization script is being used.
  */
-TORCH_API Module InsertObserversForOnDevicePTQ(
+Module InsertObserversForOnDevicePTQ(
     Module& module,
     const std::string& method_name,
     const QConfigDict& qconfig_dict,

@@ -23,7 +23,7 @@ namespace nn {
 /// ```
 /// CosineSimilarity model(CosineSimilarityOptions().dim(0).eps(0.5));
 /// ```
-class TORCH_API CosineSimilarityImpl : public Cloneable<CosineSimilarityImpl> {
+class CosineSimilarityImpl : public Cloneable<CosineSimilarityImpl> {
  public:
   explicit CosineSimilarityImpl(const CosineSimilarityOptions& options_ = {});
 
@@ -60,7 +60,7 @@ TORCH_MODULE(CosineSimilarity);
 /// PairwiseDistance
 /// model(PairwiseDistanceOptions().p(3).eps(0.5).keepdim(true));
 /// ```
-class TORCH_API PairwiseDistanceImpl : public Cloneable<PairwiseDistanceImpl> {
+class PairwiseDistanceImpl : public Cloneable<PairwiseDistanceImpl> {
  public:
   explicit PairwiseDistanceImpl(const PairwiseDistanceOptions& options_ = {});
 

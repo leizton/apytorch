@@ -4,7 +4,7 @@
 #include <c10/util/Exception.h>
 
 namespace at {
-class TORCH_API OptionalTensorRef {
+class OptionalTensorRef {
  public:
   OptionalTensorRef() = default;
 
@@ -51,7 +51,7 @@ class TORCH_API OptionalTensorRef {
 
 // Use to convert a TensorBase (that may be undefined) to an at::Tensor
 // without bumping refcount.
-class TORCH_API TensorRef {
+class TensorRef {
  public:
   ~TensorRef() {
     ref_.unsafeReleaseTensorImpl();

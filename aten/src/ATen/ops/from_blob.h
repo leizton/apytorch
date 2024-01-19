@@ -5,7 +5,7 @@ namespace at {
 
 namespace detail {
 
-TORCH_API inline void noopDelete(void*) {}
+inline void noopDelete(void*) {}
 
 } // namespace detail
 
@@ -20,7 +20,7 @@ TORCH_API inline void noopDelete(void*) {}
 ///             .options(...)
 ///             .make_tensor();
 ///
-class TORCH_API TensorMaker {
+class TensorMaker {
   friend TensorMaker for_blob(void* data, IntArrayRef sizes) noexcept;
 
  public:

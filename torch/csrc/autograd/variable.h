@@ -112,30 +112,30 @@ namespace impl {
 
 // WARNING: This may return a nullptr.  If you require AutogradMeta to return
 // a materialized structure, use materialize_autograd_meta instead.
-TORCH_API AutogradMeta* get_autograd_meta(const at::TensorBase&);
+AutogradMeta* get_autograd_meta(const at::TensorBase&);
 
 // WARNING: This will return a nullptr if the Tensor is not a view.
-TORCH_API DifferentiableViewMeta* get_view_autograd_meta(const at::TensorBase&);
+DifferentiableViewMeta* get_view_autograd_meta(const at::TensorBase&);
 
 // Returns the current autograd meta, materializing it if it was previously
 // none.  This counts as a *mutating* operation, so do not call it on
 // "read-only" operators; in particular, this is NOT thread safe
-TORCH_API AutogradMeta* materialize_autograd_meta(const at::TensorBase&);
+AutogradMeta* materialize_autograd_meta(const at::TensorBase&);
 
 /// Set the gradient accumulator of the `Variable`. This is only applicable to
 /// leaf variables. Interior variables should call `set_gradient_edge()`.
-TORCH_API void set_grad_accumulator(
+void set_grad_accumulator(
     const Variable&,
     std::weak_ptr<Node> grad_accumulator);
 
 /// Attempts to get a pointer to the gradient accumulator of the `Variable`,
 /// if it still exists. If the gradient accumulator function has been
 /// destroyed, returns a `nullptr`.
-TORCH_API std::shared_ptr<Node> try_get_grad_accumulator(const Variable&);
+std::shared_ptr<Node> try_get_grad_accumulator(const Variable&);
 
 /// Gets the gradient accumulator of the `Variable` if it has one, or else
 /// create one on the fly and return it.
-TORCH_API std::shared_ptr<Node> grad_accumulator(const Variable&);
+std::shared_ptr<Node> grad_accumulator(const Variable&);
 
 /// Returns the "canonical" gradient edge of this `Variable`, i.e. either the
 /// gradient function if this is an interior `Variable`, or the gradient
@@ -145,7 +145,7 @@ TORCH_API std::shared_ptr<Node> grad_accumulator(const Variable&);
 /// zero. Note that `set_gradient_edge` and `gradient_edge` are not
 /// symmetric. You must use `set_gradient_edge` to set the `grad_fn` and
 /// `set_grad_accumulator` to set the accumulator.
-TORCH_API Edge gradient_edge(const Variable&);
+Edge gradient_edge(const Variable&);
 
 /// Set the gradient edge -- i.e. `grad_fn` and `input_nr` -- of the
 /// `Variable`.
@@ -153,7 +153,7 @@ TORCH_API Edge gradient_edge(const Variable&);
 /// and never the `grad_accumulator`. For the latter, use
 /// `set_grad_accumulator`. This allows late construction of an interior
 /// `Variable`.
-TORCH_API void set_gradient_edge(const Variable&, Edge edge);
+void set_gradient_edge(const Variable&, Edge edge);
 
 // Autograd Graph Interaction
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -164,35 +164,35 @@ TORCH_API void set_gradient_edge(const Variable&, Edge edge);
 /// For View Variables:
 /// Called after in-place modifications. Modifies the grad_fn of the base
 /// Variable.
-TORCH_API void rebase_history(const Variable&, Edge gradient_edge);
+void rebase_history(const Variable&, Edge gradient_edge);
 
 /// Gets the raw gradient function pointer, whatever it currently is.
-TORCH_API Node* grad_fn_unsafe(const Variable&);
+Node* grad_fn_unsafe(const Variable&);
 
 /// Increments the version count of this `Variable`.
-TORCH_API void bump_version(const Variable&);
-TORCH_API void set_version_counter(
+void bump_version(const Variable&);
+void set_version_counter(
     const Variable&,
     const c10::VariableVersion& version_counter);
 
 /// Retrieves this `Variable`s version counter.
-TORCH_API const c10::VariableVersion& version_counter(const Variable&);
+const c10::VariableVersion& version_counter(const Variable&);
 
-TORCH_API void set_name(const Variable&, const std::string& name);
+void set_name(const Variable&, const std::string& name);
 
-TORCH_API void add_hook(
+void add_hook(
     const at::TensorBase&,
     std::unique_ptr<FunctionPreHook> hook);
-TORCH_API std::vector<std::unique_ptr<FunctionPreHook>>& hooks(const Variable&);
-TORCH_API void clear_hooks(const at::TensorBase&);
+std::vector<std::unique_ptr<FunctionPreHook>>& hooks(const Variable&);
+void clear_hooks(const at::TensorBase&);
 
-TORCH_API void set_post_acc_grad_hooks(
+void set_post_acc_grad_hooks(
     const at::TensorBase&,
     std::unique_ptr<PostAccumulateGradHook> dict);
-TORCH_API std::unique_ptr<PostAccumulateGradHook>& post_acc_grad_hooks(
+std::unique_ptr<PostAccumulateGradHook>& post_acc_grad_hooks(
     const Variable&);
 
-TORCH_API void create_cpp_hook(
+void create_cpp_hook(
     const at::TensorBase&,
     bool is_retains_grad_hooks = false);
 } // namespace impl
@@ -206,7 +206,7 @@ TORCH_API void create_cpp_hook(
 /// history. As an optimization, a Variable may store a nullptr, in lieu of a
 /// default constructed AutogradMeta.
 
-struct TORCH_API AutogradMeta : public c10::AutogradMetaInterface {
+struct AutogradMeta : public c10::AutogradMetaInterface {
   std::string name_;
 
   Variable grad_;
@@ -326,7 +326,7 @@ struct TORCH_API AutogradMeta : public c10::AutogradMetaInterface {
   }
 };
 
-struct TORCH_API ViewInfo {
+struct ViewInfo {
   /// The base `Variable`
   /// If this ViewInfo represents a forward (respectively backward) AD gradient,
   /// then this Tensor cannot be a forward (respectively backward) view.
@@ -576,11 +576,11 @@ inline CreationMeta propagate_creation_meta(
 /// Unified function to handle error checking when rebase happens
 /// indirect=true means that the caller is not doing the inplace, but the
 /// inplace happened somewhere else.
-TORCH_API void handle_view_on_rebase(
+void handle_view_on_rebase(
     DifferentiableViewMeta* diff_view_meta,
     bool indirect = false);
 
-struct TORCH_API DifferentiableViewMeta : public AutogradMeta {
+struct DifferentiableViewMeta : public AutogradMeta {
  private:
   /// Informations about the views
   c10::optional<ViewInfo> backward_info_;
@@ -841,7 +841,7 @@ struct VariableHooks final : at::impl::VariableHooksInterface {
 
 namespace utils {
 
-TORCH_API bool has_same_meta(const Variable& base, const Variable& other);
+bool has_same_meta(const Variable& base, const Variable& other);
 
 } // namespace utils
 } // namespace autograd

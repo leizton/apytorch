@@ -49,7 +49,7 @@ constexpr const char* GLOO_BACKEND_NAME = "gloo";
 // number can be automatically tuned, but only if we let a single
 // process take charge, and have it broadcast the limits.
 //
-class TORCH_API ProcessGroupGloo : public Backend {
+class ProcessGroupGloo : public Backend {
  public:
   // AsyncWork is the Gloo specific superclass for asynchronous work items.
   // We can split asynchronous work into 3 phases:
@@ -67,7 +67,7 @@ class TORCH_API ProcessGroupGloo : public Backend {
   //
   // FIXME: This probably should be called WorkGloo since the work is executed
   // in sync mode by a background thread.
-  class TORCH_API AsyncWork : public Work {
+  class AsyncWork : public Work {
    public:
     explicit AsyncWork(
         std::vector<std::vector<at::Tensor>> outputTensors,
@@ -105,7 +105,7 @@ class TORCH_API ProcessGroupGloo : public Backend {
   };
 
   // Wrap c10d store as Gloo store
-  class TORCH_API GlooStore : public ::gloo::rendezvous::Store {
+  class GlooStore : public ::gloo::rendezvous::Store {
    public:
     GlooStore(const c10::intrusive_ptr<::c10d::Store>& store) : store_(store) {}
 
@@ -183,7 +183,7 @@ class TORCH_API ProcessGroupGloo : public Backend {
   // recv operation. It keeps a reference to the tensor it is
   // operating on to prevent it from being deallocated while the
   // operation is still in flight.
-  class TORCH_API SendWork : public Work {
+  class SendWork : public Work {
    public:
     explicit SendWork(
         at::Tensor& tensor,
@@ -202,7 +202,7 @@ class TORCH_API ProcessGroupGloo : public Backend {
     const uint64_t seq_;
   };
 
-  class TORCH_API RecvWork : public Work {
+  class RecvWork : public Work {
    public:
     explicit RecvWork(
         at::Tensor& tensor,
@@ -226,7 +226,7 @@ class TORCH_API ProcessGroupGloo : public Backend {
     const uint64_t seq_;
   };
 
-  struct TORCH_API Options : public Backend::Options {
+  struct Options : public Backend::Options {
     explicit Options(
         std::chrono::milliseconds timeout = kBackendDefaultTimeout);
 

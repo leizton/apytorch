@@ -12,7 +12,7 @@ namespace torch::jit {
 /// static variable.
 /// Note: This is *not* the custom operator API. If you want to register custom
 /// operators, take a look at torch::RegisterOperators.
-struct TORCH_API RegisterOperators {
+struct RegisterOperators {
   RegisterOperators() = default;
 
   /// Registers a vector of already created `Operator`s.

@@ -6,7 +6,7 @@
 
 namespace c10 {
 
-class TORCH_API TypeParser {
+class TypeParser {
  public:
   explicit TypeParser(std::string pythonStr);
   explicit TypeParser(std::vector<std::string>& pythonStrs);
@@ -47,8 +47,8 @@ class TORCH_API TypeParser {
   std::unordered_set<std::string> contained_types_;
 };
 
-TORCH_API TypePtr parseType(const std::string& pythonStr);
+TypePtr parseType(const std::string& pythonStr);
 
-TORCH_API std::vector<TypePtr> parseType(std::vector<std::string>& pythonStr);
+std::vector<TypePtr> parseType(std::vector<std::string>& pythonStr);
 
 } // namespace c10

@@ -50,19 +50,19 @@ struct BoundedShapeGraphs {
   std::shared_ptr<Graph> upper_bound;
 };
 
-TORCH_API void RegisterShapeComputeGraphForSchema(
+void RegisterShapeComputeGraphForSchema(
     const FunctionSchema& schema,
     std::shared_ptr<Graph> g);
 
-TORCH_API c10::optional<std::shared_ptr<Graph>> shapeComputeGraphForSchema(
+c10::optional<std::shared_ptr<Graph>> shapeComputeGraphForSchema(
     const FunctionSchema& schema);
 
-TORCH_API c10::optional<BoundedShapeGraphs> boundedGraphsForSchema(
+c10::optional<BoundedShapeGraphs> boundedGraphsForSchema(
     const FunctionSchema& schema);
 
-TORCH_API std::vector<const FunctionSchema*> RegisteredShapeComputeSchemas();
+std::vector<const FunctionSchema*> RegisteredShapeComputeSchemas();
 
-TORCH_API void LintShapeComputeGraph(
+void LintShapeComputeGraph(
     const FunctionSchema* schema,
     const std::shared_ptr<Graph>& graph);
 

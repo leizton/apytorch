@@ -52,7 +52,7 @@ struct DictImpl final : public c10::intrusive_ptr_target {
   DictElementTypes elementTypes;
 
   intrusive_ptr<DictImpl> copy() const;
-  friend TORCH_API bool operator==(const DictImpl& lhs, const DictImpl& rhs);
+  friend bool operator==(const DictImpl& lhs, const DictImpl& rhs);
 };
 
 }

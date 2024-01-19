@@ -12,7 +12,7 @@
 namespace torch {
 namespace autograd {
 
-struct TORCH_API Error : public Node {
+struct Error : public Node {
   Error(std::string msg, edge_list&& next_edges)
       : Node(std::move(next_edges)), msg(std::move(msg)) {}
 
@@ -31,7 +31,7 @@ struct TORCH_API Error : public Node {
 // We print grad_fn names in tensor printing. For functions with backward
 // NYI, grad_fn=<Error> will be printed if we use Error, which is confusing. So
 // special case with a new NotImplemented function here.
-struct TORCH_API NotImplemented : public Error {
+struct NotImplemented : public Error {
   NotImplemented(const std::string& forward_fn, edge_list&& next_edges)
       : Error(
             "derivative for " + forward_fn + " is not implemented",
@@ -43,7 +43,7 @@ struct TORCH_API NotImplemented : public Error {
 
 // Identity in forward, Error in backward. Used to implement
 // @once_differentiable
-struct TORCH_API DelayedError : public Node {
+struct DelayedError : public Node {
   DelayedError(std::string msg, int64_t num_inputs) : msg(std::move(msg)) {
     // NOLINTNEXTLINE(clang-analyzer-deadcode.DeadStores)
     for (const auto i : c10::irange(num_inputs)) {
@@ -57,7 +57,7 @@ struct TORCH_API DelayedError : public Node {
   std::string msg;
 };
 
-struct TORCH_API UndefinedGrad : public Node {
+struct UndefinedGrad : public Node {
   UndefinedGrad() {
     add_input_metadata(Node::undefined_input());
   }
@@ -65,7 +65,7 @@ struct TORCH_API UndefinedGrad : public Node {
   variable_list apply(variable_list&& inputs) override;
 };
 
-struct TORCH_API UndefinedGradBackward : public Node {
+struct UndefinedGradBackward : public Node {
   UndefinedGradBackward(edge_list&& next_edges) : Node(std::move(next_edges)) {}
 
   UndefinedGradBackward() = default;
@@ -80,7 +80,7 @@ struct TORCH_API UndefinedGradBackward : public Node {
   }
 };
 
-struct TORCH_API GraphRoot : public Node {
+struct GraphRoot : public Node {
   GraphRoot(edge_list functions, variable_list inputs)
       : Node(std::move(functions)), outputs(std::move(inputs)) {
     // Ensures calls to stream() on a GraphRoot instance reflect current
@@ -103,7 +103,7 @@ struct TORCH_API GraphRoot : public Node {
   variable_list outputs;
 };
 
-struct TORCH_API Identity : public Node {
+struct Identity : public Node {
   variable_list apply(variable_list&& inputs) override;
 };
 

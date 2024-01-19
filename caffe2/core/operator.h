@@ -55,10 +55,10 @@ struct FunctionSchema;
 
 namespace caffe2 {
 
-class TORCH_API OperatorBase;
+class OperatorBase;
 typedef ObserverBase<OperatorBase> OperatorObserver;
 
-class TORCH_API OperatorBase : public Observable<OperatorBase> {
+class OperatorBase : public Observable<OperatorBase> {
  public:
   explicit OperatorBase(const OperatorDef& operator_def, Workspace* ws);
 
@@ -1316,9 +1316,9 @@ typedef c10::Registry<
     std::unique_ptr<OperatorBase>,
     const OperatorDef&,
     Workspace*>* (*RegistryFunction)();
-TORCH_API std::map<DeviceType, OperatorRegistry*>* gDeviceTypeRegistry();
+std::map<DeviceType, OperatorRegistry*>* gDeviceTypeRegistry();
 
-struct TORCH_API DeviceTypeRegisterer {
+struct DeviceTypeRegisterer {
   explicit DeviceTypeRegisterer(DeviceType type, RegistryFunction func);
 };
 
@@ -1455,7 +1455,7 @@ struct StaticLinkingProtector {
 // specific engines that only implement a subset of the features required by
 // the original operator schema.
 // TODO(jiayq): make more feature-complete exception message.
-class TORCH_API UnsupportedOperatorFeature : public std::exception {
+class UnsupportedOperatorFeature : public std::exception {
  public:
   UnsupportedOperatorFeature(const string& msg) : msg_(msg) {}
   const char* what() const noexcept override {
@@ -1476,12 +1476,12 @@ class TORCH_API UnsupportedOperatorFeature : public std::exception {
 
 // Creates an operator with the given operator definition.
 // Throws on error and never returns nullptr
-TORCH_API unique_ptr<OperatorBase> CreateOperator(
+unique_ptr<OperatorBase> CreateOperator(
     const OperatorDef& operator_def,
     Workspace* ws,
     int net_position = OperatorBase::kNoNetPositionSet);
 
-TORCH_API const std::string OpRegistryKey(
+const std::string OpRegistryKey(
     const std::string& op_type,
     const std::string& engine = "");
 
@@ -1493,50 +1493,50 @@ using PerOpEnginePrefType =
     CaffeMap<DeviceType, CaffeMap<std::string, EnginePrefType>>;
 // {device_type -> EnginePrefType}
 using GlobalEnginePrefType = CaffeMap<DeviceType, EnginePrefType>;
-TORCH_API void SetPerOpEnginePref(
+void SetPerOpEnginePref(
     const PerOpEnginePrefType& per_op_engine_pref);
-TORCH_API void SetGlobalEnginePref(
+void SetGlobalEnginePref(
     const GlobalEnginePrefType& global_engine_pref);
-TORCH_API void SetEnginePref(
+void SetEnginePref(
     const PerOpEnginePrefType& per_op_engine_pref,
     const GlobalEnginePrefType& global_engine_pref);
-TORCH_API void SetOpEnginePref(
+void SetOpEnginePref(
     const std::string& op_type,
     const CaffeMap<DeviceType, EnginePrefType>& op_pref);
 
-TORCH_API void LoadInt8TensorInfoOfBlob(
+void LoadInt8TensorInfoOfBlob(
     std::vector<float>* scale,
     std::vector<float>* offset,
     uint32_t* axis,
     const Blob* b);
 
-TORCH_API TensorShape GetTensorShapeOfBlob(const Blob* b);
+TensorShape GetTensorShapeOfBlob(const Blob* b);
 
-TORCH_API TensorShapes InferBlobShapesAndTypes(
+TensorShapes InferBlobShapesAndTypes(
     CaffeMap<string, TensorShape>& blob_desc,
     const vector<NetDef*>& nets);
 
-TORCH_API TensorShapes InferBlobShapesAndTypesFromWorkspace(
+TensorShapes InferBlobShapesAndTypesFromWorkspace(
     Workspace* ws,
     const vector<NetDef*>& nets);
 
-TORCH_API TensorShapes InferBlobShapesAndTypesFromMap(
+TensorShapes InferBlobShapesAndTypesFromMap(
     const CaffeMap<std::string, std::vector<int64_t>>& blob_dimensions,
     const vector<NetDef*>& nets);
 
-TORCH_API TensorShapes InferBlobShapesAndTypesFromMap(
+TensorShapes InferBlobShapesAndTypesFromMap(
     const CaffeMap<std::string, std::vector<int64_t>>& blob_dimensions,
     const CaffeMap<std::string, TensorProto_DataType>& blob_types,
     const vector<NetDef*>& nets);
 
-TORCH_API std::map<string, std::pair<DeviceOption, DeviceOption>>
+std::map<string, std::pair<DeviceOption, DeviceOption>>
 ValidateTensorDevices(OperatorBase& op, const OperatorDef& op_def);
 
 // Get a set of registered operator names
-TORCH_API std::set<std::string> GetRegisteredOperators();
+std::set<std::string> GetRegisteredOperators();
 
 // Operator logging capabilities
-TORCH_API void SetOperatorLogger(
+void SetOperatorLogger(
     std::function<void(const OperatorDef&)> tracer);
 std::function<void(const OperatorDef&)> GetOperatorLogger();
 

@@ -29,8 +29,8 @@ constexpr size_t kCacheLineSize = 64;
 // misaligned intrinsics, no SSE instructions shall be involved in
 // the ThreadPool implementation.
 // Note: alignas is disabled because some compilers do not deal with
-// TORCH_API and alignas annotations at the same time.
-class TORCH_API /*alignas(kCacheLineSize)*/ ThreadPool {
+// and alignas annotations at the same time.
+class /*alignas(kCacheLineSize)*/ ThreadPool {
  public:
   static ThreadPool* createThreadPool(int numThreads);
   static std::unique_ptr<ThreadPool> defaultThreadPool();

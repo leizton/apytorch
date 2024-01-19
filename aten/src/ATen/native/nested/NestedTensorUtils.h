@@ -128,7 +128,7 @@ inline std::vector<IntArrayRef> NestedTensor_get_sizes(
   return sizes;
 }
 
-TORCH_API std::vector<int64_t> NestedTensor_get_max_size(
+std::vector<int64_t> NestedTensor_get_max_size(
     const NestedTensorImpl& nt);
 
 std::vector<int64_t> NestedTensor_get_max_size_from_size_tensor(

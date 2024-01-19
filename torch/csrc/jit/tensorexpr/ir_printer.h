@@ -13,7 +13,7 @@ namespace tensorexpr {
 
 class Tensor;
 
-class TORCH_API IRPrinter : public IRVisitor {
+class IRPrinter : public IRVisitor {
  public:
   explicit IRPrinter(std::ostream& os) : printer_os_(this, os) {}
 
@@ -103,14 +103,14 @@ class TORCH_API IRPrinter : public IRVisitor {
   UniqueNameManager name_manager_;
 };
 
-TORCH_API std::ostream& operator<<(std::ostream& stream, const Expr&);
-TORCH_API std::ostream& operator<<(std::ostream& stream, const ExprHandle&);
-TORCH_API std::ostream& operator<<(std::ostream& stream, const Stmt&);
-TORCH_API std::ostream& operator<<(std::ostream& stream, const Tensor&);
+std::ostream& operator<<(std::ostream& stream, const Expr&);
+std::ostream& operator<<(std::ostream& stream, const ExprHandle&);
+std::ostream& operator<<(std::ostream& stream, const Stmt&);
+std::ostream& operator<<(std::ostream& stream, const Tensor&);
 
-TORCH_API void print(ExprPtr expr);
-TORCH_API void print(StmtPtr stmt);
-TORCH_API void print(const Tensor& t);
+void print(ExprPtr expr);
+void print(StmtPtr stmt);
+void print(const Tensor& t);
 
 } // namespace tensorexpr
 } // namespace jit
@@ -124,7 +124,7 @@ using torch::jit::tensorexpr::Stmt;
 using torch::jit::tensorexpr::StmtPtr;
 using torch::jit::tensorexpr::Tensor;
 
-TORCH_API std::string to_string(ExprPtr expr);
-TORCH_API std::string to_string(StmtPtr stmt);
-TORCH_API std::string to_string(const Tensor& t);
+std::string to_string(ExprPtr expr);
+std::string to_string(StmtPtr stmt);
+std::string to_string(const Tensor& t);
 } // namespace std

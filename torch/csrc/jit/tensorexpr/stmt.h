@@ -13,7 +13,7 @@ namespace jit {
 namespace tensorexpr {
 
 // The common base between all statement node.
-class TORCH_API Stmt : public std::enable_shared_from_this<Stmt> {
+class Stmt : public std::enable_shared_from_this<Stmt> {
  public:
   Stmt() = default;
   virtual ~Stmt() = default;
@@ -62,7 +62,7 @@ StmtPtr StmtNode<Op>::accept_mutator(IRMutator* mutator) {
 }
 
 // Concrete Stmt classes
-class TORCH_API Block : public StmtNode<Block> {
+class Block : public StmtNode<Block> {
  public:
   static BlockPtr make(const std::vector<StmtPtr>& stmts) {
     // NOLINTNEXTLINE(cppcoreguidelines-init-variables)
@@ -313,7 +313,7 @@ class TORCH_API Block : public StmtNode<Block> {
   }
 };
 
-class TORCH_API Store : public StmtNode<Store> {
+class Store : public StmtNode<Store> {
  public:
   VarPtr base_handle() const {
     return buf_->base_handle();
@@ -360,7 +360,7 @@ class TORCH_API Store : public StmtNode<Store> {
 // Allocate a buffer of given shapes and dtypes and bind it with the given
 // buffer var. The life span is at most through the current program, until it is
 // explicitly freed. An unfreed memory is likely considered an error.
-class TORCH_API Allocate : public StmtNode<Allocate> {
+class Allocate : public StmtNode<Allocate> {
  public:
   static AllocatePtr make(const BufHandle& buf_handle) {
     return alloc<Allocate>(buf_handle.node());
@@ -396,7 +396,7 @@ class TORCH_API Allocate : public StmtNode<Allocate> {
 // PlacementAllocate is a variation of the Allocate operator in NNC IR. It does
 // not allocate memory but reuse the memory of another buffer for the given
 // buffer.
-class TORCH_API PlacementAllocate : public StmtNode<PlacementAllocate> {
+class PlacementAllocate : public StmtNode<PlacementAllocate> {
  public:
   static PlacementAllocatePtr make(
       const BufHandle& buf_handle,
@@ -430,7 +430,7 @@ class TORCH_API PlacementAllocate : public StmtNode<PlacementAllocate> {
 };
 
 // Free the specific buffer. It is an error.
-class TORCH_API Free : public StmtNode<Free> {
+class Free : public StmtNode<Free> {
  public:
   static FreePtr make(const BufHandle& buf_handle) {
     return alloc<Free>(buf_handle.node());
@@ -454,7 +454,7 @@ class TORCH_API Free : public StmtNode<Free> {
   BufPtr buf_;
 };
 
-class TORCH_API FreeExt : public StmtNode<FreeExt> {
+class FreeExt : public StmtNode<FreeExt> {
  public:
   static FreeExtPtr make(const std::vector<BufHandle>& bufs);
 
@@ -472,7 +472,7 @@ class TORCH_API FreeExt : public StmtNode<FreeExt> {
   std::vector<BufPtr> bufs_;
 };
 
-class TORCH_API Let : public StmtNode<Let> {
+class Let : public StmtNode<Let> {
  public:
   static LetPtr make(const VarHandle& var, const ExprHandle& val) {
     return alloc<Let>(var.node(), val.node());
@@ -501,7 +501,7 @@ class TORCH_API Let : public StmtNode<Let> {
   ExprPtr val_;
 };
 
-class TORCH_API Cond : public StmtNode<Cond> {
+class Cond : public StmtNode<Cond> {
  public:
   static CondPtr make(
       const ExprHandle& condition,
@@ -568,7 +568,7 @@ class TORCH_API Cond : public StmtNode<Cond> {
   BlockPtr false_stmt_ = nullptr;
 };
 
-class TORCH_API LoopOptions {
+class LoopOptions {
  public:
   enum {
     IDX_UNSET = -1,
@@ -699,7 +699,7 @@ class TORCH_API LoopOptions {
   std::unordered_map<std::string, BufPtr> map_input_to_tensor_bufs_;
 };
 
-class TORCH_API For : public StmtNode<For> {
+class For : public StmtNode<For> {
  public:
   VarPtr var() const {
     return var_;
@@ -840,7 +840,7 @@ class TORCH_API For : public StmtNode<For> {
 // This node could only shows up as an internal with GPU backends.
 // TODO: move to this an internal IR.
 // TODO: make IR nodes extensible.
-class TORCH_API AtomicAdd : public StmtNode<AtomicAdd> {
+class AtomicAdd : public StmtNode<AtomicAdd> {
  public:
   // NOLINTNEXTLINE(cppcoreguidelines-pro-type-member-init)
   AtomicAdd(BufPtr buf, std::vector<ExprPtr> indices, ExprPtr value)
@@ -887,7 +887,7 @@ class TORCH_API AtomicAdd : public StmtNode<AtomicAdd> {
   ExprPtr value_;
 };
 
-class TORCH_API SyncThreads : public StmtNode<SyncThreads> {
+class SyncThreads : public StmtNode<SyncThreads> {
  public:
   SyncThreads() = default;
 };
@@ -911,7 +911,7 @@ class TORCH_API SyncThreads : public StmtNode<SyncThreads> {
  * The semantics of the scalar arguments is defined solely by the implementation
  * of the external function.
  */
-class TORCH_API ExternalCall : public StmtNode<ExternalCall> {
+class ExternalCall : public StmtNode<ExternalCall> {
  public:
   static ExternalCallPtr make(
       BufHandle buf,
@@ -965,7 +965,7 @@ class TORCH_API ExternalCall : public StmtNode<ExternalCall> {
   std::vector<ExprPtr> args_;
 };
 
-class TORCH_API ExternalCallWithAlloc : public StmtNode<ExternalCallWithAlloc> {
+class ExternalCallWithAlloc : public StmtNode<ExternalCallWithAlloc> {
  public:
   static ExternalCallWithAllocPtr make(
       const std::string& func_name,

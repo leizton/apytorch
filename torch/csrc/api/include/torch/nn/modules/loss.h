@@ -29,7 +29,7 @@ namespace nn {
 /// ```
 /// L1Loss model(L1LossOptions(torch::kNone));
 /// ```
-struct TORCH_API L1LossImpl : Cloneable<L1LossImpl> {
+struct L1LossImpl : Cloneable<L1LossImpl> {
   explicit L1LossImpl(L1LossOptions options_ = {});
 
   void reset() override;
@@ -64,7 +64,7 @@ TORCH_MODULE(L1Loss);
 /// ```
 /// KLDivLoss model(KLDivLossOptions().reduction(torch::kNone));
 /// ```
-struct TORCH_API KLDivLossImpl : Cloneable<KLDivLossImpl> {
+struct KLDivLossImpl : Cloneable<KLDivLossImpl> {
   explicit KLDivLossImpl(KLDivLossOptions options_ = {});
 
   void reset() override;
@@ -99,7 +99,7 @@ TORCH_MODULE(KLDivLoss);
 /// ```
 /// MSELoss model(MSELossOptions(torch::kNone));
 /// ```
-struct TORCH_API MSELossImpl : Cloneable<MSELossImpl> {
+struct MSELossImpl : Cloneable<MSELossImpl> {
   explicit MSELossImpl(MSELossOptions options_ = {});
 
   void reset() override;
@@ -134,7 +134,7 @@ TORCH_MODULE(MSELoss);
 /// ```
 /// BCELoss model(BCELossOptions().reduction(torch::kNone).weight(weight));
 /// ```
-struct TORCH_API BCELossImpl : Cloneable<BCELossImpl> {
+struct BCELossImpl : Cloneable<BCELossImpl> {
   explicit BCELossImpl(BCELossOptions options_ = {});
 
   void reset() override;
@@ -171,7 +171,7 @@ TORCH_MODULE(BCELoss);
 /// HingeEmbeddingLoss
 /// model(HingeEmbeddingLossOptions().margin(4).reduction(torch::kNone));
 /// ```
-struct TORCH_API HingeEmbeddingLossImpl : Cloneable<HingeEmbeddingLossImpl> {
+struct HingeEmbeddingLossImpl : Cloneable<HingeEmbeddingLossImpl> {
   explicit HingeEmbeddingLossImpl(HingeEmbeddingLossOptions options_ = {});
 
   void reset() override;
@@ -209,7 +209,7 @@ TORCH_MODULE(HingeEmbeddingLoss);
 /// ```
 /// MultiMarginLoss model(MultiMarginLossOptions().margin(2).weight(weight));
 /// ```
-struct TORCH_API MultiMarginLossImpl : public Cloneable<MultiMarginLossImpl> {
+struct MultiMarginLossImpl : public Cloneable<MultiMarginLossImpl> {
   explicit MultiMarginLossImpl(MultiMarginLossOptions options_ = {});
 
   void reset() override;
@@ -248,7 +248,7 @@ TORCH_MODULE(MultiMarginLoss);
 /// ```
 /// CosineEmbeddingLoss model(CosineEmbeddingLossOptions().margin(0.5));
 /// ```
-struct TORCH_API CosineEmbeddingLossImpl
+struct CosineEmbeddingLossImpl
     : public Cloneable<CosineEmbeddingLossImpl> {
   explicit CosineEmbeddingLossImpl(CosineEmbeddingLossOptions options_ = {});
 
@@ -290,7 +290,7 @@ TORCH_MODULE(CosineEmbeddingLoss);
 /// ```
 /// SmoothL1Loss model(SmoothL1LossOptions().reduction(torch::kNone).beta(0.5));
 /// ```
-struct TORCH_API SmoothL1LossImpl : public Cloneable<SmoothL1LossImpl> {
+struct SmoothL1LossImpl : public Cloneable<SmoothL1LossImpl> {
   explicit SmoothL1LossImpl(SmoothL1LossOptions options = {});
 
   void reset() override;
@@ -326,7 +326,7 @@ TORCH_MODULE(SmoothL1Loss);
 /// ```
 /// HuberLoss model(HuberLossOptions().reduction(torch::kNone).delta(0.5));
 /// ```
-struct TORCH_API HuberLossImpl : public Cloneable<HuberLossImpl> {
+struct HuberLossImpl : public Cloneable<HuberLossImpl> {
   explicit HuberLossImpl(HuberLossOptions options_ = {});
 
   void reset() override;
@@ -364,7 +364,7 @@ TORCH_MODULE(HuberLoss);
 /// ```
 /// MultiLabelMarginLoss model(MultiLabelMarginLossOptions(torch::kNone));
 /// ```
-struct TORCH_API MultiLabelMarginLossImpl
+struct MultiLabelMarginLossImpl
     : public Cloneable<MultiLabelMarginLossImpl> {
   explicit MultiLabelMarginLossImpl(MultiLabelMarginLossOptions options_ = {});
 
@@ -402,7 +402,7 @@ TORCH_MODULE(MultiLabelMarginLoss);
 /// ```
 /// SoftMarginLoss model(SoftMarginLossOptions(torch::kNone));
 /// ```
-struct TORCH_API SoftMarginLossImpl : public Cloneable<SoftMarginLossImpl> {
+struct SoftMarginLossImpl : public Cloneable<SoftMarginLossImpl> {
   explicit SoftMarginLossImpl(SoftMarginLossOptions options_ = {});
 
   /// Pretty prints the `SoftMarginLoss` module into the given `stream`.
@@ -440,7 +440,7 @@ TORCH_MODULE(SoftMarginLoss);
 /// MultiLabelSoftMarginLoss
 /// model(MultiLabelSoftMarginLossOptions().reduction(torch::kNone).weight(weight));
 /// ```
-struct TORCH_API MultiLabelSoftMarginLossImpl
+struct MultiLabelSoftMarginLossImpl
     : public Cloneable<MultiLabelSoftMarginLossImpl> {
   explicit MultiLabelSoftMarginLossImpl(
       MultiLabelSoftMarginLossOptions options_ = {});
@@ -484,7 +484,7 @@ TORCH_MODULE(MultiLabelSoftMarginLoss);
 /// TripletMarginLoss
 /// model(TripletMarginLossOptions().margin(3).p(2).eps(1e-06).swap(false));
 /// ```
-struct TORCH_API TripletMarginLossImpl
+struct TripletMarginLossImpl
     : public Cloneable<TripletMarginLossImpl> {
   explicit TripletMarginLossImpl(TripletMarginLossOptions options_ = {});
 
@@ -531,7 +531,7 @@ TORCH_MODULE(TripletMarginLoss);
 /// TripletMarginWithDistanceLoss
 /// model(TripletMarginWithDistanceLossOptions().margin(3).swap(false));
 /// ```
-struct TORCH_API TripletMarginWithDistanceLossImpl
+struct TripletMarginWithDistanceLossImpl
     : public Cloneable<TripletMarginWithDistanceLossImpl> {
   explicit TripletMarginWithDistanceLossImpl(
       TripletMarginWithDistanceLossOptions options_ = {});
@@ -574,7 +574,7 @@ TORCH_MODULE(TripletMarginWithDistanceLoss);
 /// CTCLoss
 /// model(CTCLossOptions().blank(42).zero_infinity(false).reduction(torch::kSum));
 /// ```
-struct TORCH_API CTCLossImpl : public Cloneable<CTCLossImpl> {
+struct CTCLossImpl : public Cloneable<CTCLossImpl> {
   explicit CTCLossImpl(CTCLossOptions options_ = {});
 
   void reset() override;
@@ -614,7 +614,7 @@ TORCH_MODULE(CTCLoss);
 /// PoissonNLLLoss
 /// model(PoissonNLLLossOptions().log_input(false).full(true).eps(0.42).reduction(torch::kSum));
 /// ```
-struct TORCH_API PoissonNLLLossImpl : public Cloneable<PoissonNLLLossImpl> {
+struct PoissonNLLLossImpl : public Cloneable<PoissonNLLLossImpl> {
   explicit PoissonNLLLossImpl(PoissonNLLLossOptions options_ = {});
 
   void reset() override;
@@ -652,7 +652,7 @@ TORCH_MODULE(PoissonNLLLoss);
 /// MarginRankingLoss
 /// model(MarginRankingLossOptions().margin(0.5).reduction(torch::kSum));
 /// ```
-struct TORCH_API MarginRankingLossImpl
+struct MarginRankingLossImpl
     : public Cloneable<MarginRankingLossImpl> {
   explicit MarginRankingLossImpl(MarginRankingLossOptions options_ = {});
 
@@ -691,7 +691,7 @@ TORCH_MODULE(MarginRankingLoss);
 /// ```
 /// NLLLoss model(NLLLossOptions().ignore_index(-100).reduction(torch::kMean));
 /// ```
-struct TORCH_API NLLLossImpl : public Cloneable<NLLLossImpl> {
+struct NLLLossImpl : public Cloneable<NLLLossImpl> {
   explicit NLLLossImpl(NLLLossOptions options_ = {});
 
   /// Pretty prints the `NLLLoss` module into the given `stream`.
@@ -731,7 +731,7 @@ TORCH_MODULE(NLLLoss);
 /// CrossEntropyLoss
 /// model(CrossEntropyLossOptions().ignore_index(-100).reduction(torch::kMean));
 /// ```
-struct TORCH_API CrossEntropyLossImpl : public Cloneable<CrossEntropyLossImpl> {
+struct CrossEntropyLossImpl : public Cloneable<CrossEntropyLossImpl> {
   explicit CrossEntropyLossImpl(CrossEntropyLossOptions options_ = {});
 
   void reset() override;
@@ -773,7 +773,7 @@ TORCH_MODULE(CrossEntropyLoss);
 /// BCEWithLogitsLoss
 /// model(BCEWithLogitsLossOptions().reduction(torch::kNone).weight(weight));
 /// ```
-struct TORCH_API BCEWithLogitsLossImpl
+struct BCEWithLogitsLossImpl
     : public Cloneable<BCEWithLogitsLossImpl> {
   explicit BCEWithLogitsLossImpl(BCEWithLogitsLossOptions options_ = {});
 

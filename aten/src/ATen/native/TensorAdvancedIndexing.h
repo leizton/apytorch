@@ -36,7 +36,7 @@ DECLARE_DISPATCH(scatter_reduce_fn, scatter_reduce_stub);
 DECLARE_DISPATCH(scatter_scalar_reduce_fn, scatter_scalar_reduce_stub);
 DECLARE_DISPATCH(scatter_reduce_two_fn, scatter_reduce_two_stub);
 
-TORCH_API Tensor& index_out(Tensor& result, const Tensor & self, const c10::List<c10::optional<at::Tensor>>& indices);
+Tensor& index_out(Tensor& result, const Tensor & self, const c10::List<c10::optional<at::Tensor>>& indices);
 
 using scatter_add_expanded_index_fn = void(*)(const Tensor&, const Tensor&, const Tensor&);
 using scatter_reduce_expanded_index_fn = void(*)(const Tensor&, const Tensor&, const Tensor&, const ReductionType& reduce, bool);

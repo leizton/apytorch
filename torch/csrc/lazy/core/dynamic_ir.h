@@ -41,7 +41,7 @@ namespace lazy {
  * burned into the Graph.
  */
 
-class TORCH_API DimensionNode {
+class DimensionNode {
  public:
   virtual bool isSymbolic() const {
     return false;

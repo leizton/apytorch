@@ -21,7 +21,7 @@ class InputArchive;
 namespace torch {
 namespace optim {
 
-struct TORCH_API RMSpropOptions
+struct RMSpropOptions
     : public OptimizerCloneableOptions<RMSpropOptions> {
   RMSpropOptions(double lr = 1e-2);
   TORCH_ARG(double, lr) = 1e-2;
@@ -34,14 +34,14 @@ struct TORCH_API RMSpropOptions
  public:
   void serialize(torch::serialize::InputArchive& archive) override;
   void serialize(torch::serialize::OutputArchive& archive) const override;
-  TORCH_API friend bool operator==(
+  friend bool operator==(
       const RMSpropOptions& lhs,
       const RMSpropOptions& rhs);
   double get_lr() const override;
   void set_lr(const double lr) override;
 };
 
-struct TORCH_API RMSpropParamState
+struct RMSpropParamState
     : public OptimizerCloneableParamState<RMSpropParamState> {
   TORCH_ARG(int64_t, step) = 0;
   TORCH_ARG(torch::Tensor, square_avg);
@@ -51,12 +51,12 @@ struct TORCH_API RMSpropParamState
  public:
   void serialize(torch::serialize::InputArchive& archive) override;
   void serialize(torch::serialize::OutputArchive& archive) const override;
-  TORCH_API friend bool operator==(
+  friend bool operator==(
       const RMSpropParamState& lhs,
       const RMSpropParamState& rhs);
 };
 
-class TORCH_API RMSprop : public Optimizer {
+class RMSprop : public Optimizer {
  public:
   explicit RMSprop(
       std::vector<OptimizerParamGroup> param_groups,

@@ -18,11 +18,11 @@ struct Graph;
 struct Value;
 
 // thrown when insertConstant cannot encode the IValue into a graph
-struct TORCH_API constant_not_supported_error : public std::runtime_error {
+struct constant_not_supported_error : public std::runtime_error {
   using runtime_error::runtime_error;
 };
 
-TORCH_API Value* insertConstant(
+Value* insertConstant(
     Graph& g,
     const IValue& val,
     c10::optional<SourceRange> loc = c10::nullopt,
@@ -34,7 +34,7 @@ TORCH_API Value* insertConstant(
 // constants.cpp.
 //
 // returns a c10::nullopt if the IValue kind cannot be inserted as a constant
-TORCH_API c10::optional<Value*> tryInsertConstant(
+c10::optional<Value*> tryInsertConstant(
     Graph& g,
     const IValue& val,
     c10::optional<SourceRange> loc = c10::nullopt,
@@ -46,7 +46,7 @@ TORCH_API c10::optional<Value*> tryInsertConstant(
 
 // attempt to convert a (possibly constant) Value* into an interpreter value
 // (IValue). returns c10::nullopt if the Value* was not constant
-TORCH_API c10::optional<IValue> toIValue(const Value* v);
+c10::optional<IValue> toIValue(const Value* v);
 
 // if a value is a constant then try to turn into type T using the
 // same rules as the interpreter

@@ -18,7 +18,7 @@ namespace impl {
 using ProfilerEventStub = std::shared_ptr<CUevent_st>;
 using ProfilerVoidEventStub = std::shared_ptr<void>;
 
-struct TORCH_API ProfilerStubs {
+struct ProfilerStubs {
   virtual void record(
       int* device,
       ProfilerVoidEventStub* event,
@@ -37,12 +37,12 @@ struct TORCH_API ProfilerStubs {
   virtual ~ProfilerStubs();
 };
 
-TORCH_API void registerCUDAMethods(ProfilerStubs* stubs);
-TORCH_API const ProfilerStubs* cudaStubs();
-TORCH_API void registerITTMethods(ProfilerStubs* stubs);
-TORCH_API const ProfilerStubs* ittStubs();
-TORCH_API void registerPrivateUse1Methods(ProfilerStubs* stubs);
-TORCH_API const ProfilerStubs* privateuse1Stubs();
+void registerCUDAMethods(ProfilerStubs* stubs);
+const ProfilerStubs* cudaStubs();
+void registerITTMethods(ProfilerStubs* stubs);
+const ProfilerStubs* ittStubs();
+void registerPrivateUse1Methods(ProfilerStubs* stubs);
+const ProfilerStubs* privateuse1Stubs();
 
 using vulkan_id_t = strong::type<
     int64_t,

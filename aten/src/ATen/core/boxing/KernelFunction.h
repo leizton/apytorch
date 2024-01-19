@@ -79,7 +79,7 @@ struct fn_remove_symint<Ret(Args...)> {
  * and call it in a boxed or unboxed way. If the way it was created doesn't
  * match the way it was called, it will do boxing or unboxing as necessary.
  */
-class TORCH_API KernelFunction final {
+class KernelFunction final {
 public:
   using InternalBoxedKernelFunction = BoxedKernel::InternalBoxedKernelFunction;
   using BoxedKernelFunction = BoxedKernel::BoxedKernelFunction;

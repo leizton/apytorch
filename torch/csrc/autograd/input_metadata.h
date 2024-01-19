@@ -36,7 +36,7 @@ using MetadataShape = std::variant<SymIntSmallVec, at::Tensor>;
  * If is_valid() is false, then the corresponding input is not used and may be
  * an undefined tensor.
  */
-struct TORCH_API InputMetadata {
+struct InputMetadata {
   InputMetadata() = default;
   InputMetadata(
       const at::TensorOptions& options,

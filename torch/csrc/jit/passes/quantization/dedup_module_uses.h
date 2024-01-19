@@ -22,7 +22,7 @@ namespace jit {
  *  self.relu needs to be deduplicated for potential future destructive passes
  *  to work properly.
  */
-TORCH_API void DedupModuleUses(Module& module);
+void DedupModuleUses(Module& module);
 
 } // namespace jit
 } // namespace torch

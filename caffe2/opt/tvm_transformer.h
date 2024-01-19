@@ -13,7 +13,7 @@ struct TvmTransformOptions final : public BackendTransformOptions {
   bool profiling_based_jit{false};
 };
 
-class TORCH_API TvmTransformer final : public BackendTransformerBase {
+class TvmTransformer final : public BackendTransformerBase {
  public:
   explicit TvmTransformer(const TvmTransformOptions& opts)
       : BackendTransformerBase(), opts_(opts) {}
@@ -68,7 +68,7 @@ class TORCH_API TvmTransformer final : public BackendTransformerBase {
 };
 
 // Helper function to clean up a net and run tvm transform.
-TORCH_API void tvmTransform(
+void tvmTransform(
     NetDef* net,
     Workspace* ws,
     const std::vector<std::string>& input_names,
@@ -84,7 +84,7 @@ TORCH_API void tvmTransform(
     bool tvm_profiling_based_jit,
     bool debug);
 
-TORCH_API void cleanUpPredictNet(
+void cleanUpPredictNet(
     NetDef* net,
     const std::vector<std::string>& input_names,
     const std::vector<std::string>& output_names,

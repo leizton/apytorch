@@ -24,7 +24,7 @@ namespace detail {
 struct ListImpl final : public c10::intrusive_ptr_target {
   using list_type = std::vector<IValue>;
 
-  explicit TORCH_API ListImpl(list_type list_, TypePtr elementType_);
+  explicit ListImpl(list_type list_, TypePtr elementType_);
 
   list_type list;
 
@@ -33,7 +33,7 @@ struct ListImpl final : public c10::intrusive_ptr_target {
   intrusive_ptr<ListImpl> copy() const {
     return make_intrusive<ListImpl>(list, elementType);
   }
-  friend TORCH_API bool operator==(const ListImpl& lhs, const ListImpl& rhs);
+  friend bool operator==(const ListImpl& lhs, const ListImpl& rhs);
 };
 }
 

@@ -9,22 +9,22 @@ namespace torch {
 namespace cuda {
 
 /// Returns the number of CUDA devices available.
-size_t TORCH_API device_count();
+size_t device_count();
 
 /// Returns true if at least one CUDA device is available.
-bool TORCH_API is_available();
+bool is_available();
 
 /// Returns true if CUDA is available, and CuDNN is available.
-bool TORCH_API cudnn_is_available();
+bool cudnn_is_available();
 
 /// Sets the seed for the current GPU.
-void TORCH_API manual_seed(uint64_t seed);
+void manual_seed(uint64_t seed);
 
 /// Sets the seed for all available GPUs.
-void TORCH_API manual_seed_all(uint64_t seed);
+void manual_seed_all(uint64_t seed);
 
 /// Waits for all kernels in all streams on a CUDA device to complete.
-void TORCH_API synchronize(int64_t device_index = -1);
+void synchronize(int64_t device_index = -1);
 
 } // namespace cuda
 } // namespace torch

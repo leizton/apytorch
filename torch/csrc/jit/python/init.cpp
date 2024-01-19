@@ -163,7 +163,7 @@ c10::optional<IValue> toTypeInferredIValueOptional(py::handle input) {
 } // anonymous namespace
 
 #if !defined(USE_ROCM)
-TORCH_API void runJITCPPTests();
+void runJITCPPTests();
 #endif
 
 void initJITBindings(PyObject* module) {

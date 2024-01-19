@@ -10,7 +10,7 @@ namespace autograd {
 // forward declaration of Node from function.h
 struct Node;
 
-struct TORCH_API AnomalyMode {
+struct AnomalyMode {
   static bool is_enabled() {
     return _enabled;
   }
@@ -49,7 +49,7 @@ struct TORCH_API AnomalyMode {
 ///   z.backward();
 /// }
 /// @endcode
-class TORCH_API DetectAnomalyGuard {
+class DetectAnomalyGuard {
  public:
   DetectAnomalyGuard(bool check_nan = true);
   ~DetectAnomalyGuard();
@@ -58,7 +58,7 @@ class TORCH_API DetectAnomalyGuard {
   bool prev_check_nan_;
 };
 
-struct TORCH_API AnomalyMetadata {
+struct AnomalyMetadata {
   virtual ~AnomalyMetadata();
   virtual void store_stack();
   virtual void print_stack(const std::string& current_node_name);

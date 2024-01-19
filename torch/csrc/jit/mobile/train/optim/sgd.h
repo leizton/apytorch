@@ -24,7 +24,7 @@ class SGDParamState {
   friend bool operator==(const SGDParamState& lhs, const SGDParamState& rhs);
 };
 
-struct TORCH_API SGDOptions {
+struct SGDOptions {
   /* implicit */ SGDOptions(double lr);
   TORCH_ARG(double, lr);
   TORCH_ARG(double, momentum) = 0;
@@ -36,13 +36,13 @@ struct TORCH_API SGDOptions {
   std::unique_ptr<SGDOptions> clone() const {
     return std::make_unique<SGDOptions>(static_cast<const SGDOptions&>(*this));
   }
-  TORCH_API friend bool operator==(
+  friend bool operator==(
       const SGDOptions& lhs,
       const SGDOptions& rhs);
 };
 
 /// Stores parameters in the param_group and stores a pointer to the SGDOptions
-class TORCH_API SGDParamGroup {
+class SGDParamGroup {
  public:
   // NOTE: In order to store `SGDParamGroup` in a `std::vector`, it has to be
   // copy-constructible.
@@ -76,7 +76,7 @@ class TORCH_API SGDParamGroup {
   std::unique_ptr<SGDOptions> options_;
 };
 
-class TORCH_API SGD {
+class SGD {
  public:
   explicit SGD(
       const std::vector<torch::jit::mobile::SGDParamGroup>& param_groups,

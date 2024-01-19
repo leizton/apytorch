@@ -16,7 +16,7 @@ namespace fuser {
 // OR concat-ing an output tensor from subtensors
 // Note: default constructed used for tensors that do not participate in
 // chunk or cat operations.
-struct TORCH_API PartitionDesc {
+struct PartitionDesc {
   PartitionDesc() : nSubTensors_{1}, dim_{0} {}
 
   PartitionDesc(const TensorDesc& _desc, size_t _nSubTensors, size_t _dim)

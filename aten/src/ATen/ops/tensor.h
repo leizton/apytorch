@@ -6,7 +6,7 @@ namespace at {
 
 // These functions are defined in ATen/Utils.cpp.
 #define TENSOR(T, S)                                                          \
-  TORCH_API Tensor tensor(ArrayRef<T> values, const TensorOptions& options);  \
+  Tensor tensor(ArrayRef<T> values, const TensorOptions& options);  \
   inline Tensor tensor(                                                       \
       std::initializer_list<T> values, const TensorOptions& options) {        \
     return at::tensor(ArrayRef<T>(values), options);                          \

@@ -5,7 +5,7 @@
 namespace torch {
 namespace jit {
 
-TORCH_API void RemoveRedundantProfiles(std::shared_ptr<Graph>& graph);
-TORCH_API void RemoveRedundantProfiles(Block* block, AliasDb& db);
+void RemoveRedundantProfiles(std::shared_ptr<Graph>& graph);
+void RemoveRedundantProfiles(Block* block, AliasDb& db);
 } // namespace jit
 } // namespace torch

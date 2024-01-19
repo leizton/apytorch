@@ -13,7 +13,7 @@ namespace torch {
 namespace data {
 namespace datasets {
 /// The MNIST dataset.
-class TORCH_API MNIST : public Dataset<MNIST> {
+class MNIST : public Dataset<MNIST> {
  public:
   /// The mode in which the dataset is loaded.
   enum class Mode { kTrain, kTest };

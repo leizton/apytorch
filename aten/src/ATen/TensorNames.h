@@ -25,7 +25,7 @@ namespace at::namedinference {
 // None (in tensor) cannot match A (in other) because if the None were refined
 // to A, `tensor` would have duplicate names [A, A]. Therefore we need to check
 // tensor.names [A, None] for the existence of A.
-struct TORCH_API TensorName {
+struct TensorName {
   explicit TensorName(ArrayRef<Dimname> origin, int origin_idx)
       : origin_(origin),
         name_(origin[maybe_wrap_dim(
@@ -42,14 +42,14 @@ struct TORCH_API TensorName {
   Dimname name_;
   int origin_idx_; // A named tensor can have at most 64 dims.
 
-  TORCH_API friend std::ostream& operator<<(
+  friend std::ostream& operator<<(
       std::ostream& out,
       const TensorName& tensorname);
 };
 
 using TensorNameVec = SmallVector<TensorName, 10>;
 
-struct TORCH_API TensorNames {
+struct TensorNames {
   explicit TensorNames(ArrayRef<Dimname> names);
 
   // Create TensorNames from names[start:end]. Each individual TensorName stores

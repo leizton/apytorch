@@ -15,7 +15,7 @@ namespace autograd {
 // addition to this, it also registers the send function in the provided
 // autograd context. Finally, the RPC message is updated with appropriate
 // autograd information for the recipient.
-TORCH_API void addSendRpcBackward(
+void addSendRpcBackward(
     const ContextPtr& autogradContext,
     const AutogradMetadata& autogradMetadata,
     std::vector<torch::Tensor>& tensors);
@@ -27,7 +27,7 @@ TORCH_API void addSendRpcBackward(
 // with this context.
 //
 // Returns a pointer to the autograd context created.
-TORCH_API ContextPtr addRecvRpcBackward(
+ContextPtr addRecvRpcBackward(
     const AutogradMetadata& autogradMetadata,
     std::vector<torch::Tensor>& tensors,
     rpc::worker_id_t fromWorkerId,
@@ -39,7 +39,7 @@ TORCH_API ContextPtr addRecvRpcBackward(
 // case, return RpcWithAutograd message; otherwise return original rpc message.
 // NB: forceGradRecording is useful when the request does not contain any tensor
 // but the corresponding response does.
-TORCH_API c10::intrusive_ptr<rpc::Message> getMessageWithAutograd(
+c10::intrusive_ptr<rpc::Message> getMessageWithAutograd(
     const rpc::worker_id_t dstId,
     c10::intrusive_ptr<rpc::Message> wrappedRpcMsg,
     rpc::MessageType msgType,
@@ -47,7 +47,7 @@ TORCH_API c10::intrusive_ptr<rpc::Message> getMessageWithAutograd(
     const rpc::DeviceMap& deviceMap = {});
 
 // Send message after autograd checking
-TORCH_API c10::intrusive_ptr<c10::ivalue::Future> sendMessageWithAutograd(
+c10::intrusive_ptr<c10::ivalue::Future> sendMessageWithAutograd(
     rpc::RpcAgent& agent,
     const rpc::WorkerInfo& dst,
     c10::intrusive_ptr<rpc::Message> wrappedRpcMsg,

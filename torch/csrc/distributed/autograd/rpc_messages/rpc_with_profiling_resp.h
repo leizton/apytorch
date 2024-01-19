@@ -9,7 +9,7 @@
 namespace torch {
 namespace distributed {
 namespace autograd {
-class TORCH_API RpcWithProfilingResp : public rpc::RpcCommandBase {
+class RpcWithProfilingResp : public rpc::RpcCommandBase {
  public:
   // For sending RPCs over the wire
   RpcWithProfilingResp(

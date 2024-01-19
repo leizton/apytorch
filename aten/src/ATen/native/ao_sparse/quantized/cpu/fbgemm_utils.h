@@ -11,7 +11,7 @@
 namespace ao {
 namespace sparse {
 
-struct TORCH_API PackedLinearWeight
+struct PackedLinearWeight
     : public LinearPackedParamsBase {
   PackedLinearWeight(std::unique_ptr<fbgemm::BCSRMatrix<int8_t>> w,
                      c10::optional<at::Tensor> bias,

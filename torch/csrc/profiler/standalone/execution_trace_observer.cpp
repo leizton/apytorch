@@ -160,7 +160,7 @@ inline int32_t processId() {
 // at the cost of performance in large number of threads situations. We may
 // optimize this further to thread local, fine-grained locking, or use thread
 // safe containers.
-struct TORCH_API ExecutionTraceObserver {
+struct ExecutionTraceObserver {
   using ID = size_t;
 
   // Mapping of each thread to its own operator stack

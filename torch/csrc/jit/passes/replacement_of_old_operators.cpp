@@ -93,7 +93,7 @@ struct OldOpsReplacerWithUpgraders {
   std::shared_ptr<Graph> graph_;
 };
 
-TORCH_API void ReplaceOldOperatorsWithUpgraders(std::shared_ptr<Graph> graph) {
+void ReplaceOldOperatorsWithUpgraders(std::shared_ptr<Graph> graph) {
   OldOpsReplacerWithUpgraders(std::move(graph)).run();
 }
 

@@ -10,7 +10,7 @@
 
 namespace at::internal {
 
-TORCH_API void invoke_parallel(
+void invoke_parallel(
     const int64_t begin,
     const int64_t end,
     const int64_t grain_size,

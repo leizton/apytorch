@@ -85,7 +85,7 @@ inline Tensor new_values_with_size_of(const Tensor& values, int64_t nnz) {
 // the flattened tensor `t.reshape( prod(full_size[:indices.size(0)]), -1 )`.
 // if forceClone is true, the result will forced to be a clone of self.
 // if force_clone is true, the result will forced to be a clone of self.
-TORCH_API Tensor flatten_indices(
+Tensor flatten_indices(
     const Tensor& indices,
     IntArrayRef full_size,
     bool force_clone = false);
@@ -111,15 +111,15 @@ TORCH_API Tensor flatten_indices(
 // Ex2:
 //   dims_to_flatten = [1]
 //   new_indices = [ 3, 1, 3 ]  # uncoalesced
-TORCH_API Tensor flatten_indices_by_dims(
+Tensor flatten_indices_by_dims(
     const Tensor& indices,
     const IntArrayRef& sizes,
     const IntArrayRef& dims_to_flatten);
 
 // Find the CSR representation for a row `indices` from the COO format
-TORCH_API Tensor coo_to_csr(const int64_t* indices, int64_t dim, int64_t nnz);
+Tensor coo_to_csr(const int64_t* indices, int64_t dim, int64_t nnz);
 
-TORCH_API Tensor zeros_like_with_indices(const Tensor& t);
+Tensor zeros_like_with_indices(const Tensor& t);
 
 template <size_t static_shape_max_len>
 class TensorGeometryHolder {
@@ -185,6 +185,6 @@ class TensorGeometryHolder<0> {
 //
 // full_coo_indices(shape) is equivalent to
 // torch.ones(shape).nonzero().transpose(-2, -1) but much faster.
-TORCH_API Tensor full_coo_indices(IntArrayRef sizes, TensorOptions options);
+Tensor full_coo_indices(IntArrayRef sizes, TensorOptions options);
 
 } // namespace at::sparse

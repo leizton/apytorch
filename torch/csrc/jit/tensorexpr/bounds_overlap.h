@@ -13,7 +13,7 @@ namespace tensorexpr {
 namespace analysis {
 
 // A simple class containing the start and end of a range in a single dimension.
-struct TORCH_API Bound {
+struct Bound {
   ExprPtr start{nullptr};
   ExprPtr end{nullptr};
 
@@ -75,12 +75,12 @@ enum class CmpEvalResult { True, False, NotDetermined };
 
 // Returns the kind of overlap between Bound A and Bound A in a single
 // dimension.
-OverlapKind TORCH_API boundOverlap(Bound A, Bound B);
+OverlapKind boundOverlap(Bound A, Bound B);
 
 // The comparison is conservative and the compare result is deterministic.
 // It means that every element of the Bound to be compared needs to satisfy
 // the given comparison operator.
-CmpEvalResult TORCH_API compareBound(
+CmpEvalResult compareBound(
     const Bound& a,
     const Bound& b,
     const CompareSelectOperation& cmp_op);
@@ -89,14 +89,14 @@ CmpEvalResult TORCH_API compareBound(
 using IndexBounds = std::vector<Bound>;
 
 // Returns true if two IndexBounds are equivalent.
-bool TORCH_API indexBoundsEquals(const IndexBounds& A, const IndexBounds& B);
+bool indexBoundsEquals(const IndexBounds& A, const IndexBounds& B);
 
 // Flattens a multi dimensional bound to a single dimension. The IndexBounds "a"
 // *must* encapsulate the entire range of the buffer.
-Bound TORCH_API flattenBounds(const IndexBounds& a);
+Bound flattenBounds(const IndexBounds& a);
 
 // Determines the kind of overlap in X dimensions.
-OverlapKind TORCH_API overlaps(const IndexBounds& a, const IndexBounds& b);
+OverlapKind overlaps(const IndexBounds& a, const IndexBounds& b);
 
 // Returns the Bound slices created by subtracing bound B from bound A.
 // Multiple Bounds can be returned in the case where B slices A into two
@@ -112,10 +112,10 @@ OverlapKind TORCH_API overlaps(const IndexBounds& a, const IndexBounds& b);
 //
 // Note: this doesn't use IndexBounds because the Bounds returned do not
 // represent multiple different dimensions.
-std::vector<Bound> TORCH_API subtractBound(Bound a, Bound b);
+std::vector<Bound> subtractBound(Bound a, Bound b);
 
 // Returns the bound slices created by subtracting the IndexBounds B from A.
-std::vector<IndexBounds> TORCH_API subtractIndicesBounds(
+std::vector<IndexBounds> subtractIndicesBounds(
     const IndexBounds& A,
     const IndexBounds& B,
     OverlapKind overlap);

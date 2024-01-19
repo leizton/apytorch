@@ -19,7 +19,7 @@ class InputArchive;
 namespace torch {
 namespace optim {
 
-struct TORCH_API AdagradOptions
+struct AdagradOptions
     : public OptimizerCloneableOptions<AdagradOptions> {
   AdagradOptions(double lr = 1e-2);
   TORCH_ARG(double, lr) = 1e-2;
@@ -31,14 +31,14 @@ struct TORCH_API AdagradOptions
  public:
   void serialize(torch::serialize::InputArchive& archive) override;
   void serialize(torch::serialize::OutputArchive& archive) const override;
-  TORCH_API friend bool operator==(
+  friend bool operator==(
       const AdagradOptions& lhs,
       const AdagradOptions& rhs);
   double get_lr() const override;
   void set_lr(const double lr) override;
 };
 
-struct TORCH_API AdagradParamState
+struct AdagradParamState
     : public OptimizerCloneableParamState<AdagradParamState> {
   TORCH_ARG(torch::Tensor, sum);
   TORCH_ARG(int64_t, step) = 0;
@@ -51,12 +51,12 @@ struct TORCH_API AdagradParamState
   AdagradParamState& operator=(AdagradParamState&&) noexcept = default;
   void serialize(torch::serialize::InputArchive& archive) override;
   void serialize(torch::serialize::OutputArchive& archive) const override;
-  TORCH_API friend bool operator==(
+  friend bool operator==(
       const AdagradParamState& lhs,
       const AdagradParamState& rhs);
 };
 
-class TORCH_API Adagrad : public Optimizer {
+class Adagrad : public Optimizer {
  public:
   explicit Adagrad(
       std::vector<OptimizerParamGroup> param_groups,

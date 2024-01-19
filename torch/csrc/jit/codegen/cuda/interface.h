@@ -18,12 +18,12 @@ namespace jit {
 namespace fuser {
 namespace cuda {
 
-TORCH_API std::atomic<bool>& getCudaFusionGuardMode();
+std::atomic<bool>& getCudaFusionGuardMode();
 
-TORCH_API bool getSingletonFusion();
-TORCH_API bool setSingletonFusion(bool value);
-TORCH_API bool getHorizontalFusion();
-TORCH_API bool setHorizontalFusion(bool value);
+bool getSingletonFusion();
+bool setSingletonFusion(bool value);
+bool getHorizontalFusion();
+bool setHorizontalFusion(bool value);
 
 // dummy struct to allow API registration
 struct CudaFuserInterface {
@@ -37,20 +37,20 @@ struct CudaFuserInterface {
 };
 
 // Get interface, this is used by registration and user facing API internally
-TORCH_API CudaFuserInterface* getFuserInterface();
+CudaFuserInterface* getFuserInterface();
 
-TORCH_API void compileFusionGroup(Node* fusion_node);
-TORCH_API void runFusionGroup(const Node* fusion_node, Stack& stack);
-TORCH_API void fuseGraph(std::shared_ptr<Graph>&);
-TORCH_API bool canFuseNode(const Node* node);
-TORCH_API void InsertProfileNodesForCUDAFuser(ProfilingRecord* pr);
-TORCH_API bool profileNode(const Node* node);
+void compileFusionGroup(Node* fusion_node);
+void runFusionGroup(const Node* fusion_node, Stack& stack);
+void fuseGraph(std::shared_ptr<Graph>&);
+bool canFuseNode(const Node* node);
+void InsertProfileNodesForCUDAFuser(ProfilingRecord* pr);
+bool profileNode(const Node* node);
 
-TORCH_API bool skipNode(const std::string& symbol_str, bool flip = true);
+bool skipNode(const std::string& symbol_str, bool flip = true);
 
-TORCH_API bool isEnabled();
-TORCH_API bool setEnabled(bool is_enabled);
-TORCH_API bool canBeEnabled();
+bool isEnabled();
+bool setEnabled(bool is_enabled);
+bool canBeEnabled();
 
 } // namespace cuda
 } // namespace fuser

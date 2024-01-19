@@ -392,7 +392,7 @@ namespace {
 }
 
 template <int kSpatialDim = 2>
-TORCH_API int
+int
 register_conv_params() {
   static auto register_conv_params =
     torch::selective_class_<ConvPackedParamsBase<kSpatialDim>>(
@@ -432,13 +432,13 @@ register_conv_params() {
 }
 
 template
-TORCH_API int register_conv_params<2>();
+int register_conv_params<2>();
 template
-TORCH_API int register_conv_params<3>();
+int register_conv_params<3>();
 
-TORCH_API int register_linear_params();
+int register_linear_params();
 
-TORCH_API int register_linear_params() {
+int register_linear_params() {
   using SerializationType = std::tuple<at::Tensor, c10::optional<at::Tensor>>;
   static auto register_linear_params =
       torch::selective_class_<LinearPackedParamsBase>(

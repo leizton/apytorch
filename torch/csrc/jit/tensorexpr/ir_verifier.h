@@ -27,7 +27,7 @@ class Store;
 class For;
 class Block;
 
-class TORCH_API IRVerifier : public IRVisitor {
+class IRVerifier : public IRVisitor {
  public:
   IRVerifier() = default;
 
@@ -49,9 +49,9 @@ class TORCH_API IRVerifier : public IRVisitor {
   void visit(BlockPtr v) override;
 };
 
-TORCH_API void verify(StmtPtr);
-TORCH_API void verify(ExprPtr);
-TORCH_API void verify(ExprHandle);
+void verify(StmtPtr);
+void verify(ExprPtr);
+void verify(ExprHandle);
 
 } // namespace tensorexpr
 } // namespace jit

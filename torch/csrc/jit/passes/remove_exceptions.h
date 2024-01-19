@@ -17,7 +17,7 @@ namespace jit {
 // safe by some other mechanisms. For instance, when we know exact shapes of
 // tensors flowing through the graph and tensors with such shapes never cause
 // exceptions.
-TORCH_API void EliminateExceptions(std::shared_ptr<Graph>& graph);
+void EliminateExceptions(std::shared_ptr<Graph>& graph);
 
 } // namespace jit
 } // namespace torch

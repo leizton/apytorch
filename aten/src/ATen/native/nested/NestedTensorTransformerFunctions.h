@@ -42,7 +42,7 @@ Tensor NestedTensor_add_NestedTensor_in_place(
     const Tensor& self,
     const Tensor& other);
 
-TORCH_API Tensor NestedTensor_batch_offsets_from_size_tensor(
+Tensor NestedTensor_batch_offsets_from_size_tensor(
     const Tensor& sizes,
     int64_t extra_elements);
 
@@ -84,7 +84,7 @@ void add_padding_kernelLauncher(
     const int batch_size,
     const int output_batch_size);
 
-TORCH_API Tensor flash_attention_helper(
+Tensor flash_attention_helper(
     const Tensor& query,
     const Tensor& key,
     const Tensor& value,
@@ -92,7 +92,7 @@ TORCH_API Tensor flash_attention_helper(
     bool need_attn_weights,
     bool is_causal);
 
-TORCH_API std::tuple<Tensor, Tensor> mem_efficient_helper_nested_unpacked(
+std::tuple<Tensor, Tensor> mem_efficient_helper_nested_unpacked(
     const Tensor& query,
     const Tensor& key,
     const Tensor& value,

@@ -39,7 +39,7 @@ constexpr int kCannotComputeNumOutputs = -1;
  *     OPERATOR_SCHEMA(name)
  *         .NumInputs(2).NumOutputs(1).AllowInplace({{0, 0}});
  */
-class TORCH_API OpSchema {
+class OpSchema {
  public:
   OpSchema() : OpSchema("unknown", "unknown", 0) {}
   OpSchema(const string& type, const string& file, const int line);
@@ -341,7 +341,7 @@ class TORCH_API OpSchema {
     return inplace_enforced_(x, y);
   }
 
-  TORCH_API friend std::ostream& operator<<(
+  friend std::ostream& operator<<(
       std::ostream& out,
       const OpSchema& schema);
 
@@ -461,7 +461,7 @@ class TORCH_API OpSchema {
 /**
  * @brief A registry to hold all the operator schemas.
  */
-class TORCH_API OpSchemaRegistry {
+class OpSchemaRegistry {
  public:
   static OpSchema&
   NewSchema(const string& key, const string& file, const int line);

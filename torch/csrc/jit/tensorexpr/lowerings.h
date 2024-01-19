@@ -35,8 +35,8 @@ using NNCLoweringFunction = std::function<Tensor(
     const c10::optional<ScalarType>&,
     at::Device)>;
 
-TORCH_API FunctionSchemaMap<NNCLoweringFunction>& getNNCLoweringRegistry();
-TORCH_API NNCLoweringFunction getStandardLoweringFor(const std::string& op);
+FunctionSchemaMap<NNCLoweringFunction>& getNNCLoweringRegistry();
+NNCLoweringFunction getStandardLoweringFor(const std::string& op);
 
 struct RegisterNNCLoweringsFunction {
   RegisterNNCLoweringsFunction(

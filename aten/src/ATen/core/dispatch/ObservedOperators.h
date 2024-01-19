@@ -6,7 +6,7 @@
 
 namespace c10 {
 
-struct TORCH_API ObservedOperators {
+struct ObservedOperators {
   ObservedOperators() = delete;
 
   static bool isObserved(const OperatorName& name);

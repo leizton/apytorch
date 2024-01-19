@@ -45,7 +45,7 @@ using NNCExternalFunction = void (*)(
 
 // Return a global map "function-name" -> "function-pointer" for all registered
 // in NNC external functions
-TORCH_API std::unordered_map<std::string, NNCExternalFunction>&
+std::unordered_map<std::string, NNCExternalFunction>&
 getNNCFunctionRegistry();
 
 // To register a new external function in NNC one needs to create an instance of

@@ -11,7 +11,7 @@
 
 namespace at {
 
-struct TORCH_API MPSHooksInterface {
+struct MPSHooksInterface {
   // this fails the implementation if MPSHooks functions are called, but
   // MPS backend is not present.
   #define FAIL_MPSHOOKS_FUNC(func) \
@@ -90,14 +90,14 @@ struct TORCH_API MPSHooksInterface {
   #undef FAIL_MPSHOOKS_FUNC
 };
 
-struct TORCH_API MPSHooksArgs {};
+struct MPSHooksArgs {};
 
 TORCH_DECLARE_REGISTRY(MPSHooksRegistry, MPSHooksInterface, MPSHooksArgs);
 #define REGISTER_MPS_HOOKS(clsname) \
   C10_REGISTER_CLASS(MPSHooksRegistry, clsname, clsname)
 
 namespace detail {
-TORCH_API const MPSHooksInterface& getMPSHooks();
+const MPSHooksInterface& getMPSHooks();
 
 } // namespace detail
 } // namespace at

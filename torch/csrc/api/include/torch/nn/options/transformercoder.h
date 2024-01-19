@@ -19,7 +19,7 @@ namespace nn {
 /// 8).dropout(0.1)); auto options = TransformerEncoderOptions(encoderLayer,
 /// 6).norm(LayerNorm(LayerNormOptions({2})));
 /// ```
-struct TORCH_API TransformerEncoderOptions {
+struct TransformerEncoderOptions {
   // This constructor will keep a shallow copy of encoder_layer, so it keeps all
   // the data in encoder_layer.
   TransformerEncoderOptions(
@@ -50,7 +50,7 @@ struct TORCH_API TransformerEncoderOptions {
 /// 6)norm(LayerNorm(LayerNormOptions({2}))); TransformerDecoder
 /// transformer_decoder(options);
 /// ```
-struct TORCH_API TransformerDecoderOptions {
+struct TransformerDecoderOptions {
   // This constructor will keep the a ref of passed in decoder_layer,
   // so it keeps all the data in decoder_layer.
   TransformerDecoderOptions(

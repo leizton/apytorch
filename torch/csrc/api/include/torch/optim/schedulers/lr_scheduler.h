@@ -7,7 +7,7 @@
 namespace torch {
 namespace optim {
 
-class TORCH_API LRScheduler {
+class LRScheduler {
  public:
   // This class needs to take a reference of an optimizer from outside such that
   // it can modify its learning rates; due to this the lifetime of said

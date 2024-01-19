@@ -22,7 +22,7 @@
     k##name() {}                                                      \
   };                                                                  \
   }                                                                   \
-  TORCH_API extern const enumtype::k##name k##name;                   \
+  extern const enumtype::k##name k##name;                   \
   }
 
 #define TORCH_ENUM_DEFINE(name)    \
@@ -41,7 +41,7 @@
 // Consider the following options class:
 //
 // ```
-// struct TORCH_API SomeOptions {
+// struct SomeOptions {
 //   typedef std::variant<enumtype::kNone, enumtype::kMean, enumtype::kSum>
 //   reduction_t; SomeOptions(reduction_t reduction = torch::kMean) :
 //   reduction_(reduction) {}

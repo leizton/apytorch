@@ -67,7 +67,7 @@ enum class TypeKind {
 #undef DEFINE_TYPE
 };
 
-TORCH_API const char* typeKindToString(TypeKind kind);
+const char* typeKindToString(TypeKind kind);
 
 struct Type;
 struct SharedType;
@@ -143,8 +143,8 @@ struct as_shared_type<const T*> {
 };
 } // namespace detail
 
-struct TORCH_API Type {
-  friend TORCH_API bool operator==(const Type& lhs, const Type& rhs);
+struct Type {
+  friend bool operator==(const Type& lhs, const Type& rhs);
   private:
   TypeKind kind_;
 
@@ -655,7 +655,7 @@ struct MaybeOwnedTraits<SingletonOrSharedTypePtr<T>>
     : public MaybeOwnedTraitsGenericImpl<SingletonOrSharedTypePtr<T>> {};
 
 // Base class for Types that are guaranteed to be owned by std::shared_ptr.
-struct TORCH_API SharedType : public Type, public std::enable_shared_from_this<SharedType> {
+struct SharedType : public Type, public std::enable_shared_from_this<SharedType> {
   using Type::Type;
 };
 
@@ -675,7 +675,7 @@ inline TypePtr Type::withContained(std::vector<TypePtr> contained_types) {
 }
 
 
-TORCH_API inline bool operator==(const Type& lhs, const Type& rhs) {
+inline bool operator==(const Type& lhs, const Type& rhs) {
   if (C10_UNLIKELY(!rhs.symmetric())) {
     return rhs.equals(lhs);
   }
@@ -686,7 +686,7 @@ struct NamedType;
 using NamedTypePtr = std::shared_ptr<NamedType>;
 using ConstNamedTypePtr = std::shared_ptr<const NamedType>;
 
-struct TORCH_API NamedType : public SharedType {
+struct NamedType : public SharedType {
   NamedType(TypeKind tk, c10::optional<QualifiedName> name)
       : SharedType(tk), name_(std::move(name)) {
     TORCH_INTERNAL_ASSERT(

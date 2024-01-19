@@ -30,7 +30,7 @@ typedef MPSEvent* mpsEvent_t;
 
 // TODO: Move the MPSGuardImpl to inherit from NoOpDeviceGuardImpl
 // https://github.com/pytorch/pytorch/issues/77170
-struct TORCH_API MPSGuardImpl final : public c10::impl::DeviceGuardImplInterface {
+struct MPSGuardImpl final : public c10::impl::DeviceGuardImplInterface {
   static constexpr c10::DeviceType static_type = c10::DeviceType::MPS;
 
   // constructor

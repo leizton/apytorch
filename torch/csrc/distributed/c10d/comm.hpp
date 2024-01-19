@@ -9,14 +9,14 @@
 namespace c10d {
 
 // Broadcast many tensors to all processes in the process group.
-TORCH_API void broadcast_coalesced(
+void broadcast_coalesced(
     const c10::intrusive_ptr<c10d::ProcessGroup>& process_group,
     at::TensorList tensors,
     size_t buffer_size,
     int rank = 0);
 
 // This class passes bucket contents tensor to DDP communication hook.
-class TORCH_API GradBucket {
+class GradBucket {
  public:
   explicit GradBucket(
       size_t index,
@@ -98,7 +98,7 @@ class TORCH_API GradBucket {
 // Requires implementing 1) `runHook` method that communicates gradients
 // asynchronously, and 2) `parseHookResult` method that converts the hook
 // result into a tensor.
-class TORCH_API CommHookInterface {
+class CommHookInterface {
  public:
   virtual ~CommHookInterface() = default;
 
@@ -117,7 +117,7 @@ class TORCH_API CommHookInterface {
 namespace detail {
 // This helper function is called both by CppCommHookInterface below and inside
 // reducer.
-TORCH_API at::Tensor parseCppCommHookResult(const c10::IValue& result);
+at::Tensor parseCppCommHookResult(const c10::IValue& result);
 } // namespace detail
 
 // This CppCommHook interface only requires implementing runHook method that

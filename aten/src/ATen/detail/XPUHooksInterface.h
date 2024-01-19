@@ -18,7 +18,7 @@ constexpr const char* XPU_HELP =
     "loaded for some reason. The Intel Extension for Pytorch MUST "
     "be loaded, EVEN IF you don't directly use any symbols from that!";
 
-struct TORCH_API XPUHooksInterface {
+struct XPUHooksInterface {
   virtual ~XPUHooksInterface() {}
 
   virtual void initXPU() const {
@@ -60,13 +60,13 @@ struct TORCH_API XPUHooksInterface {
   }
 };
 
-struct TORCH_API XPUHooksArgs {};
+struct XPUHooksArgs {};
 
 C10_DECLARE_REGISTRY(XPUHooksRegistry, XPUHooksInterface, XPUHooksArgs);
 #define REGISTER_XPU_HOOKS(clsname) \
   C10_REGISTER_CLASS(XPUHooksRegistry, clsname, clsname)
 
 namespace detail {
-TORCH_API const XPUHooksInterface& getXPUHooks();
+const XPUHooksInterface& getXPUHooks();
 } // namespace detail
 } // namespace at

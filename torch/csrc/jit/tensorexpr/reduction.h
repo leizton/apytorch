@@ -22,7 +22,7 @@ using ReduceInteraction = std::function<ExprHandle(ExprHandle, ExprHandle)>;
 // interacting each value with the accumulation, and a method for obtaining the
 // current value to be reduced. It is materialized into a ReduceOp when loop
 // variables are known.
-class TORCH_API Reducer {
+class Reducer {
  public:
   Reducer(ExprHandle init, ReduceInteraction& interaction)
       : init_(init.node()), interaction_(interaction) {}
@@ -138,7 +138,7 @@ class TORCH_API Reducer {
 // to be reduced and interaction.
 //
 // This is intended to be expanded in the loopnest and not make it to codegen.
-class TORCH_API ReduceOp : public ExprNode<ReduceOp> {
+class ReduceOp : public ExprNode<ReduceOp> {
  public:
   // NOLINTNEXTLINE(cppcoreguidelines-pro-type-member-init)
   ReduceOp(

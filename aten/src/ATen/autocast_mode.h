@@ -10,39 +10,39 @@
 
 namespace at::autocast {
 
-TORCH_API bool is_enabled();
-TORCH_API void set_enabled(bool enabled);
-TORCH_API void clear_cache();
-TORCH_API int increment_nesting();
-TORCH_API int decrement_nesting();
-TORCH_API bool is_cpu_enabled();
-TORCH_API void set_cpu_enabled(bool enabled);
-TORCH_API at::ScalarType get_autocast_gpu_dtype();
-TORCH_API at::ScalarType get_autocast_cpu_dtype();
-TORCH_API void set_autocast_gpu_dtype(at::ScalarType dtype);
-TORCH_API void set_autocast_cpu_dtype(at::ScalarType dtype);
-TORCH_API bool is_xpu_enabled();
-TORCH_API void set_xpu_enabled(bool enabled);
-TORCH_API at::ScalarType get_autocast_xpu_dtype();
-TORCH_API void set_autocast_xpu_dtype(at::ScalarType dtype);
-TORCH_API bool is_ipu_enabled();
-TORCH_API void set_ipu_enabled(bool enabled);
-TORCH_API at::ScalarType get_autocast_ipu_dtype();
-TORCH_API void set_autocast_ipu_dtype(at::ScalarType dtype);
-TORCH_API bool is_hpu_enabled();
-TORCH_API void set_hpu_enabled(bool enabled);
-TORCH_API at::ScalarType get_autocast_hpu_dtype();
-TORCH_API void set_autocast_hpu_dtype(at::ScalarType dtype);
-TORCH_API bool is_xla_enabled();
-TORCH_API void set_xla_enabled(bool enabled);
-TORCH_API at::ScalarType get_autocast_xla_dtype();
-TORCH_API void set_autocast_xla_dtype(at::ScalarType dtype);
-TORCH_API bool is_privateuseone_enabled();
-TORCH_API void set_privateuseone_enabled(bool enabled);
-TORCH_API at::ScalarType get_autocast_privateuseone_dtype();
-TORCH_API void set_autocast_privateuseone_dtype(at::ScalarType dtype);
-TORCH_API bool is_autocast_cache_enabled();
-TORCH_API void set_autocast_cache_enabled(bool enabled);
+bool is_enabled();
+void set_enabled(bool enabled);
+void clear_cache();
+int increment_nesting();
+int decrement_nesting();
+bool is_cpu_enabled();
+void set_cpu_enabled(bool enabled);
+at::ScalarType get_autocast_gpu_dtype();
+at::ScalarType get_autocast_cpu_dtype();
+void set_autocast_gpu_dtype(at::ScalarType dtype);
+void set_autocast_cpu_dtype(at::ScalarType dtype);
+bool is_xpu_enabled();
+void set_xpu_enabled(bool enabled);
+at::ScalarType get_autocast_xpu_dtype();
+void set_autocast_xpu_dtype(at::ScalarType dtype);
+bool is_ipu_enabled();
+void set_ipu_enabled(bool enabled);
+at::ScalarType get_autocast_ipu_dtype();
+void set_autocast_ipu_dtype(at::ScalarType dtype);
+bool is_hpu_enabled();
+void set_hpu_enabled(bool enabled);
+at::ScalarType get_autocast_hpu_dtype();
+void set_autocast_hpu_dtype(at::ScalarType dtype);
+bool is_xla_enabled();
+void set_xla_enabled(bool enabled);
+at::ScalarType get_autocast_xla_dtype();
+void set_autocast_xla_dtype(at::ScalarType dtype);
+bool is_privateuseone_enabled();
+void set_privateuseone_enabled(bool enabled);
+at::ScalarType get_autocast_privateuseone_dtype();
+void set_autocast_privateuseone_dtype(at::ScalarType dtype);
+bool is_autocast_cache_enabled();
+void set_autocast_cache_enabled(bool enabled);
 
 namespace {
 inline bool is_autocast_eligible(
@@ -213,7 +213,7 @@ inline bool is_eligible(
 }
 
 // Overload to catch Tensor args
-TORCH_API Tensor cached_cast(
+Tensor cached_cast(
     at::ScalarType to_type,
     const Tensor& arg,
     c10::DeviceType device_type = c10::DeviceType::CUDA);

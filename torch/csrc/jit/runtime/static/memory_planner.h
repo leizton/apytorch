@@ -90,7 +90,7 @@ class ManagedStorages {
   size_t capacity_;
 };
 
-TORCH_API std::vector<StorageGroup> assignStorageToManagedTensors(
+std::vector<StorageGroup> assignStorageToManagedTensors(
     graph_node_list nodes,
     const ManagedTensorRanges& ranges,
     const c10::FastMap<const Value*, at::Tensor*>& tensor_value_to_tensor);

@@ -217,7 +217,7 @@ class Registerer {
 
 #define TORCH_DECLARE_TYPED_REGISTRY(                                     \
     RegistryName, SrcType, ObjectType, PtrType, ...)                      \
-  TORCH_API ::c10::Registry<SrcType, PtrType<ObjectType>, ##__VA_ARGS__>* \
+  ::c10::Registry<SrcType, PtrType<ObjectType>, ##__VA_ARGS__>* \
   RegistryName();                                                         \
   typedef ::c10::Registerer<SrcType, PtrType<ObjectType>, ##__VA_ARGS__>  \
       Registerer##RegistryName

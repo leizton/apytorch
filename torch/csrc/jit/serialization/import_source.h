@@ -78,7 +78,7 @@ struct SourceImporterImpl : public Resolver,
 // Resolves the dependencies between source files and parses
 // the source files as necessary.
 
-struct TORCH_API SourceImporter {
+struct SourceImporter {
   SourceImporter(
       // The compilation unit that will own the imported source
       std::shared_ptr<CompilationUnit> cu,

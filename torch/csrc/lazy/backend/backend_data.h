@@ -7,7 +7,7 @@
 namespace torch {
 namespace lazy {
 
-class TORCH_API BackendData {
+class BackendData {
  public:
   struct Info {
     /**

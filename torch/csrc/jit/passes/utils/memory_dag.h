@@ -32,7 +32,7 @@ using AliasTypeSet = std::vector<TypePtr>;
  * cache internally to MemoryDAG without worrying about how the DAG structure
  * is mutated.
  */
-class TORCH_API MemoryDAGBuilder {
+class MemoryDAGBuilder {
  public:
   MemoryDAGBuilder() = default;
   MemoryDAGBuilder(const MemoryDAGBuilder&) = delete;
@@ -70,7 +70,7 @@ class TORCH_API MemoryDAGBuilder {
 //
 // So, by traversing the "points-to" graph to the leaves, you can determine
 // which memory locations an element may point to.
-class TORCH_API MemoryDAG {
+class MemoryDAG {
  public:
   explicit MemoryDAG(std::unique_ptr<MemoryDAGBuilder> builder)
       : indexToElementMap_(std::move(builder->indexToElementMap_)) {}

@@ -15,7 +15,7 @@ using SchemaSpecialCasePair =
  * behavior (mutation, aliasing, special cases, etc...)
  */
 
-struct TORCH_API SchemaInfo {
+struct SchemaInfo {
  public:
   explicit SchemaInfo(c10::FunctionSchema schema)
       : schema_(std::move(schema)),

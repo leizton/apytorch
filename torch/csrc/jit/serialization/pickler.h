@@ -111,7 +111,7 @@ struct WriteableTensorData {
   }
 
  private:
-  friend TORCH_API WriteableTensorData
+  friend WriteableTensorData
   getWriteableTensorData(const at::Tensor& tensor, bool to_cpu);
   at::Tensor tensor_;
   uint64_t size_;
@@ -120,7 +120,7 @@ struct WriteableTensorData {
 void setTypeTags(bool state);
 bool getTypeTags();
 
-class TORCH_API Pickler {
+class Pickler {
   AT_DISALLOW_COPY_AND_ASSIGN(Pickler);
 
  public:
@@ -286,7 +286,7 @@ class TORCH_API Pickler {
 
 // returns a (tensor, record_size) for a tensor, converting it to a CPU tensor
 // if it was CUDA and to_cpu is True.
-TORCH_API WriteableTensorData
+WriteableTensorData
 getWriteableTensorData(const at::Tensor& tensor, bool to_cpu = true);
 
 // return the value of the tensor's storage pointer
@@ -325,7 +325,7 @@ GetBackendMetaSerialization() {
 }
 
 // Register function pointer of Tensor BackendMetadata for serialization.
-TORCH_API inline void TensorBackendMetaRegistry(
+inline void TensorBackendMetaRegistry(
     c10::DeviceType t,
     const BackendMetaPtr& get_fptr,
     const BackendMetaPtr& set_fptr) {

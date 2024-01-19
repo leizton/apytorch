@@ -15,7 +15,7 @@ namespace jit {
 //   %c = foo(%a)
 //
 // on the module forward, if it's safe to do so.
-TORCH_API Module DBRQuantRemoveRedundantAliases(Module& module);
+Module DBRQuantRemoveRedundantAliases(Module& module);
 
 } // namespace jit
 } // namespace torch

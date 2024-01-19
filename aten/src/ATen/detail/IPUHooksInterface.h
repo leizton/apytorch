@@ -7,7 +7,7 @@
 
 namespace at {
 
-struct TORCH_API IPUHooksInterface {
+struct IPUHooksInterface {
   virtual ~IPUHooksInterface() = default;
 
   virtual const Generator& getDefaultIPUGenerator(
@@ -23,13 +23,13 @@ struct TORCH_API IPUHooksInterface {
   }
 };
 
-struct TORCH_API IPUHooksArgs {};
+struct IPUHooksArgs {};
 
 TORCH_DECLARE_REGISTRY(IPUHooksRegistry, IPUHooksInterface, IPUHooksArgs);
 #define REGISTER_IPU_HOOKS(clsname) \
   C10_REGISTER_CLASS(IPUHooksRegistry, clsname, clsname)
 
 namespace detail {
-TORCH_API const IPUHooksInterface& getIPUHooks();
+const IPUHooksInterface& getIPUHooks();
 } // namespace detail
 } // namespace at

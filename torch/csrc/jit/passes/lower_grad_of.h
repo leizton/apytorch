@@ -11,7 +11,7 @@ namespace jit {
 //  outputs = <original_computation>
 // else:
 //  outputs = undefineds
-TORCH_API void LowerGradOf(Graph& g);
+void LowerGradOf(Graph& g);
 
 } // namespace jit
 } // namespace torch

@@ -29,9 +29,9 @@ namespace at {
 
 class Tensor;
 
-enum class TORCH_API Float32MatmulPrecision { HIGHEST, HIGH, MEDIUM };
+enum class Float32MatmulPrecision { HIGHEST, HIGH, MEDIUM };
 
-class TORCH_API Context {
+class Context {
  public:
   Context();
 
@@ -350,13 +350,13 @@ class TORCH_API Context {
   Allocator* prev_allocator_ptr_{nullptr};
 };
 
-TORCH_API Context& globalContext();
+Context& globalContext();
 
 static inline void init() {
   globalContext();
 }
 
-TORCH_API Allocator* getCPUAllocator();
+Allocator* getCPUAllocator();
 
 static inline DeprecatedTypeProperties& getDeprecatedTypeProperties(
     Backend p,
@@ -495,7 +495,7 @@ static inline void manual_seed(uint64_t seed) {
 //
 // Usage:
 //     NoTF32Guard disable_tf32;
-struct TORCH_API NoTF32Guard {
+struct NoTF32Guard {
   NoTF32Guard();
   ~NoTF32Guard();
   static bool should_disable_tf32();
@@ -505,7 +505,7 @@ struct TORCH_API NoTF32Guard {
 };
 
 #ifdef USE_ROCM
-struct TORCH_API ROCmBackwardPassGuard {
+struct ROCmBackwardPassGuard {
   ROCmBackwardPassGuard();
   ~ROCmBackwardPassGuard();
   static bool is_backward_pass();

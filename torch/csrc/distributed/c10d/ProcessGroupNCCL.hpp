@@ -142,7 +142,7 @@ static std::vector<std::string> TORCH_NCCL_USE_TENSOR_REGISTER_ALLOCATOR_HOOK =
 //   work->wait()
 //
 //   // Now continue on other work in the current stream.
-class TORCH_API ProcessGroupNCCL : public Backend {
+class ProcessGroupNCCL : public Backend {
  public:
   class WorkNCCL : public Work, public std::enable_shared_from_this<WorkNCCL> {
    public:
@@ -911,7 +911,7 @@ class TORCH_API ProcessGroupNCCL : public Backend {
   size_t uid_;
 };
 
-TORCH_API std::string dump_nccl_trace();
+std::string dump_nccl_trace();
 
 } // namespace c10d
 

@@ -37,7 +37,7 @@ enum class C10_API_ENUM Aggregation {
   MIN = 6,
 };
 
-struct TORCH_API AggregationHash {
+struct AggregationHash {
   template <typename T>
   std::size_t operator()(T t) const {
     return static_cast<std::size_t>(t);
@@ -46,7 +46,7 @@ struct TORCH_API AggregationHash {
 
 // aggregationName returns the human readable name corresponding to the
 // aggregation.
-TORCH_API const char* aggregationName(Aggregation agg);
+const char* aggregationName(Aggregation agg);
 
 template <typename T>
 class Stat;
@@ -63,10 +63,10 @@ inline std::bitset<NUM_AGGREGATIONS> merge(T& list) {
 } // namespace
 
 namespace detail {
-void TORCH_API registerStat(Stat<double>* stat);
-void TORCH_API registerStat(Stat<int64_t>* stat);
-void TORCH_API unregisterStat(Stat<double>* stat);
-void TORCH_API unregisterStat(Stat<int64_t>* stat);
+void registerStat(Stat<double>* stat);
+void registerStat(Stat<int64_t>* stat);
+void unregisterStat(Stat<double>* stat);
+void unregisterStat(Stat<int64_t>* stat);
 } // namespace detail
 
 // Stat is used to compute summary statistics in a performant way over fixed

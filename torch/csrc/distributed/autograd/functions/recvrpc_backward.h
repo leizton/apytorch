@@ -17,7 +17,7 @@ class DistAutogradContext;
 // autograd graph. This is more or less a placeholder function that is used to
 // pass gradients to the remote host during the backward pass. The inputs to the
 // RPC function are the inputs to this autograd function.
-class TORCH_API RecvRpcBackward : public torch::autograd::Node {
+class RecvRpcBackward : public torch::autograd::Node {
  public:
   explicit RecvRpcBackward(
       const AutogradMetadata& autogradMetadata,

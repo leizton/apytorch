@@ -313,8 +313,8 @@ OpSchema::Arg(const char* name, const char* description, bool required) {
 }
 
 #define DEFINE_STANDARG_ARG(name, str)                                \
-  TORCH_API const char* OpSchema::Arg_##name = #str;                 \
-  TORCH_API OpSchema& OpSchema::Arg##name(const char* description) { \
+  const char* OpSchema::Arg_##name = #str;                 \
+  OpSchema& OpSchema::Arg##name(const char* description) { \
     return Arg(#str, description, true);                              \
   }
 

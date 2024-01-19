@@ -13,7 +13,7 @@ namespace nn {
 /// ```
 /// PixelShuffle model(PixelShuffleOptions(5));
 /// ```
-struct TORCH_API PixelShuffleOptions {
+struct PixelShuffleOptions {
   PixelShuffleOptions(int64_t upscale_factor)
       : upscale_factor_(upscale_factor) {}
 
@@ -27,7 +27,7 @@ struct TORCH_API PixelShuffleOptions {
 /// ```
 /// PixelUnshuffle model(PixelUnshuffleOptions(5));
 /// ```
-struct TORCH_API PixelUnshuffleOptions {
+struct PixelUnshuffleOptions {
   /* implicit */ PixelUnshuffleOptions(int64_t downscale_factor)
       : downscale_factor_(downscale_factor) {}
 

@@ -9,7 +9,7 @@ namespace torch {
 namespace distributed {
 namespace rpc {
 
-struct TORCH_API FaultyTensorPipeRpcBackendOptions
+struct FaultyTensorPipeRpcBackendOptions
     : public TensorPipeRpcBackendOptions {
   FaultyTensorPipeRpcBackendOptions(
       int num_worker_threads,
@@ -35,7 +35,7 @@ struct TORCH_API FaultyTensorPipeRpcBackendOptions
   int numFailSends;
 };
 
-class TORCH_API FaultyTensorPipeAgent : public TensorPipeAgent {
+class FaultyTensorPipeAgent : public TensorPipeAgent {
  public:
   FaultyTensorPipeAgent(
       const c10::intrusive_ptr<::c10d::Store>& store,

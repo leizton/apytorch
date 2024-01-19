@@ -34,7 +34,7 @@ class Workspace;
 
 // Net is a thin struct that owns all the operators together with the operator
 // contexts.
-class TORCH_API NetBase : public Observable<NetBase> {
+class NetBase : public Observable<NetBase> {
  public:
   NetBase(const std::shared_ptr<const NetDef>& net_def, Workspace* ws);
   virtual ~NetBase() noexcept {}
@@ -135,7 +135,7 @@ class TORCH_API NetBase : public Observable<NetBase> {
   C10_DISABLE_COPY_AND_ASSIGN(NetBase);
 };
 
-class TORCH_API ExecutorHelper {
+class ExecutorHelper {
  public:
   ExecutorHelper() {}
   virtual TaskThreadPoolBase* GetPool(const DeviceOption& option) const;
@@ -161,14 +161,14 @@ C10_DECLARE_REGISTRY(
  * created net object to the workspace's net map, while this function returns
  * a standalone net object.
  */
-TORCH_API unique_ptr<NetBase> CreateNet(const NetDef& net_def, Workspace* ws);
-TORCH_API unique_ptr<NetBase> CreateNet(
+unique_ptr<NetBase> CreateNet(const NetDef& net_def, Workspace* ws);
+unique_ptr<NetBase> CreateNet(
     const std::shared_ptr<const NetDef>& net_def,
     Workspace* ws);
 
-TORCH_API void AddGlobalNetObserverCreator(NetObserverCreator creator);
+void AddGlobalNetObserverCreator(NetObserverCreator creator);
 
-TORCH_API void ClearGlobalNetObservers();
+void ClearGlobalNetObservers();
 
 } // namespace caffe2
 

@@ -9,7 +9,7 @@ namespace autograd {
 
 // Empty response for CleanupAutogradContextReq. Send to acknowledge receipt of
 // a CleanupAutogradContextReq.
-class TORCH_API CleanupAutogradContextResp : public rpc::RpcCommandBase {
+class CleanupAutogradContextResp : public rpc::RpcCommandBase {
  public:
   CleanupAutogradContextResp() = default;
   // Serialization and deserialization methods.

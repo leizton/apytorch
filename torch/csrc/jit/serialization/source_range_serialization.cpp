@@ -251,7 +251,7 @@ c10::optional<SourceRange> ConcreteSourceRangeUnpickler::
   return c10::nullopt;
 }
 
-TORCH_API void setShouldUseFormatWithStringTable(
+void setShouldUseFormatWithStringTable(
     bool should_use_format_with_string_table) {
   should_use_format_with_string_table_ = should_use_format_with_string_table;
 }

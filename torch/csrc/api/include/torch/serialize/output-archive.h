@@ -21,7 +21,7 @@ struct Module;
 
 namespace torch {
 namespace serialize {
-class TORCH_API OutputArchive final {
+class OutputArchive final {
  public:
   explicit OutputArchive(std::shared_ptr<jit::CompilationUnit> cu);
   explicit OutputArchive()

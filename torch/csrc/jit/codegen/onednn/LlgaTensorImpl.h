@@ -248,7 +248,7 @@ struct LlgaTensorDesc {
 // but this wrapper still helps us bypass guard checks because the strides of
 // tensors between partitions would be different from the ones the guard is
 // otherwise expecting.
-struct TORCH_API LlgaTensorImpl : public c10::TensorImpl {
+struct LlgaTensorImpl : public c10::TensorImpl {
   LlgaTensorImpl(
       at::Storage&& storage,
       const caffe2::TypeMeta& data_type,

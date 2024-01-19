@@ -25,7 +25,7 @@ namespace caffe2 {
 
 class NetBase;
 
-struct TORCH_API StopOnSignal {
+struct StopOnSignal {
   StopOnSignal()
       : handler_(std::make_shared<SignalHandler>(
             SignalHandler::Action::STOP,
@@ -45,7 +45,7 @@ struct TORCH_API StopOnSignal {
  * runtime: (1) all blobs, and (2) all instantiated networks. It is the owner of
  * all these objects and deals with the scaffolding logistics.
  */
-class TORCH_API Workspace {
+class Workspace {
  public:
   typedef std::function<bool(int)> ShouldContinue;
   /**

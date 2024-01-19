@@ -6,10 +6,10 @@
 namespace torch {
 namespace jit {
 
-TORCH_API void Autocast(const std::shared_ptr<Graph>& graph);
+void Autocast(const std::shared_ptr<Graph>& graph);
 
-TORCH_API bool setAutocastMode(bool value);
-TORCH_API bool autocastEnabled();
+bool setAutocastMode(bool value);
+bool autocastEnabled();
 
 } // namespace jit
 } // namespace torch

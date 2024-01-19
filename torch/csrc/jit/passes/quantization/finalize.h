@@ -24,7 +24,7 @@ namespace jit {
  *
  * \param graph the graph we want to apply fusion
  */
-TORCH_API void QuantFusion(
+void QuantFusion(
     std::shared_ptr<Graph>& graph,
     QuantType quant_type = QuantType::STATIC);
 
@@ -37,7 +37,7 @@ TORCH_API void QuantFusion(
  *  right now, we only need to do prepack/unpack for quantized::linear
  * and quantized::conv2d.
  */
-TORCH_API void InsertPrepackUnpack(std::shared_ptr<Graph>& graph);
+void InsertPrepackUnpack(std::shared_ptr<Graph>& graph);
 
 /** \brief Insert pack and unpack function in all graphs
  *   of module
@@ -45,17 +45,17 @@ TORCH_API void InsertPrepackUnpack(std::shared_ptr<Graph>& graph);
  *   Go through graphs of all the methods of all child modules
  *   and call InsertPrepackUnpack on the graph.
  */
-TORCH_API void InsertPrepackUnpack(Module& module);
+void InsertPrepackUnpack(Module& module);
 
-TORCH_API script::Module Finalize(
+script::Module Finalize(
     script::Module& module,
     QuantType quant_type = QuantType::STATIC,
     const std::vector<std::string>& preserved_attrs =
         std::vector<std::string>());
 
-TORCH_API void FoldQuantizedPrepackingOps(Module& module);
+void FoldQuantizedPrepackingOps(Module& module);
 
-TORCH_API Module FinalizeOnDevicePTQ(
+Module FinalizeOnDevicePTQ(
     Module& module,
     QuantType quant_type,
     const std::string& method_name);

@@ -58,7 +58,7 @@ const std::array<at::Tag, 1> kJitOnlyOperatorTags = {
 // An Operator is a thin wrapper around either a pure JIT operator (e.g. prim
 // ops) or a c10 operator, allowing some common operations and abstracting away
 // the concrete operator nature.
-struct TORCH_API Operator {
+struct Operator {
  private:
   // NOLINTNEXTLINE(cppcoreguidelines-pro-type-member-init)
   struct C10Operator final {
@@ -261,27 +261,27 @@ struct TORCH_API Operator {
   std::variant<C10Operator, JitOnlyOperator> op_;
 };
 
-TORCH_API std::string canonicalSchemaString(const FunctionSchema& schema);
+std::string canonicalSchemaString(const FunctionSchema& schema);
 
-TORCH_API const std::vector<std::shared_ptr<Operator>> getAllOperators();
-TORCH_API const std::vector<std::shared_ptr<Operator>>& getAllOperatorsFor(
+const std::vector<std::shared_ptr<Operator>> getAllOperators();
+const std::vector<std::shared_ptr<Operator>>& getAllOperatorsFor(
     Symbol name);
 // Returns operators in the order which OpOverloadPacket resolves them.
-TORCH_API std::vector<std::shared_ptr<Operator>> getAllSortedOperatorsFor(
+std::vector<std::shared_ptr<Operator>> getAllSortedOperatorsFor(
     Symbol name);
 
 // given a operator with an overload name, find the specific operator related to
 // it, may return nullptr if no operator exists.
-TORCH_API std::shared_ptr<Operator> findOperatorFor(
+std::shared_ptr<Operator> findOperatorFor(
     const c10::OperatorName& full_name);
 
-TORCH_API std::vector<Symbol> findSimilarOperators(Symbol input_op);
+std::vector<Symbol> findSimilarOperators(Symbol input_op);
 
-TORCH_API void registerOperator(Operator&& op);
-TORCH_API void deregisterOperator(const FunctionSchema& schema);
+void registerOperator(Operator&& op);
+void deregisterOperator(const FunctionSchema& schema);
 
 // XXX: this function is meant to be used with string literals only!
-TORCH_API std::shared_ptr<Operator> getOperatorForLiteral(
+std::shared_ptr<Operator> getOperatorForLiteral(
     const char* signature);
 
 // Ensure the thing that registers c10 ops is defined.
@@ -289,10 +289,10 @@ TORCH_API std::shared_ptr<Operator> getOperatorForLiteral(
 // scenario if you're querying registered ops during static init.
 //
 // This fn is defined in register_c10_ops.cpp
-TORCH_API void ensure_c10_registerer_defined();
+void ensure_c10_registerer_defined();
 
 // Used to assert that unschematized operators have an analysis method written
-TORCH_API bool aliasAnalysisHasSpecialCaseFor(c10::Symbol sym);
+bool aliasAnalysisHasSpecialCaseFor(c10::Symbol sym);
 
 // A factory function to generate an optional operator. It has two
 // instantiations depending on the template bool arg value. The arg can be a

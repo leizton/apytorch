@@ -4,7 +4,7 @@
 
 namespace torch::inductor {
 
-class TORCH_API AOTIModelContainerRunnerCuda : public AOTIModelContainerRunner {
+class AOTIModelContainerRunnerCuda : public AOTIModelContainerRunner {
  public:
   AOTIModelContainerRunnerCuda(
       const char* model_path,

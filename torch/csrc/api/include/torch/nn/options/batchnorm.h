@@ -8,7 +8,7 @@ namespace torch {
 namespace nn {
 
 /// Options for the `BatchNorm` module.
-struct TORCH_API BatchNormOptions {
+struct BatchNormOptions {
   /* implicit */ BatchNormOptions(int64_t num_features);
 
   /// The number of features of the input tensor.
@@ -73,7 +73,7 @@ namespace functional {
 /// F::batch_norm(input, mean, variance,
 /// F::BatchNormFuncOptions().weight(weight).bias(bias).momentum(0.1).eps(1e-05).training(false));
 /// ```
-struct TORCH_API BatchNormFuncOptions {
+struct BatchNormFuncOptions {
   TORCH_ARG(Tensor, weight) = Tensor();
 
   TORCH_ARG(Tensor, bias) = Tensor();

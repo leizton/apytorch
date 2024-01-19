@@ -14,7 +14,7 @@
 namespace torch {
 namespace lazy {
 
-class TORCH_API Computation {
+class Computation {
  public:
   virtual int parameters_size() const = 0;
 
@@ -36,7 +36,7 @@ class TORCH_API Computation {
 using ComputationPtr = std::shared_ptr<Computation>;
 
 // Keeps track of the code generation state.
-class TORCH_API LoweringContext {
+class LoweringContext {
  public:
   LoweringContext(const std::string& name, BackendDevice device);
   LoweringContext(

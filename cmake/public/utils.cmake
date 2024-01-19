@@ -475,7 +475,7 @@ function(torch_compile_options libname)
 
   if(NOT WIN32 AND NOT USE_ASAN)
     # Enable hidden visibility by default to make it easier to debug issues with
-    # TORCH_API annotations. Hidden visibility with selective default visibility
+    # annotations. Hidden visibility with selective default visibility
     # behaves close enough to Windows' dllimport/dllexport.
     #
     # Unfortunately, hidden visibility messes up some ubsan warnings because

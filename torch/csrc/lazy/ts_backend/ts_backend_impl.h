@@ -5,7 +5,7 @@
 namespace torch {
 namespace lazy {
 
-class TORCH_API TSData : public torch::lazy::BackendData {
+class TSData : public torch::lazy::BackendData {
  public:
   TSData(const at::Scalar& scalar, const torch::lazy::BackendDevice& device)
       : torch::lazy::BackendData(device, torch::lazy::Shape(scalar.type(), {})),
@@ -44,9 +44,9 @@ class TORCH_API TSData : public torch::lazy::BackendData {
   at::Tensor data_;
 };
 
-TORCH_API torch::lazy::BackendImplInterface* GetTSBackendImpl();
+torch::lazy::BackendImplInterface* GetTSBackendImpl();
 
-TORCH_API void InitTorchScriptBackend();
+void InitTorchScriptBackend();
 
 } // namespace lazy
 } // namespace torch

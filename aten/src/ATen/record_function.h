@@ -13,13 +13,13 @@
 #include <variant>
 
 namespace c10 {
-class TORCH_API OperatorHandle;
+class OperatorHandle;
 }
 
 namespace at {
 
 // Function name to record NCCL metadata
-extern TORCH_API const std::string kParamCommsCallName;
+extern const std::string kParamCommsCallName;
 
 // Kind of record function scope;
 enum class C10_API_ENUM RecordScope : uint8_t {
@@ -58,7 +58,7 @@ struct hash<at::RecordScope> {
 
 namespace at {
 
-struct TORCH_API StringView {
+struct StringView {
   StringView() : StringView(nullptr) {}
   explicit StringView(const char* str_ptr)
       : owned_str_ptr_(nullptr), str_ptr_(str_ptr) {}
@@ -126,7 +126,7 @@ struct RecordFunction;
  * returns whether this callback should run; overwrites the effect of setting
  * sampling_probability
  */
-class TORCH_API RecordFunctionCallback {
+class RecordFunctionCallback {
  public:
   using StartCallback =
       std::unique_ptr<ObserverContext> (*)(const RecordFunction&);
@@ -280,7 +280,7 @@ struct StepCallbacks {
   bool needs_ids_{false};
 };
 
-struct TORCH_API RecordFunction {
+struct RecordFunction {
   // Default constructor is used with before function called afterwards:
   //  scope - record scope that this function tracks
   //  pre_sampled - whether this RecordFunction was already pre-sampled with
@@ -497,9 +497,9 @@ struct TORCH_API RecordFunction {
   bool is_nccl_meta_{false};
 };
 
-TORCH_API StepCallbacks getStepCallbacks(RecordScope scope);
+StepCallbacks getStepCallbacks(RecordScope scope);
 
-TORCH_API c10::optional<StepCallbacks> getStepCallbacksUnlessEmpty(
+c10::optional<StepCallbacks> getStepCallbacksUnlessEmpty(
     RecordScope scope);
 
 namespace detail {
@@ -637,25 +637,25 @@ void record_function_with_scope_and_debug_handle(
  * addThreadLocalCallback adds a thread local callback to run with
  * RecordFunction, returns handle to use with removeThreadLocalCallback
  */
-TORCH_API CallbackHandle addThreadLocalCallback(RecordFunctionCallback cb);
+CallbackHandle addThreadLocalCallback(RecordFunctionCallback cb);
 
 /**
  * hasThreadLocalCallbacks returns whether there're callbacks registered
  * with addThreadLocalCallback
  */
-TORCH_API bool hasThreadLocalCallbacks();
+bool hasThreadLocalCallbacks();
 
 /**
  * clearThreadLocalCallbacks removes all thread local callbacks
  */
-TORCH_API void clearThreadLocalCallbacks();
+void clearThreadLocalCallbacks();
 
 /**
  * addGlobalCallback adds a global callback to run with RecordFunction:
  *
  * only during the program initialization
  */
-TORCH_API CallbackHandle addGlobalCallback(RecordFunctionCallback cb);
+CallbackHandle addGlobalCallback(RecordFunctionCallback cb);
 
 /**
  * removeCallback removes a callback given the handle returned by
@@ -663,47 +663,47 @@ TORCH_API CallbackHandle addGlobalCallback(RecordFunctionCallback cb);
  *
  * no other code can run simultaneously
  */
-TORCH_API void removeCallback(CallbackHandle handle);
+void removeCallback(CallbackHandle handle);
 
 /**
  * Prevent the given callback from executing. If handle is invalid,
  * does nothing.
  */
-TORCH_API void disableCallback(CallbackHandle handle);
+void disableCallback(CallbackHandle handle);
 
 /**
  * Allow the given callback, previously disabled with disableCallback, to
  * execute again. If handle is invalid, does nothing.
  */
-TORCH_API void reenableCallback(CallbackHandle handle);
+void reenableCallback(CallbackHandle handle);
 
 /**
  * hasGlobalCallbacks returns whether there're global callbacks
  * registered with pushGlobalCallback
  */
-TORCH_API bool hasGlobalCallbacks();
+bool hasGlobalCallbacks();
 
 /**
  * clearGlobalCallbacks removes all global callbacks
  */
-TORCH_API void clearGlobalCallbacks();
+void clearGlobalCallbacks();
 
 // for both thread local and global callbacks
-TORCH_API bool hasCallbacks();
-TORCH_API void clearCallbacks();
+bool hasCallbacks();
+void clearCallbacks();
 
 /**
  * enableRecordFunction enables RecordFunction thread locally
  */
-TORCH_API void enableRecordFunction(bool enable = true);
+void enableRecordFunction(bool enable = true);
 
 /**
  * isRecordFunctionEnabled returns whether RecordFunction
  * is enabled thread locally
  */
-TORCH_API bool isRecordFunctionEnabled();
+bool isRecordFunctionEnabled();
 
-class TORCH_API RecordFunctionGuard {
+class RecordFunctionGuard {
  public:
   explicit RecordFunctionGuard(bool is_enabled = true)
       : prev_value_(isRecordFunctionEnabled()) {
@@ -718,13 +718,13 @@ class TORCH_API RecordFunctionGuard {
   bool prev_value_ = false;
 };
 
-class TORCH_API DisableRecordFunctionGuard : public RecordFunctionGuard {
+class DisableRecordFunctionGuard : public RecordFunctionGuard {
  public:
   DisableRecordFunctionGuard() : RecordFunctionGuard(false) {}
   ~DisableRecordFunctionGuard() override = default;
 };
 
-struct TORCH_API RecordFunctionTLS {
+struct RecordFunctionTLS {
   // Thread local vector of callbacks, holds pairs (callbacks, unique_id);
   // must be sorted in increasing handles order
   RecordFunctionCallbacks sorted_tls_callbacks_;
@@ -732,10 +732,10 @@ struct TORCH_API RecordFunctionTLS {
   bool tls_record_function_enabled_ = true;
 };
 
-TORCH_API const RecordFunctionTLS& get_record_function_tls_();
+const RecordFunctionTLS& get_record_function_tls_();
 
-TORCH_API void set_record_function_tls_(const RecordFunctionTLS& tls);
+void set_record_function_tls_(const RecordFunctionTLS& tls);
 
-TORCH_API void set_record_function_seed_for_testing(uint32_t seed);
+void set_record_function_seed_for_testing(uint32_t seed);
 
 } // namespace at

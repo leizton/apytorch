@@ -20,38 +20,38 @@ constexpr const char* kArchiveNameVersion = "version";
 
 // The family of methods below load a serialized Mobile Module
 // into a mobile::Module object.
-TORCH_API mobile::Module _load_for_mobile(
+mobile::Module _load_for_mobile(
     std::istream& in,
     c10::optional<at::Device> device,
     ExtraFilesMap& extra_file,
     uint64_t module_load_options = kDefaultMobileLoadOptions);
 
-TORCH_API mobile::Module _load_for_mobile(
+mobile::Module _load_for_mobile(
     const std::string& filename,
     c10::optional<at::Device> device,
     ExtraFilesMap& extra_files);
 
-TORCH_API mobile::Module _load_for_mobile(
+mobile::Module _load_for_mobile(
     std::unique_ptr<ReadAdapterInterface> rai,
     c10::optional<c10::Device> device,
     ExtraFilesMap& extra_files,
     uint64_t module_load_options = kDefaultMobileLoadOptions);
 
-TORCH_API mobile::Module _load_for_mobile(
+mobile::Module _load_for_mobile(
     const std::string& filename,
     c10::optional<at::Device> device,
     ExtraFilesMap& extra_files,
     uint64_t module_load_options);
 
-TORCH_API mobile::Module _load_for_mobile(
+mobile::Module _load_for_mobile(
     std::istream& in,
     c10::optional<at::Device> device = c10::nullopt);
 
-TORCH_API mobile::Module _load_for_mobile(
+mobile::Module _load_for_mobile(
     const std::string& filename,
     c10::optional<at::Device> device = c10::nullopt);
 
-TORCH_API mobile::Module _load_for_mobile(
+mobile::Module _load_for_mobile(
     std::unique_ptr<ReadAdapterInterface> rai,
     c10::optional<c10::Device> device = c10::nullopt);
 
@@ -103,7 +103,7 @@ namespace mobile {
  * may be called transitively by the root operators).
  *
  */
-TORCH_API std::set<std::string> _export_operator_list(
+std::set<std::string> _export_operator_list(
     torch::jit::mobile::Module& module);
 
 } // namespace mobile

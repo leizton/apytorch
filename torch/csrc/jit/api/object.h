@@ -21,7 +21,7 @@ class ObjectAttributeError : public std::runtime_error {
   ObjectAttributeError(const std::string& what) : std::runtime_error(what) {}
 };
 
-struct TORCH_API Object {
+struct Object {
   Object() = default;
   Object(const Object&) = default;
   Object& operator=(const Object&) = default;

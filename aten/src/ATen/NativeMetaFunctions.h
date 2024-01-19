@@ -13,105 +13,105 @@ namespace at {
 
 namespace meta {
 
-struct TORCH_API structured_sgn : public TensorIteratorBase {
+struct structured_sgn : public TensorIteratorBase {
     
     
     void meta(const at::Tensor & self);
 };
-struct TORCH_API structured_acos : public TensorIteratorBase {
+struct structured_acos : public TensorIteratorBase {
     
     
     void meta(const at::Tensor & self);
 };
-struct TORCH_API structured_add_Tensor : public TensorIteratorBase {
+struct structured_add_Tensor : public TensorIteratorBase {
     
     
     void meta(const at::Tensor & self, const at::Tensor & other, const at::Scalar & alpha);
 };
-struct TORCH_API structured_addmv : public at::impl::MetaBase {
+struct structured_addmv : public at::impl::MetaBase {
     
     
     void meta(const at::Tensor & self, const at::Tensor & mat, const at::Tensor & vec, const at::Scalar & beta, const at::Scalar & alpha);
 };
-struct TORCH_API structured_all_dim : public at::impl::MetaBase {
+struct structured_all_dim : public at::impl::MetaBase {
     
     
     void meta(const at::Tensor & self, int64_t dim, bool keepdim);
 };
-struct TORCH_API structured_all_dims : public at::impl::MetaBase {
+struct structured_all_dims : public at::impl::MetaBase {
     
     
     void meta(const at::Tensor & self, at::OptionalIntArrayRef dim, bool keepdim);
 };
-struct TORCH_API structured_any_dim : public at::impl::MetaBase {
+struct structured_any_dim : public at::impl::MetaBase {
     
     
     void meta(const at::Tensor & self, int64_t dim, bool keepdim);
 };
-struct TORCH_API structured_any_dims : public at::impl::MetaBase {
+struct structured_any_dims : public at::impl::MetaBase {
     
     
     void meta(const at::Tensor & self, at::OptionalIntArrayRef dim, bool keepdim);
 };
-struct TORCH_API structured_argmax : public at::impl::MetaBase {
+struct structured_argmax : public at::impl::MetaBase {
     
     
     void meta(const at::Tensor & self, c10::optional<int64_t> dim, bool keepdim);
 };
-struct TORCH_API structured_argmin : public at::impl::MetaBase {
+struct structured_argmin : public at::impl::MetaBase {
     
     
     void meta(const at::Tensor & self, c10::optional<int64_t> dim, bool keepdim);
 };
-struct TORCH_API structured_acosh : public TensorIteratorBase {
+struct structured_acosh : public TensorIteratorBase {
     
     
     void meta(const at::Tensor & self);
 };
-struct TORCH_API structured_asinh : public TensorIteratorBase {
+struct structured_asinh : public TensorIteratorBase {
     
     
     void meta(const at::Tensor & self);
 };
-struct TORCH_API structured_atanh : public TensorIteratorBase {
+struct structured_atanh : public TensorIteratorBase {
     
     
     void meta(const at::Tensor & self);
 };
-struct TORCH_API structured_asin : public TensorIteratorBase {
+struct structured_asin : public TensorIteratorBase {
     
     
     void meta(const at::Tensor & self);
 };
-struct TORCH_API structured_atan : public TensorIteratorBase {
+struct structured_atan : public TensorIteratorBase {
     
     
     void meta(const at::Tensor & self);
 };
-struct TORCH_API structured_baddbmm : public at::impl::MetaBase {
+struct structured_baddbmm : public at::impl::MetaBase {
     
     
     void meta(const at::Tensor & self, const at::Tensor & batch1, const at::Tensor & batch2, const at::Scalar & beta, const at::Scalar & alpha);
 };
-struct TORCH_API structured_bitwise_not : public TensorIteratorBase {
+struct structured_bitwise_not : public TensorIteratorBase {
     
     
     void meta(const at::Tensor & self);
 };
-struct TORCH_API structured_copysign_Tensor : public TensorIteratorBase {
+struct structured_copysign_Tensor : public TensorIteratorBase {
     
     
     void meta(const at::Tensor & self, const at::Tensor & other);
 };
-struct TORCH_API structured_bmm : public at::impl::MetaBase {
+struct structured_bmm : public at::impl::MetaBase {
     
     
     void meta(const at::Tensor & self, const at::Tensor & mat2);
 };
-struct TORCH_API structured_cat : public at::impl::MetaBase {
+struct structured_cat : public at::impl::MetaBase {
     
                 template <bool DIM = false, bool VALID = false, bool ALL_CONTIGUOUS = false, bool ALL_SAME_DTYPE = false, bool ALL_SAME_SIZES_AND_STRIDE = false, bool MEMORY_FORMAT = false>
-                struct TORCH_API precompute_out {
+                struct precompute_out {
                     
                     precompute_out<true, VALID, ALL_CONTIGUOUS, ALL_SAME_DTYPE, ALL_SAME_SIZES_AND_STRIDE, MEMORY_FORMAT> set_dim(int64_t value) {
                         static_assert(DIM == false, "dim already set");
@@ -200,120 +200,120 @@ at::MemoryFormat memory_format;
     using meta_return_ty = precompute_out <true, true, true, true, true, true>;
     meta_return_ty meta(const at::ITensorListRef & tensors, int64_t dim);
 };
-struct TORCH_API structured_ceil : public TensorIteratorBase {
+struct structured_ceil : public TensorIteratorBase {
     
     
     void meta(const at::Tensor & self);
 };
-struct TORCH_API structured_clamp : public TensorIteratorBase {
+struct structured_clamp : public TensorIteratorBase {
     
     
     void meta(const at::Tensor & self, at::OptionalScalarRef min, at::OptionalScalarRef max);
 };
-struct TORCH_API structured_clamp_Tensor : public TensorIteratorBase {
+struct structured_clamp_Tensor : public TensorIteratorBase {
     
     
     void meta(const at::Tensor & self, at::OptionalTensorRef min, at::OptionalTensorRef max);
 };
-struct TORCH_API structured_clamp_max : public TensorIteratorBase {
+struct structured_clamp_max : public TensorIteratorBase {
     
     
     void meta(const at::Tensor & self, const at::Scalar & max);
 };
-struct TORCH_API structured_clamp_max_Tensor : public TensorIteratorBase {
+struct structured_clamp_max_Tensor : public TensorIteratorBase {
     
     
     void meta(const at::Tensor & self, const at::Tensor & max);
 };
-struct TORCH_API structured_clamp_min : public TensorIteratorBase {
+struct structured_clamp_min : public TensorIteratorBase {
     
     
     void meta(const at::Tensor & self, const at::Scalar & min);
 };
-struct TORCH_API structured_clamp_min_Tensor : public TensorIteratorBase {
+struct structured_clamp_min_Tensor : public TensorIteratorBase {
     
     
     void meta(const at::Tensor & self, const at::Tensor & min);
 };
-struct TORCH_API structured_cos : public TensorIteratorBase {
+struct structured_cos : public TensorIteratorBase {
     
     
     void meta(const at::Tensor & self);
 };
-struct TORCH_API structured_cosh : public TensorIteratorBase {
+struct structured_cosh : public TensorIteratorBase {
     
     
     void meta(const at::Tensor & self);
 };
-struct TORCH_API structured_cumprod : public at::impl::MetaBase {
+struct structured_cumprod : public at::impl::MetaBase {
     
     
     void meta(const at::Tensor & self, int64_t dim, c10::optional<at::ScalarType> dtype);
 };
-struct TORCH_API structured_cumsum : public at::impl::MetaBase {
+struct structured_cumsum : public at::impl::MetaBase {
     
     
     void meta(const at::Tensor & self, int64_t dim, c10::optional<at::ScalarType> dtype);
 };
-struct TORCH_API structured_div_Tensor : public TensorIteratorBase {
+struct structured_div_Tensor : public TensorIteratorBase {
     
     
     void meta(const at::Tensor & self, const at::Tensor & other);
 };
-struct TORCH_API structured_div_Tensor_mode : public TensorIteratorBase {
+struct structured_div_Tensor_mode : public TensorIteratorBase {
     
     
     void meta(const at::Tensor & self, const at::Tensor & other, c10::optional<c10::string_view> rounding_mode);
 };
-struct TORCH_API structured_erf : public TensorIteratorBase {
+struct structured_erf : public TensorIteratorBase {
     
     
     void meta(const at::Tensor & self);
 };
-struct TORCH_API structured_erfc : public TensorIteratorBase {
+struct structured_erfc : public TensorIteratorBase {
     
     
     void meta(const at::Tensor & self);
 };
-struct TORCH_API structured_exp : public TensorIteratorBase {
+struct structured_exp : public TensorIteratorBase {
     
     
     void meta(const at::Tensor & self);
 };
-struct TORCH_API structured_exp2 : public TensorIteratorBase {
+struct structured_exp2 : public TensorIteratorBase {
     
     
     void meta(const at::Tensor & self);
 };
-struct TORCH_API structured_expm1 : public TensorIteratorBase {
+struct structured_expm1 : public TensorIteratorBase {
     
     
     void meta(const at::Tensor & self);
 };
-struct TORCH_API structured_floor : public TensorIteratorBase {
+struct structured_floor : public TensorIteratorBase {
     
     
     void meta(const at::Tensor & self);
 };
-struct TORCH_API structured_frac : public TensorIteratorBase {
+struct structured_frac : public TensorIteratorBase {
     
     
     void meta(const at::Tensor & self);
 };
-struct TORCH_API structured_gcd : public TensorIteratorBase {
+struct structured_gcd : public TensorIteratorBase {
     
     
     void meta(const at::Tensor & self, const at::Tensor & other);
 };
-struct TORCH_API structured_lcm : public TensorIteratorBase {
+struct structured_lcm : public TensorIteratorBase {
     
     
     void meta(const at::Tensor & self, const at::Tensor & other);
 };
-struct TORCH_API structured_index_Tensor : public TensorIteratorBase {
+struct structured_index_Tensor : public TensorIteratorBase {
     
                 template <bool SIZES = false, bool STRIDES = false>
-                struct TORCH_API precompute_out {
+                struct precompute_out {
                     
                     precompute_out<true, STRIDES> set_sizes(at::DimVector value) {
                         static_assert(SIZES == false, "sizes already set");
@@ -338,10 +338,10 @@ at::DimVector strides;
     using meta_return_ty = precompute_out <true, true>;
     meta_return_ty meta(const at::Tensor & self, at::IOptTensorListRef indices);
 };
-struct TORCH_API structured_index_copy : public at::impl::MetaBase {
+struct structured_index_copy : public at::impl::MetaBase {
     
                 template <bool DIM = false>
-                struct TORCH_API precompute_out {
+                struct precompute_out {
                     
                     precompute_out<true> set_dim(int64_t value) {
                         static_assert(DIM == false, "dim already set");
@@ -355,75 +355,75 @@ return ret;
     using meta_return_ty = precompute_out <true>;
     meta_return_ty meta(const at::Tensor & self, int64_t dim, const at::Tensor & index, const at::Tensor & source);
 };
-struct TORCH_API structured_isin_Tensor_Tensor : public at::impl::MetaBase {
+struct structured_isin_Tensor_Tensor : public at::impl::MetaBase {
     
     
     void meta(const at::Tensor & elements, const at::Tensor & test_elements, bool assume_unique, bool invert);
 };
-struct TORCH_API structured_isin_Tensor_Scalar : public at::impl::MetaBase {
+struct structured_isin_Tensor_Scalar : public at::impl::MetaBase {
     
     
     void meta(const at::Tensor & elements, const at::Scalar & test_element, bool assume_unique, bool invert);
 };
-struct TORCH_API structured_isin_Scalar_Tensor : public at::impl::MetaBase {
+struct structured_isin_Scalar_Tensor : public at::impl::MetaBase {
     
     
     void meta(const at::Scalar & element, const at::Tensor & test_elements, bool assume_unique, bool invert);
 };
-struct TORCH_API structured_log : public TensorIteratorBase {
+struct structured_log : public TensorIteratorBase {
     
     
     void meta(const at::Tensor & self);
 };
-struct TORCH_API structured_log10 : public TensorIteratorBase {
+struct structured_log10 : public TensorIteratorBase {
     
     
     void meta(const at::Tensor & self);
 };
-struct TORCH_API structured_log1p : public TensorIteratorBase {
+struct structured_log1p : public TensorIteratorBase {
     
     
     void meta(const at::Tensor & self);
 };
-struct TORCH_API structured_log2 : public TensorIteratorBase {
+struct structured_log2 : public TensorIteratorBase {
     
     
     void meta(const at::Tensor & self);
 };
-struct TORCH_API structured_logaddexp : public TensorIteratorBase {
+struct structured_logaddexp : public TensorIteratorBase {
     
     
     void meta(const at::Tensor & self, const at::Tensor & other);
 };
-struct TORCH_API structured_logaddexp2 : public TensorIteratorBase {
+struct structured_logaddexp2 : public TensorIteratorBase {
     
     
     void meta(const at::Tensor & self, const at::Tensor & other);
 };
-struct TORCH_API structured_xlogy_Tensor : public TensorIteratorBase {
+struct structured_xlogy_Tensor : public TensorIteratorBase {
     
     
     void meta(const at::Tensor & self, const at::Tensor & other);
 };
-struct TORCH_API structured__log_softmax : public at::impl::MetaBase {
+struct structured__log_softmax : public at::impl::MetaBase {
     
     
     void meta(const at::Tensor & self, int64_t dim, bool half_to_float);
 };
-struct TORCH_API structured__log_softmax_backward_data : public at::impl::MetaBase {
+struct structured__log_softmax_backward_data : public at::impl::MetaBase {
     
     
     void meta(const at::Tensor & grad_output, const at::Tensor & output, int64_t dim, at::ScalarType input_dtype);
 };
-struct TORCH_API structured_aminmax : public at::impl::MetaBase {
+struct structured_aminmax : public at::impl::MetaBase {
     
     
     void meta(const at::Tensor & self, c10::optional<int64_t> dim, bool keepdim);
 };
-struct TORCH_API structured_max_dim : public at::impl::MetaBase {
+struct structured_max_dim : public at::impl::MetaBase {
     
                 template <bool DIM = false>
-                struct TORCH_API precompute_out {
+                struct precompute_out {
                     
                     precompute_out<true> set_dim(int64_t value) {
                         static_assert(DIM == false, "dim already set");
@@ -437,20 +437,20 @@ return ret;
     using meta_return_ty = precompute_out <true>;
     meta_return_ty meta(const at::Tensor & self, int64_t dim, bool keepdim);
 };
-struct TORCH_API structured_amax : public at::impl::MetaBase {
+struct structured_amax : public at::impl::MetaBase {
     
     
     void meta(const at::Tensor & self, at::IntArrayRef dim, bool keepdim);
 };
-struct TORCH_API structured_mean_dim : public at::impl::MetaBase {
+struct structured_mean_dim : public at::impl::MetaBase {
     
     
     void meta(const at::Tensor & self, at::OptionalIntArrayRef dim, bool keepdim, c10::optional<at::ScalarType> dtype);
 };
-struct TORCH_API structured_min_dim : public at::impl::MetaBase {
+struct structured_min_dim : public at::impl::MetaBase {
     
                 template <bool DIM = false>
-                struct TORCH_API precompute_out {
+                struct precompute_out {
                     
                     precompute_out<true> set_dim(int64_t value) {
                         static_assert(DIM == false, "dim already set");
@@ -464,185 +464,185 @@ return ret;
     using meta_return_ty = precompute_out <true>;
     meta_return_ty meta(const at::Tensor & self, int64_t dim, bool keepdim);
 };
-struct TORCH_API structured_amin : public at::impl::MetaBase {
+struct structured_amin : public at::impl::MetaBase {
     
     
     void meta(const at::Tensor & self, at::IntArrayRef dim, bool keepdim);
 };
-struct TORCH_API structured_mm : public at::impl::MetaBase {
+struct structured_mm : public at::impl::MetaBase {
     
     
     void meta(const at::Tensor & self, const at::Tensor & mat2);
 };
-struct TORCH_API structured_mul_Tensor : public TensorIteratorBase {
+struct structured_mul_Tensor : public TensorIteratorBase {
     
     
     void meta(const at::Tensor & self, const at::Tensor & other);
 };
-struct TORCH_API structured_reciprocal : public TensorIteratorBase {
+struct structured_reciprocal : public TensorIteratorBase {
     
     
     void meta(const at::Tensor & self);
 };
-struct TORCH_API structured_neg : public TensorIteratorBase {
+struct structured_neg : public TensorIteratorBase {
     
     
     void meta(const at::Tensor & self);
 };
-struct TORCH_API structured_round : public TensorIteratorBase {
+struct structured_round : public TensorIteratorBase {
     
     
     void meta(const at::Tensor & self);
 };
-struct TORCH_API structured_round_decimals : public TensorIteratorBase {
+struct structured_round_decimals : public TensorIteratorBase {
     
     
     void meta(const at::Tensor & self, int64_t decimals);
 };
-struct TORCH_API structured_gelu : public TensorIteratorBase {
+struct structured_gelu : public TensorIteratorBase {
     
     
     void meta(const at::Tensor & self, c10::string_view approximate);
 };
-struct TORCH_API structured_gelu_backward : public TensorIteratorBase {
+struct structured_gelu_backward : public TensorIteratorBase {
     
     
     void meta(const at::Tensor & grad_output, const at::Tensor & self, c10::string_view approximate);
 };
-struct TORCH_API structured_hardshrink : public TensorIteratorBase {
+struct structured_hardshrink : public TensorIteratorBase {
     
     
     void meta(const at::Tensor & self, const at::Scalar & lambd);
 };
-struct TORCH_API structured_hardshrink_backward : public TensorIteratorBase {
+struct structured_hardshrink_backward : public TensorIteratorBase {
     
     
     void meta(const at::Tensor & grad_out, const at::Tensor & self, const at::Scalar & lambd);
 };
-struct TORCH_API structured_rsqrt : public TensorIteratorBase {
+struct structured_rsqrt : public TensorIteratorBase {
     
     
     void meta(const at::Tensor & self);
 };
-struct TORCH_API structured_silu : public TensorIteratorBase {
+struct structured_silu : public TensorIteratorBase {
     
     
     void meta(const at::Tensor & self);
 };
-struct TORCH_API structured_silu_backward : public TensorIteratorBase {
+struct structured_silu_backward : public TensorIteratorBase {
     
     
     void meta(const at::Tensor & grad_output, const at::Tensor & self);
 };
-struct TORCH_API structured_mish : public TensorIteratorBase {
+struct structured_mish : public TensorIteratorBase {
     
     
     void meta(const at::Tensor & self);
 };
-struct TORCH_API structured_sigmoid : public TensorIteratorBase {
+struct structured_sigmoid : public TensorIteratorBase {
     
     
     void meta(const at::Tensor & self);
 };
-struct TORCH_API structured_sin : public TensorIteratorBase {
+struct structured_sin : public TensorIteratorBase {
     
     
     void meta(const at::Tensor & self);
 };
-struct TORCH_API structured_sinc : public TensorIteratorBase {
+struct structured_sinc : public TensorIteratorBase {
     
     
     void meta(const at::Tensor & self);
 };
-struct TORCH_API structured_sinh : public TensorIteratorBase {
+struct structured_sinh : public TensorIteratorBase {
     
     
     void meta(const at::Tensor & self);
 };
-struct TORCH_API structured__softmax : public at::impl::MetaBase {
+struct structured__softmax : public at::impl::MetaBase {
     
     
     void meta(const at::Tensor & self, int64_t dim, bool half_to_float);
 };
-struct TORCH_API structured__softmax_backward_data : public at::impl::MetaBase {
+struct structured__softmax_backward_data : public at::impl::MetaBase {
     
     
     void meta(const at::Tensor & grad_output, const at::Tensor & output, int64_t dim, at::ScalarType input_dtype);
 };
-struct TORCH_API structured_sum_dim_IntList : public at::impl::MetaBase {
+struct structured_sum_dim_IntList : public at::impl::MetaBase {
     
     
     void meta(const at::Tensor & self, at::OptionalIntArrayRef dim, bool keepdim, c10::optional<at::ScalarType> dtype);
 };
-struct TORCH_API structured_sqrt : public TensorIteratorBase {
+struct structured_sqrt : public TensorIteratorBase {
     
     
     void meta(const at::Tensor & self);
 };
-struct TORCH_API structured_prod_dim_int : public at::impl::MetaBase {
+struct structured_prod_dim_int : public at::impl::MetaBase {
     
     
     void meta(const at::Tensor & self, int64_t dim, bool keepdim, c10::optional<at::ScalarType> dtype);
 };
-struct TORCH_API structured_tan : public TensorIteratorBase {
+struct structured_tan : public TensorIteratorBase {
     
     
     void meta(const at::Tensor & self);
 };
-struct TORCH_API structured_tanh : public TensorIteratorBase {
+struct structured_tanh : public TensorIteratorBase {
     
     
     void meta(const at::Tensor & self);
 };
-struct TORCH_API structured_threshold : public TensorIteratorBase {
+struct structured_threshold : public TensorIteratorBase {
     
     
     void meta(const at::Tensor & self, const at::Scalar & threshold, const at::Scalar & value);
 };
-struct TORCH_API structured_threshold_backward : public TensorIteratorBase {
+struct structured_threshold_backward : public TensorIteratorBase {
     
     
     void meta(const at::Tensor & grad_output, const at::Tensor & self, const at::Scalar & threshold);
 };
-struct TORCH_API structured_trunc : public TensorIteratorBase {
+struct structured_trunc : public TensorIteratorBase {
     
     
     void meta(const at::Tensor & self);
 };
-struct TORCH_API structured_norm_ScalarOpt_dim_dtype : public at::impl::MetaBase {
+struct structured_norm_ScalarOpt_dim_dtype : public at::impl::MetaBase {
     
     
     void meta(const at::Tensor & self, at::OptionalScalarRef p, at::IntArrayRef dim, bool keepdim, at::ScalarType dtype);
 };
-struct TORCH_API structured_norm_ScalarOpt_dim : public at::impl::MetaBase {
+struct structured_norm_ScalarOpt_dim : public at::impl::MetaBase {
     
     
     void meta(const at::Tensor & self, at::OptionalScalarRef p, at::IntArrayRef dim, bool keepdim);
 };
-struct TORCH_API structured_sub_Tensor : public TensorIteratorBase {
+struct structured_sub_Tensor : public TensorIteratorBase {
     
     
     void meta(const at::Tensor & self, const at::Tensor & other, const at::Scalar & alpha);
 };
-struct TORCH_API structured_heaviside : public TensorIteratorBase {
+struct structured_heaviside : public TensorIteratorBase {
     
     
     void meta(const at::Tensor & self, const at::Tensor & values);
 };
-struct TORCH_API structured_addmm : public at::impl::MetaBase {
+struct structured_addmm : public at::impl::MetaBase {
     
     
     void meta(const at::Tensor & self, const at::Tensor & mat1, const at::Tensor & mat2, const at::Scalar & beta, const at::Scalar & alpha);
 };
-struct TORCH_API structured__addmm_activation : public at::impl::MetaBase {
+struct structured__addmm_activation : public at::impl::MetaBase {
     
     
     void meta(const at::Tensor & self, const at::Tensor & mat1, const at::Tensor & mat2, const at::Scalar & beta, const at::Scalar & alpha, bool use_gelu);
 };
-struct TORCH_API structured_index_add : public at::impl::MetaBase {
+struct structured_index_add : public at::impl::MetaBase {
     
                 template <bool DIM = false>
-                struct TORCH_API precompute_out {
+                struct precompute_out {
                     
                     precompute_out<true> set_dim(int64_t value) {
                         static_assert(DIM == false, "dim already set");
@@ -656,10 +656,10 @@ return ret;
     using meta_return_ty = precompute_out <true>;
     meta_return_ty meta(const at::Tensor & self, int64_t dim, const at::Tensor & index, const at::Tensor & source, const at::Scalar & alpha);
 };
-struct TORCH_API structured_index_reduce : public at::impl::MetaBase {
+struct structured_index_reduce : public at::impl::MetaBase {
     
                 template <bool DIM = false>
-                struct TORCH_API precompute_out {
+                struct precompute_out {
                     
                     precompute_out<true> set_dim(int64_t value) {
                         static_assert(DIM == false, "dim already set");
@@ -673,405 +673,405 @@ return ret;
     using meta_return_ty = precompute_out <true>;
     meta_return_ty meta(const at::Tensor & self, int64_t dim, const at::Tensor & index, const at::Tensor & source, c10::string_view reduce, bool include_self);
 };
-struct TORCH_API structured_scatter_src : public at::impl::MetaBase {
+struct structured_scatter_src : public at::impl::MetaBase {
     
     
     void meta(const at::Tensor & self, int64_t dim, const at::Tensor & index, const at::Tensor & src);
 };
-struct TORCH_API structured_scatter_value : public at::impl::MetaBase {
+struct structured_scatter_value : public at::impl::MetaBase {
     
     
     void meta(const at::Tensor & self, int64_t dim, const at::Tensor & index, const at::Scalar & value);
 };
-struct TORCH_API structured_scatter_reduce : public at::impl::MetaBase {
+struct structured_scatter_reduce : public at::impl::MetaBase {
     
     
     void meta(const at::Tensor & self, int64_t dim, const at::Tensor & index, const at::Tensor & src, c10::string_view reduce);
 };
-struct TORCH_API structured_scatter_value_reduce : public at::impl::MetaBase {
+struct structured_scatter_value_reduce : public at::impl::MetaBase {
     
     
     void meta(const at::Tensor & self, int64_t dim, const at::Tensor & index, const at::Scalar & value, c10::string_view reduce);
 };
-struct TORCH_API structured_scatter_add : public at::impl::MetaBase {
+struct structured_scatter_add : public at::impl::MetaBase {
     
     
     void meta(const at::Tensor & self, int64_t dim, const at::Tensor & index, const at::Tensor & src);
 };
-struct TORCH_API structured_scatter_reduce_two : public at::impl::MetaBase {
+struct structured_scatter_reduce_two : public at::impl::MetaBase {
     
     
     void meta(const at::Tensor & self, int64_t dim, const at::Tensor & index, const at::Tensor & src, c10::string_view reduce, bool include_self);
 };
-struct TORCH_API structured_eq_Scalar : public TensorIteratorBase {
+struct structured_eq_Scalar : public TensorIteratorBase {
     
     
     void meta(const at::Tensor & self, const at::Scalar & other);
 };
-struct TORCH_API structured_eq_Tensor : public TensorIteratorBase {
+struct structured_eq_Tensor : public TensorIteratorBase {
     
     
     void meta(const at::Tensor & self, const at::Tensor & other);
 };
-struct TORCH_API structured_bitwise_and_Tensor : public TensorIteratorBase {
+struct structured_bitwise_and_Tensor : public TensorIteratorBase {
     
     
     void meta(const at::Tensor & self, const at::Tensor & other);
 };
-struct TORCH_API structured_bitwise_or_Tensor : public TensorIteratorBase {
+struct structured_bitwise_or_Tensor : public TensorIteratorBase {
     
     
     void meta(const at::Tensor & self, const at::Tensor & other);
 };
-struct TORCH_API structured_bitwise_xor_Tensor : public TensorIteratorBase {
+struct structured_bitwise_xor_Tensor : public TensorIteratorBase {
     
     
     void meta(const at::Tensor & self, const at::Tensor & other);
 };
-struct TORCH_API structured_bitwise_left_shift_Tensor : public TensorIteratorBase {
+struct structured_bitwise_left_shift_Tensor : public TensorIteratorBase {
     
     
     void meta(const at::Tensor & self, const at::Tensor & other);
 };
-struct TORCH_API structured_bitwise_right_shift_Tensor : public TensorIteratorBase {
+struct structured_bitwise_right_shift_Tensor : public TensorIteratorBase {
     
     
     void meta(const at::Tensor & self, const at::Tensor & other);
 };
-struct TORCH_API structured_tril : public at::impl::MetaBase {
+struct structured_tril : public at::impl::MetaBase {
     
     
     void meta(const at::Tensor & self, int64_t diagonal);
 };
-struct TORCH_API structured_triu : public at::impl::MetaBase {
+struct structured_triu : public at::impl::MetaBase {
     
     
     void meta(const at::Tensor & self, int64_t diagonal);
 };
-struct TORCH_API structured_digamma : public TensorIteratorBase {
+struct structured_digamma : public TensorIteratorBase {
     
     
     void meta(const at::Tensor & self);
 };
-struct TORCH_API structured_lerp_Scalar : public TensorIteratorBase {
+struct structured_lerp_Scalar : public TensorIteratorBase {
     
     
     void meta(const at::Tensor & self, const at::Tensor & end, const at::Scalar & weight);
 };
-struct TORCH_API structured_lerp_Tensor : public TensorIteratorBase {
+struct structured_lerp_Tensor : public TensorIteratorBase {
     
     
     void meta(const at::Tensor & self, const at::Tensor & end, const at::Tensor & weight);
 };
-struct TORCH_API structured_ne_Scalar : public TensorIteratorBase {
+struct structured_ne_Scalar : public TensorIteratorBase {
     
     
     void meta(const at::Tensor & self, const at::Scalar & other);
 };
-struct TORCH_API structured_ne_Tensor : public TensorIteratorBase {
+struct structured_ne_Tensor : public TensorIteratorBase {
     
     
     void meta(const at::Tensor & self, const at::Tensor & other);
 };
-struct TORCH_API structured_ge_Scalar : public TensorIteratorBase {
+struct structured_ge_Scalar : public TensorIteratorBase {
     
     
     void meta(const at::Tensor & self, const at::Scalar & other);
 };
-struct TORCH_API structured_ge_Tensor : public TensorIteratorBase {
+struct structured_ge_Tensor : public TensorIteratorBase {
     
     
     void meta(const at::Tensor & self, const at::Tensor & other);
 };
-struct TORCH_API structured_le_Scalar : public TensorIteratorBase {
+struct structured_le_Scalar : public TensorIteratorBase {
     
     
     void meta(const at::Tensor & self, const at::Scalar & other);
 };
-struct TORCH_API structured_le_Tensor : public TensorIteratorBase {
+struct structured_le_Tensor : public TensorIteratorBase {
     
     
     void meta(const at::Tensor & self, const at::Tensor & other);
 };
-struct TORCH_API structured_gt_Scalar : public TensorIteratorBase {
+struct structured_gt_Scalar : public TensorIteratorBase {
     
     
     void meta(const at::Tensor & self, const at::Scalar & other);
 };
-struct TORCH_API structured_gt_Tensor : public TensorIteratorBase {
+struct structured_gt_Tensor : public TensorIteratorBase {
     
     
     void meta(const at::Tensor & self, const at::Tensor & other);
 };
-struct TORCH_API structured_lt_Scalar : public TensorIteratorBase {
+struct structured_lt_Scalar : public TensorIteratorBase {
     
     
     void meta(const at::Tensor & self, const at::Scalar & other);
 };
-struct TORCH_API structured_lt_Tensor : public TensorIteratorBase {
+struct structured_lt_Tensor : public TensorIteratorBase {
     
     
     void meta(const at::Tensor & self, const at::Tensor & other);
 };
-struct TORCH_API structured_gather : public at::impl::MetaBase {
+struct structured_gather : public at::impl::MetaBase {
     
     
     void meta(const at::Tensor & self, int64_t dim, const at::Tensor & index, bool sparse_grad);
 };
-struct TORCH_API structured_addcmul : public TensorIteratorBase {
+struct structured_addcmul : public TensorIteratorBase {
     
     
     void meta(const at::Tensor & self, const at::Tensor & tensor1, const at::Tensor & tensor2, const at::Scalar & value);
 };
-struct TORCH_API structured_addcdiv : public TensorIteratorBase {
+struct structured_addcdiv : public TensorIteratorBase {
     
     
     void meta(const at::Tensor & self, const at::Tensor & tensor1, const at::Tensor & tensor2, const at::Scalar & value);
 };
-struct TORCH_API structured_triangular_solve : public at::impl::MetaBase {
+struct structured_triangular_solve : public at::impl::MetaBase {
     
     
     void meta(const at::Tensor & self, const at::Tensor & A, bool upper, bool transpose, bool unitriangular);
 };
-struct TORCH_API structured_lu_unpack : public at::impl::MetaBase {
+struct structured_lu_unpack : public at::impl::MetaBase {
     
     
     void meta(const at::Tensor & LU_data, const at::Tensor & LU_pivots, bool unpack_data, bool unpack_pivots);
 };
-struct TORCH_API structured_lgamma : public TensorIteratorBase {
+struct structured_lgamma : public TensorIteratorBase {
     
     
     void meta(const at::Tensor & self);
 };
-struct TORCH_API structured_polygamma : public TensorIteratorBase {
+struct structured_polygamma : public TensorIteratorBase {
     
     
     void meta(int64_t n, const at::Tensor & self);
 };
-struct TORCH_API structured_erfinv : public TensorIteratorBase {
+struct structured_erfinv : public TensorIteratorBase {
     
     
     void meta(const at::Tensor & self);
 };
-struct TORCH_API structured_i0 : public TensorIteratorBase {
+struct structured_i0 : public TensorIteratorBase {
     
     
     void meta(const at::Tensor & self);
 };
-struct TORCH_API structured_sign : public TensorIteratorBase {
+struct structured_sign : public TensorIteratorBase {
     
     
     void meta(const at::Tensor & self);
 };
-struct TORCH_API structured_signbit : public TensorIteratorBase {
+struct structured_signbit : public TensorIteratorBase {
     
     
     void meta(const at::Tensor & self);
 };
-struct TORCH_API structured_atan2 : public TensorIteratorBase {
+struct structured_atan2 : public TensorIteratorBase {
     
     
     void meta(const at::Tensor & self, const at::Tensor & other);
 };
-struct TORCH_API structured_fmod_Tensor : public TensorIteratorBase {
+struct structured_fmod_Tensor : public TensorIteratorBase {
     
     
     void meta(const at::Tensor & self, const at::Tensor & other);
 };
-struct TORCH_API structured_hypot : public TensorIteratorBase {
+struct structured_hypot : public TensorIteratorBase {
     
     
     void meta(const at::Tensor & self, const at::Tensor & other);
 };
-struct TORCH_API structured_igamma : public TensorIteratorBase {
+struct structured_igamma : public TensorIteratorBase {
     
     
     void meta(const at::Tensor & self, const at::Tensor & other);
 };
-struct TORCH_API structured_igammac : public TensorIteratorBase {
+struct structured_igammac : public TensorIteratorBase {
     
     
     void meta(const at::Tensor & self, const at::Tensor & other);
 };
-struct TORCH_API structured_nextafter : public TensorIteratorBase {
+struct structured_nextafter : public TensorIteratorBase {
     
     
     void meta(const at::Tensor & self, const at::Tensor & other);
 };
-struct TORCH_API structured_remainder_Tensor : public TensorIteratorBase {
+struct structured_remainder_Tensor : public TensorIteratorBase {
     
     
     void meta(const at::Tensor & self, const at::Tensor & other);
 };
-struct TORCH_API structured_fmin : public TensorIteratorBase {
+struct structured_fmin : public TensorIteratorBase {
     
     
     void meta(const at::Tensor & self, const at::Tensor & other);
 };
-struct TORCH_API structured_fmax : public TensorIteratorBase {
+struct structured_fmax : public TensorIteratorBase {
     
     
     void meta(const at::Tensor & self, const at::Tensor & other);
 };
-struct TORCH_API structured_maximum : public TensorIteratorBase {
+struct structured_maximum : public TensorIteratorBase {
     
     
     void meta(const at::Tensor & self, const at::Tensor & other);
 };
-struct TORCH_API structured_minimum : public TensorIteratorBase {
+struct structured_minimum : public TensorIteratorBase {
     
     
     void meta(const at::Tensor & self, const at::Tensor & other);
 };
-struct TORCH_API structured_sort_stable : public at::impl::MetaBase {
+struct structured_sort_stable : public at::impl::MetaBase {
     
     
     void meta(const at::Tensor & self, c10::optional<bool> stable, int64_t dim, bool descending);
 };
-struct TORCH_API structured_topk : public at::impl::MetaBase {
+struct structured_topk : public at::impl::MetaBase {
     
     
     void meta(const at::Tensor & self, int64_t k, int64_t dim, bool largest, bool sorted);
 };
-struct TORCH_API structured_all : public at::impl::MetaBase {
+struct structured_all : public at::impl::MetaBase {
     
     
     void meta(const at::Tensor & self);
 };
-struct TORCH_API structured_any : public at::impl::MetaBase {
+struct structured_any : public at::impl::MetaBase {
     
     
     void meta(const at::Tensor & self);
 };
-struct TORCH_API structured_renorm : public at::impl::MetaBase {
+struct structured_renorm : public at::impl::MetaBase {
     
     
     void meta(const at::Tensor & self, const at::Scalar & p, int64_t dim, const at::Scalar & maxnorm);
 };
-struct TORCH_API structured_pow_Tensor_Tensor : public TensorIteratorBase {
+struct structured_pow_Tensor_Tensor : public TensorIteratorBase {
     
     
     void meta(const at::Tensor & self, const at::Tensor & exponent);
 };
-struct TORCH_API structured_pow_Scalar : public at::impl::MetaBase {
+struct structured_pow_Scalar : public at::impl::MetaBase {
     
     
     void meta(const at::Scalar & self, const at::Tensor & exponent);
 };
-struct TORCH_API structured_pow_Tensor_Scalar : public TensorIteratorBase {
+struct structured_pow_Tensor_Scalar : public TensorIteratorBase {
     
     
     void meta(const at::Tensor & self, const at::Scalar & exponent);
 };
-struct TORCH_API structured__convert_indices_from_coo_to_csr : public at::impl::MetaBase {
+struct structured__convert_indices_from_coo_to_csr : public at::impl::MetaBase {
     
     
     void meta(const at::Tensor & self, int64_t size, bool out_int32);
 };
-struct TORCH_API structured__convert_indices_from_csr_to_coo : public at::impl::MetaBase {
+struct structured__convert_indices_from_csr_to_coo : public at::impl::MetaBase {
     
     
     void meta(const at::Tensor & crow_indices, const at::Tensor & col_indices, bool out_int32, bool transpose);
 };
-struct TORCH_API structured_mse_loss : public TensorIteratorBase {
+struct structured_mse_loss : public TensorIteratorBase {
     
     
     void meta(const at::Tensor & self, const at::Tensor & target, int64_t reduction);
 };
-struct TORCH_API structured_nll_loss_forward : public at::impl::MetaBase {
+struct structured_nll_loss_forward : public at::impl::MetaBase {
     
     
     void meta(const at::Tensor & self, const at::Tensor & target, at::OptionalTensorRef weight, int64_t reduction, int64_t ignore_index);
 };
-struct TORCH_API structured_nll_loss_backward : public at::impl::MetaBase {
+struct structured_nll_loss_backward : public at::impl::MetaBase {
     
     
     void meta(const at::Tensor & grad_output, const at::Tensor & self, const at::Tensor & target, at::OptionalTensorRef weight, int64_t reduction, int64_t ignore_index, const at::Tensor & total_weight);
 };
-struct TORCH_API structured_smooth_l1_loss : public TensorIteratorBase {
+struct structured_smooth_l1_loss : public TensorIteratorBase {
     
     
     void meta(const at::Tensor & self, const at::Tensor & target, int64_t reduction, double beta);
 };
-struct TORCH_API structured_elu : public TensorIteratorBase {
+struct structured_elu : public TensorIteratorBase {
     
     
     void meta(const at::Tensor & self, const at::Scalar & alpha, const at::Scalar & scale, const at::Scalar & input_scale);
 };
-struct TORCH_API structured_elu_backward : public TensorIteratorBase {
+struct structured_elu_backward : public TensorIteratorBase {
     
     
     void meta(const at::Tensor & grad_output, const at::Scalar & alpha, const at::Scalar & scale, const at::Scalar & input_scale, bool is_result, const at::Tensor & self_or_result);
 };
-struct TORCH_API structured_glu : public TensorIteratorBase {
+struct structured_glu : public TensorIteratorBase {
     
     
     void meta(const at::Tensor & self, int64_t dim);
 };
-struct TORCH_API structured_hardsigmoid : public TensorIteratorBase {
+struct structured_hardsigmoid : public TensorIteratorBase {
     
     
     void meta(const at::Tensor & self);
 };
-struct TORCH_API structured_hardsigmoid_backward : public TensorIteratorBase {
+struct structured_hardsigmoid_backward : public TensorIteratorBase {
     
     
     void meta(const at::Tensor & grad_output, const at::Tensor & self);
 };
-struct TORCH_API structured_leaky_relu : public TensorIteratorBase {
+struct structured_leaky_relu : public TensorIteratorBase {
     
     
     void meta(const at::Tensor & self, const at::Scalar & negative_slope);
 };
-struct TORCH_API structured_leaky_relu_backward : public TensorIteratorBase {
+struct structured_leaky_relu_backward : public TensorIteratorBase {
     
     
     void meta(const at::Tensor & grad_output, const at::Tensor & self, const at::Scalar & negative_slope, bool self_is_result);
 };
-struct TORCH_API structured_softplus : public TensorIteratorBase {
+struct structured_softplus : public TensorIteratorBase {
     
     
     void meta(const at::Tensor & self, const at::Scalar & beta, const at::Scalar & threshold);
 };
-struct TORCH_API structured_softplus_backward : public TensorIteratorBase {
+struct structured_softplus_backward : public TensorIteratorBase {
     
     
     void meta(const at::Tensor & grad_output, const at::Tensor & self, const at::Scalar & beta, const at::Scalar & threshold);
 };
-struct TORCH_API structured_softshrink : public TensorIteratorBase {
+struct structured_softshrink : public TensorIteratorBase {
     
     
     void meta(const at::Tensor & self, const at::Scalar & lambd);
 };
-struct TORCH_API structured_softshrink_backward : public TensorIteratorBase {
+struct structured_softshrink_backward : public TensorIteratorBase {
     
     
     void meta(const at::Tensor & grad_output, const at::Tensor & self, const at::Scalar & lambd);
 };
-struct TORCH_API structured_adaptive_max_pool2d : public at::impl::MetaBase {
+struct structured_adaptive_max_pool2d : public at::impl::MetaBase {
     
     
     void meta(const at::Tensor & self, at::IntArrayRef output_size);
 };
-struct TORCH_API structured_adaptive_max_pool2d_backward : public at::impl::MetaBase {
+struct structured_adaptive_max_pool2d_backward : public at::impl::MetaBase {
     
     
     void meta(const at::Tensor & grad_output, const at::Tensor & self, const at::Tensor & indices);
 };
-struct TORCH_API structured_adaptive_max_pool3d : public at::impl::MetaBase {
+struct structured_adaptive_max_pool3d : public at::impl::MetaBase {
     
     
     void meta(const at::Tensor & self, at::IntArrayRef output_size);
 };
-struct TORCH_API structured_adaptive_max_pool3d_backward : public at::impl::MetaBase {
+struct structured_adaptive_max_pool3d_backward : public at::impl::MetaBase {
     
     
     void meta(const at::Tensor & grad_output, const at::Tensor & self, const at::Tensor & indices);
 };
-struct TORCH_API structured_avg_pool2d : public at::impl::MetaBase {
+struct structured_avg_pool2d : public at::impl::MetaBase {
     
                 template <bool KH = false, bool KW = false, bool DH = false, bool DW = false, bool PADH = false, bool PADW = false>
-                struct TORCH_API precompute_out {
+                struct precompute_out {
                     
                     precompute_out<true, KW, DH, DW, PADH, PADW> set_kH(int64_t value) {
                         static_assert(KH == false, "kH already set");
@@ -1160,35 +1160,35 @@ int64_t padW;
     using meta_return_ty = precompute_out <true, true, true, true, true, true>;
     meta_return_ty meta(const at::Tensor & self, at::IntArrayRef kernel_size, at::IntArrayRef stride, at::IntArrayRef padding, bool ceil_mode, bool count_include_pad, c10::optional<int64_t> divisor_override);
 };
-struct TORCH_API structured_avg_pool2d_backward : public at::impl::MetaBase {
+struct structured_avg_pool2d_backward : public at::impl::MetaBase {
     
     
     void meta(const at::Tensor & grad_output, const at::Tensor & self, at::IntArrayRef kernel_size, at::IntArrayRef stride, at::IntArrayRef padding, bool ceil_mode, bool count_include_pad, c10::optional<int64_t> divisor_override);
 };
-struct TORCH_API structured_avg_pool3d : public at::impl::MetaBase {
+struct structured_avg_pool3d : public at::impl::MetaBase {
     
     
     void meta(const at::Tensor & self, at::IntArrayRef kernel_size, at::IntArrayRef stride, at::IntArrayRef padding, bool ceil_mode, bool count_include_pad, c10::optional<int64_t> divisor_override);
 };
-struct TORCH_API structured_avg_pool3d_backward : public at::impl::MetaBase {
+struct structured_avg_pool3d_backward : public at::impl::MetaBase {
     
     
     void meta(const at::Tensor & grad_output, const at::Tensor & self, at::IntArrayRef kernel_size, at::IntArrayRef stride, at::IntArrayRef padding, bool ceil_mode, bool count_include_pad, c10::optional<int64_t> divisor_override);
 };
-struct TORCH_API structured_fractional_max_pool2d : public at::impl::MetaBase {
+struct structured_fractional_max_pool2d : public at::impl::MetaBase {
     
     
     void meta(const at::Tensor & self, at::IntArrayRef kernel_size, at::IntArrayRef output_size, const at::Tensor & random_samples);
 };
-struct TORCH_API structured_fractional_max_pool2d_backward : public at::impl::MetaBase {
+struct structured_fractional_max_pool2d_backward : public at::impl::MetaBase {
     
     
     void meta(const at::Tensor & grad_output, const at::Tensor & self, at::IntArrayRef kernel_size, at::IntArrayRef output_size, const at::Tensor & indices);
 };
-struct TORCH_API structured_fractional_max_pool3d : public at::impl::MetaBase {
+struct structured_fractional_max_pool3d : public at::impl::MetaBase {
     
                 template <bool POOLSIZET = false, bool POOLSIZEH = false, bool POOLSIZEW = false, bool OUTPUTT = false, bool OUTPUTH = false, bool OUTPUTW = false, bool NUMBATCH = false, bool NUMPLANES = false, bool INPUTT = false, bool INPUTH = false, bool INPUTW = false>
-                struct TORCH_API precompute_out {
+                struct precompute_out {
                     
                     precompute_out<true, POOLSIZEH, POOLSIZEW, OUTPUTT, OUTPUTH, OUTPUTW, NUMBATCH, NUMPLANES, INPUTT, INPUTH, INPUTW> set_poolSizeT(int64_t value) {
                         static_assert(POOLSIZET == false, "poolSizeT already set");
@@ -1402,442 +1402,442 @@ int64_t inputW;
     using meta_return_ty = precompute_out <true, true, true, true, true, true, true, true, true, true, true>;
     meta_return_ty meta(const at::Tensor & self, at::IntArrayRef kernel_size, at::IntArrayRef output_size, const at::Tensor & random_samples);
 };
-struct TORCH_API structured_max_pool2d_with_indices : public at::impl::MetaBase {
+struct structured_max_pool2d_with_indices : public at::impl::MetaBase {
     
     
     void meta(const at::Tensor & self, at::IntArrayRef kernel_size, at::IntArrayRef stride, at::IntArrayRef padding, at::IntArrayRef dilation, bool ceil_mode);
 };
-struct TORCH_API structured_max_pool2d_with_indices_backward : public at::impl::MetaBase {
+struct structured_max_pool2d_with_indices_backward : public at::impl::MetaBase {
     
     
     void meta(const at::Tensor & grad_output, const at::Tensor & self, at::IntArrayRef kernel_size, at::IntArrayRef stride, at::IntArrayRef padding, at::IntArrayRef dilation, bool ceil_mode, const at::Tensor & indices);
 };
-struct TORCH_API structured_reflection_pad1d : public at::impl::MetaBase {
+struct structured_reflection_pad1d : public at::impl::MetaBase {
     
     
     void meta(const at::Tensor & self, at::ArrayRef<int64_t> padding);
 };
-struct TORCH_API structured_reflection_pad1d_backward : public at::impl::MetaBase {
+struct structured_reflection_pad1d_backward : public at::impl::MetaBase {
     
     
     void meta(const at::Tensor & grad_output, const at::Tensor & self, at::ArrayRef<int64_t> padding);
 };
-struct TORCH_API structured_reflection_pad3d : public at::impl::MetaBase {
+struct structured_reflection_pad3d : public at::impl::MetaBase {
     
     
     void meta(const at::Tensor & self, at::ArrayRef<int64_t> padding);
 };
-struct TORCH_API structured_reflection_pad3d_backward : public at::impl::MetaBase {
+struct structured_reflection_pad3d_backward : public at::impl::MetaBase {
     
     
     void meta(const at::Tensor & grad_output, const at::Tensor & self, at::ArrayRef<int64_t> padding);
 };
-struct TORCH_API structured_replication_pad1d : public at::impl::MetaBase {
+struct structured_replication_pad1d : public at::impl::MetaBase {
     
     
     void meta(const at::Tensor & self, at::ArrayRef<int64_t> padding);
 };
-struct TORCH_API structured_replication_pad1d_backward : public at::impl::MetaBase {
+struct structured_replication_pad1d_backward : public at::impl::MetaBase {
     
     
     void meta(const at::Tensor & grad_output, const at::Tensor & self, at::ArrayRef<int64_t> padding);
 };
-struct TORCH_API structured_replication_pad2d : public at::impl::MetaBase {
+struct structured_replication_pad2d : public at::impl::MetaBase {
     
     
     void meta(const at::Tensor & self, at::ArrayRef<int64_t> padding);
 };
-struct TORCH_API structured_replication_pad3d : public at::impl::MetaBase {
+struct structured_replication_pad3d : public at::impl::MetaBase {
     
     
     void meta(const at::Tensor & self, at::ArrayRef<int64_t> padding);
 };
-struct TORCH_API structured_upsample_linear1d : public at::impl::MetaBase {
+struct structured_upsample_linear1d : public at::impl::MetaBase {
     
     
     void meta(const at::Tensor & self, at::ArrayRef<int64_t> output_size, bool align_corners, c10::optional<double> scales);
 };
-struct TORCH_API structured_upsample_linear1d_backward : public at::impl::MetaBase {
+struct structured_upsample_linear1d_backward : public at::impl::MetaBase {
     
     
     void meta(const at::Tensor & grad_output, at::ArrayRef<int64_t> output_size, at::ArrayRef<int64_t> input_size, bool align_corners, c10::optional<double> scales);
 };
-struct TORCH_API structured_upsample_bilinear2d : public at::impl::MetaBase {
+struct structured_upsample_bilinear2d : public at::impl::MetaBase {
     
     
     void meta(const at::Tensor & self, at::ArrayRef<int64_t> output_size, bool align_corners, c10::optional<double> scales_h, c10::optional<double> scales_w);
 };
-struct TORCH_API structured_upsample_bilinear2d_backward : public at::impl::MetaBase {
+struct structured_upsample_bilinear2d_backward : public at::impl::MetaBase {
     
     
     void meta(const at::Tensor & grad_output, at::ArrayRef<int64_t> output_size, at::ArrayRef<int64_t> input_size, bool align_corners, c10::optional<double> scales_h, c10::optional<double> scales_w);
 };
-struct TORCH_API structured__upsample_bilinear2d_aa : public at::impl::MetaBase {
+struct structured__upsample_bilinear2d_aa : public at::impl::MetaBase {
     
     
     void meta(const at::Tensor & self, at::ArrayRef<int64_t> output_size, bool align_corners, c10::optional<double> scales_h, c10::optional<double> scales_w);
 };
-struct TORCH_API structured__upsample_bilinear2d_aa_backward : public at::impl::MetaBase {
+struct structured__upsample_bilinear2d_aa_backward : public at::impl::MetaBase {
     
     
     void meta(const at::Tensor & grad_output, at::ArrayRef<int64_t> output_size, at::ArrayRef<int64_t> input_size, bool align_corners, c10::optional<double> scales_h, c10::optional<double> scales_w);
 };
-struct TORCH_API structured_upsample_bicubic2d : public at::impl::MetaBase {
+struct structured_upsample_bicubic2d : public at::impl::MetaBase {
     
     
     void meta(const at::Tensor & self, at::ArrayRef<int64_t> output_size, bool align_corners, c10::optional<double> scales_h, c10::optional<double> scales_w);
 };
-struct TORCH_API structured_upsample_bicubic2d_backward : public at::impl::MetaBase {
+struct structured_upsample_bicubic2d_backward : public at::impl::MetaBase {
     
     
     void meta(const at::Tensor & grad_output, at::ArrayRef<int64_t> output_size, at::ArrayRef<int64_t> input_size, bool align_corners, c10::optional<double> scales_h, c10::optional<double> scales_w);
 };
-struct TORCH_API structured__upsample_bicubic2d_aa : public at::impl::MetaBase {
+struct structured__upsample_bicubic2d_aa : public at::impl::MetaBase {
     
     
     void meta(const at::Tensor & self, at::ArrayRef<int64_t> output_size, bool align_corners, c10::optional<double> scales_h, c10::optional<double> scales_w);
 };
-struct TORCH_API structured__upsample_bicubic2d_aa_backward : public at::impl::MetaBase {
+struct structured__upsample_bicubic2d_aa_backward : public at::impl::MetaBase {
     
     
     void meta(const at::Tensor & grad_output, at::ArrayRef<int64_t> output_size, at::ArrayRef<int64_t> input_size, bool align_corners, c10::optional<double> scales_h, c10::optional<double> scales_w);
 };
-struct TORCH_API structured_upsample_trilinear3d : public at::impl::MetaBase {
+struct structured_upsample_trilinear3d : public at::impl::MetaBase {
     
     
     void meta(const at::Tensor & self, at::ArrayRef<int64_t> output_size, bool align_corners, c10::optional<double> scales_d, c10::optional<double> scales_h, c10::optional<double> scales_w);
 };
-struct TORCH_API structured_upsample_trilinear3d_backward : public at::impl::MetaBase {
+struct structured_upsample_trilinear3d_backward : public at::impl::MetaBase {
     
     
     void meta(const at::Tensor & grad_output, at::ArrayRef<int64_t> output_size, at::ArrayRef<int64_t> input_size, bool align_corners, c10::optional<double> scales_d, c10::optional<double> scales_h, c10::optional<double> scales_w);
 };
-struct TORCH_API structured_upsample_nearest1d : public at::impl::MetaBase {
+struct structured_upsample_nearest1d : public at::impl::MetaBase {
     
     
     void meta(const at::Tensor & self, at::ArrayRef<int64_t> output_size, c10::optional<double> scales);
 };
-struct TORCH_API structured__upsample_nearest_exact1d : public at::impl::MetaBase {
+struct structured__upsample_nearest_exact1d : public at::impl::MetaBase {
     
     
     void meta(const at::Tensor & self, at::ArrayRef<int64_t> output_size, c10::optional<double> scales);
 };
-struct TORCH_API structured_upsample_nearest1d_backward : public at::impl::MetaBase {
+struct structured_upsample_nearest1d_backward : public at::impl::MetaBase {
     
     
     void meta(const at::Tensor & grad_output, at::ArrayRef<int64_t> output_size, at::ArrayRef<int64_t> input_size, c10::optional<double> scales);
 };
-struct TORCH_API structured__upsample_nearest_exact1d_backward : public at::impl::MetaBase {
+struct structured__upsample_nearest_exact1d_backward : public at::impl::MetaBase {
     
     
     void meta(const at::Tensor & grad_output, at::ArrayRef<int64_t> output_size, at::ArrayRef<int64_t> input_size, c10::optional<double> scales);
 };
-struct TORCH_API structured_upsample_nearest2d : public at::impl::MetaBase {
+struct structured_upsample_nearest2d : public at::impl::MetaBase {
     
     
     void meta(const at::Tensor & self, at::ArrayRef<int64_t> output_size, c10::optional<double> scales_h, c10::optional<double> scales_w);
 };
-struct TORCH_API structured__upsample_nearest_exact2d : public at::impl::MetaBase {
+struct structured__upsample_nearest_exact2d : public at::impl::MetaBase {
     
     
     void meta(const at::Tensor & self, at::ArrayRef<int64_t> output_size, c10::optional<double> scales_h, c10::optional<double> scales_w);
 };
-struct TORCH_API structured_upsample_nearest2d_backward : public at::impl::MetaBase {
+struct structured_upsample_nearest2d_backward : public at::impl::MetaBase {
     
     
     void meta(const at::Tensor & grad_output, at::ArrayRef<int64_t> output_size, at::ArrayRef<int64_t> input_size, c10::optional<double> scales_h, c10::optional<double> scales_w);
 };
-struct TORCH_API structured__upsample_nearest_exact2d_backward : public at::impl::MetaBase {
+struct structured__upsample_nearest_exact2d_backward : public at::impl::MetaBase {
     
     
     void meta(const at::Tensor & grad_output, at::ArrayRef<int64_t> output_size, at::ArrayRef<int64_t> input_size, c10::optional<double> scales_h, c10::optional<double> scales_w);
 };
-struct TORCH_API structured_upsample_nearest3d : public at::impl::MetaBase {
+struct structured_upsample_nearest3d : public at::impl::MetaBase {
     
     
     void meta(const at::Tensor & self, at::ArrayRef<int64_t> output_size, c10::optional<double> scales_d, c10::optional<double> scales_h, c10::optional<double> scales_w);
 };
-struct TORCH_API structured__upsample_nearest_exact3d : public at::impl::MetaBase {
+struct structured__upsample_nearest_exact3d : public at::impl::MetaBase {
     
     
     void meta(const at::Tensor & self, at::ArrayRef<int64_t> output_size, c10::optional<double> scales_d, c10::optional<double> scales_h, c10::optional<double> scales_w);
 };
-struct TORCH_API structured_upsample_nearest3d_backward : public at::impl::MetaBase {
+struct structured_upsample_nearest3d_backward : public at::impl::MetaBase {
     
     
     void meta(const at::Tensor & grad_output, at::ArrayRef<int64_t> output_size, at::ArrayRef<int64_t> input_size, c10::optional<double> scales_d, c10::optional<double> scales_h, c10::optional<double> scales_w);
 };
-struct TORCH_API structured__upsample_nearest_exact3d_backward : public at::impl::MetaBase {
+struct structured__upsample_nearest_exact3d_backward : public at::impl::MetaBase {
     
     
     void meta(const at::Tensor & grad_output, at::ArrayRef<int64_t> output_size, at::ArrayRef<int64_t> input_size, c10::optional<double> scales_d, c10::optional<double> scales_h, c10::optional<double> scales_w);
 };
-struct TORCH_API structured_sigmoid_backward : public TensorIteratorBase {
+struct structured_sigmoid_backward : public TensorIteratorBase {
     
     
     void meta(const at::Tensor & grad_output, const at::Tensor & output);
 };
-struct TORCH_API structured_logit_backward : public TensorIteratorBase {
+struct structured_logit_backward : public TensorIteratorBase {
     
     
     void meta(const at::Tensor & grad_output, const at::Tensor & self, c10::optional<double> eps);
 };
-struct TORCH_API structured_tanh_backward : public TensorIteratorBase {
+struct structured_tanh_backward : public TensorIteratorBase {
     
     
     void meta(const at::Tensor & grad_output, const at::Tensor & output);
 };
-struct TORCH_API structured_slow_conv_transpose2d : public at::impl::MetaBase {
+struct structured_slow_conv_transpose2d : public at::impl::MetaBase {
     
     
     void meta(const at::Tensor & self, const at::Tensor & weight, at::ArrayRef<int64_t> kernel_size, at::OptionalTensorRef bias, at::ArrayRef<int64_t> stride, at::ArrayRef<int64_t> padding, at::ArrayRef<int64_t> output_padding, at::ArrayRef<int64_t> dilation);
 };
-struct TORCH_API structured_isposinf : public TensorIteratorBase {
+struct structured_isposinf : public TensorIteratorBase {
     
     
     void meta(const at::Tensor & self);
 };
-struct TORCH_API structured_isneginf : public TensorIteratorBase {
+struct structured_isneginf : public TensorIteratorBase {
     
     
     void meta(const at::Tensor & self);
 };
-struct TORCH_API structured_special_entr : public TensorIteratorBase {
+struct structured_special_entr : public TensorIteratorBase {
     
     
     void meta(const at::Tensor & self);
 };
-struct TORCH_API structured_special_ndtri : public TensorIteratorBase {
+struct structured_special_ndtri : public TensorIteratorBase {
     
     
     void meta(const at::Tensor & self);
 };
-struct TORCH_API structured_special_log_ndtr : public TensorIteratorBase {
+struct structured_special_log_ndtr : public TensorIteratorBase {
     
     
     void meta(const at::Tensor & self);
 };
-struct TORCH_API structured_special_erfcx : public TensorIteratorBase {
+struct structured_special_erfcx : public TensorIteratorBase {
     
     
     void meta(const at::Tensor & self);
 };
-struct TORCH_API structured_special_xlog1py : public TensorIteratorBase {
+struct structured_special_xlog1py : public TensorIteratorBase {
     
     
     void meta(const at::Tensor & self, const at::Tensor & other);
 };
-struct TORCH_API structured_special_zeta : public TensorIteratorBase {
+struct structured_special_zeta : public TensorIteratorBase {
     
     
     void meta(const at::Tensor & self, const at::Tensor & other);
 };
-struct TORCH_API structured_special_i0e : public TensorIteratorBase {
+struct structured_special_i0e : public TensorIteratorBase {
     
     
     void meta(const at::Tensor & self);
 };
-struct TORCH_API structured_special_i1 : public TensorIteratorBase {
+struct structured_special_i1 : public TensorIteratorBase {
     
     
     void meta(const at::Tensor & self);
 };
-struct TORCH_API structured_special_i1e : public TensorIteratorBase {
+struct structured_special_i1e : public TensorIteratorBase {
     
     
     void meta(const at::Tensor & self);
 };
-struct TORCH_API structured_linalg_cholesky_ex : public at::impl::MetaBase {
+struct structured_linalg_cholesky_ex : public at::impl::MetaBase {
     
     
     void meta(const at::Tensor & self, bool upper, bool check_errors);
 };
-struct TORCH_API structured_linalg_cross : public at::impl::MetaBase {
+struct structured_linalg_cross : public at::impl::MetaBase {
     
     
     void meta(const at::Tensor & self, const at::Tensor & other, int64_t dim);
 };
-struct TORCH_API structured_linalg_lu_factor_ex : public at::impl::MetaBase {
+struct structured_linalg_lu_factor_ex : public at::impl::MetaBase {
     
     
     void meta(const at::Tensor & A, bool pivot, bool check_errors);
 };
-struct TORCH_API structured_linalg_lu : public at::impl::MetaBase {
+struct structured_linalg_lu : public at::impl::MetaBase {
     
     
     void meta(const at::Tensor & A, bool pivot);
 };
-struct TORCH_API structured_linalg_lu_solve : public at::impl::MetaBase {
+struct structured_linalg_lu_solve : public at::impl::MetaBase {
     
     
     void meta(const at::Tensor & LU, const at::Tensor & pivots, const at::Tensor & B, bool left, bool adjoint);
 };
-struct TORCH_API structured__linalg_det : public at::impl::MetaBase {
+struct structured__linalg_det : public at::impl::MetaBase {
     
     
     void meta(const at::Tensor & A);
 };
-struct TORCH_API structured_linalg_ldl_factor_ex : public at::impl::MetaBase {
+struct structured_linalg_ldl_factor_ex : public at::impl::MetaBase {
     
     
     void meta(const at::Tensor & self, bool hermitian, bool check_errors);
 };
-struct TORCH_API structured_linalg_ldl_solve : public at::impl::MetaBase {
+struct structured_linalg_ldl_solve : public at::impl::MetaBase {
     
     
     void meta(const at::Tensor & LD, const at::Tensor & pivots, const at::Tensor & B, bool hermitian);
 };
-struct TORCH_API structured__linalg_slogdet : public at::impl::MetaBase {
+struct structured__linalg_slogdet : public at::impl::MetaBase {
     
     
     void meta(const at::Tensor & A);
 };
-struct TORCH_API structured__linalg_eigh : public at::impl::MetaBase {
+struct structured__linalg_eigh : public at::impl::MetaBase {
     
     
     void meta(const at::Tensor & A, c10::string_view UPLO, bool compute_v);
 };
-struct TORCH_API structured_linalg_inv_ex : public at::impl::MetaBase {
+struct structured_linalg_inv_ex : public at::impl::MetaBase {
     
     
     void meta(const at::Tensor & A, bool check_errors);
 };
-struct TORCH_API structured_linalg_vector_norm : public at::impl::MetaBase {
+struct structured_linalg_vector_norm : public at::impl::MetaBase {
     
     
     void meta(const at::Tensor & self, const at::Scalar & ord, at::OptionalIntArrayRef dim, bool keepdim, c10::optional<at::ScalarType> dtype);
 };
-struct TORCH_API structured__linalg_svd : public at::impl::MetaBase {
+struct structured__linalg_svd : public at::impl::MetaBase {
     
     
     void meta(const at::Tensor & A, bool full_matrices, bool compute_uv, c10::optional<c10::string_view> driver);
 };
-struct TORCH_API structured__linalg_solve_ex : public at::impl::MetaBase {
+struct structured__linalg_solve_ex : public at::impl::MetaBase {
     
     
     void meta(const at::Tensor & A, const at::Tensor & B, bool left, bool check_errors);
 };
-struct TORCH_API structured_linalg_qr : public at::impl::MetaBase {
+struct structured_linalg_qr : public at::impl::MetaBase {
     
     
     void meta(const at::Tensor & A, c10::string_view mode);
 };
-struct TORCH_API structured_special_airy_ai : public TensorIteratorBase {
+struct structured_special_airy_ai : public TensorIteratorBase {
     
     
     void meta(const at::Tensor & x);
 };
-struct TORCH_API structured_special_bessel_j0 : public TensorIteratorBase {
+struct structured_special_bessel_j0 : public TensorIteratorBase {
     
     
     void meta(const at::Tensor & self);
 };
-struct TORCH_API structured_special_bessel_j1 : public TensorIteratorBase {
+struct structured_special_bessel_j1 : public TensorIteratorBase {
     
     
     void meta(const at::Tensor & self);
 };
-struct TORCH_API structured_special_bessel_y0 : public TensorIteratorBase {
+struct structured_special_bessel_y0 : public TensorIteratorBase {
     
     
     void meta(const at::Tensor & self);
 };
-struct TORCH_API structured_special_bessel_y1 : public TensorIteratorBase {
+struct structured_special_bessel_y1 : public TensorIteratorBase {
     
     
     void meta(const at::Tensor & self);
 };
-struct TORCH_API structured_special_chebyshev_polynomial_t : public TensorIteratorBase {
+struct structured_special_chebyshev_polynomial_t : public TensorIteratorBase {
     
     
     void meta(const at::Tensor & x, const at::Tensor & n);
 };
-struct TORCH_API structured_special_chebyshev_polynomial_u : public TensorIteratorBase {
+struct structured_special_chebyshev_polynomial_u : public TensorIteratorBase {
     
     
     void meta(const at::Tensor & x, const at::Tensor & n);
 };
-struct TORCH_API structured_special_chebyshev_polynomial_v : public TensorIteratorBase {
+struct structured_special_chebyshev_polynomial_v : public TensorIteratorBase {
     
     
     void meta(const at::Tensor & x, const at::Tensor & n);
 };
-struct TORCH_API structured_special_chebyshev_polynomial_w : public TensorIteratorBase {
+struct structured_special_chebyshev_polynomial_w : public TensorIteratorBase {
     
     
     void meta(const at::Tensor & x, const at::Tensor & n);
 };
-struct TORCH_API structured_special_hermite_polynomial_h : public TensorIteratorBase {
+struct structured_special_hermite_polynomial_h : public TensorIteratorBase {
     
     
     void meta(const at::Tensor & x, const at::Tensor & n);
 };
-struct TORCH_API structured_special_hermite_polynomial_he : public TensorIteratorBase {
+struct structured_special_hermite_polynomial_he : public TensorIteratorBase {
     
     
     void meta(const at::Tensor & x, const at::Tensor & n);
 };
-struct TORCH_API structured_special_laguerre_polynomial_l : public TensorIteratorBase {
+struct structured_special_laguerre_polynomial_l : public TensorIteratorBase {
     
     
     void meta(const at::Tensor & x, const at::Tensor & n);
 };
-struct TORCH_API structured_special_legendre_polynomial_p : public TensorIteratorBase {
+struct structured_special_legendre_polynomial_p : public TensorIteratorBase {
     
     
     void meta(const at::Tensor & x, const at::Tensor & n);
 };
-struct TORCH_API structured_special_modified_bessel_i0 : public TensorIteratorBase {
+struct structured_special_modified_bessel_i0 : public TensorIteratorBase {
     
     
     void meta(const at::Tensor & self);
 };
-struct TORCH_API structured_special_modified_bessel_i1 : public TensorIteratorBase {
+struct structured_special_modified_bessel_i1 : public TensorIteratorBase {
     
     
     void meta(const at::Tensor & self);
 };
-struct TORCH_API structured_special_modified_bessel_k0 : public TensorIteratorBase {
+struct structured_special_modified_bessel_k0 : public TensorIteratorBase {
     
     
     void meta(const at::Tensor & self);
 };
-struct TORCH_API structured_special_modified_bessel_k1 : public TensorIteratorBase {
+struct structured_special_modified_bessel_k1 : public TensorIteratorBase {
     
     
     void meta(const at::Tensor & self);
 };
-struct TORCH_API structured_special_scaled_modified_bessel_k0 : public TensorIteratorBase {
+struct structured_special_scaled_modified_bessel_k0 : public TensorIteratorBase {
     
     
     void meta(const at::Tensor & x);
 };
-struct TORCH_API structured_special_scaled_modified_bessel_k1 : public TensorIteratorBase {
+struct structured_special_scaled_modified_bessel_k1 : public TensorIteratorBase {
     
     
     void meta(const at::Tensor & x);
 };
-struct TORCH_API structured_special_shifted_chebyshev_polynomial_t : public TensorIteratorBase {
+struct structured_special_shifted_chebyshev_polynomial_t : public TensorIteratorBase {
     
     
     void meta(const at::Tensor & x, const at::Tensor & n);
 };
-struct TORCH_API structured_special_shifted_chebyshev_polynomial_u : public TensorIteratorBase {
+struct structured_special_shifted_chebyshev_polynomial_u : public TensorIteratorBase {
     
     
     void meta(const at::Tensor & x, const at::Tensor & n);
 };
-struct TORCH_API structured_special_shifted_chebyshev_polynomial_v : public TensorIteratorBase {
+struct structured_special_shifted_chebyshev_polynomial_v : public TensorIteratorBase {
     
     
     void meta(const at::Tensor & x, const at::Tensor & n);
 };
-struct TORCH_API structured_special_shifted_chebyshev_polynomial_w : public TensorIteratorBase {
+struct structured_special_shifted_chebyshev_polynomial_w : public TensorIteratorBase {
     
     
     void meta(const at::Tensor & x, const at::Tensor & n);
 };
-struct TORCH_API structured_special_spherical_bessel_j0 : public TensorIteratorBase {
+struct structured_special_spherical_bessel_j0 : public TensorIteratorBase {
     
     
     void meta(const at::Tensor & x);

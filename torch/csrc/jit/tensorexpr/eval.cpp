@@ -99,41 +99,41 @@ class SimpleIREvaluatorImpl : public IRVisitor {
     internal_buffers_.clear();
   }
 
-  TORCH_API void visit(AddPtr v) override {
+  void visit(AddPtr v) override {
     visit_binary_op(v);
   }
-  TORCH_API void visit(SubPtr v) override {
+  void visit(SubPtr v) override {
     visit_binary_op(v);
   }
-  TORCH_API void visit(MulPtr v) override {
+  void visit(MulPtr v) override {
     visit_binary_op(v);
   }
-  TORCH_API void visit(DivPtr v) override {
+  void visit(DivPtr v) override {
     visit_binary_op(v);
   }
-  TORCH_API void visit(ModPtr v) override {
+  void visit(ModPtr v) override {
     visit_binary_op(v);
   }
-  TORCH_API void visit(MaxPtr v) override {
+  void visit(MaxPtr v) override {
     visit_binary_op(v, v->propagate_nans());
   }
-  TORCH_API void visit(MinPtr v) override {
+  void visit(MinPtr v) override {
     visit_binary_op(v, v->propagate_nans());
   }
 
-  TORCH_API void visit(AndPtr v) override {
+  void visit(AndPtr v) override {
     visit_binary_op(v);
   }
-  TORCH_API void visit(OrPtr v) override {
+  void visit(OrPtr v) override {
     visit_binary_op(v);
   }
-  TORCH_API void visit(XorPtr v) override {
+  void visit(XorPtr v) override {
     visit_binary_op(v);
   }
-  TORCH_API void visit(LshiftPtr v) override {
+  void visit(LshiftPtr v) override {
     visit_binary_op(v);
   }
-  TORCH_API void visit(RshiftPtr v) override {
+  void visit(RshiftPtr v) override {
     visit_binary_op(v);
   }
 
@@ -420,13 +420,13 @@ class SimpleIREvaluatorImpl : public IRVisitor {
   }
 
 #define IMM_VISIT(Type, Name)                     \
-  TORCH_API void visit(Name##ImmPtr v) override { \
+  void visit(Name##ImmPtr v) override { \
     value_ = InterpValue(v->value());             \
   }
   AT_FORALL_SCALAR_TYPES_AND3(Bool, Half, BFloat16, IMM_VISIT);
 #undef IMM_VISIT
 
-  TORCH_API void visit(BlockPtr v) override {
+  void visit(BlockPtr v) override {
     BlockPtr last = scope_;
     scope_ = v;
     for (const StmtPtr& s : v->stmts()) {
@@ -444,7 +444,7 @@ class SimpleIREvaluatorImpl : public IRVisitor {
     scope_ = last;
   }
 
-  TORCH_API void visit(VarPtr v) override {
+  void visit(VarPtr v) override {
     auto iter = eval_context_.find(v);
     if (iter == eval_context_.end()) {
       throw malformed_input("could not find Var in context", v);
@@ -497,7 +497,7 @@ class SimpleIREvaluatorImpl : public IRVisitor {
     }
   }
 
-  TORCH_API void visit(CastPtr v) override {
+  void visit(CastPtr v) override {
     ExprPtr src_value = v->src_value();
     src_value->accept(this);
     Dtype dst_dtype = v->dtype();
@@ -552,7 +552,7 @@ class SimpleIREvaluatorImpl : public IRVisitor {
     }
   }
 
-  TORCH_API void visit(BitCastPtr v) override {
+  void visit(BitCastPtr v) override {
     ExprPtr src_value = v->src_value();
     src_value->accept(this);
     Dtype dst_dtype = v->dtype();
@@ -575,7 +575,7 @@ class SimpleIREvaluatorImpl : public IRVisitor {
     }
   }
 
-  TORCH_API void visit(ForPtr v) override {
+  void visit(ForPtr v) override {
     ExprPtr var_node = v->var();
     v->start()->accept(this);
     auto dtype = value_.dtype();
@@ -595,7 +595,7 @@ class SimpleIREvaluatorImpl : public IRVisitor {
     eval_context_.erase(var_node);
   }
 
-  TORCH_API void visit(RampPtr v) override {
+  void visit(RampPtr v) override {
     v->base()->accept(this);
     auto base = value().intValue();
     v->stride()->accept(this);
@@ -610,7 +610,7 @@ class SimpleIREvaluatorImpl : public IRVisitor {
     value_ = InterpValue(values);
   }
 
-  TORCH_API void visit(BroadcastPtr v) override {
+  void visit(BroadcastPtr v) override {
     v->value()->accept(this);
     InterpValue value = this->value();
     int lanes = v->lanes();
@@ -627,7 +627,7 @@ class SimpleIREvaluatorImpl : public IRVisitor {
     }
   }
 
-  TORCH_API void visit(IfThenElsePtr v) override {
+  void visit(IfThenElsePtr v) override {
     v->condition()->accept(this);
     // NOLINTNEXTLINE(cppcoreguidelines-init-variables)
     bool cond_v;
@@ -731,7 +731,7 @@ class SimpleIREvaluatorImpl : public IRVisitor {
     }
   }
 
-  TORCH_API void visit(LoadPtr v) override {
+  void visit(LoadPtr v) override {
     auto iter = buffer_mapping_.find(v->buf());
     if (iter == buffer_mapping_.end()) {
       throw malformed_input("could not find base node in Load", v);
@@ -775,7 +775,7 @@ class SimpleIREvaluatorImpl : public IRVisitor {
     }
   }
 
-  TORCH_API void visit(StorePtr v) override {
+  void visit(StorePtr v) override {
     auto iter = buffer_mapping_.find(v->buf());
     if (iter == buffer_mapping_.end()) {
       throw malformed_input("could not find base node in Store", v);
@@ -1012,7 +1012,7 @@ class SimpleIREvaluatorImpl : public IRVisitor {
     value_ = InterpValue(result);
   }
 
-  TORCH_API void visit(IntrinsicsPtr v) override {
+  void visit(IntrinsicsPtr v) override {
     auto ty = v->dtype().scalar_type();
     if (v->op_type() == kIsNan) {
       auto inp_dtype = v->params().at(0)->dtype().scalar_type();

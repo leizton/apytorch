@@ -56,7 +56,7 @@ using BatchDimsRef = ArrayRef<BatchDim>;
 // bt.sizes() returns (5, 7); bt.sum(0) performs a reduction over the (public)
 // dim 0, which is equivalent to dim 3 in the underlying ones(2, 3, 5, 7)
 // tensor.
-struct TORCH_API BatchedTensorImpl : public c10::TensorImpl {
+struct BatchedTensorImpl : public c10::TensorImpl {
   explicit BatchedTensorImpl(Tensor value, BatchDims bdims);
 
   // Returns a reference to BatchDims that represent which dimensions of this
@@ -149,13 +149,13 @@ inline std::ostream& operator<<(std::ostream& out, const BatchDim& bdim) {
 }
 
 // Use this to construct a BatchedTensor from a regular Tensor
-TORCH_API Tensor makeBatched(const Tensor& tensor, BatchDims bdims);
+Tensor makeBatched(const Tensor& tensor, BatchDims bdims);
 
 // Adds a batch dim to `tensor`, returning a BatchedTensor
-TORCH_API Tensor addBatchDim(const Tensor& tensor, int64_t level, int64_t dim);
+Tensor addBatchDim(const Tensor& tensor, int64_t level, int64_t dim);
 
 // Checks if an inplace operation on self and other is "vmap compatible".
 // See NOTE: [vmap-incompatible in-place operations] for the definition of this.
-TORCH_API bool inplaceIsVmapCompatible(const Tensor& self, const Tensor& other);
+bool inplaceIsVmapCompatible(const Tensor& self, const Tensor& other);
 
 } // namespace at

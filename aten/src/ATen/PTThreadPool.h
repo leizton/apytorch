@@ -5,7 +5,7 @@
 
 namespace at {
 
-class TORCH_API PTThreadPool : public c10::ThreadPool {
+class PTThreadPool : public c10::ThreadPool {
  public:
   explicit PTThreadPool(int pool_size, int numa_node_id = -1)
       : c10::ThreadPool(pool_size, numa_node_id, []() {

@@ -39,17 +39,17 @@ void checkCustomClassType(const ClassType* expected_type, const Type* actual_typ
               expected_type ? expected_type->repr_str() : std::string("*NULL*"));
 }
 
-TORCH_API c10::intrusive_ptr<ConstantString> ConstantString::create(
+c10::intrusive_ptr<ConstantString> ConstantString::create(
     std::string str_) {
   return c10::make_intrusive<ConstantString>(std::move(str_));
 }
 
-TORCH_API c10::intrusive_ptr<ConstantString> ConstantString::create(
+c10::intrusive_ptr<ConstantString> ConstantString::create(
     c10::string_view str_) {
   return c10::make_intrusive<ConstantString>(std::string(str_));
 }
 
-TORCH_API c10::intrusive_ptr<ConstantString> ConstantString::create(
+c10::intrusive_ptr<ConstantString> ConstantString::create(
     const char* str_) {
   return c10::make_intrusive<ConstantString>(std::string(str_));
 }
@@ -1136,7 +1136,7 @@ std::vector<c10::weak_intrusive_ptr<c10::StorageImpl>> ivalue::Future::extractSt
   return weakStorageImpls;
 }
 
-TORCH_API intrusive_ptr<ivalue::Future> collectAll(
+intrusive_ptr<ivalue::Future> collectAll(
     const List<intrusive_ptr<ivalue::Future>>& srcs) {
   struct Ctx {
     explicit Ctx(const List<intrusive_ptr<ivalue::Future>>& srcs)
@@ -1190,7 +1190,7 @@ std::string formatSetOfDevices(const std::vector<c10::Device>& devices) {
 
 }
 
-TORCH_API intrusive_ptr<ivalue::Future> collectAny(
+intrusive_ptr<ivalue::Future> collectAny(
     const List<intrusive_ptr<ivalue::Future>>& srcs) {
   if (srcs.empty()) {
     auto res = make_intrusive<ivalue::Future>(NoneType::get());

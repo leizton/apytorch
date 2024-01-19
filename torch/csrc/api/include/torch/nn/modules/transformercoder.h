@@ -33,7 +33,7 @@ namespace nn {
 /// encoder(TransformerEncoderOptions(encoderLayer,
 /// 6).norm(LayerNorm(LayerNormOptions({2}))));
 /// ```
-class TORCH_API TransformerEncoderImpl
+class TransformerEncoderImpl
     : public Cloneable<TransformerEncoderImpl> {
  public:
   TransformerEncoderImpl(
@@ -94,7 +94,7 @@ TORCH_MODULE(TransformerEncoder);
 /// torch::rand({10, 32, 512}); const auto tgt = torch::rand({20, 32, 512});
 /// auto out = transformer_decoder(tgt, memory);
 /// ```
-class TORCH_API TransformerDecoderImpl
+class TransformerDecoderImpl
     : public Cloneable<TransformerDecoderImpl> {
  public:
   TransformerDecoderImpl(

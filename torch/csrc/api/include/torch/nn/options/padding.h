@@ -11,7 +11,7 @@ namespace nn {
 
 /// Options for a `D`-dimensional ReflectionPad module.
 template <size_t D>
-struct TORCH_API ReflectionPadOptions {
+struct ReflectionPadOptions {
   ReflectionPadOptions(ExpandingArray<D * 2> padding) : padding_(padding) {}
 
   /// The size of the padding.
@@ -53,7 +53,7 @@ using ReflectionPad3dOptions = ReflectionPadOptions<3>;
 
 /// Options for a `D`-dimensional ReplicationPad module.
 template <size_t D>
-struct TORCH_API ReplicationPadOptions {
+struct ReplicationPadOptions {
   ReplicationPadOptions(ExpandingArray<D * 2> padding) : padding_(padding) {}
 
   /// The size of the padding.
@@ -95,7 +95,7 @@ using ReplicationPad3dOptions = ReplicationPadOptions<3>;
 // ============================================================================
 
 template <size_t D>
-struct TORCH_API ZeroPadOptions {
+struct ZeroPadOptions {
   ZeroPadOptions(ExpandingArray<D * 2> padding) : padding_(padding) {}
 
   /// The size of the padding.
@@ -138,7 +138,7 @@ using ZeroPad3dOptions = ZeroPadOptions<3>;
 
 /// Options for a `D`-dimensional ConstantPad module.
 template <size_t D>
-struct TORCH_API ConstantPadOptions {
+struct ConstantPadOptions {
   ConstantPadOptions(ExpandingArray<D * 2> padding, double value)
       : padding_(padding), value_(value) {}
 
@@ -193,7 +193,7 @@ namespace functional {
 /// F::pad(input, F::PadFuncOptions({1, 2, 2, 1, 1,
 /// 2}).mode(torch::kReplicate));
 /// ```
-struct TORCH_API PadFuncOptions {
+struct PadFuncOptions {
   typedef std::variant<
       enumtype::kConstant,
       enumtype::kReflect,

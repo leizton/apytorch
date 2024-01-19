@@ -7,15 +7,15 @@
 namespace torch {
 namespace jit {
 
-TORCH_API TypePtr getTensorType(const at::Tensor& t, bool complete);
+TypePtr getTensorType(const at::Tensor& t, bool complete);
 
-TORCH_API TypePtr inferShapeAndTypeForInput(
+TypePtr inferShapeAndTypeForInput(
     TypePtr input_type,
     Stack::const_iterator& s_iter,
     const Stack::const_iterator& s_iter_end,
     bool complete);
 
-TORCH_API void setInputTensorTypes(
+void setInputTensorTypes(
     Graph& g,
     const Stack& stack,
     bool complete,

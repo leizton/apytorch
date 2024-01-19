@@ -71,7 +71,7 @@ class InstanceNormImpl
 /// InstanceNorm1d
 /// model(InstanceNorm1dOptions(4).eps(0.5).momentum(0.1).affine(false).track_running_stats(true));
 /// ```
-class TORCH_API InstanceNorm1dImpl
+class InstanceNorm1dImpl
     : public InstanceNormImpl<1, InstanceNorm1dImpl> {
  protected:
   void _check_input_dim(const Tensor& input) override;
@@ -102,7 +102,7 @@ TORCH_MODULE(InstanceNorm1d);
 /// InstanceNorm2d
 /// model(InstanceNorm2dOptions(4).eps(0.5).momentum(0.1).affine(false).track_running_stats(true));
 /// ```
-class TORCH_API InstanceNorm2dImpl
+class InstanceNorm2dImpl
     : public InstanceNormImpl<2, InstanceNorm2dImpl> {
  protected:
   void _check_input_dim(const Tensor& input) override;
@@ -133,7 +133,7 @@ TORCH_MODULE(InstanceNorm2d);
 /// InstanceNorm3d
 /// model(InstanceNorm3dOptions(4).eps(0.5).momentum(0.1).affine(false).track_running_stats(true));
 /// ```
-class TORCH_API InstanceNorm3dImpl
+class InstanceNorm3dImpl
     : public InstanceNormImpl<3, InstanceNorm3dImpl> {
  protected:
   void _check_input_dim(const Tensor& input) override;

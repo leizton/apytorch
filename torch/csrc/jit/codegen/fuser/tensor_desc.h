@@ -17,7 +17,7 @@ namespace fuser {
 // type information needed by the compiler for input/outputs
 // contiguity[i] is true if the dim i is contiguous with dim i + 1.
 // contiguity.back() == true means strides.back() == 1.
-struct TORCH_API TensorDesc {
+struct TensorDesc {
   // NOLINTNEXTLINE(cppcoreguidelines-non-private-member-variables-in-classes)
   at::ScalarType scalar_type;
   // NOLINTNEXTLINE(cppcoreguidelines-non-private-member-variables-in-classes)

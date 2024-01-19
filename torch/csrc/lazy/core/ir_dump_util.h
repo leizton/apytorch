@@ -9,7 +9,7 @@ namespace lazy {
 
 class BackendDevice;
 
-class TORCH_API DumpUtil {
+class DumpUtil {
  public:
   static std::string ToDot(c10::ArrayRef<const Node*> nodes);
 

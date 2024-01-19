@@ -52,7 +52,7 @@ namespace at::native {
 
 namespace upsample {
 
-TORCH_API c10::SmallVector<int64_t, 3> compute_output_size(
+c10::SmallVector<int64_t, 3> compute_output_size(
     c10::IntArrayRef input_size,  // Full input tensor size.
     at::OptionalIntArrayRef output_size,
     c10::optional<c10::ArrayRef<double>> scale_factors);

@@ -55,7 +55,7 @@ using VmapSymDimVector = SmallVector<c10::SymInt, kVmapStaticDimVecSize>;
 // permutes all of the batch dims to the front of the tensor, aligns
 // and expands the batch dims to match each other (according to their `level`),
 // and returns a VmapPhysicalView on the tensor(s).
-struct TORCH_API MultiBatchVmapTransform {
+struct MultiBatchVmapTransform {
   static VmapPhysicalView logicalToPhysical(const Tensor& logical_tensor);
   static VmapPhysicalViewVec logicalToPhysical(ITensorListRef logical_tensors);
 };
@@ -79,7 +79,7 @@ struct TORCH_API MultiBatchVmapTransform {
 // actually *need* to return a tensor of size (1, 2) for the second tensor
 // because the broadcasting operation takes care of that for us, but we do
 // it anyways to keep things simple.
-struct TORCH_API BroadcastingVmapTransform {
+struct BroadcastingVmapTransform {
   static VmapPhysicalViewVec logicalToPhysical(TensorList logical_tensors);
 };
 
@@ -111,7 +111,7 @@ struct VmapPhysicalToLogicalMap;
 //              ^
 //              |
 //   levels: 012345
-struct TORCH_API VmapPhysicalView {
+struct VmapPhysicalView {
   VmapPhysicalView(Tensor&& tensor, std::bitset<kVmapNumLevels> levels)
       : levels_(levels), tensor_(tensor) {
     TORCH_INTERNAL_ASSERT(!isBatchedTensor(tensor));
@@ -157,7 +157,7 @@ struct TORCH_API VmapPhysicalView {
 // to a logical one (BatchedTensor). It holds some levels that are used to do
 // the mapping and assumes that the batch dimensions in the physical tensor all
 // occur at the front of the tensor.
-struct TORCH_API VmapPhysicalToLogicalMap {
+struct VmapPhysicalToLogicalMap {
   VmapPhysicalToLogicalMap(std::bitset<kVmapNumLevels> levels)
       : levels_(levels) {}
 

@@ -11,14 +11,14 @@ namespace at::caching {
 // checks on tensor uniqueness. If we are not using these systems the enabled
 // flag will be false and we will avoid the hash lookup.
 
-TORCH_API bool is_cached_tensor(const at::Tensor& t);
-TORCH_API void add_cached_tensor(const at::Tensor& t);
-TORCH_API void remove_cached_tensor(const at::Tensor& t);
-TORCH_API void set_cached_tensors_enabled(bool enable);
+bool is_cached_tensor(const at::Tensor& t);
+void add_cached_tensor(const at::Tensor& t);
+void remove_cached_tensor(const at::Tensor& t);
+void set_cached_tensors_enabled(bool enable);
 
 // For gradient buffer stealing we will adjust the use count of tensors
 // which are persisted by cudagraphs, just as we need to adjust reference
 // count of tensors with hooks.
-TORCH_API size_t adjusted_use_count(const at::Tensor& t);
+size_t adjusted_use_count(const at::Tensor& t);
 
 } // namespace at::caching

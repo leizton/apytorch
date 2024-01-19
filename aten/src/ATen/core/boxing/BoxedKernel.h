@@ -17,7 +17,7 @@ class KernelFunction;
 // no overhead to fallthrough to the next key.  See cpp file for some more
 // implementation notes; notably, this does NOT actually go through the
 // boxing/unboxing codepath.
-TORCH_API void fallthrough_kernel(OperatorKernel*, const OperatorHandle&, DispatchKeySet, Stack*);
+void fallthrough_kernel(OperatorKernel*, const OperatorHandle&, DispatchKeySet, Stack*);
 
 // Note [Ambiguity in AutogradOther kernel]
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -57,7 +57,7 @@ TORCH_API void fallthrough_kernel(OperatorKernel*, const OperatorHandle&, Dispat
 // but unimplemented backends would prefer CompositeImplicitAutograd.  Rather
 // than arbitrarily pick one or the other, we just register a kernel that raises
 // an error and let the user decide how to proceed.
-TORCH_API void ambiguous_autogradother_kernel(OperatorKernel*, const OperatorHandle&, DispatchKeySet, Stack*);
+void ambiguous_autogradother_kernel(OperatorKernel*, const OperatorHandle&, DispatchKeySet, Stack*);
 
 // Note [named_not_supported_kernel]
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -66,12 +66,12 @@ TORCH_API void ambiguous_autogradother_kernel(OperatorKernel*, const OperatorHan
 // cased in the dispatcher to be triggered before we attempt boxing (so we can
 // give a good error message in cases when boxing is not supported).  When
 // boxing is universally supported this can be removed.
-[[noreturn]] TORCH_API void named_not_supported_kernel(OperatorKernel*, const OperatorHandle&, DispatchKeySet, Stack*);
+[[noreturn]] void named_not_supported_kernel(OperatorKernel*, const OperatorHandle&, DispatchKeySet, Stack*);
 
 /**
  * BoxedKernel is similar to a std::function storing a boxed kernel.
  */
-class TORCH_API BoxedKernel final {
+class BoxedKernel final {
 public:
   // This is how boxed kernels are actually stored
   //

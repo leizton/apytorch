@@ -36,7 +36,7 @@ using pyobj_list = std::vector<THPObjectPtr>;
 namespace torch {
 namespace jit {
 namespace utils {
-TORCH_API std::string getNodesModuleHierarchy(const Node& n);
+std::string getNodesModuleHierarchy(const Node& n);
 } // namespace utils
 class AliasDb;
 
@@ -102,8 +102,8 @@ struct Node;
 // Tensor or an opaque Handle object, as determined by type().
 struct Value;
 
-TORCH_API std::ostream& operator<<(std::ostream& out, const Graph& g);
-TORCH_API std::ostream& operator<<(std::ostream& out, const Node& n);
+std::ostream& operator<<(std::ostream& out, const Graph& g);
+std::ostream& operator<<(std::ostream& out, const Node& n);
 
 // A list of nodes, with inputs and outputs
 struct Block;
@@ -194,8 +194,8 @@ struct Value {
 
  public:
   Value* setType(TypePtr type);
-  TORCH_API void inferTypeFrom(const at::Tensor& output);
-  TORCH_API void inferTypeFrom(
+  void inferTypeFrom(const at::Tensor& output);
+  void inferTypeFrom(
       const c10::intrusive_ptr<c10::ivalue::Object>& output);
   const TypePtr& type() const {
     AT_ASSERT(type_ != nullptr);
@@ -210,8 +210,8 @@ struct Value {
     }
     return false;
   }
-  TORCH_API bool mustBeNone() const;
-  TORCH_API bool mustNotBeNone() const;
+  bool mustBeNone() const;
+  bool mustNotBeNone() const;
   size_t unique() const {
     return unique_;
   }
@@ -219,14 +219,14 @@ struct Value {
     return !unique_name_.empty();
   }
   static bool isValidName(const std::string& name);
-  TORCH_API Value* setDebugName(const std::string& name);
+  Value* setDebugName(const std::string& name);
   std::string debugName() const {
     if (hasDebugName()) {
       return unique_name_;
     }
     return c10::to_string(unique());
   }
-  TORCH_API std::string debugNameBase() const;
+  std::string debugNameBase() const;
   Node* node() {
     return node_;
   }
@@ -255,7 +255,7 @@ struct Value {
     return !uses().empty();
   }
 
-  TORCH_API void replaceFirstUseWith(Value* newValue);
+  void replaceFirstUseWith(Value* newValue);
 
   // Replaces all uses of this value with 'newValue'.
   //
@@ -266,7 +266,7 @@ struct Value {
   // Result:  %3 = f(%1, %2)
   //          %4 = g(%6)
   //          %5 = h(%6, %6)
-  TORCH_API void replaceAllUsesWith(Value* newValue);
+  void replaceAllUsesWith(Value* newValue);
 
   // Replaces all uses of this value with 'newValue' after 'node'.
   // Given:   %3 = f(%1, %2)
@@ -280,7 +280,7 @@ struct Value {
   //          %6 = h(%5, %5)
   // XXX: does not check scoping legality, consider using
   // replaceAllUsesDominatedByNodeWith
-  TORCH_API void replaceAllUsesAfterNodeWith(const Node* node, Value* newValue);
+  void replaceAllUsesAfterNodeWith(const Node* node, Value* newValue);
 
   // Replaces all uses of this value with 'newValue' that are dominated by
   // 'node'. Given:
@@ -294,13 +294,13 @@ struct Value {
   // but not print(x) because print is not dominated by foo.
   // replaceAllUsesAfterNode does not check domination, so in this example
   // it would produce invalid IR.
-  TORCH_API void replaceAllUsesDominatedByNodeWith(
+  void replaceAllUsesDominatedByNodeWith(
       const Node* node,
       Value* newValue);
 
-  TORCH_API Value* copyMetadata(Value* from);
+  Value* copyMetadata(Value* from);
 
-  TORCH_API std::shared_ptr<Wrap<Value>> wrap() {
+  std::shared_ptr<Wrap<Value>> wrap() {
     if (!wrap_) {
       wrap_ = std::make_shared<Wrap<Value>>(this);
     }
@@ -314,7 +314,7 @@ struct Value {
   }
 };
 
-struct TORCH_API Node {
+struct Node {
   AT_DISALLOW_COPY_AND_ASSIGN(Node);
   friend struct Graph;
   friend struct Block;
@@ -1027,7 +1027,7 @@ struct Block {
   friend struct Graph;
 
   AT_DISALLOW_COPY_AND_ASSIGN(Block);
-  TORCH_API Block(Graph* graph_, Node* node_);
+  Block(Graph* graph_, Node* node_);
 
   at::ArrayRef<Value*> inputs() {
     return input_->outputs();
@@ -1133,10 +1133,10 @@ struct Block {
   // to the inputs, nodes, and outputs of this block
   // value_map is used whenever a node in src references a free variable
   // in src to look up its corresponding value
-  TORCH_API void cloneFrom(Block* src, std::function<Value*(Value*)> value_map);
-  TORCH_API void remapTypes(const std::function<TypePtr(TypePtr)>& type_map);
+  void cloneFrom(Block* src, std::function<Value*(Value*)> value_map);
+  void remapTypes(const std::function<TypePtr(TypePtr)>& type_map);
 
-  TORCH_API std::shared_ptr<Wrap<Block>> wrap() {
+  std::shared_ptr<Wrap<Block>> wrap() {
     if (!wrap_) {
       wrap_ = std::make_shared<Wrap<Block>>(this);
     }
@@ -1254,8 +1254,8 @@ struct Graph : std::enable_shared_from_this<Graph> {
     return unique_names_;
   }
 
-  TORCH_API void push_scope(const std::string& scope_name);
-  TORCH_API void pop_scope();
+  void push_scope(const std::string& scope_name);
+  void pop_scope();
 
   ScopePtr current_scope() {
     return current_scope_;
@@ -1289,65 +1289,65 @@ struct Graph : std::enable_shared_from_this<Graph> {
     block_->eraseOutput(i);
   }
 
-  TORCH_API Node* create(NodeKind kind, size_t num_outputs = 1);
-  TORCH_API Node* create(
+  Node* create(NodeKind kind, size_t num_outputs = 1);
+  Node* create(
       NodeKind kind,
       ArrayRef<Value*> inputs,
       size_t num_outputs = 1);
 
-  TORCH_API Node* createNone();
-  TORCH_API Node* createAutogradZero();
-  TORCH_API Node* createUninitialized(TypePtr typ);
-  TORCH_API Node* createWithSubgraph(Symbol kind);
-  TORCH_API Node* createDifferentiableSubgraph();
-  TORCH_API Node* createTuple(
+  Node* createNone();
+  Node* createAutogradZero();
+  Node* createUninitialized(TypePtr typ);
+  Node* createWithSubgraph(Symbol kind);
+  Node* createDifferentiableSubgraph();
+  Node* createTuple(
       at::ArrayRef<Value*> values,
       TupleTypePtr optional_named_tuple = nullptr);
-  TORCH_API Node* createTupleUnpack(Value* v);
-  TORCH_API Node* createTupleIndex(
+  Node* createTupleUnpack(Value* v);
+  Node* createTupleIndex(
       Value* tup,
       Value* idx,
       const TypePtr& output_type);
-  TORCH_API Node* createTupleSlice(
+  Node* createTupleSlice(
       Value* tup,
       int64_t beg,
       int64_t step_size,
       int64_t num_values);
-  TORCH_API Node* createEnumName(Value* e);
-  TORCH_API Node* createEnumValue(Value* e);
-  TORCH_API Node* createList(
+  Node* createEnumName(Value* e);
+  Node* createEnumValue(Value* e);
+  Node* createList(
       const TypePtr& contained_type,
       at::ArrayRef<Value*> values);
-  TORCH_API Node* createListUnpack(Value* v, size_t size);
-  TORCH_API Node* createDict(
+  Node* createListUnpack(Value* v, size_t size);
+  Node* createDict(
       const TypePtr& key_type,
       const TypePtr& value_type,
       at::ArrayRef<Value*> keys,
       at::ArrayRef<Value*> values);
-  TORCH_API Node* createNumToTensor(Value* value);
-  TORCH_API Node* createObject(const ClassTypePtr& type);
-  TORCH_API Node* createSetAttr(
+  Node* createNumToTensor(Value* value);
+  Node* createObject(const ClassTypePtr& type);
+  Node* createSetAttr(
       Value* obj,
       const std::string& field,
       Value* newValue);
-  TORCH_API Node* createGetAttr(Value* obj, const std::string& field);
+  Node* createGetAttr(Value* obj, const std::string& field);
   Value* insertGetAttr(Value* obj, const std::string& field) {
     return insertNode(createGetAttr(obj, field))->output();
   }
-  TORCH_API Node* createStore(const std::string& name, Value* v);
-  TORCH_API Node* createLoad(const std::string& name, const TypePtr& type);
-  TORCH_API Node* createIsInstance(Value* v, at::ArrayRef<TypePtr> types);
+  Node* createStore(const std::string& name, Value* v);
+  Node* createLoad(const std::string& name, const TypePtr& type);
+  Node* createIsInstance(Value* v, at::ArrayRef<TypePtr> types);
 
-  TORCH_API Value* insertUncheckedCast(Value* v, TypePtr type);
+  Value* insertUncheckedCast(Value* v, TypePtr type);
 
   // Insert a ToList operator with argument \p v and output type \p type.
   // \returns the output of the operation.
-  TORCH_API Value* insertToList(Value* v, TypePtr type);
+  Value* insertToList(Value* v, TypePtr type);
 
-  TORCH_API Value* insertFunctionCall(
+  Value* insertFunctionCall(
       Function* callee,
       const MatchedSchema& matched);
-  TORCH_API Value* insertMethodCall(
+  Value* insertMethodCall(
       std::string method_name,
       const MatchedSchema& matched);
 
@@ -1360,13 +1360,13 @@ struct Graph : std::enable_shared_from_this<Graph> {
   // use value_map to translate inputs of n to inputs of the cloned node
   // if copy_blocks is false, it will not recursively clone the nested blocks
   // this node contains.
-  TORCH_API Node* createClone(
+  Node* createClone(
       Node* n,
       const std::function<Value*(Value*)>& value_map,
       bool copy_blocks = true);
 
   // Insert constant IValue into the graph.
-  TORCH_API Value* insertConstant(
+  Value* insertConstant(
       const IValue& val,
       c10::optional<SourceRange> loc = c10::nullopt,
       c10::optional<ScopePtr> scope = c10::nullopt);
@@ -1378,7 +1378,7 @@ struct Graph : std::enable_shared_from_this<Graph> {
   //
   // If this node successfully completes, it guarentees the node
   // is a correctly-formed invocation of opname
-  TORCH_API Value* insert(
+  Value* insert(
       Symbol opname,
       at::ArrayRef<NamedValue> args,
       at::ArrayRef<NamedValue> kwargs = {},
@@ -1427,29 +1427,29 @@ struct Graph : std::enable_shared_from_this<Graph> {
   }
 
   // Checks well-formedness and invariants of graph
-  TORCH_API void lint() const;
+  void lint() const;
   // for use in debugger
-  TORCH_API void dump() const;
+  void dump() const;
 
-  TORCH_API ~Graph();
+  ~Graph();
 
-  TORCH_API std::string toString(bool print_source_locations = true) const;
+  std::string toString(bool print_source_locations = true) const;
 
-  TORCH_API std::ostream& print(
+  std::ostream& print(
       std::ostream& out,
       bool print_source_locations = true) const;
 
-  friend TORCH_API std::ostream& operator<<(std::ostream& out, const Graph& g);
+  friend std::ostream& operator<<(std::ostream& out, const Graph& g);
 
-  TORCH_API std::shared_ptr<Graph> copy();
-  TORCH_API std::unique_ptr<Graph> copyUnique();
-  TORCH_API void remapTypes(const std::function<TypePtr(TypePtr)>& type_map);
+  std::shared_ptr<Graph> copy();
+  std::unique_ptr<Graph> copyUnique();
+  void remapTypes(const std::function<TypePtr(TypePtr)>& type_map);
 
  private:
-  friend TORCH_API void Lint(const AliasDb* db);
-  TORCH_API void freeNode(Node* n);
-  TORCH_API void freeValue(Value* v);
-  TORCH_API void freeBlock(Block* b);
+  friend void Lint(const AliasDb* db);
+  void freeNode(Node* n);
+  void freeValue(Value* v);
+  void freeBlock(Block* b);
   void cloneFrom(Graph& src);
 };
 
@@ -1551,7 +1551,7 @@ struct ProfileOp : public Node {
   bool has_seen_tensor_ = false;
 };
 
-struct TORCH_API ProfileIValueOp : public Node {
+struct ProfileIValueOp : public Node {
   static const Symbol Kind;
   ProfileIValueOp(
       Graph* graph,
@@ -1581,7 +1581,7 @@ struct TORCH_API ProfileIValueOp : public Node {
 // which is not included in libtorch.so. We still include some bits and pieces
 // of PythonOp here to enable writing simple passes generically. In general,
 // python-aware bits need to be moved to the descendant classes.
-struct TORCH_API PythonOp : public Node {
+struct PythonOp : public Node {
   using Node::Node;
 
   virtual std::string name() const = 0;
@@ -1596,20 +1596,20 @@ struct TORCH_API PythonOp : public Node {
   virtual void lint_python() const = 0;
 };
 
-TORCH_API void LintGraph(const std::shared_ptr<Graph>& graph);
+void LintGraph(const std::shared_ptr<Graph>& graph);
 
-TORCH_API at::ArrayRef<Value*> createTupleUnpack(Value* v);
+at::ArrayRef<Value*> createTupleUnpack(Value* v);
 
 /** Insert graph \p CALLEE into graph \p G using \p INPUTS as input values.
  * The insertion happens at the current insertion point.
  * Optionally, one can also pass \p VALUE_MAP to get a map between \p CALLEE
  * values and their cloned copies in \p G.
  */
-TORCH_API std::vector<Value*> insertGraph(
+std::vector<Value*> insertGraph(
     Graph& g,
     Graph& callee,
     ArrayRef<Value*> inputs);
-TORCH_API std::vector<Value*> insertGraph(
+std::vector<Value*> insertGraph(
     Graph& g,
     Graph& callee,
     ArrayRef<Value*> inputs,
@@ -1620,12 +1620,12 @@ TORCH_API std::vector<Value*> insertGraph(
  * This asserts that the number of outputs of the original node and the
  * graph are the same.
  */
-TORCH_API std::vector<Value*> inlineCallTo(
+std::vector<Value*> inlineCallTo(
     Node* to_replace,
     GraphFunction* callee,
     bool use_graph = true);
 
-TORCH_API std::vector<Value*> inlineCallTo(
+std::vector<Value*> inlineCallTo(
     Node* to_replace,
     GraphFunction* callee,
     Graph* callee_graph);
@@ -1633,16 +1633,16 @@ TORCH_API std::vector<Value*> inlineCallTo(
 /** If there is only one value in \p OUTPUTS and its kind is Tuple, insert a
  * tuple unpack node and return the resulting values.
  */
-TORCH_API std::vector<Value*> unpackOutputs(const std::vector<Value*>& outputs);
+std::vector<Value*> unpackOutputs(const std::vector<Value*>& outputs);
 
-TORCH_API std::vector<Node*> findAllNodes(Graph& g, Symbol kind, bool recurse);
-TORCH_API std::vector<Node*> findAllNodes(Block& b, Symbol kind, bool recurse);
-TORCH_API std::vector<Node*> findAllNodes(
+std::vector<Node*> findAllNodes(Graph& g, Symbol kind, bool recurse);
+std::vector<Node*> findAllNodes(Block& b, Symbol kind, bool recurse);
+std::vector<Node*> findAllNodes(
     at::ArrayRef<Block*> a,
     Symbol kind,
     bool recurse);
 
-struct TORCH_API OperatorSet {
+struct OperatorSet {
   OperatorSet(std::initializer_list<const char*> sig_literals);
   std::vector<std::shared_ptr<Operator>> getOps() const;
   void insert(std::initializer_list<const char*> sig_literals);

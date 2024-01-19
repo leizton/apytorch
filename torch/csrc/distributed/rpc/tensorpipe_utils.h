@@ -14,7 +14,7 @@ namespace torch {
 namespace distributed {
 namespace rpc {
 
-TORCH_API const c10::Stream& getStreamForDevice(
+const c10::Stream& getStreamForDevice(
     const std::vector<c10::Stream>& streams,
     const c10::Device& device);
 
@@ -43,12 +43,12 @@ class TensorpipeDeviceTypeConverter {
   virtual ~TensorpipeDeviceTypeConverter() = default;
 };
 
-extern TORCH_API std::array<
+extern std::array<
     std::atomic<const TensorpipeDeviceTypeConverter*>,
     static_cast<size_t>(DeviceType::COMPILE_TIME_MAX_DEVICE_TYPES)>
     device_type_converter_registry;
 
-class TORCH_API TensorpipeDeviceTypeConverterRegistrar {
+class TensorpipeDeviceTypeConverterRegistrar {
  public:
   TensorpipeDeviceTypeConverterRegistrar(
       DeviceType,
@@ -94,7 +94,7 @@ struct TensorpipeReadBuffers {
 
 // Convert an RPC message into a TensorPipe message, plus a holder to all the
 // data that must be kept alive while the write is performed asynchronously.
-TORCH_API std::tuple<tensorpipe::Message, TensorpipeWriteBuffers>
+std::tuple<tensorpipe::Message, TensorpipeWriteBuffers>
 tensorpipeSerialize(
     c10::intrusive_ptr<Message> rpcMessage,
     std::vector<c10::Device> devices,
@@ -104,7 +104,7 @@ tensorpipeSerialize(
 // by the returned holder, which must be kept alive until the asynchronous read
 // has finished. Pointers to these buffers will be stored in the returned
 // tensorpipe::Allocation struct.
-TORCH_API std::pair<tensorpipe::Allocation, TensorpipeReadBuffers>
+std::pair<tensorpipe::Allocation, TensorpipeReadBuffers>
 tensorpipeAllocate(
     const tensorpipe::Descriptor& tpDescriptor,
     const std::vector<c10::Stream>& streams);
@@ -112,7 +112,7 @@ tensorpipeAllocate(
 // Convert a TensorPipe message back into an RPC message. This requires the data
 // to be available and can thus only be performed once the asynchronous read has
 // completed. The holder can be destroyed once this function returns.
-TORCH_API c10::intrusive_ptr<Message> tensorpipeDeserialize(
+c10::intrusive_ptr<Message> tensorpipeDeserialize(
     tensorpipe::Descriptor&& tpDescriptor,
     TensorpipeReadBuffers&& holder);
 

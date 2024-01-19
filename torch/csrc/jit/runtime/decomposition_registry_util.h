@@ -5,8 +5,8 @@
 
 namespace torch::jit {
 
-TORCH_API const std::string& GetSerializedDecompositions();
+const std::string& GetSerializedDecompositions();
 
-TORCH_API const OperatorMap<std::string>& GetDecompositionMapping();
+const OperatorMap<std::string>& GetDecompositionMapping();
 
 } // namespace torch::jit

@@ -61,35 +61,35 @@ MATH_UTILS_DECL bool IsAGeZeroAndALtB(const int a, const int b) {
 
 // Increase the index digits by one based on dims.
 template <typename TIndex>
-TORCH_API void
+void
 IncreaseIndexInDims(int ndim, const TIndex* dims, TIndex* index);
 
 // Get index value from dims and index digits.
 template <typename TIndex>
-TORCH_API TIndex
+TIndex
 GetIndexFromDims(const int n, const TIndex* dims, const TIndex* index);
 
 // Checks if the input permutation is an identity permutation;
-TORCH_API bool IsIdentityPermutation(const int n, const int* perm);
+bool IsIdentityPermutation(const int n, const int* perm);
 
-TORCH_API bool
+bool
 CheckReduceDims(const int ndim, const int* X_dims, const int* Y_dims);
 
-TORCH_API bool IsRowwiseReduce(
+bool IsRowwiseReduce(
     const int ndim,
     const int* X_dims,
     const int* Y_dims,
     int* rows,
     int* cols);
 
-TORCH_API bool IsColwiseReduce(
+bool IsColwiseReduce(
     const int ndim,
     const int* X_dims,
     const int* Y_dims,
     int* rows,
     int* cols);
 
-TORCH_API bool IsBothEndsReduce(
+bool IsBothEndsReduce(
     const int ndim,
     const int* X_dims,
     const int* Y_dims,
@@ -99,7 +99,7 @@ TORCH_API bool IsBothEndsReduce(
 
 // Computest the broadcast binary operation dims.
 template <typename TIndex>
-TORCH_API void ComputeBroadcastBinaryOpDims(
+void ComputeBroadcastBinaryOpDims(
     const int A_ndim,
     const TIndex* A_dims,
     const int B_ndim,
@@ -108,7 +108,7 @@ TORCH_API void ComputeBroadcastBinaryOpDims(
     TIndex* B_broadcast_dims,
     TIndex* C_broadcast_dims);
 
-TORCH_API bool IsRowwiseBroadcastBinaryOp(
+bool IsRowwiseBroadcastBinaryOp(
     const int ndim,
     const int* A_dims,
     const int* B_dims,
@@ -116,7 +116,7 @@ TORCH_API bool IsRowwiseBroadcastBinaryOp(
     int* cols,
     bool* broadcast_1st);
 
-TORCH_API bool IsColwiseBroadcastBinaryOp(
+bool IsColwiseBroadcastBinaryOp(
     const int ndim,
     const int* A_dims,
     const int* B_dims,
@@ -124,7 +124,7 @@ TORCH_API bool IsColwiseBroadcastBinaryOp(
     int* cols,
     bool* broadcast_1st);
 
-TORCH_API bool IsBothEndsBroadcastBinaryOp(
+bool IsBothEndsBroadcastBinaryOp(
     const int ndim,
     const int* A_dims,
     const int* B_dims,
@@ -133,19 +133,19 @@ TORCH_API bool IsBothEndsBroadcastBinaryOp(
     int* nxt,
     bool* broadcast_1st);
 
-TORCH_API bool IsBatchTranspose2D(const int ndim, const int* axes);
+bool IsBatchTranspose2D(const int ndim, const int* axes);
 
-TORCH_API void ComputeTransposeAxesForReduceOp(
+void ComputeTransposeAxesForReduceOp(
     const int num_dims,
     const int num_reduce_axes,
     const int* reduce_axes,
     int* transpose_axes);
 
-TORCH_API void
+void
 ComputeTransposeAxesForReduceOp(const int ndim, const int* dims, int* axes);
 
 template <typename TIndex>
-TORCH_API void ComputeTransposedStrides(
+void ComputeTransposedStrides(
     int ndim,
     const TIndex* dims,
     const int* axes,

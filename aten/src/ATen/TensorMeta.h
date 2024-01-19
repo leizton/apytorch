@@ -63,7 +63,7 @@ namespace impl {
 // (although presently it isn't).
 //
 // A notable subclass of this interface is TensorIteratorBase.
-struct TORCH_API MetaBase {
+struct MetaBase {
   MetaBase() = default;
   MetaBase(const MetaBase&) = default;
   MetaBase& operator=(const MetaBase&) = default;

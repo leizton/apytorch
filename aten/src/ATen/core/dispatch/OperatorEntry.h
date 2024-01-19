@@ -67,7 +67,7 @@ struct AnnotatedSchema final {
 // Concurrent writes to OperatorEntry are protected by the GLOBAL Dispatcher
 // lock (this is important because some methods in OperatorEntry access
 // dispatcher state)
-class TORCH_API OperatorEntry final {
+class OperatorEntry final {
 public:
   explicit OperatorEntry(OperatorName&& operator_name);
 

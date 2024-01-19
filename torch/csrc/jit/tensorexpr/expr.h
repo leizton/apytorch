@@ -39,7 +39,7 @@ enum IRNodeType {
 };
 
 // The common base between all expression node.
-class TORCH_API Expr : public std::enable_shared_from_this<Expr> {
+class Expr : public std::enable_shared_from_this<Expr> {
  public:
   explicit Expr(Dtype dtype, IRNodeType expr_type = kOther)
       : dtype_(dtype), expr_type_(expr_type) {}
@@ -96,7 +96,7 @@ class ExprNode : public Base {
 
 // A wrapper object to the underlying ExprNode.
 // Also serves the primary way to build and operate on other expressions.
-class TORCH_API ExprHandle {
+class ExprHandle {
  public:
   ExprHandle() = default;
   explicit ExprHandle(ExprPtr node) : base_expr_node_(std::move(node)) {}
@@ -159,7 +159,7 @@ class TORCH_API ExprHandle {
 // The underlying representation node to a Var.
 // Currently, each Var object represents a unique variable, even though the
 // names might be the same. We should consider add a unique_name as well.
-class TORCH_API Var : public ExprNode<Var> {
+class Var : public ExprNode<Var> {
  public:
   static ExprHandle make(const std::string& name_hint, Dtype dtype) {
     return ExprHandle(alloc<Var>(name_hint, dtype));
@@ -188,12 +188,12 @@ class TORCH_API Var : public ExprNode<Var> {
   std::string name_hint_;
 };
 
-TORCH_API std::vector<ExprPtr> make_contiguous_strides(
+std::vector<ExprPtr> make_contiguous_strides(
     const std::vector<ExprHandle>& dims);
-TORCH_API std::vector<ExprPtr> make_channels_last_strides(
+std::vector<ExprPtr> make_channels_last_strides(
     const std::vector<ExprHandle>& dims);
 
-class TORCH_API Buf : public ExprNode<Buf> {
+class Buf : public ExprNode<Buf> {
  public:
   static BufHandle make(const std::vector<ExprHandle>& dims, Dtype dtype);
 
@@ -335,7 +335,7 @@ class TORCH_API Buf : public ExprNode<Buf> {
   ExprPtr qzero_;
 };
 
-class TORCH_API BufHandle : public ExprHandle {
+class BufHandle : public ExprHandle {
  public:
   BufHandle(
       const std::string& name_hint,
@@ -412,7 +412,7 @@ class TORCH_API BufHandle : public ExprHandle {
 // An expression to construct the underlying variable node.
 // Note: do not store any info here, since it is often possible to slice this
 // object. For example: VarHandle x('x'); ExprHandle x2 = x;
-class TORCH_API VarHandle : public ExprHandle {
+class VarHandle : public ExprHandle {
  public:
   // Creates an empty VarHandle whose base Var is set to nullptr.
   VarHandle() : ExprHandle() {}
@@ -451,48 +451,48 @@ inline bool same_node(const ExprHandle& expr1, const ExprHandle& expr2) {
   return expr1.AsNode<Expr>() == expr2.AsNode<Expr>();
 }
 
-TORCH_API ExprHandle sin(const ExprHandle& v);
-TORCH_API ExprHandle cos(const ExprHandle& v);
-TORCH_API ExprHandle tan(const ExprHandle& v);
-TORCH_API ExprHandle asin(const ExprHandle& v);
-TORCH_API ExprHandle acos(const ExprHandle& v);
-TORCH_API ExprHandle atan(const ExprHandle& v);
-TORCH_API ExprHandle sinh(const ExprHandle& v);
-TORCH_API ExprHandle cosh(const ExprHandle& v);
-TORCH_API ExprHandle tanh(const ExprHandle& v);
-TORCH_API ExprHandle sigmoid(const ExprHandle& v);
-TORCH_API ExprHandle exp(const ExprHandle& v);
-TORCH_API ExprHandle expm1(const ExprHandle& v);
-TORCH_API ExprHandle abs(const ExprHandle& v);
-TORCH_API ExprHandle log(const ExprHandle& v);
-TORCH_API ExprHandle fast_tanh(const ExprHandle& v);
-TORCH_API ExprHandle fast_sigmoid(const ExprHandle& v);
-TORCH_API ExprHandle fast_log(const ExprHandle& v);
-TORCH_API ExprHandle log_vml(const ExprHandle& v);
-TORCH_API ExprHandle log2(const ExprHandle& v);
-TORCH_API ExprHandle log10(const ExprHandle& v);
-TORCH_API ExprHandle log1p(const ExprHandle& v);
-TORCH_API ExprHandle erf(const ExprHandle& v);
-TORCH_API ExprHandle erfc(const ExprHandle& v);
-TORCH_API ExprHandle sqrt(const ExprHandle& v);
-TORCH_API ExprHandle rsqrt(const ExprHandle& v);
-TORCH_API ExprHandle ceil(const ExprHandle& v);
-TORCH_API ExprHandle floor(const ExprHandle& v);
-TORCH_API ExprHandle round(const ExprHandle& v);
-TORCH_API ExprHandle trunc(const ExprHandle& v);
-TORCH_API ExprHandle frac(const ExprHandle& v);
-TORCH_API ExprHandle lgamma(const ExprHandle& v);
-TORCH_API ExprHandle atan2(const ExprHandle& v1, const ExprHandle& v2);
-TORCH_API ExprHandle pow(const ExprHandle& v1, const ExprHandle& v2);
-TORCH_API ExprHandle fmod(const ExprHandle& v1, const ExprHandle& v2);
-TORCH_API ExprHandle remainder(const ExprHandle& v1, const ExprHandle& v2);
-TORCH_API ExprHandle isnan(const ExprHandle& v1);
-TORCH_API ExprHandle Relu(const ExprHandle& v1);
+ExprHandle sin(const ExprHandle& v);
+ExprHandle cos(const ExprHandle& v);
+ExprHandle tan(const ExprHandle& v);
+ExprHandle asin(const ExprHandle& v);
+ExprHandle acos(const ExprHandle& v);
+ExprHandle atan(const ExprHandle& v);
+ExprHandle sinh(const ExprHandle& v);
+ExprHandle cosh(const ExprHandle& v);
+ExprHandle tanh(const ExprHandle& v);
+ExprHandle sigmoid(const ExprHandle& v);
+ExprHandle exp(const ExprHandle& v);
+ExprHandle expm1(const ExprHandle& v);
+ExprHandle abs(const ExprHandle& v);
+ExprHandle log(const ExprHandle& v);
+ExprHandle fast_tanh(const ExprHandle& v);
+ExprHandle fast_sigmoid(const ExprHandle& v);
+ExprHandle fast_log(const ExprHandle& v);
+ExprHandle log_vml(const ExprHandle& v);
+ExprHandle log2(const ExprHandle& v);
+ExprHandle log10(const ExprHandle& v);
+ExprHandle log1p(const ExprHandle& v);
+ExprHandle erf(const ExprHandle& v);
+ExprHandle erfc(const ExprHandle& v);
+ExprHandle sqrt(const ExprHandle& v);
+ExprHandle rsqrt(const ExprHandle& v);
+ExprHandle ceil(const ExprHandle& v);
+ExprHandle floor(const ExprHandle& v);
+ExprHandle round(const ExprHandle& v);
+ExprHandle trunc(const ExprHandle& v);
+ExprHandle frac(const ExprHandle& v);
+ExprHandle lgamma(const ExprHandle& v);
+ExprHandle atan2(const ExprHandle& v1, const ExprHandle& v2);
+ExprHandle pow(const ExprHandle& v1, const ExprHandle& v2);
+ExprHandle fmod(const ExprHandle& v1, const ExprHandle& v2);
+ExprHandle remainder(const ExprHandle& v1, const ExprHandle& v2);
+ExprHandle isnan(const ExprHandle& v1);
+ExprHandle Relu(const ExprHandle& v1);
 
-TORCH_API ExprHandle
+ExprHandle
 ifThenElse(const ExprHandle& c, const ExprHandle& t, const ExprHandle& f);
 
-TORCH_API ExprHandle expr_to_vec(ExprHandle v, int lanes);
+ExprHandle expr_to_vec(ExprHandle v, int lanes);
 
 } // namespace tensorexpr
 } // namespace jit

@@ -11,7 +11,7 @@ constexpr const char* ORT_HELP =
 // NB: Class must live in `at` due to limitations of Registry.h.
 namespace at {
 
-struct TORCH_API ORTHooksInterface {
+struct ORTHooksInterface {
   // This should never actually be implemented, but it is used to
   // squelch -Werror=non-virtual-dtor
   virtual ~ORTHooksInterface() = default;
@@ -23,14 +23,14 @@ struct TORCH_API ORTHooksInterface {
 
 // NB: dummy argument to suppress "ISO C++11 requires at least one argument
 // for the "..." in a variadic macro"
-struct TORCH_API ORTHooksArgs {};
+struct ORTHooksArgs {};
 
 TORCH_DECLARE_REGISTRY(ORTHooksRegistry, ORTHooksInterface, ORTHooksArgs);
 #define REGISTER_ORT_HOOKS(clsname) \
   C10_REGISTER_CLASS(ORTHooksRegistry, clsname, clsname)
 
 namespace detail {
-TORCH_API const ORTHooksInterface& getORTHooks();
+const ORTHooksInterface& getORTHooks();
 } // namespace detail
 
 } // namespace at

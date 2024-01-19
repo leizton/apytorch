@@ -90,7 +90,7 @@ std::unordered_set<std::string> _get_mobile_supported_types() {
   return supported_types;
 }
 
-TORCH_API std::unordered_set<std::string> _get_loaded_custom_classes() {
+std::unordered_set<std::string> _get_loaded_custom_classes() {
   return torch::getAllCustomClassesNames();
 }
 

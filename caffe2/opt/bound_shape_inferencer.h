@@ -15,7 +15,7 @@ namespace caffe2 {
 // max_seq_size is the upper bound of length of every item in a batch.
 // Upper bound of length of a batch of items should be max_batch_size *
 // max_seq_size.
-struct TORCH_API BoundShapeSpec {
+struct BoundShapeSpec {
   explicit BoundShapeSpec(int64_t b, int64_t q)
       : max_batch_size(b),
         max_seq_size(q),
@@ -86,7 +86,7 @@ class BoundShapeInferencerBase {
   bool extract_feature_len_;
 };
 
-class TORCH_API BoundShapeInferencer : public BoundShapeInferencerBase {
+class BoundShapeInferencer : public BoundShapeInferencerBase {
  public:
   explicit BoundShapeInferencer(const BoundShapeSpec& spec)
       : BoundShapeInferencerBase(spec) {}
@@ -157,7 +157,7 @@ class TORCH_API BoundShapeInferencer : public BoundShapeInferencerBase {
   int64_t current_max_batch_size_{0};
 };
 
-TORCH_API std::shared_ptr<BoundShapeInferencerBase> getBoundShapeInferencer(
+std::shared_ptr<BoundShapeInferencerBase> getBoundShapeInferencer(
     const BoundShapeSpec& spec);
 
 C10_DECLARE_SHARED_REGISTRY(

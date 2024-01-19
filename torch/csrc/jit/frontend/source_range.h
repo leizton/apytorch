@@ -20,7 +20,7 @@ struct SourceRange;
 // A stringlike class backed by a vector of string_view
 // the string represented are logically the concatenation of  the string_views
 // This has advantage of not needing continues memory.
-struct TORCH_API StringCordView {
+struct StringCordView {
   StringCordView();
   StringCordView(const StringCordView&) = default;
   StringCordView(StringCordView&&) noexcept = default;
@@ -185,7 +185,7 @@ struct TORCH_API StringCordView {
 //                          which the code segment originated.
 //  - starting_line_no : represents the line in the original file where the
 //                       code segment started.
-struct TORCH_API Source {
+struct Source {
   // Whether or not Source should copy the string passed in the constructor.
   enum CopiesString { COPIES_STRING, DONT_COPY };
 
@@ -304,7 +304,7 @@ struct TORCH_API Source {
 
 // A SourceRange is a reference to subset of a Source, specified by `start` and
 // `end` byte offsets into the source text.
-struct TORCH_API SourceRange {
+struct SourceRange {
   SourceRange(std::shared_ptr<Source> source_view, size_t start_, size_t end_)
       : source_view_(std::move(source_view)), start_(start_), end_(end_) {
     if (source_view_) {
@@ -413,7 +413,7 @@ struct OwnedSourceRange : public SourceRange {
   }
 };
 
-struct TORCH_API SourceRangeHasher {
+struct SourceRangeHasher {
  public:
   size_t operator()(const torch::jit::SourceRange& key) const;
 };
@@ -423,7 +423,7 @@ struct StackEntry {
   SourceRange range;
 };
 
-TORCH_API void format_stack_trace(
+void format_stack_trace(
     std::ostream& out,
     const std::vector<StackEntry>& entries);
 

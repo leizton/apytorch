@@ -167,7 +167,7 @@ function(caffe2_protobuf_generate_cpp_py srcs_var hdrs_var python_var)
     list(APPEND ${hdrs_var} "${CMAKE_CURRENT_BINARY_DIR}/${fil_we}.pb.h")
     list(APPEND ${python_var} "${CMAKE_CURRENT_BINARY_DIR}/${fil_we}_pb2.py")
 
-    # Add TORCH_API prefix to protobuf classes and methods in all cases
+    # Add prefix to protobuf classes and methods in all cases
     set(DLLEXPORT_STR "dllexport_decl=TORCH_API:")
 
     # Note: the following depends on PROTOBUF_PROTOC_EXECUTABLE. This

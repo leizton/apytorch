@@ -18,7 +18,7 @@ namespace nn {
 /// Upsample
 /// model(UpsampleOptions().scale_factor(std::vector<double>({3})).mode(torch::kLinear).align_corners(false));
 /// ```
-struct TORCH_API UpsampleOptions {
+struct UpsampleOptions {
   /// output spatial sizes.
   TORCH_ARG(c10::optional<std::vector<int64_t>>, size) = c10::nullopt;
 
@@ -53,7 +53,7 @@ namespace functional {
 /// F::interpolate(input,
 /// F::InterpolateFuncOptions().size(std::vector<int64_t>({4})).mode(torch::kNearest));
 /// ```
-struct TORCH_API InterpolateFuncOptions {
+struct InterpolateFuncOptions {
   typedef std::variant<
       enumtype::kNearest,
       enumtype::kLinear,

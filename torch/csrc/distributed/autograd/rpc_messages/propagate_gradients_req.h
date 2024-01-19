@@ -12,7 +12,7 @@ namespace autograd {
 // Used to propagate gradients from one node to another during a distributed
 // backwards pass. This RPC call is invoked when we hit a `recv` autograd
 // function during backward pass execution.
-class TORCH_API PropagateGradientsReq : public rpc::RpcCommandBase {
+class PropagateGradientsReq : public rpc::RpcCommandBase {
  public:
   PropagateGradientsReq(
       const AutogradMetadata& autogradMetadata,

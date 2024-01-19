@@ -23,7 +23,7 @@ using BackendPreprocessFunction = std::function<c10::IValue(
     const c10::Dict<IValue, IValue>&,
     const BackendDebugHandleGenerator& generate_debug_handles)>;
 
-TORCH_API void registerBackendPreprocessFunction(
+void registerBackendPreprocessFunction(
     const std::string& name,
     const BackendPreprocessFunction& preprocess);
 
@@ -31,7 +31,7 @@ bool hasBackendPreprocessFunction(const std::string& name);
 
 BackendPreprocessFunction getBackendPreprocessFunction(const std::string& name);
 
-TORCH_API Module codegen_backend_module(
+Module codegen_backend_module(
     const std::string& backend_name,
     const Module& orig_module,
     const c10::Dict<IValue, IValue>& method_compile_spec,

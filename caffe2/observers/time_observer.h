@@ -14,7 +14,7 @@ namespace caffe2 {
 
 class TimeObserver;
 
-class TORCH_API TimeCounter {
+class TimeCounter {
  public:
   explicit TimeCounter() {}
   inline float average_time() const {
@@ -28,7 +28,7 @@ class TORCH_API TimeCounter {
   int iterations_ = 0;
 };
 
-class TORCH_API TimeOperatorObserver final : public TimeCounter,
+class TimeOperatorObserver final : public TimeCounter,
                                              public ObserverBase<OperatorBase> {
  public:
   explicit TimeOperatorObserver(OperatorBase* subject) = delete;
@@ -45,7 +45,7 @@ class TORCH_API TimeOperatorObserver final : public TimeCounter,
   void Stop() override;
 };
 
-class TORCH_API TimeObserver final
+class TimeObserver final
     : public TimeCounter,
       public OperatorAttachingNetObserver<TimeOperatorObserver, TimeObserver> {
  public:

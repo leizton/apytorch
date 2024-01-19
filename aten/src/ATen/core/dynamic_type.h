@@ -153,7 +153,7 @@ class DynamicType : public SharedType {
   bool isSubtypeOfExt(const Type& rhs, std::ostream* why_not) const override;
   std::string str() const override;
   static const TypeKind Kind = TypeKind::DynamicType;
-  static TORCH_API DynamicTypePtr create(Type& ty);
+  static DynamicTypePtr create(Type& ty);
 
   explicit DynamicType(Tag, Arguments);
   explicit DynamicType(Tag, c10::string_view, Arguments);
@@ -169,7 +169,7 @@ class DynamicType : public SharedType {
   const Arguments& arguments() const {
     return arguments_;
   }
-  TORCH_API TypeKind dynamicKind() const;
+  TypeKind dynamicKind() const;
 
   // Should be used only on the server side to restore static type information.
 #ifndef C10_MOBILE
@@ -221,7 +221,7 @@ C10_NOINLINE DynamicTypePtr makeBaseType(DynamicType::Tag tag);
 
 #define DYNAMIC_TYPE_TAG_VALUE(NAME, _, IS_BASE_TYPE)      \
   template <>                                              \
-  struct TORCH_API DynamicTypeTrait<NAME##Type> {          \
+  struct DynamicTypeTrait<NAME##Type> {          \
     C10_ERASE static auto tagValue() {                     \
       return DynamicType::Tag::NAME;                       \
     }                                                      \

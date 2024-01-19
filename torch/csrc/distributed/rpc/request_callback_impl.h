@@ -9,7 +9,7 @@ namespace torch {
 namespace distributed {
 namespace rpc {
 
-class TORCH_API RequestCallbackImpl : public RequestCallbackNoPython {
+class RequestCallbackImpl : public RequestCallbackNoPython {
  public:
   std::unique_ptr<RpcCommandBase> deserializePythonRpcCommand(
       std::unique_ptr<RpcCommandBase> rpc,

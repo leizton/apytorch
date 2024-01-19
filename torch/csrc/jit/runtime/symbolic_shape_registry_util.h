@@ -7,6 +7,6 @@
 
 namespace torch::jit {
 
-TORCH_API const OperatorMap<std::string>& get_tensorexpr_elementwise_set();
+const OperatorMap<std::string>& get_tensorexpr_elementwise_set();
 
 } // namespace torch::jit

@@ -31,10 +31,10 @@ class PropertyPropBase {
   std::shared_ptr<Graph> graph_;
 };
 
-TORCH_API void EraseShapeInformation(const std::shared_ptr<Graph>& graph);
-TORCH_API void PropagateInputShapes(const std::shared_ptr<Graph>& graph);
+void EraseShapeInformation(const std::shared_ptr<Graph>& graph);
+void PropagateInputShapes(const std::shared_ptr<Graph>& graph);
 
-TORCH_API bool mergeTypes(
+bool mergeTypes(
     ArrayRef<Value*> lhs,
     ArrayRef<Value*> rhs,
     ArrayRef<Value*> outputs);

@@ -9,7 +9,7 @@ namespace distributed {
 namespace autograd {
 
 // Used to request other workers to clean up their autograd context.
-class TORCH_API CleanupAutogradContextReq : public rpc::RpcCommandBase {
+class CleanupAutogradContextReq : public rpc::RpcCommandBase {
  public:
   explicit CleanupAutogradContextReq(int64_t context_id);
   // Serialization and deserialization methods.

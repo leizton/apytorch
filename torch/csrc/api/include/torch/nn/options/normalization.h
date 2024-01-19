@@ -15,7 +15,7 @@ namespace nn {
 /// LayerNorm model(LayerNormOptions({2,
 /// 2}).elementwise_affine(false).eps(2e-5));
 /// ```
-struct TORCH_API LayerNormOptions {
+struct LayerNormOptions {
   /* implicit */ LayerNormOptions(std::vector<int64_t> normalized_shape);
   /// input shape from an expected input.
   TORCH_ARG(std::vector<int64_t>, normalized_shape);
@@ -39,7 +39,7 @@ namespace functional {
 /// namespace F = torch::nn::functional;
 /// F::layer_norm(input, F::LayerNormFuncOptions({2, 2}).eps(2e-5));
 /// ```
-struct TORCH_API LayerNormFuncOptions {
+struct LayerNormFuncOptions {
   /* implicit */ LayerNormFuncOptions(std::vector<int64_t> normalized_shape);
   /// input shape from an expected input.
   TORCH_ARG(std::vector<int64_t>, normalized_shape);
@@ -64,7 +64,7 @@ struct TORCH_API LayerNormFuncOptions {
 /// LocalResponseNorm
 /// model(LocalResponseNormOptions(2).alpha(0.0002).beta(0.85).k(2.));
 /// ```
-struct TORCH_API LocalResponseNormOptions {
+struct LocalResponseNormOptions {
   /* implicit */ LocalResponseNormOptions(int64_t size) : size_(size) {}
   /// amount of neighbouring channels used for normalization
   TORCH_ARG(int64_t, size);
@@ -101,7 +101,7 @@ using LocalResponseNormFuncOptions = LocalResponseNormOptions;
 /// ```
 /// CrossMapLRN2d model(CrossMapLRN2dOptions(3).alpha(1e-5).beta(0.1).k(10));
 /// ```
-struct TORCH_API CrossMapLRN2dOptions {
+struct CrossMapLRN2dOptions {
   CrossMapLRN2dOptions(int64_t size);
 
   TORCH_ARG(int64_t, size);
@@ -124,7 +124,7 @@ namespace functional {
 /// namespace F = torch::nn::functional;
 /// F::normalize(input, F::NormalizeFuncOptions().p(1).dim(-1));
 /// ```
-struct TORCH_API NormalizeFuncOptions {
+struct NormalizeFuncOptions {
   /// The exponent value in the norm formulation. Default: 2.0
   TORCH_ARG(double, p) = 2.0;
   /// The dimension to reduce. Default: 1
@@ -146,7 +146,7 @@ struct TORCH_API NormalizeFuncOptions {
 /// ```
 /// GroupNorm model(GroupNormOptions(2, 2).eps(2e-5).affine(false));
 /// ```
-struct TORCH_API GroupNormOptions {
+struct GroupNormOptions {
   /* implicit */ GroupNormOptions(int64_t num_groups, int64_t num_channels);
 
   /// number of groups to separate the channels into
@@ -172,7 +172,7 @@ namespace functional {
 /// namespace F = torch::nn::functional;
 /// F::group_norm(input, F::GroupNormFuncOptions(2).eps(2e-5));
 /// ```
-struct TORCH_API GroupNormFuncOptions {
+struct GroupNormFuncOptions {
   /* implicit */ GroupNormFuncOptions(int64_t num_groups);
 
   /// number of groups to separate the channels into

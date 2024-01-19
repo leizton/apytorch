@@ -50,7 +50,7 @@ std::unique_ptr<FunctionSchema> inferFunctionSchemaFromFunctor() {
  * >         .schema("my_op")
  * >         .kernel<my_kernel_cpu>(DispatchKey::CPU));
  */
-class TORCH_API RegisterOperators final {
+class RegisterOperators final {
 public:
   RegisterOperators() = default;
   ~RegisterOperators() = default;
@@ -60,7 +60,7 @@ public:
   RegisterOperators(RegisterOperators&&) noexcept = default;
   RegisterOperators& operator=(RegisterOperators&&) noexcept = default;
 
-  class TORCH_API Options final {
+  class Options final {
   public:
     Options(const Options&) = delete;
     Options(Options&&) noexcept = delete;

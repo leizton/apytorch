@@ -10,7 +10,7 @@
 namespace torch {
 namespace lazy {
 
-struct TORCH_API TrieNode {
+struct TrieNode {
   static size_t GetNextUniqueId() {
     static thread_local size_t id_generator = 0;
     return id_generator++;
@@ -28,7 +28,7 @@ struct TORCH_API TrieNode {
         ir_node(std::move(node)) {}
 };
 
-class TORCH_API TrieCache {
+class TrieCache {
  public:
   static TrieCache* Get();
 

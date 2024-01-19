@@ -26,32 +26,32 @@ struct BlobState {
         is_tensor(is_tensor) {}
 };
 
-TORCH_API std::string buildBlobNameFromDbKey(
+std::string buildBlobNameFromDbKey(
     const std::string& dbKey,
     const std::string& strip_prefix = "",
     const std::string& add_prefix = "");
 
 // We are tracking sizes of already read tensor parts while reading data
 // chunks. This way we can make sure that all chunks were loaded in the end.
-TORCH_API void ProcessBlob(
+void ProcessBlob(
     Blob* blob,
     const BlobProto& proto,
     std::unordered_map<std::string, BlobState>* blob_states_ptr,
     const std::string& key,
     int* loaded_blobs);
 
-TORCH_API void prepareBlob(
+void prepareBlob(
     Blob* blob,
     std::unordered_map<std::string, BlobState>* blob_states_ptr,
     const std::string& key);
 
-TORCH_API void updateBlobStates(
+void updateBlobStates(
     const BlobProto& proto,
     std::unordered_map<std::string, BlobState>* blob_states_ptr,
     const std::string& key,
     int* loaded_blobs);
 
-TORCH_API void validateBlobStates(
+void validateBlobStates(
     const std::unordered_map<std::string, BlobState>& blob_states);
 
 } // namespace load_save_op_util

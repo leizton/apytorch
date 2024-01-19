@@ -8,7 +8,7 @@ namespace torch {
 // struct that holds the result of symbolizing multiple tracebacks
 // each traceback is a list of indices into all_frames
 // (lots of Frames get duplicated across traces)
-struct TORCH_API SymbolizedTracebacks {
+struct SymbolizedTracebacks {
   std::vector<unwind::Frame> all_frames;
   // index into all_frames, so that
   // it is possible to dedupe frame objects in
@@ -16,7 +16,7 @@ struct TORCH_API SymbolizedTracebacks {
   std::vector<std::vector<uint64_t>> tracebacks;
 };
 
-struct TORCH_API CapturedTraceback : public c10::GatheredContext {
+struct CapturedTraceback : public c10::GatheredContext {
   struct PyFrame {
     void* code; // PyCodeObject*, but python headers not present
     int lasti;
@@ -62,7 +62,7 @@ struct TORCH_API CapturedTraceback : public c10::GatheredContext {
   std::vector<PyFrame> frames_;
   std::vector<void*> cpp_frames_;
   std::vector<jit::StackEntry> script_frames_;
-  friend TORCH_API SymbolizedTracebacks
+  friend SymbolizedTracebacks
   symbolize(const std::vector<CapturedTraceback*>& to_symbolize);
 
   // non-owning reference to one of the immortal Python* objects
@@ -70,7 +70,7 @@ struct TORCH_API CapturedTraceback : public c10::GatheredContext {
   Python* python_ = nullptr;
 };
 
-TORCH_API SymbolizedTracebacks
+SymbolizedTracebacks
 symbolize(const std::vector<CapturedTraceback*>& to_symbolize);
 
 } // namespace torch

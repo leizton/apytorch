@@ -7,7 +7,7 @@ namespace at::impl {
 
 enum TorchFunctionDisabledState { ENABLED, SUBCLASSES_DISABLED, ALL_DISABLED };
 
-struct TORCH_API PythonTorchFunctionTLS {
+struct PythonTorchFunctionTLS {
   static void set_disabled_state(TorchFunctionDisabledState disabled_state_);
   static TorchFunctionDisabledState get_disabled_state();
 
@@ -29,6 +29,6 @@ struct TORCH_API PythonTorchFunctionTLS {
   std::vector<std::shared_ptr<c10::SafePyObject>> stack_;
 };
 
-TORCH_API bool torch_function_mode_enabled();
+bool torch_function_mode_enabled();
 
 } // namespace at::impl

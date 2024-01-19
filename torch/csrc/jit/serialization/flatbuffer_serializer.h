@@ -25,7 +25,7 @@ using ExtraFilesMap = std::unordered_map<std::string, std::string>;
 /**
  * Represents a span of data. Typically owned by a UniqueDetachedBuffer.
  */
-class TORCH_API DetachedBuffer final {
+class DetachedBuffer final {
  public:
   /// Creates a new DetachedBuffer with an optional data owner. This interface
   /// is provided to let users create objects of this type for testing.
@@ -70,25 +70,25 @@ class TORCH_API DetachedBuffer final {
   void* data_owner_;
 };
 
-TORCH_API void save_mobile_module(
+void save_mobile_module(
     const mobile::Module& module,
     const std::string& filename,
     const ExtraFilesMap& extra_files = ExtraFilesMap(),
     const ExtraFilesMap& jit_sources = ExtraFilesMap(),
     const std::vector<IValue>& jit_constants = {});
 
-TORCH_API DetachedBuffer::UniqueDetachedBuffer save_mobile_module_to_bytes(
+DetachedBuffer::UniqueDetachedBuffer save_mobile_module_to_bytes(
     const mobile::Module& module,
     const ExtraFilesMap& extra_files = ExtraFilesMap(),
     const ExtraFilesMap& jit_sources = ExtraFilesMap(),
     const std::vector<IValue>& jit_constants = {});
 
-TORCH_API void save_mobile_module_to_func(
+void save_mobile_module_to_func(
     const mobile::Module& module,
     const std::function<size_t(const void*, size_t)>& writer_func);
 
 // TODO(qihan): delete
-TORCH_API bool register_flatbuffer_serializer();
+bool register_flatbuffer_serializer();
 
 } // namespace jit
 } // namespace torch

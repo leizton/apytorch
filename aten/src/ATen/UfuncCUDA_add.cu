@@ -12,7 +12,7 @@ namespace at {
 // included via NativeFunctions.h to avoid recompiling this file when
 // NativeFunctions.h changes
 namespace meta {
-struct TORCH_API structured_add_Tensor : public TensorIteratorBase {
+struct structured_add_Tensor : public TensorIteratorBase {
     
     
     void meta(const at::Tensor & self, const at::Tensor & other, const at::Scalar & alpha);
@@ -20,7 +20,7 @@ struct TORCH_API structured_add_Tensor : public TensorIteratorBase {
 }
 
 namespace native {
-struct TORCH_API structured_ufunc_add_CUDA : public at::meta::structured_add_Tensor {
+struct structured_ufunc_add_CUDA : public at::meta::structured_add_Tensor {
 void impl(const at::Tensor & self, const at::Tensor & other, const at::Scalar & alpha, const at::Tensor & out);
 };
 

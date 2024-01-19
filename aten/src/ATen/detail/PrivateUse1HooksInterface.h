@@ -6,7 +6,7 @@
 #include <c10/util/Exception.h>
 namespace at {
 
-struct TORCH_API PrivateUse1HooksInterface {
+struct PrivateUse1HooksInterface {
   virtual ~PrivateUse1HooksInterface() = default;
   virtual const at::Generator& getDefaultGenerator(c10::DeviceIndex device_index) {
     TORCH_CHECK_NOT_IMPLEMENTED(
@@ -28,12 +28,12 @@ struct TORCH_API PrivateUse1HooksInterface {
   virtual void initPrivateUse1() const {}
 };
 
-struct TORCH_API PrivateUse1HooksArgs {};
+struct PrivateUse1HooksArgs {};
 
-TORCH_API void RegisterPrivateUse1HooksInterface(at::PrivateUse1HooksInterface* hook_);
+void RegisterPrivateUse1HooksInterface(at::PrivateUse1HooksInterface* hook_);
 
-TORCH_API at::PrivateUse1HooksInterface* GetPrivateUse1HooksInterface();
+at::PrivateUse1HooksInterface* GetPrivateUse1HooksInterface();
 
-TORCH_API bool isPrivateUse1HooksRegistered();
+bool isPrivateUse1HooksRegistered();
 
 }

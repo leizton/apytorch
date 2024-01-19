@@ -23,6 +23,6 @@ C10_DECLARE_int(torch_lazy_shape_cache_size);
 
 namespace torch {
 namespace lazy {
-TORCH_API std::string& getLTCForceFallback();
+std::string& getLTCForceFallback();
 }
 } // namespace torch

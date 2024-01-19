@@ -23,7 +23,7 @@ namespace at {
 //
 // If not calling MKL, it should be alright to use 64 bit integer tensors
 // for indexing.
-struct TORCH_API SparseCsrTensorImpl : public TensorImpl {
+struct SparseCsrTensorImpl : public TensorImpl {
   Tensor crow_indices_;
   Tensor col_indices_;
   Tensor values_;

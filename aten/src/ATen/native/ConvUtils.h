@@ -116,12 +116,12 @@ enum class ConvBackend {
 
 // Overload for selecting the convolution backend from the full set of convolution inputs.
 // This overload is exposed to python for testing, etc.
-TORCH_API ConvBackend select_conv_backend(
+ConvBackend select_conv_backend(
     const Tensor& input, const Tensor& weight, const c10::optional<Tensor>& bias_opt,
     SymIntArrayRef stride, SymIntArrayRef padding, SymIntArrayRef dilation,
     bool transposed, SymIntArrayRef output_padding, c10::SymInt groups, const at::OptionalSymIntArrayRef bias_sizes_opt);
 
-TORCH_API at::MemoryFormat _determine_backend_memory_format(const Tensor& input,
+at::MemoryFormat _determine_backend_memory_format(const Tensor& input,
     const Tensor& weight,
     const ConvBackend backend);
 
@@ -344,8 +344,8 @@ static inline at::MemoryFormat cudnn_conv_suggest_memory_format(const at::Tensor
 }
 
 // controls whether emptyCache will be called following cudnn conv benchmarking
-TORCH_API void _cudnn_set_conv_benchmark_empty_cache(bool enable);
-TORCH_API bool _cudnn_get_conv_benchmark_empty_cache();
+void _cudnn_set_conv_benchmark_empty_cache(bool enable);
+bool _cudnn_get_conv_benchmark_empty_cache();
 
 
 static inline bool miopen_conv_use_channels_last(const at::Tensor& input, const at::Tensor& weight) {

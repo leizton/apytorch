@@ -46,13 +46,13 @@ namespace c10d {
 // process group to find each other (referred to as rendezvous from
 // hereon)
 //
-class TORCH_API ProcessGroup : public torch::CustomClassHolder {
+class ProcessGroup : public torch::CustomClassHolder {
  public:
   // ProcessGroup Options is a base struct that defines the basic options
   // when constructing a ProcessGroup. Each ProcessGroup subclass should
   // extend this struct and define its options if it wants to provide more
   // config options (beyond basic ones defined here) to end user.
-  struct TORCH_API Options : torch::CustomClassHolder {
+  struct Options : torch::CustomClassHolder {
     explicit Options(
         std::string backend,
         std::chrono::milliseconds timeout = kProcessGroupDefaultTimeout)

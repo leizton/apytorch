@@ -44,7 +44,7 @@ class InlinedCallStackSerializer {
   ska::flat_hash_map<std::string, c10::IValue> serialized_module_instance_info_;
 };
 
-class TORCH_API CallStackDebugInfoPickler {
+class CallStackDebugInfoPickler {
  public:
   CallStackDebugInfoPickler() = default;
 
@@ -75,7 +75,7 @@ class InlinedCallStackDeserializer {
       cached_module_instance_info_;
 };
 
-class TORCH_API CallStackDebugInfoUnpickler {
+class CallStackDebugInfoUnpickler {
  public:
   ska::flat_hash_map<int64_t, DebugInfoTuple> unpickle(
       at::DataPtr&& data,

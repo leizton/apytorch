@@ -9,12 +9,12 @@ using GeneratorFuncType = std::function<at::Generator(c10::DeviceIndex)>;
 
 c10::optional<GeneratorFuncType>& GetGeneratorPrivate();
 
-class TORCH_API _GeneratorRegister {
+class _GeneratorRegister {
  public:
   explicit _GeneratorRegister(const GeneratorFuncType& func);
 };
 
-TORCH_API at::Generator GetGeneratorForPrivateuse1(
+at::Generator GetGeneratorForPrivateuse1(
     c10::DeviceIndex device_index);
 
 /**

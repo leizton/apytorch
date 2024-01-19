@@ -100,7 +100,7 @@ struct ForwardGrad;
 // gradients to be common.
 #define EXPECTED_MAX_LEVEL 2
 
-struct TORCH_API ForwardADLevel {
+struct ForwardADLevel {
   ForwardADLevel(uint64_t idx) : idx_(idx) {}
   ~ForwardADLevel();
 
@@ -125,7 +125,7 @@ struct TORCH_API ForwardADLevel {
   uint64_t idx_;
 };
 
-struct TORCH_API ForwardGrad : std::enable_shared_from_this<ForwardGrad> {
+struct ForwardGrad : std::enable_shared_from_this<ForwardGrad> {
   ForwardGrad() = default;
 
   // This function must only be called when AutogradMeta or SavedVariable is

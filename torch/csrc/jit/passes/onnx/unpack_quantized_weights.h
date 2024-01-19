@@ -9,11 +9,11 @@
 namespace torch {
 namespace jit {
 
-TORCH_API void UnpackQuantizedWeights(
+void UnpackQuantizedWeights(
     std::shared_ptr<Graph>& graph,
     std::map<std::string, IValue>& paramsDict,
     bool caffe2);
-TORCH_API void insertPermutes(
+void insertPermutes(
     std::shared_ptr<Graph>& graph,
     std::map<std::string, IValue>& paramsDict);
 } // namespace jit

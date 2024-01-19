@@ -8,7 +8,7 @@
 
 namespace c10d {
 
-class TORCH_API ProcessGroupWrapper : public Backend {
+class ProcessGroupWrapper : public Backend {
  public:
   explicit ProcessGroupWrapper(
       c10::intrusive_ptr<Backend> backend,

@@ -41,7 +41,7 @@ enum class C10_API_ENUM ActiveProfilerType {
   ITT
 };
 
-struct TORCH_API ExperimentalConfig {
+struct ExperimentalConfig {
   ExperimentalConfig(
       std::vector<std::string> profiler_metrics = {},
       bool profiler_measure_per_kernel = false,
@@ -78,7 +78,7 @@ struct TORCH_API ExperimentalConfig {
   bool adjust_timestamps;
 };
 
-struct TORCH_API ProfilerConfig {
+struct ProfilerConfig {
   ProfilerConfig(
       ProfilerState state,
       bool report_input_shapes = false,
@@ -107,7 +107,7 @@ struct TORCH_API ProfilerConfig {
 // ----------------------------------------------------------------------------
 // -- Profiler base class -----------------------------------------------------
 // ----------------------------------------------------------------------------
-struct TORCH_API ProfilerStateBase : public c10::MemoryReportingInfoBase {
+struct ProfilerStateBase : public c10::MemoryReportingInfoBase {
   explicit ProfilerStateBase(ProfilerConfig config);
   ~ProfilerStateBase() override;
 
@@ -148,9 +148,9 @@ struct TORCH_API ProfilerStateBase : public c10::MemoryReportingInfoBase {
 };
 
 // Note: The following are only for the active *thread local* profiler.
-TORCH_API bool profilerEnabled();
-TORCH_API ActiveProfilerType profilerType();
-TORCH_API ProfilerConfig getProfilerConfig();
+bool profilerEnabled();
+ActiveProfilerType profilerType();
+ProfilerConfig getProfilerConfig();
 
 } // namespace impl
 } // namespace profiler

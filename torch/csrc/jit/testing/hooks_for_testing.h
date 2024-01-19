@@ -11,11 +11,11 @@ struct Module;
 using ModuleHook = std::function<void(Module module)>;
 using FunctionHook = std::function<void(StrongFunctionPtr function)>;
 
-TORCH_API void didFinishEmitModule(Module module);
-TORCH_API void didFinishEmitFunction(StrongFunctionPtr defined);
-TORCH_API void setEmitHooks(ModuleHook for_module, FunctionHook for_fn);
+void didFinishEmitModule(Module module);
+void didFinishEmitFunction(StrongFunctionPtr defined);
+void setEmitHooks(ModuleHook for_module, FunctionHook for_fn);
 
-TORCH_API std::pair<ModuleHook, FunctionHook> getEmitHooks();
+std::pair<ModuleHook, FunctionHook> getEmitHooks();
 
 } // namespace jit
 } // namespace torch

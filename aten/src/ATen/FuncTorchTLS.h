@@ -23,7 +23,7 @@ namespace at::functorch {
 // We can't directly pass around FunctorchTLSBase (without a pointer) because
 // FuncTorchTLSImpl does not fit inside a FuncTorchTLSBase by virtue of having
 // more elements.
-struct TORCH_API FuncTorchTLSBase {
+struct FuncTorchTLSBase {
   virtual ~FuncTorchTLSBase() = default;
   virtual std::unique_ptr<FuncTorchTLSBase> deepcopy() const = 0;
 
@@ -34,13 +34,13 @@ struct TORCH_API FuncTorchTLSBase {
 };
 
 // returns deepcopy of the functorch tls
-TORCH_API std::unique_ptr<FuncTorchTLSBase> getCopyOfFuncTorchTLS();
+std::unique_ptr<FuncTorchTLSBase> getCopyOfFuncTorchTLS();
 
 // sets the functorch tls. always does a deep copy.
-TORCH_API void setFuncTorchTLS(
+void setFuncTorchTLS(
     const std::shared_ptr<const FuncTorchTLSBase>& state);
 
 // get a mutable reference to the functorch tls
-TORCH_API std::unique_ptr<FuncTorchTLSBase>& functorchTLSAccessor();
+std::unique_ptr<FuncTorchTLSBase>& functorchTLSAccessor();
 
 } // namespace at::functorch

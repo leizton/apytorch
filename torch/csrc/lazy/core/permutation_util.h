@@ -9,10 +9,10 @@
 namespace torch {
 namespace lazy {
 
-TORCH_API std::vector<int64_t> InversePermutation(
+std::vector<int64_t> InversePermutation(
     c10::ArrayRef<int64_t> input_permutation);
 
-TORCH_API bool IsPermutation(c10::ArrayRef<int64_t> permutation);
+bool IsPermutation(c10::ArrayRef<int64_t> permutation);
 
 // Gathers the input using the order specified by the permutation. For each i,
 // output[i] = dimensions[permutation[i]]. The given permutation must be the

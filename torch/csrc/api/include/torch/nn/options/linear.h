@@ -13,7 +13,7 @@ namespace nn {
 /// ```
 /// Linear model(LinearOptions(5, 2).bias(false));
 /// ```
-struct TORCH_API LinearOptions {
+struct LinearOptions {
   LinearOptions(int64_t in_features, int64_t out_features);
   /// size of each input sample
   TORCH_ARG(int64_t, in_features);
@@ -33,7 +33,7 @@ struct TORCH_API LinearOptions {
 /// ```
 /// Flatten model(FlattenOptions().start_dim(2).end_dim(4));
 /// ```
-struct TORCH_API FlattenOptions {
+struct FlattenOptions {
   /// first dim to flatten
   TORCH_ARG(int64_t, start_dim) = 1;
   /// last dim to flatten
@@ -51,7 +51,7 @@ struct TORCH_API FlattenOptions {
 /// Unflatten unnamed_model(UnflattenOptions(0, {2, 2}));
 /// Unflatten named_model(UnflattenOptions("B", {{"B1", 2}, {"B2", 2}}));
 /// ```
-struct TORCH_API UnflattenOptions {
+struct UnflattenOptions {
   typedef std::vector<std::pair<std::string, int64_t>> namedshape_t;
 
   UnflattenOptions(int64_t dim, std::vector<int64_t> sizes);
@@ -76,7 +76,7 @@ struct TORCH_API UnflattenOptions {
 /// ```
 /// Bilinear model(BilinearOptions(3, 2, 4).bias(false));
 /// ```
-struct TORCH_API BilinearOptions {
+struct BilinearOptions {
   BilinearOptions(
       int64_t in1_features,
       int64_t in2_features,

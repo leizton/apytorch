@@ -320,7 +320,7 @@ class Scope {
  * - Let: Accesses dependent on local variables via Let Stmts, or loop vars,
  * cannot be raised outside of the scope of the dependent var.
  */
-class TORCH_API RegisterizerAnalysis : public IRVisitor {
+class RegisterizerAnalysis : public IRVisitor {
  public:
   RegisterizerAnalysis()
       : currentScope_(std::make_shared<Scope>(nullptr, nullptr, 0)) {}
@@ -379,7 +379,7 @@ class TORCH_API RegisterizerAnalysis : public IRVisitor {
 /* Replaces each registerizable access with a Scalar variable, including
  * definition, initializer and finalizer.
  */
-class TORCH_API RegisterizerReplacer : public IRMutator {
+class RegisterizerReplacer : public IRMutator {
  public:
   // NOLINTNEXTLINE(cppcoreguidelines-pro-type-member-init)
   RegisterizerReplacer(std::vector<std::shared_ptr<AccessInfo>>& vec)
@@ -426,7 +426,7 @@ class TORCH_API RegisterizerReplacer : public IRMutator {
 // Apply scalar replacement to all accesses in s.
 // To produce safe code, this must occur after handling parallelized axes and
 // atomics.
-TORCH_API StmtPtr registerize(StmtPtr s);
+StmtPtr registerize(StmtPtr s);
 
 } // namespace tensorexpr
 } // namespace jit

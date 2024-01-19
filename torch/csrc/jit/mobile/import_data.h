@@ -17,7 +17,7 @@ namespace jit {
  *
  * Calls #TORCH_CHECK() if the data format is not recognized.
  */
-TORCH_API std::map<std::string, at::Tensor> _load_parameters(
+std::map<std::string, at::Tensor> _load_parameters(
     std::istream& in,
     c10::optional<at::Device> device = c10::nullopt);
 
@@ -26,12 +26,12 @@ TORCH_API std::map<std::string, at::Tensor> _load_parameters(
  *
  * Calls #TORCH_CHECK() if the data format is not recognized.
  */
-TORCH_API std::map<std::string, at::Tensor> _load_parameters(
+std::map<std::string, at::Tensor> _load_parameters(
     const std::string& filename,
     c10::optional<at::Device> device = c10::nullopt);
 
 // NOTE: Please prefer using _load_parameters over using the function below.
-TORCH_API std::map<std::string, at::Tensor> mobile_module_to_parameter_map(
+std::map<std::string, at::Tensor> mobile_module_to_parameter_map(
     const mobile::Module& module);
 
 } // namespace jit

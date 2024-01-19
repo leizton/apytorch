@@ -20,7 +20,7 @@ namespace mobile {
 
 /// A lighter `Sampler` that returns indices randomly and cannot be
 /// serialized.
-class TORCH_API RandomSampler : public torch::data::samplers::Sampler<> {
+class RandomSampler : public torch::data::samplers::Sampler<> {
  public:
   /// Constructs a `RandomSampler` with a size and dtype for the stored indices.
   ///

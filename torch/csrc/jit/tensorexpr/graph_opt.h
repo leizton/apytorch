@@ -58,15 +58,15 @@ namespace tensorexpr {
 
 bool OptimizeCat(const std::shared_ptr<Graph>& graph);
 
-TORCH_API void annotateInputShapes(
+void annotateInputShapes(
     const std::shared_ptr<Graph>& graph,
     const std::vector<c10::optional<at::Tensor>>& example_inputs);
-TORCH_API std::shared_ptr<Graph> removeUnusedSelfArgument(
+std::shared_ptr<Graph> removeUnusedSelfArgument(
     const std::shared_ptr<Graph>& graph);
-TORCH_API std::shared_ptr<Graph> removeGraphOutput(
+std::shared_ptr<Graph> removeGraphOutput(
     const std::shared_ptr<Graph>& graph,
     size_t idx);
-TORCH_API std::shared_ptr<Graph> replaceListOutputWithTuple(
+std::shared_ptr<Graph> replaceListOutputWithTuple(
     const std::shared_ptr<Graph>& graph);
 
 // Perform \p ITERS rounds of "trimming" for the given \p GRAPH.
@@ -75,7 +75,7 @@ TORCH_API std::shared_ptr<Graph> replaceListOutputWithTuple(
 // keeping it valid. This is useful for debugging when we try to find a minimal
 // example reproducing the issue at hand. When ITERS is 0, the graph remains
 // unchanged, when ITERS is a big number, the graph usually becomes empty.
-TORCH_API std::shared_ptr<Graph> trimGraph(
+std::shared_ptr<Graph> trimGraph(
     const std::shared_ptr<Graph>& graph,
     int64_t iters);
 
@@ -96,19 +96,19 @@ TORCH_API std::shared_ptr<Graph> trimGraph(
 //   return %y
 //
 // and get {-3, -5} as the return value.
-TORCH_API std::vector<int64_t> makeShapesSymbolic(
+std::vector<int64_t> makeShapesSymbolic(
     std::shared_ptr<Graph>& graph,
     const std::vector<int64_t>& sizes);
 
 // Inspect the graph and report whether it can be converted to TE IR.
 // TODO: add error reporting for graphs that can't be converted.
-TORCH_API bool isGraphCompilable(const std::shared_ptr<Graph>& graph);
+bool isGraphCompilable(const std::shared_ptr<Graph>& graph);
 
 // Examine the graph and (hackily) fill in missing tensor type info, such as
 // scalar type, device, and strides. Ideally, this should be done by a proper
 // dtype/device/shape propagation passes, but until they are ready we can use
 // this, not always correct, workaround pass.
-TORCH_API void fixupMissingShapeInfo(const std::shared_ptr<Graph>& graph);
+void fixupMissingShapeInfo(const std::shared_ptr<Graph>& graph);
 
 } // namespace tensorexpr
 } // namespace jit

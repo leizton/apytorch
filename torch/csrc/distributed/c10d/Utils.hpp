@@ -34,7 +34,7 @@ typedef SSIZE_T ssize_t;
 namespace c10d {
 
 // Retrieve tensor shapes from a given tensor.
-TORCH_API std::vector<at::Tensor> getTensorShapes(
+std::vector<at::Tensor> getTensorShapes(
     const std::vector<at::Tensor>& tensors);
 
 // Use -2 to represent unset state of env vars

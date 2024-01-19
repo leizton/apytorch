@@ -10,10 +10,10 @@
 namespace c10 {
 
 template <typename T>
-struct TORCH_API TypeFactoryBase {};
+struct TypeFactoryBase {};
 
 template <>
-struct TORCH_API TypeFactoryBase<c10::DynamicType> {
+struct TypeFactoryBase<c10::DynamicType> {
   template <typename T, typename... Args>
   static c10::DynamicTypePtr create(TypePtr ty, Args&&... args) {
     return std::make_shared<c10::DynamicType>(
@@ -69,7 +69,7 @@ C10_ERASE DynamicTypePtr dynT(Args&&... args) {
 }
 
 template <>
-struct TORCH_API TypeFactoryBase<c10::Type> {
+struct TypeFactoryBase<c10::Type> {
   template <typename T, typename... Args>
   static c10::TypePtr create(TypePtr ty, Args&&... args) {
     return T::create(std::move(ty), std::forward<Args>(args)...);

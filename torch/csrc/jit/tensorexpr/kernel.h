@@ -97,7 +97,7 @@ std::vector<T> convertVecArgValue(const std::vector<ArgValue>& v) {
   return res;
 }
 
-class TORCH_API TensorExprKernel {
+class TensorExprKernel {
   struct ConstantDescr {
     BufPtr buf;
     // Only one of ptr and node is used at a time
@@ -360,17 +360,17 @@ class TORCH_API TensorExprKernel {
   MemoryLayoutPolicy memory_layout_policy_ = MemoryLayoutPolicy::kContiguous;
 };
 
-TORCH_API int& getTECudaPointwiseLoopLevels();
-TORCH_API int& getTECudaPointwiseBlockCount();
-TORCH_API int& getTECudaPointwiseBlockSize();
-TORCH_API bool& getTEGenerateBlockCode();
-TORCH_API bool& getTEMustUseLLVMOnCPU();
-TORCH_API bool fallbackAllowed();
-TORCH_API bool setFallbackAllowed(bool value);
-TORCH_API bool& getCatWoConditionals();
-TORCH_API bool& getOptConditionals();
+int& getTECudaPointwiseLoopLevels();
+int& getTECudaPointwiseBlockCount();
+int& getTECudaPointwiseBlockSize();
+bool& getTEGenerateBlockCode();
+bool& getTEMustUseLLVMOnCPU();
+bool fallbackAllowed();
+bool setFallbackAllowed(bool value);
+bool& getCatWoConditionals();
+bool& getOptConditionals();
 
-TORCH_API c10::optional<at::Device> pickDeviceType(
+c10::optional<at::Device> pickDeviceType(
     const at::ArrayRef<torch::jit::Value*>& inputs);
 
 bool isContiguous(

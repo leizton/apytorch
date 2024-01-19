@@ -144,7 +144,7 @@ To raw_bitcast(const From& src) {
 }
 
 class SimpleIREvaluatorImpl;
-class TORCH_API SimpleIREvaluator : public CodeGen {
+class SimpleIREvaluator : public CodeGen {
  public:
   SimpleIREvaluator(
       StmtPtr stmt,

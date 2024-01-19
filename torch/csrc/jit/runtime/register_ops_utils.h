@@ -86,7 +86,7 @@ static C10_UNUSED int64_t floordiv(int64_t a, int64_t b) {
     return (r.rem) ? r.quot - 1 : r.quot;
   }
 }
-TORCH_API void checkDoubleInRange(double a);
+void checkDoubleInRange(double a);
 static C10_UNUSED int64_t floor(double a) {
   checkDoubleInRange(a);
   return std::floor(a);
@@ -878,7 +878,7 @@ struct OperatorGeneratorArgs {
           aten_op, op, op, op, bool),                                    \
       DEFINE_STR_CMP_OP(aten_op, op)
 
-TORCH_API at::Generator make_generator_for_device(
+at::Generator make_generator_for_device(
     c10::Device device,
     c10::optional<int64_t> seed = c10::nullopt);
 

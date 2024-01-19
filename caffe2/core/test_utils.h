@@ -19,13 +19,13 @@ namespace caffe2 {
 namespace testing {
 
 // Asserts that the values of two tensors are the same.
-TORCH_API void assertTensorEquals(
+void assertTensorEquals(
     const TensorCPU& tensor1,
     const TensorCPU& tensor2,
     float eps = 1e-6);
 
 // Asserts that two float values are close within epsilon.
-TORCH_API void assertNear(float value1, float value2, float epsilon);
+void assertNear(float value1, float value2, float epsilon);
 
 // Asserts that the numeric values of a tensor is equal to a data vector.
 template <typename T>
@@ -56,23 +56,23 @@ void assertTensor(
 }
 
 // Asserts a list of tensors presented in two workspaces are equal.
-TORCH_API void assertTensorListEquals(
+void assertTensorListEquals(
     const std::vector<std::string>& tensorNames,
     const Workspace& workspace1,
     const Workspace& workspace2);
 
 // Read a tensor from the workspace.
-TORCH_API const caffe2::Tensor& getTensor(
+const caffe2::Tensor& getTensor(
     const caffe2::Workspace& workspace,
     const std::string& name);
 
 // Create a new tensor in the workspace.
-TORCH_API caffe2::Tensor* createTensor(
+caffe2::Tensor* createTensor(
     const std::string& name,
     caffe2::Workspace* workspace);
 
 // Create a new operator in the net.
-TORCH_API caffe2::OperatorDef* createOperator(
+caffe2::OperatorDef* createOperator(
     const std::string& type,
     const std::vector<std::string>& inputs,
     const std::vector<std::string>& outputs,
@@ -155,7 +155,7 @@ caffe2::Tensor* createTensorAndConstantFill(
 }
 
 // Concise util class to mutate a net in a chaining fashion.
-class TORCH_API NetMutator {
+class NetMutator {
  public:
   // NOLINTNEXTLINE(clang-analyzer-optin.cplusplus.UninitializedObject)
   explicit NetMutator(caffe2::NetDef* net) : net_(net) {}
@@ -186,7 +186,7 @@ class TORCH_API NetMutator {
 };
 
 // Concise util class to mutate a workspace in a chaining fashion.
-class TORCH_API WorkspaceMutator {
+class WorkspaceMutator {
  public:
   explicit WorkspaceMutator(caffe2::Workspace* workspace)
       : workspace_(workspace) {}

@@ -45,7 +45,7 @@ namespace autograd {
 static constexpr int MAX_DEPTH = 60;
 
 void set_device(int device);
-TORCH_API void validate_outputs(
+void validate_outputs(
     const edge_list& edges,
     variable_list& grads,
     const std::function<std::string(const std::string&)>& format_error);
@@ -129,7 +129,7 @@ struct ReadyQueue {
 // A single instance of this struct should be created through the whole process
 // lifetime. The worker thread creation logic and Engine's destructor rely on
 // this.
-struct TORCH_API Engine {
+struct Engine {
   /// Returns a reference to a static `Engine` instance.
   static Engine& get_default_engine();
 
@@ -289,7 +289,7 @@ struct TORCH_API Engine {
 
 // allow python_engine to override the default engine when it loads
 using EngineStub = Engine& (*)();
-TORCH_API void set_default_engine_stub(EngineStub stub);
+void set_default_engine_stub(EngineStub stub);
 
 } // namespace autograd
 } // namespace torch

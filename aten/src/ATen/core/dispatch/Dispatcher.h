@@ -24,17 +24,17 @@
 
 namespace c10 {
 
-TORCH_API bool show_dispatch_trace();
-TORCH_API void dispatch_trace_nesting_incr();
-TORCH_API void dispatch_trace_nesting_decr();
-TORCH_API int64_t dispatch_trace_nesting_value();
+bool show_dispatch_trace();
+void dispatch_trace_nesting_incr();
+void dispatch_trace_nesting_decr();
+int64_t dispatch_trace_nesting_value();
 
 struct DispatchTraceNestingGuard {
   DispatchTraceNestingGuard() { dispatch_trace_nesting_incr(); }
   ~DispatchTraceNestingGuard() { dispatch_trace_nesting_decr(); }
 };
 
-class TORCH_API OperatorHandle;
+class OperatorHandle;
 template<class FuncType> class TypedOperatorHandle;
 
 /**
@@ -45,7 +45,7 @@ template<class FuncType> class TypedOperatorHandle;
  * NB: registration events only occur when a 'def' occurs; we don't trigger
  * on 'impl' or 'fallback' calls.
  */
-class TORCH_API OpRegistrationListener {
+class OpRegistrationListener {
 public:
   virtual ~OpRegistrationListener();
 
@@ -63,7 +63,7 @@ class SchemaRegistrationHandleRAII;
  * Most end users shouldn't use this directly; if you're trying to register
  * ops look in op_registration
  */
-class TORCH_API Dispatcher final {
+class Dispatcher final {
 private:
   // For direct access to backend fallback information
   friend class impl::OperatorEntry;
@@ -368,7 +368,7 @@ private:
  * This handle can be used to register kernels with the dispatcher or
  * to lookup a kernel for a certain set of arguments.
  */
-class TORCH_API OperatorHandle {
+class OperatorHandle {
   template <typename T> friend struct std::hash;
 
 public:

@@ -6,6 +6,6 @@
 namespace torch {
 namespace jit {
 
-TORCH_API const std::vector<Function*>& getAllBuiltinFunctionsFor(Symbol name);
+const std::vector<Function*>& getAllBuiltinFunctionsFor(Symbol name);
 } // namespace jit
 } // namespace torch

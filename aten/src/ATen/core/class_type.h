@@ -27,7 +27,7 @@ enum class AttributeKind {
 
 // This structure represents all notional booking entities in a class attribute: name, kind (see: AttributeKind), and type (see: TypePtr).
 // Note: This structure does not represent the value of the attribute.
-struct TORCH_API ClassAttribute {
+struct ClassAttribute {
   public:
   ClassAttribute(AttributeKind kind,
   TypePtr attributeType,
@@ -63,7 +63,7 @@ using ClassTypePtr = std::shared_ptr<ClassType>;
 using ::torch::jit::CompilationUnit;
 
 // This represents a class in TorchScript.
-struct TORCH_API ClassType : public NamedType {
+struct ClassType : public NamedType {
   // This represents an attribute of a class; a name associated with an attribute, and a
   // getter and (optional) setter for that attribute.
   struct Property {

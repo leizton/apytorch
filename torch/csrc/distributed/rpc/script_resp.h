@@ -9,7 +9,7 @@ namespace distributed {
 namespace rpc {
 
 // Return value of a builtin operator or a TorchScript function.
-class TORCH_API ScriptResp final : public RpcCommandBase {
+class ScriptResp final : public RpcCommandBase {
  public:
   explicit ScriptResp(at::IValue&& values);
 

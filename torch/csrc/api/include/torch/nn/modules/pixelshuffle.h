@@ -25,7 +25,7 @@ namespace nn {
 /// ```
 /// PixelShuffle model(PixelShuffleOptions(5));
 /// ```
-struct TORCH_API PixelShuffleImpl
+struct PixelShuffleImpl
     : public torch::nn::Cloneable<PixelShuffleImpl> {
   explicit PixelShuffleImpl(const PixelShuffleOptions& options_);
 
@@ -62,7 +62,7 @@ TORCH_MODULE(PixelShuffle);
 /// ```
 /// PixelUnshuffle model(PixelUnshuffleOptions(5));
 /// ```
-struct TORCH_API PixelUnshuffleImpl
+struct PixelUnshuffleImpl
     : public torch::nn::Cloneable<PixelUnshuffleImpl> {
   explicit PixelUnshuffleImpl(const PixelUnshuffleOptions& options_);
 

@@ -82,7 +82,7 @@ const std::map<torch_ucc_phase_t, std::string> ucc_phase_map = {
 
 class CommTraceLogger;
 
-class TORCH_API ProcessGroupUCCLogger : public torch::CustomClassHolder {
+class ProcessGroupUCCLogger : public torch::CustomClassHolder {
  public:
   ProcessGroupUCCLogger();
   ProcessGroupUCCLogger(std::string log_prefix, torch_ucc_phase_t phase);

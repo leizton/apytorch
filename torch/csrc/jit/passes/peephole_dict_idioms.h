@@ -32,7 +32,7 @@ namespace jit {
 //
 // Currently this is invoked as part of PeepholeOptimize
 // return true if graph is modified.
-TORCH_API bool PeepholeOptimizeDictIdioms(const std::shared_ptr<Graph>& graph);
+bool PeepholeOptimizeDictIdioms(const std::shared_ptr<Graph>& graph);
 
 } // namespace jit
 } // namespace torch

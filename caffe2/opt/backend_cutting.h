@@ -13,8 +13,8 @@ struct CutResult {
   int numberOfSubnets{0};
 };
 
-TORCH_API void DumpGraph(nom::repr::NNGraph* g, const std::string& fname);
-TORCH_API CutResult OptimizeForBackend(
+void DumpGraph(nom::repr::NNGraph* g, const std::string& fname);
+CutResult OptimizeForBackend(
     caffe2::NetDef& net,
     std::function<bool(const caffe2::OperatorDef&)> supports,
     std::function<caffe2::NetDef(const caffe2::NetDef&)> transform_func,

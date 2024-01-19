@@ -66,7 +66,7 @@ struct TCPStoreOptions {
   bool useLibUV = false;
 };
 
-class TORCH_API TCPStore : public Store {
+class TCPStore : public Store {
  public:
   explicit TCPStore(std::string host, const TCPStoreOptions& opts = {});
 

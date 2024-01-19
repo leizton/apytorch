@@ -20,7 +20,7 @@ namespace caffe2 {
 using at::Half; // for AT_FORALL_SCALAR_TYPES_AND3(Bool, Half, BFloat16, ...)
 
 namespace internal {
-TORCH_API at::Tensor index_with_uint8_handling(
+at::Tensor index_with_uint8_handling(
     const at::Tensor& self,
     const torch::List<c10::optional<at::Tensor>>& indices);
 }

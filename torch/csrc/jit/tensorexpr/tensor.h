@@ -12,7 +12,7 @@ namespace torch {
 namespace jit {
 namespace tensorexpr {
 
-class TORCH_API Tensor {
+class Tensor {
  public:
   // NOLINTNEXTLINE(cppcoreguidelines-pro-type-member-init)
   Tensor(BufPtr buf, const std::vector<VarPtr>& args, ExprPtr body)
@@ -72,40 +72,40 @@ class TORCH_API Tensor {
   StmtPtr stmt_;
 };
 
-TORCH_API Tensor Compute(
+Tensor Compute(
     const std::string& func_name,
     const std::vector<ExprHandle>& dims,
     c10::optional<std::vector<ExprHandle>> strides,
     const std::function<ExprHandle(const VarHandle&)>& body_func);
-TORCH_API Tensor Compute(
+Tensor Compute(
     const std::string& func_name,
     const std::vector<ExprHandle>& dims,
     const std::function<ExprHandle(const VarHandle&)>& body_func);
-TORCH_API Tensor Compute(
+Tensor Compute(
     const std::string& func_name,
     const std::vector<ExprHandle>& dims,
     c10::optional<std::vector<ExprHandle>> strides,
     const std::function<ExprHandle(const VarHandle&, const VarHandle&)>&
         body_func);
-TORCH_API Tensor Compute(
+Tensor Compute(
     const std::string& func_name,
     const std::vector<ExprHandle>& dims,
     const std::function<ExprHandle(const VarHandle&, const VarHandle&)>&
         body_func);
-TORCH_API Tensor Compute(
+Tensor Compute(
     const std::string& func_name,
     const std::vector<ExprHandle>& dims,
     c10::optional<std::vector<ExprHandle>> strides,
     const std::function<
         ExprHandle(const VarHandle&, const VarHandle&, const VarHandle&)>&
         body_func);
-TORCH_API Tensor Compute(
+Tensor Compute(
     const std::string& func_name,
     const std::vector<ExprHandle>& dims,
     const std::function<
         ExprHandle(const VarHandle&, const VarHandle&, const VarHandle&)>&
         body_func);
-TORCH_API Tensor Compute(
+Tensor Compute(
     const std::string& func_name,
     const std::vector<ExprHandle>& dims,
     c10::optional<std::vector<ExprHandle>> strides,
@@ -114,7 +114,7 @@ TORCH_API Tensor Compute(
         const VarHandle&,
         const VarHandle&,
         const VarHandle&)>& body_func);
-TORCH_API Tensor Compute(
+Tensor Compute(
     const std::string& func_name,
     const std::vector<ExprHandle>& dims,
     const std::function<ExprHandle(
@@ -122,12 +122,12 @@ TORCH_API Tensor Compute(
         const VarHandle&,
         const VarHandle&,
         const VarHandle&)>& body_func);
-TORCH_API Tensor Compute(
+Tensor Compute(
     const std::string& func_name,
     const std::vector<ExprHandle>& dims,
     c10::optional<std::vector<ExprHandle>> strides,
     const std::function<ExprHandle(const std::vector<VarHandle>&)>& body_func);
-TORCH_API Tensor Compute(
+Tensor Compute(
     const std::string& func_name,
     const std::vector<ExprHandle>& dims,
     const std::function<ExprHandle(const std::vector<VarHandle>&)>& body_func);
@@ -262,14 +262,14 @@ Tensor Reduce(
   return Reduce(func_name, dims, c10::nullopt, reducer, body_func, reduce_dims);
 }
 
-TORCH_API Tensor Reduce(
+Tensor Reduce(
     const std::string& name,
     const std::vector<ExprHandle>& dims,
     c10::optional<std::vector<ExprHandle>> strides,
     const Reducer& reducer,
     const BufHandle& buffer,
     const std::vector<ExprHandle>& reduce_dims);
-TORCH_API Tensor Reduce(
+Tensor Reduce(
     const std::string& name,
     const std::vector<ExprHandle>& dims,
     const Reducer& reducer,
@@ -278,14 +278,14 @@ TORCH_API Tensor Reduce(
 
 // Overload for the common case of all dimensions of a previously Computed
 // Tensor.
-TORCH_API Tensor Reduce(
+Tensor Reduce(
     const std::string& func_name,
     const std::vector<ExprHandle>& dims,
     c10::optional<std::vector<ExprHandle>> strides,
     const Reducer& reducer,
     Tensor tensor,
     const std::vector<ExprHandle>& reduce_dims);
-TORCH_API Tensor Reduce(
+Tensor Reduce(
     const std::string& func_name,
     const std::vector<ExprHandle>& dims,
     const Reducer& reducer,

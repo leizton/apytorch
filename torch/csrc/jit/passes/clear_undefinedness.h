@@ -18,7 +18,7 @@ namespace jit {
 // Eventually, we would love to move to the world where we use optionals
 // in lieu of undefined tensors.
 // When this happens, this pass will be removed
-TORCH_API void ClearUndefinedness(const std::shared_ptr<Graph>& graph);
+void ClearUndefinedness(const std::shared_ptr<Graph>& graph);
 
 } // namespace jit
 } // namespace torch

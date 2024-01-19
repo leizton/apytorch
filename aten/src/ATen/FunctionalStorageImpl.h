@@ -76,7 +76,7 @@ struct ViewMeta {
 // --> c.sync_()
 //     --> alias.apply_updates() // after this, the alias will be updated to
 //     reflect the mutation to b
-struct TORCH_API FunctionalStorageImpl : public c10::StorageImpl {
+struct FunctionalStorageImpl : public c10::StorageImpl {
  public:
   struct Update {
     const at::Tensor new_val;

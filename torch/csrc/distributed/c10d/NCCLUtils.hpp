@@ -175,7 +175,7 @@ std::string getNcclErrorDetailStr(
     c10::optional<std::string> processGroupFailureReason = c10::nullopt);
 
 // Write NCCL debug info to local disk or any storage users define.
-class TORCH_API DebugInfoWriter {
+class DebugInfoWriter {
  public:
   DebugInfoWriter(int rank);
   virtual ~DebugInfoWriter();

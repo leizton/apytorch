@@ -10,7 +10,7 @@ namespace jit {
 // just have a flat graph. This inlines the forked section in the fork()
 // callsite and replaces uses of the result of wait() calls with the values
 // produced from the (now-inlined) forked section.
-TORCH_API void InlineForkWait(const std::shared_ptr<Graph>& graph);
+void InlineForkWait(const std::shared_ptr<Graph>& graph);
 
 } // namespace jit
 } // namespace torch

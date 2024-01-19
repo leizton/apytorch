@@ -18,7 +18,7 @@ using torch::jit::Operator;
 // contains a shared ptr to the `Operator` and a list of arguments.
 // If it is a TorchScript function, it contains a non empty qualifiedName string
 // to the TorchScript function schema name and a list of arguments.
-class TORCH_API ScriptCall : public RpcCommandBase {
+class ScriptCall : public RpcCommandBase {
  public:
   // Constructor for builitin operator call.
   ScriptCall(std::shared_ptr<Operator> op, std::vector<at::IValue>&& stack);

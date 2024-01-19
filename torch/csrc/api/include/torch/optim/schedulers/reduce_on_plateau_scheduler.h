@@ -13,7 +13,7 @@
 namespace torch {
 namespace optim {
 
-class TORCH_API ReduceLROnPlateauScheduler {
+class ReduceLROnPlateauScheduler {
  public:
   enum SchedulerMode { min, max };
   enum ThresholdMode { rel, abs };

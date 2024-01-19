@@ -5,11 +5,11 @@
 
 namespace torch::jit {
 
-TORCH_API const std::string& GetSerializedShapeFunctions();
+const std::string& GetSerializedShapeFunctions();
 
-TORCH_API const OperatorMap<std::string>& GetShapeFunctionMappings();
+const OperatorMap<std::string>& GetShapeFunctionMappings();
 
-TORCH_API const OperatorMap<std::pair<std::string, std::string>>&
+const OperatorMap<std::pair<std::string, std::string>>&
 GetBoundedShapeMappings();
 
 } // namespace torch::jit

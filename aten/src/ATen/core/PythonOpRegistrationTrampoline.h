@@ -7,7 +7,7 @@
 namespace at {
 namespace impl {
 
-class TORCH_API PythonOpRegistrationTrampoline final {
+class PythonOpRegistrationTrampoline final {
   static std::atomic<c10::impl::PyInterpreter*> interpreter_;
 
 public:

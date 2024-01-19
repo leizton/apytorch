@@ -125,7 +125,7 @@ struct Graph;
 
 // We special case Graph attributes like this because we want to ensure that
 // Graph::copy() is called when we clone() these attributes.
-struct TORCH_API GraphAttr : public AttributeValue {
+struct GraphAttr : public AttributeValue {
   using ConstructorType = std::shared_ptr<Graph>;
   using ValueType = std::shared_ptr<Graph>;
   GraphAttr(Symbol name, ConstructorType value_)
@@ -142,7 +142,7 @@ struct TORCH_API GraphAttr : public AttributeValue {
   std::shared_ptr<Graph> value_;
 };
 
-struct TORCH_API GraphsAttr : public AttributeValue {
+struct GraphsAttr : public AttributeValue {
   using ConstructorType = std::vector<std::shared_ptr<Graph>>;
   using ValueType = std::vector<std::shared_ptr<Graph>>;
   // NOLINTNEXTLINE(cppcoreguidelines-pro-type-member-init)

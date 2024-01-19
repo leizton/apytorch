@@ -327,7 +327,7 @@ static c10::optional<std::string> print_type(const c10::Type& t) {
   return c10::nullopt;
 }
 
-TORCH_API ModuleInfo get_module_info(const mobile::Module& module) {
+ModuleInfo get_module_info(const mobile::Module& module) {
   ModuleInfo minfo;
   minfo.operator_version = module.min_operator_version();
   minfo.bytecode_version = module.bytecode_version();

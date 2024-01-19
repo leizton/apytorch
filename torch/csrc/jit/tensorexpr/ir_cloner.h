@@ -9,7 +9,7 @@ namespace torch {
 namespace jit {
 namespace tensorexpr {
 
-class TORCH_API IRCloner : public IRMutator {
+class IRCloner : public IRMutator {
  public:
   ~IRCloner() override = default;
   ExprPtr mutate(AddPtr v) override;

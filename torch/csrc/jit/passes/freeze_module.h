@@ -19,7 +19,7 @@
 namespace torch {
 namespace jit {
 
-TORCH_API Module freeze_module(
+Module freeze_module(
     const Module& module,
     std::vector<std::string> preservedAttrs = std::vector<std::string>(),
     bool freezeInterfaces = true,
@@ -27,7 +27,7 @@ TORCH_API Module freeze_module(
 
 // Clone-free version of freeze_module. This modifies the module inplace.
 // Use this version to avoid extra memory usage incurred by cloning the module.
-TORCH_API void freeze_module_inplace(
+void freeze_module_inplace(
     Module* module,
     std::vector<std::string> preservedAttrs = std::vector<std::string>(),
     bool freezeInterfaces = true,

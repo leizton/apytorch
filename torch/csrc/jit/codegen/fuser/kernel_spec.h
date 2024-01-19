@@ -25,7 +25,7 @@ namespace fuser {
 // Note: created during upfront compilation, once the tensors are known
 // at runtime the partition info is logically combined with the tensor
 // descriptions to create PartitionDesc objects.
-struct TORCH_API PartitionInfo {
+struct PartitionInfo {
   PartitionInfo(const int64_t _nSubTensors, const int64_t _dim)
       : nSubTensors_{_nSubTensors}, dim_{_dim} {};
 
@@ -52,7 +52,7 @@ struct TORCH_API PartitionInfo {
 //   rehashing, which is critical for thread-safety.
 // TODO: allow abstract kernels to use multiple generated kernels
 // TODO: allow abstract kernels to reuse generated kernels from common pool
-struct TORCH_API KernelSpec {
+struct KernelSpec {
   // Note: assumes the spec is a single block
   // Note: This is the appropriate place to generalize if you want to add other
   //  passes to upfront compilation that walk the graph.

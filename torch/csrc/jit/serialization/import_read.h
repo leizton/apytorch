@@ -12,7 +12,7 @@ class PyTorchStreamReader;
 namespace torch {
 namespace jit {
 
-TORCH_API IValue readArchiveAndTensors(
+IValue readArchiveAndTensors(
     const std::string& archive_name,
     const std::string& pickle_prefix,
     const std::string& tensor_prefix,

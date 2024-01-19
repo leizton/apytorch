@@ -8,8 +8,8 @@ namespace torch::jit {
 
 using PrintHandler = void (*)(const std::string&);
 
-TORCH_API PrintHandler getDefaultPrintHandler();
-TORCH_API PrintHandler getPrintHandler();
-TORCH_API void setPrintHandler(PrintHandler ph);
+PrintHandler getDefaultPrintHandler();
+PrintHandler getPrintHandler();
+void setPrintHandler(PrintHandler ph);
 
 } // namespace torch::jit

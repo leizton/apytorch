@@ -12,7 +12,7 @@ namespace distributed {
 namespace rpc {
 
 // RequestCallback implementation with no Python dependencies.
-class TORCH_API RequestCallbackNoPython : public RequestCallback {
+class RequestCallbackNoPython : public RequestCallback {
  public:
   c10::intrusive_ptr<JitFuture> processMessage(
       Message& request,

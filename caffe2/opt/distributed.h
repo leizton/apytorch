@@ -16,7 +16,7 @@ namespace caffe2 {
 ///
 /// Throws an exception if the passed in blobMap contains
 /// blobs that are not present in the NNModule.
-TORCH_API nom::repr::NNModule convertToNNModule(
+nom::repr::NNModule convertToNNModule(
     caffe2::NetDef&,
     std::map<std::string, caffe2::DeviceOption>);
 
@@ -24,10 +24,10 @@ TORCH_API nom::repr::NNModule convertToNNModule(
 /// if you already have an NNModule.
 /// You probably don't want to use these
 /// if you can use convertToNNModule instead.
-TORCH_API void addBlobDeviceOptions(
+void addBlobDeviceOptions(
     std::map<std::string, caffe2::DeviceOption> blobMap,
     nom::repr::NNModule* nn);
-TORCH_API void injectDataEdgeIndicators(nom::repr::NNModule* nn);
-TORCH_API void removeDataEdgeIndicators(nom::repr::NNModule* nn);
+void injectDataEdgeIndicators(nom::repr::NNModule* nn);
+void removeDataEdgeIndicators(nom::repr::NNModule* nn);
 
 } // namespace caffe2

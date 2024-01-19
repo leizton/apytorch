@@ -145,9 +145,9 @@ CPU_ACC_TYPE(c10::complex<Half>, c10::complex<float>);
 CPU_ACC_TYPE(c10::complex<float>, c10::complex<double>);
 CPU_ACC_TYPE(c10::complex<double>, c10::complex<double>);
 
-TORCH_API c10::ScalarType toAccumulateType(
+c10::ScalarType toAccumulateType(
     c10::ScalarType type,
     c10::DeviceType device);
-TORCH_API c10::ScalarType toAccumulateType(c10::ScalarType type, bool is_cuda);
+c10::ScalarType toAccumulateType(c10::ScalarType type, bool is_cuda);
 
 } // namespace at

@@ -8,7 +8,7 @@ namespace distributed {
 namespace rpc {
 
 // RPC call representing the response of a Python UDF over RPC.
-class TORCH_API PythonResp final : public RpcCommandBase {
+class PythonResp final : public RpcCommandBase {
  public:
   explicit PythonResp(SerializedPyObj&& serializedPyObj);
 

@@ -12,7 +12,7 @@ namespace jit {
  * Utility to mangle qualified names in order to make them unique. We use this
  * in various places where we to de-duplicate qualified names.
  */
-class TORCH_API NameMangler {
+class NameMangler {
  public:
   // Given a qualified name, return a mangled version that is guaranteed to be
   // unique with respect to previous/future calls of `mangled()` on this name

@@ -9,16 +9,16 @@ namespace impl {
 
 // Adds the execution trace observer as a global callback function, the data
 // will be written to output file path.
-TORCH_API bool addExecutionTraceObserver(const std::string& output_file_path);
+bool addExecutionTraceObserver(const std::string& output_file_path);
 
 // Remove the execution trace observer from the global callback functions.
-TORCH_API void removeExecutionTraceObserver();
+void removeExecutionTraceObserver();
 
 // Enables execution trace observer.
-TORCH_API void enableExecutionTraceObserver();
+void enableExecutionTraceObserver();
 
 // Disables execution trace observer.
-TORCH_API void disableExecutionTraceObserver();
+void disableExecutionTraceObserver();
 
 } // namespace impl
 } // namespace profiler

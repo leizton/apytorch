@@ -372,7 +372,7 @@ class TestGenNativeFunctionDeclaration(unittest.TestCase):
         target = """
 namespace at {
 namespace native {
-TORCH_API bool kernel_1();
+bool kernel_1();
 } // namespace native
 } // namespace at
         """

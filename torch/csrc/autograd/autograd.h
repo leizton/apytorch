@@ -45,7 +45,7 @@ namespace autograd {
 //      on which the user should not rely. See
 //      https://github.com/pytorch/pytorch/pull/60521#issuecomment-867061780 for
 //      more details.
-TORCH_API void backward(
+void backward(
     const variable_list& tensors,
     const variable_list& grad_tensors = {},
     c10::optional<bool> retain_graph = c10::nullopt,
@@ -78,7 +78,7 @@ TORCH_API void backward(
 /// \param allow_unused If ``false``, specifying inputs that were not
 ///     used when computing outputs (and therefore their grad is always zero)
 ///     is an error. Defaults to ``false``.
-TORCH_API variable_list grad(
+variable_list grad(
     const variable_list& outputs,
     const variable_list& inputs,
     const variable_list& grad_outputs = {},
@@ -92,14 +92,14 @@ namespace forward_ad {
 /// be used to call into the other functions below. This API supports entering a
 /// new level before the previous one is exited. We call them nested forward AD
 /// levels. These can be used to compute higher order derivatives.
-TORCH_API uint64_t enter_dual_level();
+uint64_t enter_dual_level();
 
 /// Exits the given level. This will clear up all the gradients from this level
 /// and all dual Tensors that had gradients for this level will become regular
 /// Tensors again. This function can only be used to exit the innermost nesting
 /// level and so exiting must happen in reverse order compared to the entering
 /// that was done with the function above.
-TORCH_API void exit_dual_level(uint64_t level);
+void exit_dual_level(uint64_t level);
 
 } // namespace forward_ad
 } // namespace autograd

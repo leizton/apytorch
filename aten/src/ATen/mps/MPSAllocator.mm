@@ -727,7 +727,7 @@ HeapAllocator::MPSHeapAllocatorImpl& _getAllocImpl() {
 } // namespace
 
 // MPS allocator struct to be registered with Pytorch
-struct TORCH_API MPSAllocator final : public IMPSAllocator {
+struct MPSAllocator final : public IMPSAllocator {
  public:
   explicit MPSAllocator(uint32_t Usage)
       : m_has_unified_memory(_getAllocImpl().Device().hasUnifiedMemory), m_usage(Usage) {

@@ -13,7 +13,7 @@ namespace jit {
  * Parses expressions in our typed AST format (TreeView) into types and
  * typenames.
  */
-class TORCH_API ScriptTypeParser {
+class ScriptTypeParser {
  public:
   explicit ScriptTypeParser() = default;
   explicit ScriptTypeParser(ResolverPtr resolver)

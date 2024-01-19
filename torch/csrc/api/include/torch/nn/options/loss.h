@@ -14,7 +14,7 @@ namespace nn {
 /// ```
 /// L1Loss model(L1LossOptions(torch::kNone));
 /// ```
-struct TORCH_API L1LossOptions {
+struct L1LossOptions {
   typedef std::variant<enumtype::kNone, enumtype::kMean, enumtype::kSum>
       reduction_t;
 
@@ -47,7 +47,7 @@ using L1LossFuncOptions = L1LossOptions;
 /// KLDivLoss
 /// model(KLDivLossOptions().reduction(torch::kNone).log_target(false));
 /// ```
-struct TORCH_API KLDivLossOptions {
+struct KLDivLossOptions {
   typedef std::variant<
       enumtype::kNone,
       enumtype::kBatchMean,
@@ -94,7 +94,7 @@ using KLDivFuncOptions = KLDivLossOptions;
 /// ```
 /// MSELoss model(MSELossOptions(torch::kNone));
 /// ```
-struct TORCH_API MSELossOptions {
+struct MSELossOptions {
   typedef std::variant<enumtype::kNone, enumtype::kMean, enumtype::kSum>
       reduction_t;
 
@@ -127,7 +127,7 @@ using MSELossFuncOptions = MSELossOptions;
 /// ```
 /// BCELoss model(BCELossOptions().reduction(torch::kNone).weight(weight));
 /// ```
-struct TORCH_API BCELossOptions {
+struct BCELossOptions {
   typedef std::variant<enumtype::kNone, enumtype::kMean, enumtype::kSum>
       reduction_t;
 
@@ -162,7 +162,7 @@ using BinaryCrossEntropyFuncOptions = BCELossOptions;
 /// HingeEmbeddingLoss
 /// model(HingeEmbeddingLossOptions().margin(4).reduction(torch::kNone));
 /// ```
-struct TORCH_API HingeEmbeddingLossOptions {
+struct HingeEmbeddingLossOptions {
   typedef std::variant<enumtype::kNone, enumtype::kMean, enumtype::kSum>
       reduction_t;
 
@@ -196,7 +196,7 @@ using HingeEmbeddingLossFuncOptions = HingeEmbeddingLossOptions;
 /// ```
 /// MultiMarginLoss model(MultiMarginLossOptions().margin(2).weight(weight));
 /// ```
-struct TORCH_API MultiMarginLossOptions {
+struct MultiMarginLossOptions {
   typedef std::variant<enumtype::kNone, enumtype::kMean, enumtype::kSum>
       reduction_t;
 
@@ -241,7 +241,7 @@ using MultiMarginLossFuncOptions = MultiMarginLossOptions;
 /// ```
 /// CosineEmbeddingLoss model(CosineEmbeddingLossOptions().margin(0.5));
 /// ```
-struct TORCH_API CosineEmbeddingLossOptions {
+struct CosineEmbeddingLossOptions {
   typedef std::variant<enumtype::kNone, enumtype::kMean, enumtype::kSum>
       reduction_t;
 
@@ -276,7 +276,7 @@ using CosineEmbeddingLossFuncOptions = CosineEmbeddingLossOptions;
 /// ```
 /// MultiLabelMarginLoss model(MultiLabelMarginLossOptions(torch::kNone));
 /// ```
-struct TORCH_API MultiLabelMarginLossOptions {
+struct MultiLabelMarginLossOptions {
   typedef std::variant<enumtype::kNone, enumtype::kMean, enumtype::kSum>
       reduction_t;
 
@@ -317,7 +317,7 @@ using MultilabelMarginLossFuncOptions = MultiLabelMarginLossOptions;
 /// ```
 /// SoftMarginLoss model(SoftMarginLossOptions(torch::kNone));
 /// ```
-struct TORCH_API SoftMarginLossOptions {
+struct SoftMarginLossOptions {
   typedef std::variant<enumtype::kNone, enumtype::kMean, enumtype::kSum>
       reduction_t;
 
@@ -359,7 +359,7 @@ using SoftMarginLossFuncOptions = SoftMarginLossOptions;
 /// MultiLabelSoftMarginLoss
 /// model(MultiLabelSoftMarginLossOptions().reduction(torch::kNone).weight(weight));
 /// ```
-struct TORCH_API MultiLabelSoftMarginLossOptions {
+struct MultiLabelSoftMarginLossOptions {
   typedef std::variant<enumtype::kNone, enumtype::kMean, enumtype::kSum>
       reduction_t;
 
@@ -399,7 +399,7 @@ using MultilabelSoftMarginLossFuncOptions = MultiLabelSoftMarginLossOptions;
 /// TripletMarginLoss
 /// model(TripletMarginLossOptions().margin(3).p(2).eps(1e-06).swap(false));
 /// ```
-struct TORCH_API TripletMarginLossOptions {
+struct TripletMarginLossOptions {
   typedef std::variant<enumtype::kNone, enumtype::kMean, enumtype::kSum>
       reduction_t;
 
@@ -441,7 +441,7 @@ using TripletMarginLossFuncOptions = TripletMarginLossOptions;
 /// TripletMarginWithDistanceLoss
 /// model(TripletMarginWithDistanceLossOptions().margin(3).swap(false));
 /// ```
-struct TORCH_API TripletMarginWithDistanceLossOptions {
+struct TripletMarginWithDistanceLossOptions {
   typedef std::variant<enumtype::kNone, enumtype::kMean, enumtype::kSum>
       reduction_t;
   typedef std::function<Tensor(const Tensor&, const Tensor&)>
@@ -492,7 +492,7 @@ using TripletMarginWithDistanceLossFuncOptions =
 /// CTCLoss
 /// model(CTCLossOptions().blank(42).zero_infinity(false).reduction(torch::kSum));
 /// ```
-struct TORCH_API CTCLossOptions {
+struct CTCLossOptions {
   typedef std::variant<enumtype::kNone, enumtype::kMean, enumtype::kSum>
       reduction_t;
 
@@ -529,7 +529,7 @@ using CTCLossFuncOptions = CTCLossOptions;
 /// ```
 /// SmoothL1Loss model(SmoothL1LossOptions().reduction(torch::kNone).beta(0.5));
 /// ```
-struct TORCH_API SmoothL1LossOptions {
+struct SmoothL1LossOptions {
   typedef std::variant<enumtype::kNone, enumtype::kMean, enumtype::kSum>
       reduction_t;
 
@@ -573,7 +573,7 @@ using SmoothL1LossFuncOptions = SmoothL1LossOptions;
 /// ```
 /// HuberLoss model(HuberLossOptions().reduction(torch::kNone).delta(0.5));
 /// ```
-struct TORCH_API HuberLossOptions {
+struct HuberLossOptions {
   typedef std::variant<enumtype::kNone, enumtype::kMean, enumtype::kSum>
       reduction_t;
 
@@ -617,7 +617,7 @@ using HuberLossFuncOptions = HuberLossOptions;
 /// PoissonNLLLoss
 /// model(PoissonNLLLossOptions().log_input(false).full(true).eps(0.42).reduction(torch::kSum));
 /// ```
-struct TORCH_API PoissonNLLLossOptions {
+struct PoissonNLLLossOptions {
   typedef std::variant<enumtype::kNone, enumtype::kMean, enumtype::kSum>
       reduction_t;
 
@@ -658,7 +658,7 @@ using PoissonNLLLossFuncOptions = PoissonNLLLossOptions;
 /// MarginRankingLoss
 /// model(MarginRankingLossOptions().margin(0.5).reduction(torch::kSum));
 /// ```
-struct TORCH_API MarginRankingLossOptions {
+struct MarginRankingLossOptions {
   typedef std::variant<enumtype::kNone, enumtype::kMean, enumtype::kSum>
       reduction_t;
 
@@ -691,7 +691,7 @@ using MarginRankingLossFuncOptions = MarginRankingLossOptions;
 /// ```
 /// NLLLoss model(NLLLossOptions().ignore_index(-100).reduction(torch::kMean));
 /// ```
-struct TORCH_API NLLLossOptions {
+struct NLLLossOptions {
   typedef std::variant<enumtype::kNone, enumtype::kMean, enumtype::kSum>
       reduction_t;
 
@@ -730,7 +730,7 @@ using NLLLossFuncOptions = NLLLossOptions;
 /// CrossEntropyLoss
 /// model(CrossEntropyLossOptions().ignore_index(-100).reduction(torch::kMean));
 /// ```
-struct TORCH_API CrossEntropyLossOptions {
+struct CrossEntropyLossOptions {
   typedef std::variant<enumtype::kNone, enumtype::kMean, enumtype::kSum>
       reduction_t;
 
@@ -770,7 +770,7 @@ using CrossEntropyFuncOptions = CrossEntropyLossOptions;
 /// BCEWithLogitsLoss
 /// model(BCEWithLogitsLossOptions().reduction(torch::kNone).weight(weight));
 /// ```
-struct TORCH_API BCEWithLogitsLossOptions {
+struct BCEWithLogitsLossOptions {
   typedef std::variant<enumtype::kNone, enumtype::kMean, enumtype::kSum>
       reduction_t;
   /// A manual rescaling weight given to the loss of each batch element.

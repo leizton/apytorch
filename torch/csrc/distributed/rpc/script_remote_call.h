@@ -16,7 +16,7 @@ using torch::jit::Operator;
 // builtin operator. Currently, it does not support using RRef as arguments yet.
 // Besides the operator and a vector of arguments, ScriptRemoteCall also
 // contains the RRefId and the ForkId of the return value RRef.
-class TORCH_API ScriptRemoteCall final : public ScriptCall {
+class ScriptRemoteCall final : public ScriptCall {
  public:
   // Constructor for builitin operator call.
   ScriptRemoteCall(

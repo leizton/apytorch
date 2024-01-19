@@ -22,7 +22,7 @@ struct Datapoint {
       : sourceRange(std::move(sr)), start(std::chrono::steady_clock::now()) {}
 };
 
-class TORCH_API InstructionSpan {
+class InstructionSpan {
  public:
   explicit InstructionSpan(Node&);
   ~InstructionSpan();
@@ -35,12 +35,12 @@ class TORCH_API InstructionSpan {
 
 } // namespace profiling
 
-struct TORCH_API InstructionStats : public CustomClassHolder {
+struct InstructionStats : public CustomClassHolder {
   int64_t count{0};
   std::chrono::nanoseconds duration{0};
 };
 
-class TORCH_API SourceStats : public CustomClassHolder {
+class SourceStats : public CustomClassHolder {
  public:
   using LineMap = c10::Dict<int64_t, c10::intrusive_ptr<InstructionStats>>;
 
@@ -78,7 +78,7 @@ class TORCH_API SourceStats : public CustomClassHolder {
  * In general, stats are aggregated per source function body, and then by line
  * number.
  */
-class TORCH_API ScriptProfile : public CustomClassHolder {
+class ScriptProfile : public CustomClassHolder {
   // Aggregates datapoints by function source id, then by line number.
   using LineMap = std::map<int64_t, InstructionStats>;
   using SourceMap = std::map<SourceRef, LineMap, std::less<>>;

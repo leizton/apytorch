@@ -5,7 +5,7 @@
 
 namespace c10d {
 
-class TORCH_API PrefixStore : public Store {
+class PrefixStore : public Store {
  public:
   explicit PrefixStore(std::string prefix, c10::intrusive_ptr<Store> store);
 

@@ -6,7 +6,7 @@ namespace caffe2 {
 
 // A RAII, thread local (!) guard that enables or disables grad mode upon
 // construction, and sets it back to the original value upon destruction.
-struct TORCH_API _NoPThreadPoolGuard {
+struct _NoPThreadPoolGuard {
   static bool is_enabled();
   static void set_enabled(bool enabled);
 

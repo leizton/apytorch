@@ -38,7 +38,7 @@ struct Node;
 namespace at {
 namespace impl {
 
-struct TORCH_API VariableHooksInterface {
+struct VariableHooksInterface {
   virtual ~VariableHooksInterface() = default;
   virtual TensorBase tensor_data(const TensorBase&) const = 0;
   virtual TensorBase variable_data(const TensorBase&) const = 0;
@@ -62,11 +62,11 @@ struct TORCH_API VariableHooksInterface {
   virtual void basic_autograd_not_implemented_fallback(const c10::OperatorHandle& op, c10::DispatchKeySet dispatch_keys, torch::jit::Stack* stack) const = 0;
 };
 
-TORCH_API void SetVariableHooks(VariableHooksInterface* hooks);
-TORCH_API VariableHooksInterface* GetVariableHooks();
-TORCH_API bool HasVariableHooks();
+void SetVariableHooks(VariableHooksInterface* hooks);
+VariableHooksInterface* GetVariableHooks();
+bool HasVariableHooks();
 
-struct TORCH_API VariableHooksRegisterer {
+struct VariableHooksRegisterer {
   explicit VariableHooksRegisterer(VariableHooksInterface* hooks) {
     SetVariableHooks(hooks);
   }

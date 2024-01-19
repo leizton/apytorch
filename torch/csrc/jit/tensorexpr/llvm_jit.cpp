@@ -148,7 +148,7 @@ namespace orc {
 // Lightly modified implementation from LLVM's Kaleidoscope JIT tutorial:
 // https://llvm.org/docs/tutorial/BuildingAJIT1.html
 #if LLVM_VERSION_MAJOR >= 9
-class TORCH_API PytorchLLVMJITImpl {
+class PytorchLLVMJITImpl {
  private:
   std::unique_ptr<TargetMachine> TM;
   std::unique_ptr<LLJIT> LLJ;
@@ -225,7 +225,7 @@ class TORCH_API PytorchLLVMJITImpl {
 
 #elif LLVM_VERSION_MAJOR == 8 && LLVM_VERSION_PATCH == 20181009
 
-class TORCH_API PytorchLLVMJITImpl {
+class PytorchLLVMJITImpl {
  private:
   ExecutionSession ES;
   std::shared_ptr<SymbolResolver> Resolver;

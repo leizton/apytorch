@@ -16,7 +16,7 @@ namespace tensorexpr {
 using int32 = std::int32_t;
 
 class Dtype;
-TORCH_API std::ostream& operator<<(std::ostream& stream, const Dtype& dtype);
+std::ostream& operator<<(std::ostream& stream, const Dtype& dtype);
 
 using ScalarType = c10::ScalarType;
 
@@ -31,7 +31,7 @@ enum ElementType {
 };
 
 // Data types for scalar and vector elements.
-class TORCH_API Dtype {
+class Dtype {
  public:
   explicit Dtype(int8_t type)
       : scalar_type_(static_cast<ScalarType>(type)), lanes_(1) {}
@@ -76,16 +76,16 @@ class TORCH_API Dtype {
   }
 
  private:
-  friend TORCH_API std::ostream& operator<<(
+  friend std::ostream& operator<<(
       std::ostream& stream,
       const Dtype& dtype);
   ScalarType scalar_type_;
   int lanes_; // the width of the element for a vector time
 };
 
-extern TORCH_API Dtype kHandle;
+extern Dtype kHandle;
 
-#define NNC_DTYPE_DECLARATION(ctype, name) extern TORCH_API Dtype k##name;
+#define NNC_DTYPE_DECLARATION(ctype, name) extern Dtype k##name;
 
 AT_FORALL_SCALAR_TYPES_AND3(Bool, Half, BFloat16, NNC_DTYPE_DECLARATION)
 NNC_DTYPE_DECLARATION(c10::quint8, QUInt8);
@@ -93,7 +93,7 @@ NNC_DTYPE_DECLARATION(c10::qint8, QInt8);
 #undef NNC_DTYPE_DECLARATION
 
 template <typename T>
-TORCH_API Dtype ToDtype();
+Dtype ToDtype();
 
 #define NNC_TODTYPE_DECLARATION(ctype, name) \
   template <>                                \
@@ -105,7 +105,7 @@ NNC_TODTYPE_DECLARATION(c10::quint8, QUInt8);
 NNC_TODTYPE_DECLARATION(c10::qint8, QInt8);
 #undef NNC_TODTYPE_DECLARATION
 
-TORCH_API Dtype ToDtype(ScalarType type);
+Dtype ToDtype(ScalarType type);
 
 inline Dtype promoteTypes(Dtype a, Dtype b) {
   if (a.lanes() != b.lanes()) {

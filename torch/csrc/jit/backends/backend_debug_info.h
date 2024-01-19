@@ -23,7 +23,7 @@ constexpr static auto kBackendDebugInfoClass = "BackendDebugInfo";
  * 3. The contents of LoweredModule.__backend_debug_info are not serialized
  *    within the LoweredModule itself.
  */
-class TORCH_API PyTorchBackendDebugInfo : public torch::CustomClassHolder {
+class PyTorchBackendDebugInfo : public torch::CustomClassHolder {
  public:
   PyTorchBackendDebugInfo() = default;
 

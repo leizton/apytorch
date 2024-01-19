@@ -98,7 +98,7 @@ static constexpr const char* kSerializationIdRecordName = ".data/serialization_i
 
 struct MzZipReaderIterWrapper;
 
-class TORCH_API ChunkRecordIterator {
+class ChunkRecordIterator {
  public:
   ~ChunkRecordIterator();
 
@@ -119,7 +119,7 @@ class TORCH_API ChunkRecordIterator {
   friend class PyTorchStreamReader;
 };
 
-class TORCH_API PyTorchStreamReader final {
+class PyTorchStreamReader final {
  public:
   explicit PyTorchStreamReader(const std::string& file_name);
   explicit PyTorchStreamReader(std::istream* in);
@@ -202,7 +202,7 @@ class TORCH_API PyTorchStreamReader final {
   size_t additional_reader_size_threshold_;
 };
 
-class TORCH_API PyTorchStreamWriter final {
+class PyTorchStreamWriter final {
  public:
   explicit PyTorchStreamWriter(const std::string& archive_name);
   explicit PyTorchStreamWriter(

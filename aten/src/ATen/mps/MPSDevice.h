@@ -41,7 +41,7 @@ enum class MacOSVersion : uint32_t {
 // MPSDevice is a singleton class that returns the default device
 //-----------------------------------------------------------------
 
-class TORCH_API MPSDevice {
+class MPSDevice {
  public:
   /**
    * MPSDevice should not be cloneable.
@@ -78,8 +78,8 @@ class TORCH_API MPSDevice {
   MPSDevice();
 };
 
-TORCH_API bool is_available();
-TORCH_API bool is_macos_13_or_newer(MacOSVersion version = MacOSVersion::MACOS_VER_13_0_PLUS);
-TORCH_API at::Allocator* GetMPSAllocator(bool useSharedAllocator = false);
+bool is_available();
+bool is_macos_13_or_newer(MacOSVersion version = MacOSVersion::MACOS_VER_13_0_PLUS);
+at::Allocator* GetMPSAllocator(bool useSharedAllocator = false);
 
 } // namespace at::mps

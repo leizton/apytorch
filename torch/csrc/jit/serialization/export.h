@@ -37,7 +37,7 @@ using NodeNameMap = std::unordered_map<const Node*, std::string>;
 using NodeAttrNameMap = std::
     unordered_map<const Node*, std::unordered_map<std::string, std::string>>;
 
-TORCH_API std::tuple<
+std::tuple<
     std::shared_ptr<::ONNX_NAMESPACE::ModelProto>,
     RawDataExportMap,
     SymbolDimMap,
@@ -61,13 +61,13 @@ export_onnx(
     const std::string& onnx_file_path = std::string(),
     const NodeAttrNameMap& node_attr_to_name = {});
 
-TORCH_API std::string serialize_model_proto_to_string(
+std::string serialize_model_proto_to_string(
     const std::shared_ptr<::ONNX_NAMESPACE::ModelProto>& model_proto);
 
-TORCH_API void check_onnx_proto(const std::string& proto_string);
+void check_onnx_proto(const std::string& proto_string);
 
 // Serializer for both oldsyle and unified format TorchScript serialization
-class TORCH_API ScriptModuleSerializer {
+class ScriptModuleSerializer {
  public:
   explicit ScriptModuleSerializer(
       caffe2::serialize::PyTorchStreamWriter& export_writer)
@@ -141,7 +141,7 @@ class TORCH_API ScriptModuleSerializer {
 };
 
 // For testing purposes
-TORCH_API std::string pretty_print_onnx(
+std::string pretty_print_onnx(
     const std::shared_ptr<Graph>& graph,
     const std::map<std::string, at::Tensor>& initializers,
     int64_t onnx_opset_version,
@@ -153,7 +153,7 @@ TORCH_API std::string pretty_print_onnx(
     const std::map<std::string, int>& custom_opsets = {},
     bool add_node_names = true);
 
-TORCH_API void ExportModule(
+void ExportModule(
     const Module& module,
     std::ostream& out,
     const ExtraFilesMap& metadata = ExtraFilesMap(),
@@ -161,7 +161,7 @@ TORCH_API void ExportModule(
     bool save_mobile_debug_info = false,
     bool use_flatbuffer = false);
 
-TORCH_API void ExportModule(
+void ExportModule(
     const Module& module,
     const std::string& filename,
     const ExtraFilesMap& metadata = ExtraFilesMap(),
@@ -169,7 +169,7 @@ TORCH_API void ExportModule(
     bool save_mobile_debug_info = false,
     bool use_flatbuffer = false);
 
-TORCH_API void ExportModule(
+void ExportModule(
     const Module& module,
     const std::function<size_t(const void*, size_t)>& writer_func,
     const ExtraFilesMap& metadata = ExtraFilesMap(),
@@ -179,7 +179,7 @@ TORCH_API void ExportModule(
 
 // Write the bytes of a pickle archive and the tensors referenced inside that
 // archive
-TORCH_API void writeArchiveAndTensors(
+void writeArchiveAndTensors(
     const std::string& archive_name,
     const char* pickle_bytes,
     size_t size,
@@ -189,7 +189,7 @@ TORCH_API void writeArchiveAndTensors(
 // Surrounding system can install an additional hook to produce extra files
 // with metadata based on environment every time a module is serialized.
 using ExportModuleExtraFilesHook = std::function<ExtraFilesMap(const Module&)>;
-TORCH_API void SetExportModuleExtraFilesHook(ExportModuleExtraFilesHook hook);
+void SetExportModuleExtraFilesHook(ExportModuleExtraFilesHook hook);
 
 /**
  * Generates new bytecode for a Script module and returns what the op list
@@ -197,9 +197,9 @@ TORCH_API void SetExportModuleExtraFilesHook(ExportModuleExtraFilesHook hook);
  * have a LiteScriptModule and want to get the currently present
  * list of ops call _export_operator_list instead.
  */
-TORCH_API std::vector<std::string> export_opnames(const Module& m);
+std::vector<std::string> export_opnames(const Module& m);
 
-struct TORCH_API BytecodeEmitMode {
+struct BytecodeEmitMode {
   static bool is_default_value_for_unspecified_arg_enabled();
   static void set_default_value_for_unspecified_arg_enabled(bool enabled);
 
@@ -220,7 +220,7 @@ struct TORCH_API BytecodeEmitMode {
 // true: the number of specified arguments will deserialized to (#all_args -
 // #default_args). false: the number of specified arguments will deserialized to
 // (#all_args).
-struct TORCH_API BytecodeEmitModeGuard {
+struct BytecodeEmitModeGuard {
   BytecodeEmitModeGuard(
       bool enable_default_value_for_unspecified_arg,
       bool enable_default_args_before_out_args,
@@ -251,26 +251,26 @@ struct TORCH_API BytecodeEmitModeGuard {
   bool prev_default_emit_promoted_ops;
 };
 
-TORCH_API IValue to_tuple(std::vector<IValue> ivalues);
-TORCH_API IValue
+IValue to_tuple(std::vector<IValue> ivalues);
+IValue
 Table(const std::vector<std::pair<std::string, IValue>>& entries);
 
 // TODO remove these switches once interface call is rolled out.
-TORCH_API void enableMobileInterfaceCallExport();
+void enableMobileInterfaceCallExport();
 bool getMobileInterfaceCallExport();
 
-TORCH_API CompilationOptions getOptionsFromGlobal();
+CompilationOptions getOptionsFromGlobal();
 
-TORCH_API void save_jit_module(
+void save_jit_module(
     const Module& module,
     const std::string& filename,
     const ExtraFilesMap& extra_files = ExtraFilesMap());
 
-TORCH_API DetachedBuffer::UniqueDetachedBuffer save_jit_module_to_bytes(
+DetachedBuffer::UniqueDetachedBuffer save_jit_module_to_bytes(
     const Module& module,
     const ExtraFilesMap& extra_files = ExtraFilesMap());
 
-TORCH_API void save_jit_module_to_write_func(
+void save_jit_module_to_write_func(
     const Module& module,
     const ExtraFilesMap& extra_files,
     bool save_mobile_debug_info,

@@ -1663,7 +1663,7 @@ static std::tuple<Tensor&, Tensor&> median_from_cpu(const Tensor& self,
   return std::forward_as_tuple(valuesI, indicesI);
 }
 
-TORCH_API ::std::tuple<at::Tensor&, at::Tensor&> median_out_mps(const at::Tensor& input_t,
+::std::tuple<at::Tensor&, at::Tensor&> median_out_mps(const at::Tensor& input_t,
                                                                 int64_t dim,
                                                                 bool keepdim,
                                                                 at::Tensor& values,

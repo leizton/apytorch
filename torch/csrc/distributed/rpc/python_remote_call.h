@@ -10,7 +10,7 @@ namespace torch {
 namespace distributed {
 namespace rpc {
 
-class TORCH_API PythonRemoteCall : public RpcCommandBase {
+class PythonRemoteCall : public RpcCommandBase {
  public:
   PythonRemoteCall(
       SerializedPyObj&& serializedPyObj,

@@ -47,7 +47,7 @@ namespace at {
 // See Note [Functionalization: Alias Removal] for details on the aliasing
 // machinery. See Note [Functionalization: Mutation Removal] for details on
 // mutation removal.
-struct TORCH_API FunctionalTensorWrapper : public c10::TensorImpl {
+struct FunctionalTensorWrapper : public c10::TensorImpl {
   explicit FunctionalTensorWrapper(const Tensor& value);
   // Additional constructor to create a FunctionalTensorWrapper directly from an
   // underlying tensor that was created from a view. For example, the code b =
@@ -237,7 +237,7 @@ struct TORCH_API FunctionalTensorWrapper : public c10::TensorImpl {
 namespace functionalization {
 namespace impl {
 
-TORCH_API inline FunctionalTensorWrapper* unsafeGetFunctionalWrapper(
+inline FunctionalTensorWrapper* unsafeGetFunctionalWrapper(
     const Tensor& tensor) {
   auto functional_impl =
       static_cast<FunctionalTensorWrapper*>(tensor.unsafeGetTensorImpl());
@@ -245,60 +245,60 @@ TORCH_API inline FunctionalTensorWrapper* unsafeGetFunctionalWrapper(
   return functional_impl;
 }
 
-TORCH_API bool isFunctionalTensor(const at::Tensor& tensor);
-TORCH_API bool isFunctionalTensor(const c10::optional<Tensor>& t);
-TORCH_API bool isFunctionalTensor(
+bool isFunctionalTensor(const at::Tensor& tensor);
+bool isFunctionalTensor(const c10::optional<Tensor>& t);
+bool isFunctionalTensor(
     const c10::List<c10::optional<Tensor>>& t_list);
-TORCH_API bool isFunctionalTensor(ITensorListRef list);
+bool isFunctionalTensor(ITensorListRef list);
 
-TORCH_API Tensor to_functional_tensor(const Tensor& tensor);
-TORCH_API c10::optional<Tensor> to_functional_tensor(
+Tensor to_functional_tensor(const Tensor& tensor);
+c10::optional<Tensor> to_functional_tensor(
     const c10::optional<Tensor>& tensor);
-TORCH_API c10::List<c10::optional<Tensor>> to_functional_tensor(
+c10::List<c10::optional<Tensor>> to_functional_tensor(
     const c10::List<c10::optional<Tensor>>& t_list);
-TORCH_API std::vector<Tensor> to_functional_tensor(ITensorListRef t_list);
+std::vector<Tensor> to_functional_tensor(ITensorListRef t_list);
 
-TORCH_API void freeze_functional_tensor(const Tensor& tensor);
+void freeze_functional_tensor(const Tensor& tensor);
 
-TORCH_API Tensor
+Tensor
 from_functional_tensor(const Tensor& tensor, bool assert_functional = true);
-TORCH_API c10::optional<Tensor> from_functional_tensor(
+c10::optional<Tensor> from_functional_tensor(
     const c10::optional<Tensor>& t,
     bool assert_functional = true);
-TORCH_API c10::List<c10::optional<Tensor>> from_functional_tensor(
+c10::List<c10::optional<Tensor>> from_functional_tensor(
     const c10::List<c10::optional<Tensor>>& t_list);
-TORCH_API std::vector<Tensor> from_functional_tensor(ITensorListRef t_list);
+std::vector<Tensor> from_functional_tensor(ITensorListRef t_list);
 
-TORCH_API void sync(const at::Tensor& t);
-TORCH_API void sync(const c10::optional<Tensor>& t);
-TORCH_API void sync(const c10::List<c10::optional<Tensor>>& t_list);
-TORCH_API void sync(ITensorListRef t_list);
+void sync(const at::Tensor& t);
+void sync(const c10::optional<Tensor>& t);
+void sync(const c10::List<c10::optional<Tensor>>& t_list);
+void sync(ITensorListRef t_list);
 
-TORCH_API void replace_(const Tensor& functional_tensor, const Tensor& other);
-TORCH_API void replace_(
+void replace_(const Tensor& functional_tensor, const Tensor& other);
+void replace_(
     const ITensorListRef functional_tensor,
     ITensorListRef other);
 
-TORCH_API void commit_update(const Tensor& functional_tensor);
-TORCH_API void commit_update(ITensorListRef functional_tensor);
+void commit_update(const Tensor& functional_tensor);
+void commit_update(ITensorListRef functional_tensor);
 
-TORCH_API void unsafe_reset_storage(const Tensor& functional_tensor);
+void unsafe_reset_storage(const Tensor& functional_tensor);
 
-TORCH_API void mark_mutation_hidden_from_autograd(
+void mark_mutation_hidden_from_autograd(
     const Tensor& functional_tensor);
 
-TORCH_API bool are_all_mutations_hidden_from_autograd(
+bool are_all_mutations_hidden_from_autograd(
     const Tensor& functional_tensor);
 
-TORCH_API bool are_all_mutations_under_no_grad_or_inference_mode(
+bool are_all_mutations_under_no_grad_or_inference_mode(
     const Tensor& functional_tensor);
 
 // These two methods are XLA-specific logic and are no-ops
 // for the normal functionalization flow.
-TORCH_API void propagate_xla_data(
+void propagate_xla_data(
     const Tensor& functional_tensor,
     const Tensor& other);
-TORCH_API void propagate_xla_data(
+void propagate_xla_data(
     const ITensorListRef functional_tensor,
     ITensorListRef other);
 
@@ -321,10 +321,10 @@ void set_sizes_strides_offset(
 
 //  ~~~~~ TLS used in functionalization ~~~~~
 
-TORCH_API bool getFunctionalizationReapplyViewsTLS();
-TORCH_API void setFunctionalizationReapplyViewsTLS(bool reapply_views);
+bool getFunctionalizationReapplyViewsTLS();
+void setFunctionalizationReapplyViewsTLS(bool reapply_views);
 
-class TORCH_API FunctionalizationReapplyViewsGuard {
+class FunctionalizationReapplyViewsGuard {
  public:
   FunctionalizationReapplyViewsGuard(bool reapply_views)
       : prev_(getFunctionalizationReapplyViewsTLS()) {
@@ -352,7 +352,7 @@ class TORCH_API FunctionalizationReapplyViewsGuard {
 
 // Helper function to call an out-of-place composite aten kernel that may use
 // mutations / views internally, and functionalize them.
-TORCH_API void functionalize_op_helper(
+void functionalize_op_helper(
     const c10::OperatorHandle& op,
     torch::jit::Stack* stack);
 

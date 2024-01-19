@@ -11,7 +11,7 @@ namespace jit {
 
 // CAUTION NOT TO BE USED, STILL A WIP, NOT STABLE
 
-TORCH_API void PropagateShapesOnGraph(std::shared_ptr<Graph>& graph);
+void PropagateShapesOnGraph(std::shared_ptr<Graph>& graph);
 
 // CAUTION NOT TO BE USED, STILL A WIP, NOT STABLE
 // From [beg, end) attempt to propagate shapes and
@@ -36,7 +36,7 @@ struct ShapeComputeGraphMapping {
   std::unordered_map<Value*, int64_t> graph_output_to_symbolic_shape_dim_;
 };
 
-TORCH_API c10::optional<ShapeComputeGraphMapping>
+c10::optional<ShapeComputeGraphMapping>
 PropagateShapesAndBuildLargeShapeComputeGraph(
     std::shared_ptr<Graph>& graph,
     Node* beg,
@@ -46,11 +46,11 @@ PropagateShapesAndBuildLargeShapeComputeGraph(
 // rely on our partial evaluation pipeline to propagate information.
 // this is a good proxy for our ability to propagate non-complete shape
 // information.
-TORCH_API bool setSymbolicShapeAnalysisTestMode(bool value);
-TORCH_API bool symbolicShapeAnalysisTestModeEnabled();
+bool setSymbolicShapeAnalysisTestMode(bool value);
+bool symbolicShapeAnalysisTestModeEnabled();
 
 using SSAInput = std::variant<IValue, c10::SymbolicShape>;
-TORCH_API c10::optional<std::vector<c10::SymbolicShape>>
+c10::optional<std::vector<c10::SymbolicShape>>
 calculateSymbolicShapesOnOp(
     const FunctionSchema* schema,
     const std::vector<SSAInput>& inputs);

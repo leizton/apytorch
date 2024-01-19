@@ -66,7 +66,7 @@ inline int getPrecedence(IRNodeType ty) {
   }
 }
 
-class TORCH_API Cast : public ExprNode<Cast> {
+class Cast : public ExprNode<Cast> {
  public:
   ExprPtr src_value() const {
     return src_value_;
@@ -96,7 +96,7 @@ ExprHandle cast(const ExprHandle& src_value) {
 }
 
 // This is a bitwise cast, akin to bitcast in LLVM
-class TORCH_API BitCast : public ExprNode<BitCast> {
+class BitCast : public ExprNode<BitCast> {
  public:
   ExprPtr src_value() const {
     return src_value_;
@@ -183,31 +183,31 @@ void bin_op_deducer(BinaryOpNode<T>);
 bool bin_op_deducer(...);
 } // namespace detail
 
-class TORCH_API Add : public BinaryOpNode<Add> {
+class Add : public BinaryOpNode<Add> {
  public:
   Add(ExprPtr lhs, ExprPtr rhs)
       : BinaryOpNode(std::move(lhs), std::move(rhs), IRNodeType::kAdd) {}
 };
 
-class TORCH_API Sub : public BinaryOpNode<Sub> {
+class Sub : public BinaryOpNode<Sub> {
  public:
   Sub(ExprPtr lhs, ExprPtr rhs)
       : BinaryOpNode(std::move(lhs), std::move(rhs), IRNodeType::kSub) {}
 };
 
-class TORCH_API Mul : public BinaryOpNode<Mul> {
+class Mul : public BinaryOpNode<Mul> {
  public:
   Mul(ExprPtr lhs, ExprPtr rhs)
       : BinaryOpNode(std::move(lhs), std::move(rhs), IRNodeType::kMul) {}
 };
 
-class TORCH_API Div : public BinaryOpNode<Div> {
+class Div : public BinaryOpNode<Div> {
  public:
   Div(ExprPtr lhs, ExprPtr rhs)
       : BinaryOpNode(std::move(lhs), std::move(rhs), IRNodeType::kDiv) {}
 };
 
-class TORCH_API Mod : public BinaryOpNode<Mod> {
+class Mod : public BinaryOpNode<Mod> {
  public:
   Mod(ExprPtr lhs, ExprPtr rhs)
       : BinaryOpNode(std::move(lhs), std::move(rhs), IRNodeType::kMod) {}
@@ -230,31 +230,31 @@ class BitwiseOpNode : public BinaryOpNode<Op> {
   }
 };
 
-class TORCH_API And : public BitwiseOpNode<And> {
+class And : public BitwiseOpNode<And> {
  public:
   And(ExprPtr lhs, ExprPtr rhs)
       : BitwiseOpNode(std::move(lhs), std::move(rhs), IRNodeType::kAnd) {}
 };
 
-class TORCH_API Or : public BitwiseOpNode<Or> {
+class Or : public BitwiseOpNode<Or> {
  public:
   Or(ExprPtr lhs, ExprPtr rhs)
       : BitwiseOpNode(std::move(lhs), std::move(rhs), IRNodeType::kOr) {}
 };
 
-class TORCH_API Xor : public BitwiseOpNode<Xor> {
+class Xor : public BitwiseOpNode<Xor> {
  public:
   Xor(ExprPtr lhs, ExprPtr rhs)
       : BitwiseOpNode(std::move(lhs), std::move(rhs), IRNodeType::kXor) {}
 };
 
-class TORCH_API Lshift : public BitwiseOpNode<Lshift> {
+class Lshift : public BitwiseOpNode<Lshift> {
  public:
   Lshift(ExprPtr lhs, ExprPtr rhs)
       : BitwiseOpNode(std::move(lhs), std::move(rhs), IRNodeType::kLshift) {}
 };
 
-class TORCH_API Rshift : public BitwiseOpNode<Rshift> {
+class Rshift : public BitwiseOpNode<Rshift> {
  public:
   Rshift(ExprPtr lhs, ExprPtr rhs)
       : BitwiseOpNode(std::move(lhs), std::move(rhs), IRNodeType::kRshift) {}
@@ -310,7 +310,7 @@ class Min : public BinaryOpNode<Min> {
 
 // Encode typed immediate values e.g. IntImm, FloatImm.
 #define IMM_DECLARE(Type, Name)                               \
-  class TORCH_API Name##Imm : public ExprNode<Name##Imm> {    \
+  class Name##Imm : public ExprNode<Name##Imm> {    \
    public:                                                    \
     Name##Imm(Type value)                                     \
         : ExprNodeBase(k##Name, kPrimitive), value_(value) {} \
@@ -404,15 +404,15 @@ bool immediateEquals(const ExprPtr& e, T val) {
   return false;
 }
 
-TORCH_API bool immediateIsNegative(const ExprPtr& e);
+bool immediateIsNegative(const ExprPtr& e);
 
-TORCH_API bool immediateIsPositive(const ExprPtr& e);
+bool immediateIsPositive(const ExprPtr& e);
 
-TORCH_API bool immediateIsZero(const ExprPtr& e);
+bool immediateIsZero(const ExprPtr& e);
 
 // Represents a ramp vector node:
 //     [base, base + 1 * stride, ... , base + (lanes - 1) * stride]
-class TORCH_API Ramp : public ExprNode<Ramp> {
+class Ramp : public ExprNode<Ramp> {
  public:
   ExprPtr base() const {
     return base_;
@@ -454,7 +454,7 @@ class TORCH_API Ramp : public ExprNode<Ramp> {
   int lanes_;
 };
 
-class TORCH_API Load : public ExprNode<Load> {
+class Load : public ExprNode<Load> {
  public:
   VarPtr base_handle() const {
     return buf_->base_handle();
@@ -494,7 +494,7 @@ class TORCH_API Load : public ExprNode<Load> {
   std::vector<ExprPtr> indices_;
 };
 
-class TORCH_API Broadcast : public ExprNode<Broadcast> {
+class Broadcast : public ExprNode<Broadcast> {
  public:
   ExprPtr value() const {
     return value_;
@@ -520,7 +520,7 @@ class TORCH_API Broadcast : public ExprNode<Broadcast> {
   int lanes_;
 };
 
-class TORCH_API IfThenElse : public ExprNode<IfThenElse> {
+class IfThenElse : public ExprNode<IfThenElse> {
  public:
   ExprPtr condition() const {
     return condition_;
@@ -576,7 +576,7 @@ class TORCH_API IfThenElse : public ExprNode<IfThenElse> {
   ExprPtr false_;
 };
 
-class TORCH_API CompareSelect : public ExprNode<CompareSelect> {
+class CompareSelect : public ExprNode<CompareSelect> {
  public:
   CompareSelectOperation compare_select_op() const {
     return compare_op_;
@@ -725,7 +725,7 @@ enum IntrinsicsOp {
   kMaxIntrinsicsOp,
 };
 
-class TORCH_API Intrinsics : public ExprNode<Intrinsics> {
+class Intrinsics : public ExprNode<Intrinsics> {
  public:
   static ExprHandle make(IntrinsicsOp op_type, const ExprHandle& v1) {
     return ExprHandle(alloc<Intrinsics>(op_type, v1.node()));
@@ -916,15 +916,15 @@ class TORCH_API Intrinsics : public ExprNode<Intrinsics> {
   IntrinsicsOp op_type_;
 };
 
-TORCH_API std::vector<ExprPtr> ExprHandleVectorToExprVector(
+std::vector<ExprPtr> ExprHandleVectorToExprVector(
     const std::vector<ExprHandle>&);
-TORCH_API std::vector<ExprHandle> ExprVectorToExprHandleVector(
+std::vector<ExprHandle> ExprVectorToExprHandleVector(
     const std::vector<ExprPtr>&);
-TORCH_API std::vector<VarPtr> VarHandleVectorToVarVector(
+std::vector<VarPtr> VarHandleVectorToVarVector(
     const std::vector<VarHandle>&);
-TORCH_API std::vector<VarHandle> VarVectorToVarHandleVector(
+std::vector<VarHandle> VarVectorToVarHandleVector(
     const std::vector<VarPtr>&);
-TORCH_API ExprPtr flatten_index(
+ExprPtr flatten_index(
     const std::vector<ExprPtr>& dims,
     const std::vector<ExprPtr>& indices,
     const std::vector<ExprPtr>& strides);

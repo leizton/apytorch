@@ -40,7 +40,7 @@ inline constexpr bool should_include_kernel_dtype(
 #if defined ENABLE_RECORD_KERNEL_FUNCTION_DTYPE
 namespace at {
 namespace detail {
-TORCH_API void record_kernel_function_dtype(std::string name);
+void record_kernel_function_dtype(std::string name);
 }
 } // namespace at
 

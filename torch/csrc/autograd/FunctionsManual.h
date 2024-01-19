@@ -21,7 +21,7 @@ extern const char* kCudnnDoubleBackwardMsg;
 
 // A simple way to imperatively compute index ranges for slots
 // that have been flattened
-struct TORCH_API IndexRangeGenerator {
+struct IndexRangeGenerator {
   IndexRange range(size_t range_size) {
     i += range_size;
     return {i - range_size, i};
@@ -34,34 +34,34 @@ struct TORCH_API IndexRangeGenerator {
   size_t i = 0;
 };
 
-TORCH_API Tensor toNonOptFwGrad(const c10::optional<Tensor>& t);
-TORCH_API Tensor toNonOptPrimal(const c10::optional<Tensor>& t);
-TORCH_API Tensor toNonOptTensor(const c10::optional<Tensor>& t);
+Tensor toNonOptFwGrad(const c10::optional<Tensor>& t);
+Tensor toNonOptPrimal(const c10::optional<Tensor>& t);
+Tensor toNonOptTensor(const c10::optional<Tensor>& t);
 
-TORCH_API inline c10::optional<Tensor> wrap_opt_if(
+inline c10::optional<Tensor> wrap_opt_if(
     const Tensor& t,
     const bool cond) {
   using OptTensor = c10::optional<Tensor>;
   return cond ? OptTensor(t) : static_cast<OptTensor>(c10::nullopt);
 }
 
-TORCH_API Tensor
+Tensor
 apply_loss_reduction(const Tensor& unreduced, int64_t reduction);
-TORCH_API bool any_variable_defined(const variable_list& variables);
-TORCH_API void copy_range(
+bool any_variable_defined(const variable_list& variables);
+void copy_range(
     variable_list& out,
     IndexRange range,
     const at::Tensor& t);
-TORCH_API void copy_range(
+void copy_range(
     variable_list& out,
     IndexRange range,
     at::ArrayRef<at::Tensor> t);
-TORCH_API at::Tensor copysign_tensor_self_backward(
+at::Tensor copysign_tensor_self_backward(
     const Tensor& grad,
     const Tensor& self,
     const Tensor& result);
-TORCH_API at::Tensor not_implemented(const char* name, const char* reason = "");
-TORCH_API std::vector<Tensor> not_implemented_list(
+at::Tensor not_implemented(const char* name, const char* reason = "");
+std::vector<Tensor> not_implemented_list(
     const char* name,
     const char* reason = "");
 at::Tensor handle_r_to_c(ScalarType self_st, Tensor gradient_result);

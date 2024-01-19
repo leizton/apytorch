@@ -95,7 +95,7 @@ class BlockPrinter : public IRPrinter {
   void visit(MulPtr v) override;
 };
 
-class TORCH_API BlockCodeGen : public CodeGen {
+class BlockCodeGen : public CodeGen {
  public:
   template <typename... Ts>
   /* implicit */

@@ -108,7 +108,7 @@ enum MessageType {
 // Layers above ``RpcAgent`` only converts ScriptCall, ScriptResp, PythonCall,
 // and PythonResp into a Message, and it is up to the RpcAgent
 // implementation to determine how to serialize a message.
-class TORCH_API Message final : public torch::CustomClassHolder {
+class Message final : public torch::CustomClassHolder {
  private:
   // Keep these private in order to force users to go through make_intrusive and
   // thus prevent creating a Message that's not held by an intrusive_ptr.
@@ -166,7 +166,7 @@ class TORCH_API Message final : public torch::CustomClassHolder {
 // The exception string representation will be used as the message's payload.
 // A message ID corresponding to the request that resulted in this response can
 // be provided for matching requests/responses.
-TORCH_API c10::intrusive_ptr<Message> createExceptionResponse(
+c10::intrusive_ptr<Message> createExceptionResponse(
     const std::exception& e,
     int64_t id);
 
@@ -174,7 +174,7 @@ TORCH_API c10::intrusive_ptr<Message> createExceptionResponse(
 // The passed in string representation will be used as the message's payload.
 // A message ID corresponding to the request that resulted in this response can
 // be provided for matching requests/responses.
-TORCH_API c10::intrusive_ptr<Message> createExceptionResponse(
+c10::intrusive_ptr<Message> createExceptionResponse(
     const std::string& exceptionStr,
     int64_t id);
 

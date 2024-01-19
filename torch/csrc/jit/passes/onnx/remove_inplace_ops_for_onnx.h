@@ -5,7 +5,7 @@
 namespace torch {
 namespace jit {
 
-TORCH_API void RemoveInplaceOpsForONNX(
+void RemoveInplaceOpsForONNX(
     const std::shared_ptr<Graph>& graph,
     Module* model);
 

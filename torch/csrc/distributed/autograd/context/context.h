@@ -17,7 +17,7 @@ class RecvRpcBackward;
 
 // DistAutogradContext which stores information for a single distributed
 // autograd pass on a worker.
-class TORCH_API DistAutogradContext {
+class DistAutogradContext {
  public:
   using GradCallback = std::function<bool(torch::Tensor&)>;
 
@@ -156,7 +156,7 @@ using ContextPtr = std::shared_ptr<DistAutogradContext>;
 // This class stores a shared_ptr to a DistAutogradContext instance in a
 // thread local variable. The instance is given by the call site. The class
 // doesn't know the current context. It's just a util class.
-class TORCH_API ThreadLocalDistAutogradContext {
+class ThreadLocalDistAutogradContext {
  public:
   // Store 'new_context' to the thread local variable maintained by this class.
   explicit ThreadLocalDistAutogradContext(ContextPtr&& new_context);

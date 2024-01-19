@@ -8,7 +8,7 @@ namespace distributed {
 namespace autograd {
 
 // Response for the RRefBackwardReq.
-class TORCH_API RRefBackwardResp : public rpc::RpcCommandBase {
+class RRefBackwardResp : public rpc::RpcCommandBase {
  public:
   RRefBackwardResp() = default;
   c10::intrusive_ptr<rpc::Message> toMessageImpl() && override;

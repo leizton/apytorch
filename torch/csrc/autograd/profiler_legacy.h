@@ -30,7 +30,7 @@ enum class C10_API_ENUM EventKind : uint16_t {
 };
 
 // To be deprecated, once we switch to Kineto profiling
-struct TORCH_API LegacyEvent {
+struct LegacyEvent {
   // NOLINTNEXTLINE(cppcoreguidelines-pro-type-member-init)
   LegacyEvent(
       EventKind kind,
@@ -324,7 +324,7 @@ struct RangeEventList {
 };
 
 // A struct to control settings of disableProfiler options.
-struct TORCH_API ProfilerDisableOptions {
+struct ProfilerDisableOptions {
   ProfilerDisableOptions() = default;
   ProfilerDisableOptions(bool shouldCleanupTLSState, bool shouldConsolidate)
       : cleanupTLSState(shouldCleanupTLSState),
@@ -340,18 +340,18 @@ struct TORCH_API ProfilerDisableOptions {
 
 // NOTE: profiler mode is thread local, with automatic propagation
 // across thread boundary (e.g. at::launch tasks)
-TORCH_API void enableProfilerLegacy(
+void enableProfilerLegacy(
     const torch::profiler::impl::ProfilerConfig&);
 using thread_event_lists = std::vector<std::vector<LegacyEvent>>;
-TORCH_API thread_event_lists disableProfilerLegacy(
+thread_event_lists disableProfilerLegacy(
     c10::optional<ProfilerDisableOptions> profilerDisableOptions =
         c10::nullopt);
 
 // adds profiledEvents to the current thread local recorded events. Each event
 // will be marked with node ID given by fromNodeId.
-TORCH_API void addEventList(std::vector<LegacyEvent>&& profiledEvents);
+void addEventList(std::vector<LegacyEvent>&& profiledEvents);
 // Writes profiled events to a stream.
-TORCH_API void writeProfilerEventsToStream(
+void writeProfilerEventsToStream(
     std::ostream& out,
     const std::vector<LegacyEvent*>& events);
 
@@ -361,7 +361,7 @@ TORCH_API void writeProfilerEventsToStream(
 //     // code you want to profile
 //   }
 // Then open filename.trace in chrome://tracing
-struct TORCH_API RecordProfile {
+struct RecordProfile {
   RecordProfile(std::ostream& out);
   RecordProfile(const std::string& filename);
 
@@ -382,7 +382,7 @@ struct TORCH_API RecordProfile {
 //   });
 //   Code to profile
 // }
-struct TORCH_API TLSLegacyProfilerGuard {
+struct TLSLegacyProfilerGuard {
   explicit TLSLegacyProfilerGuard(
       const torch::profiler::impl::ProfilerConfig& cfg,
       c10::optional<std::function<void(const thread_event_lists&)>>

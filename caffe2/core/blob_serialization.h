@@ -42,18 +42,18 @@ constexpr auto kChunkIdSeparator = "#%";
  * approaches for specific classes. Acceptor should take care of writing data
  * to the actual storage.
  */
-TORCH_API void SerializeBlob(
+void SerializeBlob(
     const Blob& blob,
     const string& name,
     BlobSerializerBase::SerializationAcceptor acceptor);
 
-TORCH_API void SerializeBlob(
+void SerializeBlob(
     const Blob& blob,
     const string& name,
     BlobSerializerBase::SerializationAcceptor acceptor,
     const BlobSerializationOptions& options);
 
-TORCH_API size_t EstimateSerializedBlobSize(
+size_t EstimateSerializedBlobSize(
     const Blob& blob,
     c10::string_view name,
     const BlobSerializationOptions& options);
@@ -68,15 +68,15 @@ TORCH_API size_t EstimateSerializedBlobSize(
  *
  * NOTE: this function doesn't do chunking and might break with big tensors.
  */
-TORCH_API string SerializeBlob(const Blob& blob, const string& name);
+string SerializeBlob(const Blob& blob, const string& name);
 
 /**
  * Deserializes from a string containing either BlobProto or TensorProto. If
  * the deserialization fails, the content in the blob should no longer be
  * trusted.
  */
-TORCH_API void DeserializeBlob(const string& content, Blob* result);
-TORCH_API void DeserializeBlob(const BlobProto& proto, Blob* result);
+void DeserializeBlob(const string& content, Blob* result);
+void DeserializeBlob(const BlobProto& proto, Blob* result);
 
 /*
  * Get an empty Tensor from the TensorProto given the meta data in proto (data
@@ -98,7 +98,7 @@ TORCH_API void DeserializeBlob(const BlobProto& proto, Blob* result);
  * these function calls. e.g. mutable_data will allocate memory on the first
  * call and it will return a pointer to the allocated memory on later calls.
  */
-TORCH_API Tensor EmptyTensorFromProto(const TensorProto& proto);
+Tensor EmptyTensorFromProto(const TensorProto& proto);
 
 /**
  * @brief TensorSerializer is the serializer for Tensors.
@@ -106,7 +106,7 @@ TORCH_API Tensor EmptyTensorFromProto(const TensorProto& proto);
  * TensorSerializer takes in a blob that contains a Tensor, and serializes it
  * into a TensorProto protocol buffer.
  */
-class TORCH_API TensorSerializer : public BlobSerializerBase {
+class TensorSerializer : public BlobSerializerBase {
  public:
   TensorSerializer() {}
   ~TensorSerializer() override {}
@@ -165,7 +165,7 @@ class TORCH_API TensorSerializer : public BlobSerializerBase {
  * tensor, change the TensorProto's corresponding fields before calling
  * Deserialize.
  */
-class TORCH_API TensorDeserializer : public BlobDeserializerBase {
+class TensorDeserializer : public BlobDeserializerBase {
  public:
   void Deserialize(const BlobProto& proto, Blob* blob) override;
 
@@ -284,7 +284,7 @@ inline void CopyFromProtoWithCast(
 // Converts MessageLite to string while also checking that SerializeAsString
 // succeeds. Pass description of class/function of the call if you'd
 // like it appended to the error message.
-TORCH_API std::string SerializeAsString_EnforceCheck(
+std::string SerializeAsString_EnforceCheck(
     const google::protobuf::MessageLite&,
     const char* error_location = nullptr);
 

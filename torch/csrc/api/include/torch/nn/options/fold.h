@@ -15,7 +15,7 @@ namespace nn {
 /// Fold model(FoldOptions({8, 8}, {3, 3}).dilation(2).padding({2,
 /// 1}).stride(2));
 /// ```
-struct TORCH_API FoldOptions {
+struct FoldOptions {
   FoldOptions(ExpandingArray<2> output_size, ExpandingArray<2> kernel_size)
       : output_size_(std::move(output_size)),
         kernel_size_(std::move(kernel_size)) {}
@@ -62,7 +62,7 @@ using FoldFuncOptions = FoldOptions;
 /// ```
 /// Unfold model(UnfoldOptions({2, 4}).dilation(2).padding({2, 1}).stride(2));
 /// ```
-struct TORCH_API UnfoldOptions {
+struct UnfoldOptions {
   UnfoldOptions(ExpandingArray<2> kernel_size)
       : kernel_size_(std::move(kernel_size)) {}
 

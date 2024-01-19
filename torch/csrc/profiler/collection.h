@@ -42,7 +42,7 @@ enum class EventType : uint8_t {
 // ============================================================================
 // == Value (Tensor, Scalar) summary ==========================================
 // ============================================================================
-struct TORCH_API RawTensorMetadataBase {
+struct RawTensorMetadataBase {
   RawTensorMetadataBase() = default;
   explicit RawTensorMetadataBase(const at::Tensor& t);
 
@@ -53,7 +53,7 @@ struct TORCH_API RawTensorMetadataBase {
 };
 
 // Collected during profiling.
-struct TORCH_API RawTensorMetadata : RawTensorMetadataBase {
+struct RawTensorMetadata : RawTensorMetadataBase {
   RawTensorMetadata() = default;
   RawTensorMetadata(const RawTensorMetadata&) = default;
   RawTensorMetadata(RawTensorMetadata&&) noexcept = default;
@@ -69,7 +69,7 @@ struct TORCH_API RawTensorMetadata : RawTensorMetadataBase {
 };
 
 // Used during post processing.
-struct TORCH_API TensorMetadata : public RawTensorMetadataBase {
+struct TensorMetadata : public RawTensorMetadataBase {
   TensorMetadata(
       const RawTensorMetadata& r,
       std::vector<int64_t> sizes,
@@ -346,7 +346,7 @@ struct ExtraFields<EventType::Kineto> {
   std::weak_ptr<Result> linked_activity_{};
 };
 
-struct TORCH_API Result : public std::enable_shared_from_this<Result> {
+struct Result : public std::enable_shared_from_this<Result> {
   template <typename... Args>
   [[nodiscard]] static std::shared_ptr<Result> create(Args... args) {
     return std::shared_ptr<Result>(new Result(std::forward<Args>(args)...));
@@ -498,7 +498,7 @@ class InputOutputEncoder final {
 
 using perf_profiler_t = torch::profiler::impl::linux_perf::PerfProfiler;
 
-class TORCH_API ThreadLocalSubqueue {
+class ThreadLocalSubqueue {
  public:
   ThreadLocalSubqueue(const uint64_t tid, ProfilerConfig config);
 
@@ -617,7 +617,7 @@ class TORCH_API ThreadLocalSubqueue {
       py_calls_;
 };
 
-class TORCH_API RecordQueue {
+class RecordQueue {
  public:
   RecordQueue(ProfilerConfig config, std::set<ActivityType> activities);
 
@@ -644,17 +644,17 @@ class TORCH_API RecordQueue {
   std::unique_ptr<python_tracer::PythonTracerBase> python_tracer_;
 };
 
-TORCH_API bool get_record_concrete_inputs_enabled();
-TORCH_API void set_record_concrete_inputs_enabled_fn(std::function<bool()>);
-TORCH_API void set_record_concrete_inputs_enabled_val(bool);
+bool get_record_concrete_inputs_enabled();
+void set_record_concrete_inputs_enabled_fn(std::function<bool()>);
+void set_record_concrete_inputs_enabled_val(bool);
 
-TORCH_API bool get_fwd_bwd_enabled();
-TORCH_API void set_fwd_bwd_enabled_fn(std::function<bool()>);
-TORCH_API void set_fwd_bwd_enabled_val(bool);
+bool get_fwd_bwd_enabled();
+void set_fwd_bwd_enabled_fn(std::function<bool()>);
+void set_fwd_bwd_enabled_val(bool);
 
-TORCH_API bool get_cuda_sync_enabled();
-TORCH_API void set_cuda_sync_enabled_fn(std::function<bool()>);
-TORCH_API void set_cuda_sync_enabled_val(bool);
+bool get_cuda_sync_enabled();
+void set_cuda_sync_enabled_fn(std::function<bool()>);
+void set_cuda_sync_enabled_val(bool);
 
 } // namespace impl
 } // namespace profiler

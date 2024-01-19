@@ -89,7 +89,7 @@ using Stream = c10::Stream;
 //
 // Note that Tensor can also be NULL, i.e. it is not associated with any underlying TensorImpl, and
 // special care must be taken to handle this.
-class TORCH_API Tensor: public TensorBase {
+class Tensor: public TensorBase {
  protected:
   // Create a Tensor with a +0 reference count. Special care must be
   // taken to avoid decrementing this reference count at destruction

@@ -22,7 +22,7 @@ namespace nn {
 /// Fold model(FoldOptions({8, 8}, {3, 3}).dilation(2).padding({2,
 /// 1}).stride(2));
 /// ```
-class TORCH_API FoldImpl : public torch::nn::Cloneable<FoldImpl> {
+class FoldImpl : public torch::nn::Cloneable<FoldImpl> {
  public:
   FoldImpl(ExpandingArray<2> output_size, ExpandingArray<2> kernel_size)
       : FoldImpl(FoldOptions(output_size, kernel_size)) {}
@@ -59,7 +59,7 @@ TORCH_MODULE(Fold);
 /// ```
 /// Unfold model(UnfoldOptions({2, 4}).dilation(2).padding({2, 1}).stride(2));
 /// ```
-class TORCH_API UnfoldImpl : public Cloneable<UnfoldImpl> {
+class UnfoldImpl : public Cloneable<UnfoldImpl> {
  public:
   UnfoldImpl(ExpandingArray<2> kernel_size)
       : UnfoldImpl(UnfoldOptions(kernel_size)) {}

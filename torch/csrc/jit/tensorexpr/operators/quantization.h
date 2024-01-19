@@ -6,80 +6,80 @@ namespace torch {
 namespace jit {
 namespace tensorexpr {
 
-TORCH_API ExprHandle quantizePerTensorQParamFromArg(ArgValue arg);
+ExprHandle quantizePerTensorQParamFromArg(ArgValue arg);
 
-TORCH_API double immQScale(const BufHandle& qx);
+double immQScale(const BufHandle& qx);
 
-TORCH_API int64_t immQZero(const BufHandle& qx);
+int64_t immQZero(const BufHandle& qx);
 
-TORCH_API ScalarType immQDType(const BufHandle& qx);
+ScalarType immQDType(const BufHandle& qx);
 
-TORCH_API bool isQuantized(const BufHandle& qx);
+bool isQuantized(const BufHandle& qx);
 
-TORCH_API Tensor computeQuantizePerTensor(
+Tensor computeQuantizePerTensor(
     const std::vector<ArgValue>& inputs,
     const std::vector<ExprHandle>& outputShape,
     const std::vector<ExprHandle>& outputStrides,
     const c10::optional<ScalarType>& outputType,
     at::Device device);
 
-TORCH_API Tensor computeQuantizePerTensorExternalCall(
+Tensor computeQuantizePerTensorExternalCall(
     const std::vector<ArgValue>& inputs,
     const std::vector<ExprHandle>& outputShape,
     const std::vector<ExprHandle>& outputStrides,
     const c10::optional<ScalarType>& outputType,
     at::Device device);
 
-TORCH_API Tensor computeQuantizedConv1d(
+Tensor computeQuantizedConv1d(
     const std::vector<ArgValue>& inputs,
     const std::vector<ExprHandle>& outputShape,
     const std::vector<ExprHandle>& outputStrides,
     const c10::optional<ScalarType>& outputType,
     at::Device device);
 
-TORCH_API Tensor computeQuantizedConv2dPrepack(
+Tensor computeQuantizedConv2dPrepack(
     const std::vector<ArgValue>& inputs,
     const std::vector<ExprHandle>& outputShape,
     const std::vector<ExprHandle>& outputStrides,
     const c10::optional<ScalarType>& outputType,
     at::Device device);
 
-TORCH_API Tensor computeQuantizedConv1d(
+Tensor computeQuantizedConv1d(
     const std::vector<ArgValue>& inputs,
     const std::vector<ExprHandle>& outputShape,
     const std::vector<ExprHandle>& outputStrides,
     const c10::optional<ScalarType>& outputType,
     at::Device device);
 
-TORCH_API Tensor computeQuantizedConv2d(
+Tensor computeQuantizedConv2d(
     const std::vector<ArgValue>& inputs,
     const std::vector<ExprHandle>& outputShape,
     const std::vector<ExprHandle>& outputStrides,
     const c10::optional<ScalarType>& outputType,
     at::Device device);
 
-TORCH_API Tensor computeQuantizedConv2dRelu(
+Tensor computeQuantizedConv2dRelu(
     const std::vector<ArgValue>& inputs,
     const std::vector<ExprHandle>& outputShape,
     const std::vector<ExprHandle>& outputStrides,
     const c10::optional<ScalarType>& outputType,
     at::Device device);
 
-TORCH_API Tensor computeQuantizedLinear(
+Tensor computeQuantizedLinear(
     const std::vector<ArgValue>& inputs,
     const std::vector<ExprHandle>& outputShape,
     const std::vector<ExprHandle>& outputStrides,
     const c10::optional<ScalarType>& outputType,
     at::Device device);
 
-TORCH_API Tensor computeQuantizedLinearRelu(
+Tensor computeQuantizedLinearRelu(
     const std::vector<ArgValue>& inputs,
     const std::vector<ExprHandle>& outputShape,
     const std::vector<ExprHandle>& outputStrides,
     const c10::optional<ScalarType>& outputType,
     at::Device device);
 
-TORCH_API Tensor computeQuantizedAdd(
+Tensor computeQuantizedAdd(
     const std::vector<ArgValue>& inputs,
     const std::vector<ExprHandle>& outputShape,
     const std::vector<ExprHandle>& outputStrides,
@@ -93,63 +93,63 @@ Tensor computeQuantizedAddExternalCall(
     const c10::optional<ScalarType>& outputType,
     at::Device device);
 
-TORCH_API Tensor computeQuantizedMul(
+Tensor computeQuantizedMul(
     const std::vector<ArgValue>& inputs,
     const std::vector<ExprHandle>& outputShape,
     const std::vector<ExprHandle>& outputStrides,
     const c10::optional<ScalarType>& outputType,
     at::Device device);
 
-TORCH_API Tensor computeQuantizedMulScalar(
+Tensor computeQuantizedMulScalar(
     const std::vector<ArgValue>& inputs,
     const std::vector<ExprHandle>& outputShape,
     const std::vector<ExprHandle>& outputStrides,
     const c10::optional<ScalarType>& outputType,
     at::Device device);
 
-TORCH_API Tensor computeQuantizedCat(
+Tensor computeQuantizedCat(
     const std::vector<ArgValue>& inputs,
     const std::vector<ExprHandle>& outputShape,
     const std::vector<ExprHandle>& outputStrides,
     const c10::optional<ScalarType>& outputType,
     at::Device device);
 
-TORCH_API Tensor computeQuantizedRelu(
+Tensor computeQuantizedRelu(
     const std::vector<ArgValue>& inputs,
     const std::vector<ExprHandle>& outputShape,
     const std::vector<ExprHandle>& outputStrides,
     const c10::optional<ScalarType>& outputType,
     at::Device device);
 
-TORCH_API Tensor computeDequantize(
+Tensor computeDequantize(
     const std::vector<ArgValue>& inputs,
     const std::vector<ExprHandle>& outputShape,
     const std::vector<ExprHandle>& outputStrides,
     const c10::optional<ScalarType>& outputType,
     at::Device device);
 
-TORCH_API Tensor computeDequantizeExternalCall(
+Tensor computeDequantizeExternalCall(
     const std::vector<ArgValue>& inputs,
     const std::vector<ExprHandle>& outputShape,
     const std::vector<ExprHandle>& outputStrides,
     const c10::optional<ScalarType>& outputType,
     at::Device device);
 
-TORCH_API Tensor computeUpsampleNearest2d(
+Tensor computeUpsampleNearest2d(
     const std::vector<ArgValue>& inputs,
     const std::vector<ExprHandle>& outputShape,
     const std::vector<ExprHandle>& outputStrides,
     const c10::optional<ScalarType>& outputType,
     at::Device device);
 
-TORCH_API Tensor computeUpsampleNearest2dExternalCall(
+Tensor computeUpsampleNearest2dExternalCall(
     const std::vector<ArgValue>& inputs,
     const std::vector<ExprHandle>& outputShape,
     const std::vector<ExprHandle>& outputStrides,
     const c10::optional<ScalarType>& outputType,
     at::Device device);
 
-TORCH_API Tensor computeQuantizedSigmoidExternalCall(
+Tensor computeQuantizedSigmoidExternalCall(
     const std::vector<ArgValue>& inputs,
     const std::vector<ExprHandle>& outputShape,
     const std::vector<ExprHandle>& outputStrides,

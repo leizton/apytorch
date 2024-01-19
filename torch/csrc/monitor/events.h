@@ -17,7 +17,7 @@ using data_value_t = std::variant<std::string, double, int64_t, bool>;
 // Event represents a single event that can be logged out to an external
 // tracker. This does acquire a lock on logging so should be used relatively
 // infrequently to avoid performance issues.
-struct TORCH_API Event {
+struct Event {
   // name is the name of the event. This is a static string that's used to
   // differentiate between event types for programmatic access. The type should
   // be in the format of a fully qualified Python-style class name.
@@ -36,7 +36,7 @@ struct TORCH_API Event {
   std::unordered_map<std::string, data_value_t> data;
 };
 
-TORCH_API inline bool operator==(const Event& lhs, const Event& rhs) {
+inline bool operator==(const Event& lhs, const Event& rhs) {
   return lhs.name == rhs.name && lhs.timestamp == rhs.timestamp &&
       lhs.data == rhs.data;
 }
@@ -47,7 +47,7 @@ TORCH_API inline bool operator==(const Event& lhs, const Event& rhs) {
 //
 // NOTE: The handlers should avoid any IO, blocking calls or heavy computation
 // as this may block the main thread and cause performance issues.
-class TORCH_API EventHandler {
+class EventHandler {
  public:
   virtual ~EventHandler() = default;
 
@@ -58,16 +58,16 @@ class TORCH_API EventHandler {
 
 // logEvent calls each registered event handler with the event. This method can
 // be called from concurrently from multiple threads.
-TORCH_API void logEvent(const Event& e);
+void logEvent(const Event& e);
 
 // registerEventHandler registers an EventHandler so it receives any logged
 // events. Typically an EventHandler will be registered during program
 // setup and unregistered at the end.
-TORCH_API void registerEventHandler(std::shared_ptr<EventHandler> p);
+void registerEventHandler(std::shared_ptr<EventHandler> p);
 
 // unregisterEventHandler unregisters the event handler pointed to by the
 // shared_ptr.
-TORCH_API void unregisterEventHandler(const std::shared_ptr<EventHandler>& p);
+void unregisterEventHandler(const std::shared_ptr<EventHandler>& p);
 
 } // namespace monitor
 } // namespace torch

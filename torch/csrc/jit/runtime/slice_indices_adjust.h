@@ -17,7 +17,7 @@ namespace torch::jit {
 //
 // This adjusts indexes according to python list semantics and returns number
 // of elements in the resulting list.
-TORCH_API int64_t slice_indices_adjust(
+int64_t slice_indices_adjust(
     int64_t length,
     int64_t* start,
     int64_t* stop,

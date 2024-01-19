@@ -5,7 +5,7 @@
 namespace torch {
 namespace jit {
 
-struct TORCH_API LinearBNParameters {
+struct LinearBNParameters {
   at::Tensor linear_w;
   at::Tensor linear_b;
   at::Tensor bn_rm;
@@ -22,7 +22,7 @@ struct TORCH_API LinearBNParameters {
  *
  * The function is basically copied from torch/nn/utils/fusion.py
  */
-TORCH_API std::tuple<at::Tensor, at::Tensor> computeUpdatedLinearWeightAndBias(
+std::tuple<at::Tensor, at::Tensor> computeUpdatedLinearWeightAndBias(
     const LinearBNParameters& p);
 
 } // namespace jit

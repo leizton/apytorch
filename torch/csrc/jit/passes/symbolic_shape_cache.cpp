@@ -97,7 +97,7 @@ ShapeCacheKey get_cache_key(
 
 } // namespace
 
-TORCH_API void cache_shape_function(
+void cache_shape_function(
     const FunctionSchema* schema,
     const std::vector<SSAInput>& arg_vec,
     const std::vector<at::SymbolicShape>& ret_vec) {
@@ -109,7 +109,7 @@ TORCH_API void cache_shape_function(
   shapeCache.Add(std::move(cache_key), std::move(can_ret_vec));
 }
 
-TORCH_API c10::optional<std::vector<at::SymbolicShape>>
+c10::optional<std::vector<at::SymbolicShape>>
 get_cached_shape_function(
     const FunctionSchema* schema,
     const std::vector<SSAInput>& arg_vec) {
@@ -135,11 +135,11 @@ get_cached_shape_function(
 }
 
 // Function only to access the cache, used for testing
-TORCH_API void clear_shape_cache() {
+void clear_shape_cache() {
   shapeCache.Clear();
 }
 
-TORCH_API size_t get_shape_cache_size() {
+size_t get_shape_cache_size() {
   return shapeCache.Numel();
 }
 

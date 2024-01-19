@@ -20,23 +20,23 @@ enum class MemOverlap { No, Yes, TooHard };
 
 enum class MemOverlapStatus { Full, Partial, No, TooHard };
 
-TORCH_API MemOverlap has_internal_overlap(const TensorBase& t);
-TORCH_API MemOverlap has_internal_overlap(c10::TensorImpl* t);
+MemOverlap has_internal_overlap(const TensorBase& t);
+MemOverlap has_internal_overlap(c10::TensorImpl* t);
 
-TORCH_API void assert_no_internal_overlap(const TensorBase& t);
-TORCH_API void assert_no_internal_overlap(c10::TensorImpl* t);
+void assert_no_internal_overlap(const TensorBase& t);
+void assert_no_internal_overlap(c10::TensorImpl* t);
 
-TORCH_API MemOverlapStatus
+MemOverlapStatus
 get_overlap_status(const TensorBase& a, const TensorBase& b);
-TORCH_API MemOverlapStatus
+MemOverlapStatus
 get_overlap_status(const c10::TensorImpl* a, const c10::TensorImpl* b);
 
-TORCH_API void assert_no_partial_overlap(
+void assert_no_partial_overlap(
     const TensorBase& a,
     const TensorBase& b);
 void assert_no_partial_overlap(c10::TensorImpl* a, c10::TensorImpl* b);
 
-TORCH_API void assert_no_overlap(const TensorBase& a, const TensorBase& b);
-TORCH_API void assert_no_overlap(c10::TensorImpl* a, c10::TensorImpl* b);
+void assert_no_overlap(const TensorBase& a, const TensorBase& b);
+void assert_no_overlap(c10::TensorImpl* a, c10::TensorImpl* b);
 
 } // namespace at

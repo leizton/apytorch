@@ -77,8 +77,8 @@ inline bool operator!=(const OperatorName& lhs, const OperatorName& rhs) {
   return !operator==(lhs, rhs);
 }
 
-TORCH_API std::string toString(const OperatorName& opName);
-TORCH_API std::ostream& operator<<(std::ostream&, const OperatorName&);
+std::string toString(const OperatorName& opName);
+std::ostream& operator<<(std::ostream&, const OperatorName&);
 
 } // namespace c10
 

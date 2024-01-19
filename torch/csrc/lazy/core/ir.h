@@ -32,7 +32,7 @@ struct Value;
 using NodePtr = std::shared_ptr<Node>;
 
 // The Kind of operation a Node can be associated to.
-struct TORCH_API OpKind {
+struct OpKind {
   OpKind() = default;
   explicit OpKind(c10::Symbol op) : op(op) {}
 
@@ -77,7 +77,7 @@ hash_t OperandHashes(
 // NodeConstant class (inheriting from Node) with an extra lazy_tensors::Literal
 // field, or a tensor value might create a new NodeTensor with a computation
 // client data handle in it.
-class TORCH_API Node {
+class Node {
  public:
   static bool enableDynamicShape();
 
@@ -215,7 +215,7 @@ const T* NodeCast(const Node* node) {
 // Represents a specific output produced by a node. Since the output of a node
 // can be composed by multiple outputs, the node+index coordinates fully qualify
 // each single output.
-struct TORCH_API Output {
+struct Output {
   struct Hasher {
     size_t operator()(const Output& output) const;
   };
@@ -259,7 +259,7 @@ template <typename T>
 using OutputMap = std::unordered_map<Output, T, Output::Hasher>;
 
 // Represents an input/operand for a Node object.
-struct TORCH_API Value {
+struct Value {
   Value() = default;
   /* implicit */ Value(NodePtr&& node, size_t index = 0)
       : node(std::move(node)), index(index) {}

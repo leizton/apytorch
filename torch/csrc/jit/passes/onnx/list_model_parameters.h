@@ -6,7 +6,7 @@
 namespace torch {
 namespace jit {
 
-TORCH_API std::pair<Module, std::vector<IValue>> list_module_parameters(
+std::pair<Module, std::vector<IValue>> list_module_parameters(
     const Module& module);
 
 } // namespace jit

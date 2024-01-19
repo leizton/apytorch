@@ -37,15 +37,15 @@
 namespace torch {
 namespace profiler {
 namespace impl {
-TORCH_API bool softAssertRaises();
-TORCH_API void setSoftAssertRaises(c10::optional<bool> value);
-TORCH_API void logSoftAssert(
+bool softAssertRaises();
+void setSoftAssertRaises(c10::optional<bool> value);
+void logSoftAssert(
     const char* func,
     const char* file,
     uint32_t line,
     const char* cond,
     const char* args);
-TORCH_API inline void logSoftAssert(
+inline void logSoftAssert(
     const char* func,
     const char* file,
     uint32_t line,
@@ -53,7 +53,7 @@ TORCH_API inline void logSoftAssert(
     ::c10::detail::CompileTimeEmptyString args) {
   logSoftAssert(func, file, line, cond, (const char*)args);
 }
-TORCH_API void logSoftAssert(
+void logSoftAssert(
     const char* func,
     const char* file,
     uint32_t line,
@@ -72,44 +72,44 @@ std::string getNvtxStr(
     const std::list<std::pair<at::RecordFunctionHandle, int>>& input_op_ids =
         {});
 
-struct TORCH_API FileLineFunc {
+struct FileLineFunc {
   std::string filename;
   size_t line;
   std::string funcname;
 };
 
-TORCH_API std::vector<FileLineFunc> prepareCallstack(
+std::vector<FileLineFunc> prepareCallstack(
     const std::vector<jit::StackEntry>& cs);
-TORCH_API std::vector<std::string> callstackStr(
+std::vector<std::string> callstackStr(
     const std::vector<FileLineFunc>& cs);
-TORCH_API std::string stacksToStr(
+std::string stacksToStr(
     const std::vector<std::string>& stacks,
     const char* delim);
-TORCH_API std::vector<std::vector<int64_t>> inputSizes(
+std::vector<std::vector<int64_t>> inputSizes(
     const at::RecordFunction& fn,
     const bool flatten_list_enabled = false);
-TORCH_API std::string variantShapesToStr(const std::vector<shape>& shapes);
-TORCH_API std::string shapesToStr(
+std::string variantShapesToStr(const std::vector<shape>& shapes);
+std::string shapesToStr(
     const std::vector<std::vector<int64_t>>& shapes);
-TORCH_API std::string strListToStr(const std::vector<std::string>& types);
-TORCH_API std::string inputOpIdsToStr(
+std::string strListToStr(const std::vector<std::string>& types);
+std::string inputOpIdsToStr(
     const std::list<std::pair<at::RecordFunctionHandle, int>>& input_op_ids);
-TORCH_API std::string ivalueListToStr(const std::vector<c10::IValue>& list);
-TORCH_API std::vector<std::string> inputTypes(const at::RecordFunction& fn);
+std::string ivalueListToStr(const std::vector<c10::IValue>& list);
+std::vector<std::string> inputTypes(const at::RecordFunction& fn);
 
 std::unordered_map<std::string, c10::IValue> TORCH_API
 saveExtraArgs(const at::RecordFunction& fn);
 std::unordered_map<std::string, std::string> TORCH_API
 saveNcclMeta(const at::RecordFunction& fn);
 
-uint64_t TORCH_API computeFlops(
+uint64_t computeFlops(
     const std::string& op_name,
     const std::unordered_map<std::string, c10::IValue>& extra_args);
 
 std::string shapeToStr(const std::vector<int64_t>& shape);
 
 template <typename T>
-class TORCH_API GlobalStateManager {
+class GlobalStateManager {
  public:
   static GlobalStateManager& singleton() {
     static GlobalStateManager singleton_;

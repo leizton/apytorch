@@ -55,7 +55,7 @@ using ExtraFilesMap = std::unordered_map<std::string, std::string>;
 // that points inside of `data`; the caller will need to make sure that `data`
 // outlives the returned Module. Also, `data` must be aligned to
 // kFlatbufferDataAlignmentBytes.
-TORCH_API mobile::Module parse_and_initialize_mobile_module(
+mobile::Module parse_and_initialize_mobile_module(
     void* data,
     size_t size, // of `data`, in bytes.
     c10::optional<at::Device> device = c10::nullopt,
@@ -71,7 +71,7 @@ TORCH_API mobile::Module parse_and_initialize_mobile_module(
 //
 // If you do not want the Module to hold a reference to `data`, see the raw
 // pointer overload of this function.
-TORCH_API mobile::Module parse_and_initialize_mobile_module(
+mobile::Module parse_and_initialize_mobile_module(
     std::shared_ptr<char> data,
     size_t size, // of `data`, in bytes.
     c10::optional<at::Device> device = c10::nullopt,
@@ -82,7 +82,7 @@ TORCH_API mobile::Module parse_and_initialize_mobile_module(
 // This is the same as parse_and_initialize_mobile_module() except that it also
 // extracts JIT source files and constants. Can be used to construct a
 // jit::Module.
-TORCH_API mobile::Module parse_and_initialize_mobile_module_for_jit(
+mobile::Module parse_and_initialize_mobile_module_for_jit(
     void* data,
     size_t size, // of `data`, in bytes.
     ExtraFilesMap& jit_sources,
@@ -98,31 +98,31 @@ TORCH_API mobile::Module parse_and_initialize_mobile_module_for_jit(
 // this. C++ clients should use one of the versions of
 // parse_and_initialize_mobile_module() so they can manage the raw data more
 // directly.
-TORCH_API mobile::Module load_mobile_module_from_file(
+mobile::Module load_mobile_module_from_file(
     const std::string& filename,
     c10::optional<at::Device> device = c10::nullopt,
     ExtraFilesMap* extra_files = nullptr);
 
-TORCH_API uint64_t get_bytecode_version(std::istream& in);
-TORCH_API uint64_t get_bytecode_version(const std::string& filename);
-TORCH_API uint64_t get_bytecode_version_from_bytes(char* flatbuffer_content);
+uint64_t get_bytecode_version(std::istream& in);
+uint64_t get_bytecode_version(const std::string& filename);
+uint64_t get_bytecode_version_from_bytes(char* flatbuffer_content);
 
-TORCH_API mobile::ModuleInfo get_module_info_from_flatbuffer(
+mobile::ModuleInfo get_module_info_from_flatbuffer(
     char* flatbuffer_content);
 
 // The methods below are less efficient because it need to read the stream in
 // its entirity to a buffer
-TORCH_API mobile::Module load_mobile_module_from_stream_with_copy(
+mobile::Module load_mobile_module_from_stream_with_copy(
     std::istream& in,
     c10::optional<at::Device> device = c10::nullopt,
     ExtraFilesMap* extra_files = nullptr);
 
-TORCH_API mobile::Module parse_flatbuffer_no_object(
+mobile::Module parse_flatbuffer_no_object(
     std::shared_ptr<char> data,
     size_t size,
     c10::optional<at::Device> device);
 
-TORCH_API mobile::Module parse_and_initialize_mobile_module(
+mobile::Module parse_and_initialize_mobile_module(
     void* data,
     size_t,
     c10::optional<at::Device>,
@@ -130,7 +130,7 @@ TORCH_API mobile::Module parse_and_initialize_mobile_module(
     bool should_copy_tensor_memory);
 
 // no op, TODO(qihan) delete
-TORCH_API bool register_flatbuffer_loader();
+bool register_flatbuffer_loader();
 
 } // namespace jit
 } // namespace torch

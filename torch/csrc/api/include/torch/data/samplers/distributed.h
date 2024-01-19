@@ -69,7 +69,7 @@ class DistributedSampler : public Sampler<BatchRequest> {
 
 /// Select samples randomly. The sampling order is shuffled at each `reset()`
 /// call.
-class TORCH_API DistributedRandomSampler : public DistributedSampler<> {
+class DistributedRandomSampler : public DistributedSampler<> {
  public:
   DistributedRandomSampler(
       size_t size,
@@ -102,7 +102,7 @@ class TORCH_API DistributedRandomSampler : public DistributedSampler<> {
 };
 
 /// Select samples sequentially.
-class TORCH_API DistributedSequentialSampler : public DistributedSampler<> {
+class DistributedSequentialSampler : public DistributedSampler<> {
  public:
   DistributedSequentialSampler(
       size_t size,

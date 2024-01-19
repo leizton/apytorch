@@ -12,7 +12,7 @@
 
 namespace at {
 namespace mps {
-TORCH_API at::Tensor eq(const at::Tensor & self, const at::Tensor & other);
+at::Tensor eq(const at::Tensor & self, const at::Tensor & other);
 } // namespace
 namespace native {
 

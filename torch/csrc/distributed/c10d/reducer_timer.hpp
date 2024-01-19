@@ -9,7 +9,7 @@ inline int64_t current_time_in_nanos() {
   return c10::getTime();
 }
 
-class TORCH_API Timer {
+class Timer {
  private:
   // The timestamp of forward call start time in each iteration.
   int64_t forward_start_time = kUnsetTime;

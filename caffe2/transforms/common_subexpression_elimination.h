@@ -25,7 +25,7 @@ namespace caffe2 {
  *
  * TODO(benz): Fix the error to not match nodes that write to external output.
  */
-class TORCH_API CommonSubexpressionEliminationTransform : public Transform {
+class CommonSubexpressionEliminationTransform : public Transform {
  public:
   CommonSubexpressionEliminationTransform() {
     SetPatternMatchType(SORTED_WRT_EXECUTION_ORDER);

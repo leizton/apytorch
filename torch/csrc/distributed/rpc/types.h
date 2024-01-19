@@ -11,15 +11,15 @@ using worker_id_t = int16_t;
 using local_id_t = int64_t;
 
 bool getAllowJitRRefPickle();
-TORCH_API void enableJitRRefPickle();
-TORCH_API void disableJitRRefPickle();
+void enableJitRRefPickle();
+void disableJitRRefPickle();
 
-struct TORCH_API JitRRefPickleGuard {
+struct JitRRefPickleGuard {
   JitRRefPickleGuard();
   ~JitRRefPickleGuard();
 };
 
-struct TORCH_API GloballyUniqueId final {
+struct GloballyUniqueId final {
   GloballyUniqueId(worker_id_t createdOn, local_id_t localId);
   GloballyUniqueId(const GloballyUniqueId& other) = default;
   GloballyUniqueId& operator=(const GloballyUniqueId& other) = delete;
@@ -42,7 +42,7 @@ struct TORCH_API GloballyUniqueId final {
   const local_id_t localId_;
 };
 
-TORCH_API std::ostream& operator<<(
+std::ostream& operator<<(
     std::ostream& os,
     const GloballyUniqueId& globalId);
 
@@ -50,7 +50,7 @@ using RRefId = GloballyUniqueId;
 using ForkId = GloballyUniqueId;
 using ProfilingId = GloballyUniqueId;
 
-struct TORCH_API SerializedPyObj final {
+struct SerializedPyObj final {
   SerializedPyObj(std::string&& payload, std::vector<at::Tensor>&& tensors)
       : payload_(std::move(payload)), tensors_(std::move(tensors)) {}
 

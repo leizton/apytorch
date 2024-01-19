@@ -9,7 +9,7 @@ namespace mobile {
 // If we dont have kineto available then edge profiler does not
 // work since it relies on Kineto
 #ifdef USE_KINETO
-class TORCH_API KinetoEdgeCPUProfiler {
+class KinetoEdgeCPUProfiler {
  public:
   // This profiler only profiles KINETO events
   // No GPU_FALLBACK or NVTX
@@ -91,7 +91,7 @@ class TORCH_API KinetoEdgeCPUProfiler {
   std::unique_ptr<torch::autograd::profiler::ProfilerResult> profiler_result_;
 };
 
-TORCH_API KinetoEdgeCPUProfiler* getCurrentEdgeProfiler();
+KinetoEdgeCPUProfiler* getCurrentEdgeProfiler();
 
 #define RECORD_BACKEND_EVENT_TO_EDGE_PROFILER(                               \
     start_time_us, end_time_us, debug_handle, event_name, backend_name)      \

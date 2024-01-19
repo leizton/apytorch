@@ -633,7 +633,7 @@ MatchTypeReturn matchTypeVariables(
 }
 
 // change return types like List[List[t]] into List[List[int]]
-TORCH_API TypePtr tryEvalTypeVariables(const TypePtr& type, std::unordered_map<std::string, TypePtr>& type_env) {
+TypePtr tryEvalTypeVariables(const TypePtr& type, std::unordered_map<std::string, TypePtr>& type_env) {
   if (!type->hasFreeVariables()) {
     if (auto dyn = type->castRaw<c10::DynamicType>()) {
       return tryEvalTypeVariables(dyn->fallback(), type_env);
@@ -665,7 +665,7 @@ TORCH_API TypePtr tryEvalTypeVariables(const TypePtr& type, std::unordered_map<s
   }
 }
 
-TORCH_API bool elementTypeCanBeInferredFromMembers(const TypePtr& elem_type) {
+bool elementTypeCanBeInferredFromMembers(const TypePtr& elem_type) {
   if (elem_type->kind() == UnionType::Kind
       || elem_type->kind() == OptionalType::Kind
       || elem_type->kind() == NumberType::Kind) {

@@ -377,7 +377,7 @@ class MinTerm : public ExprNode<MinTerm> {
 // Context-sensitive IR simplification
 using VarBoundInfo = std::unordered_map<VarPtr, analysis::Bound>;
 
-class TORCH_API SimplifierUnderContext : public IRMutator {
+class SimplifierUnderContext : public IRMutator {
  public:
   ~SimplifierUnderContext() override = default;
   // Add boundary info for index variables in for-loops
@@ -398,7 +398,7 @@ class TORCH_API SimplifierUnderContext : public IRMutator {
 };
 
 // Stmt simplification should occur in both modes.
-class TORCH_API PolynomialBase : public IRMutator {
+class PolynomialBase : public IRMutator {
  public:
   ~PolynomialBase() override = default;
 
@@ -421,7 +421,7 @@ class TORCH_API PolynomialBase : public IRMutator {
 };
 
 // Simplify the IR by combining arithmetic expressions over common terms.
-class TORCH_API PolynomialTransformer : public PolynomialBase {
+class PolynomialTransformer : public PolynomialBase {
  public:
   using PolynomialBase::mutate;
   // Inserts term into the provided map, in the case of a hash collision
@@ -498,7 +498,7 @@ class TORCH_API PolynomialTransformer : public PolynomialBase {
 
 // Expands Terms and Polynomial expressions into primitive operations.
 // Does some simple factorization and reordering.
-class TORCH_API TermExpander : public PolynomialBase {
+class TermExpander : public PolynomialBase {
   PolynomialTransformer* simplifier_;
   std::set<VarPtr> eliminated_allocations_;
 
@@ -535,7 +535,7 @@ class TORCH_API TermExpander : public PolynomialBase {
   StmtPtr mutate(BlockPtr v) override;
 };
 
-class TORCH_API IRSimplifier {
+class IRSimplifier {
  public:
   static StmtPtr simplify(StmtPtr s);
   static ExprPtr simplify(ExprPtr e);
@@ -547,7 +547,7 @@ class TORCH_API IRSimplifier {
 // Flattens the buf and performs the simplifier on the flattened dims.
 ExprPtr buf_flat_size(BufPtr v);
 // Returns true if expressions A and B can be simplified to an equal expression.
-TORCH_API bool exprEquals(ExprPtr A, ExprPtr B);
+bool exprEquals(ExprPtr A, ExprPtr B);
 
 } // namespace tensorexpr
 } // namespace jit

@@ -5,6 +5,6 @@
 namespace at::cpu {
 
 // Detect if CPU support Vector Neural Network Instruction.
-TORCH_API bool is_cpu_support_vnni();
+bool is_cpu_support_vnni();
 
 } // namespace at::cpu

@@ -664,7 +664,7 @@ mobile::Module _load_for_mobile(
       std::move(rai), device, extra_files, module_load_options);
 }
 
-TORCH_API mobile::Module _load_for_mobile(
+mobile::Module _load_for_mobile(
     std::unique_ptr<ReadAdapterInterface> rai,
     c10::optional<c10::Device> device,
     ExtraFilesMap& extra_files,

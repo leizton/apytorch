@@ -16,8 +16,8 @@ namespace at {
 // does not happen immediately (at static initialization time), so that if an
 // external backend is loaded, it has a chance to register itself, and
 // TorchScript only registers itself if explicitly initialized
-extern TORCH_API void RegisterTorchScriptLazyNativeFunctions();
-extern TORCH_API void RegisterTorchScriptAutogradLazyNativeFunctions();
+extern void RegisterTorchScriptLazyNativeFunctions();
+extern void RegisterTorchScriptAutogradLazyNativeFunctions();
 } // namespace at
 
 namespace torch {

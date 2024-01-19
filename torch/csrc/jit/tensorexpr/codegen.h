@@ -13,7 +13,7 @@ namespace tensorexpr {
 template <typename T>
 class PaddedBuffer;
 
-class TORCH_API CodeGen {
+class CodeGen {
  public:
   class BufferArg;
   class CallArg;
@@ -109,7 +109,7 @@ class TORCH_API CodeGen {
   std::string kernel_func_name_ = "func";
 };
 
-class TORCH_API ExtCallMemoryReuse : public IRMutator {
+class ExtCallMemoryReuse : public IRMutator {
   static std::unordered_map<std::string, std::string> makeExtCallFuncNameMap();
   static const std::unordered_map<std::string, std::string> extCallFuncNameMap_;
 
@@ -220,7 +220,7 @@ class CodeGen::CallArg {
 // NOLINTNEXTLINE(cppcoreguidelines-pro-type-member-init)
 class RegisterCodeGenList {
  public:
-  TORCH_API static RegisterCodeGenList& GetInstance() {
+  static RegisterCodeGenList& GetInstance() {
     static RegisterCodeGenList codegen_list;
     return codegen_list;
   }
@@ -231,7 +231,7 @@ class RegisterCodeGenList {
       at::Device device,
       const std::string& kernel_func_name)>;
 
-  TORCH_API StmtFactoryMethod FindStmtFactoryMethod(const std::string& name);
+  StmtFactoryMethod FindStmtFactoryMethod(const std::string& name);
   RegisterCodeGenList(const RegisterCodeGenList&) = delete;
   RegisterCodeGenList& operator=(const RegisterCodeGenList&) = delete;
 
@@ -240,7 +240,7 @@ class RegisterCodeGenList {
   friend class RegisterCodeGen;
   // NOLINTNEXTLINE(cppcoreguidelines-pro-type-member-init)
   RegisterCodeGenList() = default;
-  TORCH_API void AddStmtFactoryMethod(
+  void AddStmtFactoryMethod(
       const std::string& name,
       const StmtFactoryMethod& stmt_factory_method);
 
@@ -266,14 +266,14 @@ class RegisterCodeGen {
   }
 };
 
-TORCH_API std::unique_ptr<CodeGen> CreateCodeGen(
+std::unique_ptr<CodeGen> CreateCodeGen(
     const std::string& name,
     StmtPtr stmt,
     const std::vector<CodeGen::BufferArg>& params,
     at::Device device = at::kCPU,
     const std::string& kernel_func_name = "func");
 
-class TORCH_API GenericIntrinsicsExpander : public IRMutator {
+class GenericIntrinsicsExpander : public IRMutator {
  protected:
   ExprPtr mutate(IntrinsicsPtr v) override;
 };

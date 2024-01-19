@@ -9,7 +9,7 @@ namespace autograd {
 
 // This structure represents autograd metadata that we need to pass across
 // different nodes when we call an RPC which needs autograd computation.
-struct TORCH_API AutogradMetadata {
+struct AutogradMetadata {
   AutogradMetadata(int64_t autogradContextId, int64_t autogradMessageId);
 
   // autogradContextId_ is a globally unique integer that identifies a

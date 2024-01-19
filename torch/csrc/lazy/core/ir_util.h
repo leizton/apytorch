@@ -8,7 +8,7 @@
 namespace torch {
 namespace lazy {
 
-class TORCH_API Util {
+class Util {
  public:
   // Tracks the emission status of the nodes during the post-order generation.
   // It helps tracking loops within the computation graphs.

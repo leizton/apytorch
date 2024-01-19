@@ -5,7 +5,7 @@
 namespace torch {
 namespace optim {
 
-class TORCH_API StepLR : public LRScheduler {
+class StepLR : public LRScheduler {
  public:
   StepLR(
       torch::optim::Optimizer& optimizer,

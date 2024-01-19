@@ -193,9 +193,9 @@ void assertNotFind(
 } // namespace
 
 struct FileCheckImpl {
-  TORCH_API explicit FileCheckImpl() = default;
+  explicit FileCheckImpl() = default;
 
-  TORCH_API void run(const std::string& test_file) {
+  void run(const std::string& test_file) {
     has_run = true;
 
     if (groups.empty() || groups[0].empty()) {
@@ -207,7 +207,7 @@ struct FileCheckImpl {
     doChecks(std::make_shared<Source>(test_file));
   }
 
-  TORCH_API void run(
+  void run(
       const std::string& checks_file,
       const std::string& test_file) {
     auto source = std::make_shared<Source>(checks_file);
@@ -215,7 +215,7 @@ struct FileCheckImpl {
     run(test_file);
   }
 
-  TORCH_API void addCheck(const Check& check) {
+  void addCheck(const Check& check) {
     // consecutive CHECK_DAGs & CHECK_NOTs need to be evaluated as a group
     if (groups.empty() ||
         (check.type_ != CHECK_NOT && check.type_ != CHECK_DAG)) {
@@ -231,7 +231,7 @@ struct FileCheckImpl {
     has_run = false;
   }
 
-  TORCH_API void addCheck(
+  void addCheck(
       CheckType type,
       const std::string& s,
       c10::optional<size_t> count = c10::nullopt) {

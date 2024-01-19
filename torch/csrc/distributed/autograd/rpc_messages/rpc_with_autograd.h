@@ -11,7 +11,7 @@ namespace autograd {
 // Represents an RPC that includes autograd information. This class basically
 // wraps another `RpcCommandBase` object which represents the actual RPC and has
 // additional autograd information associated with that RPC.
-class TORCH_API RpcWithAutograd final : public rpc::RpcCommandBase {
+class RpcWithAutograd final : public rpc::RpcCommandBase {
  public:
   // Used when we are sending an RPC over the wire.
   RpcWithAutograd(

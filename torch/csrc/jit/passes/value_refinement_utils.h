@@ -18,10 +18,10 @@ namespace jit {
 // TODO: vector may be faster
 using ListRefinement = std::unordered_map<Value*, int64_t>;
 
-TORCH_API ListRefinement
+ListRefinement
 intersectRefinements(const ListRefinement& ref1, const ListRefinement& ref2);
 
-TORCH_API ListRefinement
+ListRefinement
 unionRefinements(const ListRefinement& ref1, const ListRefinement& ref2);
 
 // Represents the refinement information that can be carried on a boolean
@@ -62,7 +62,7 @@ struct BooleanRefinementMapping {
   ListRefinement false_refine_;
 };
 
-TORCH_API void joinIfRefinements(
+void joinIfRefinements(
     Node* if_node,
     std::unordered_set<Block*>& throwing_blocks,
     ListRefinement& curr_block_refinements,
@@ -72,7 +72,7 @@ TORCH_API void joinIfRefinements(
 
 // handles adding blocks to throwing blocks and propagating refinements via
 // boolean comparisons
-TORCH_API bool handleCommonRefinentOperators(
+bool handleCommonRefinentOperators(
     Node* n,
     std::unordered_set<Block*>& throwing_blocks,
     std::unordered_map<Value*, BooleanRefinementMapping>& info);

@@ -15,7 +15,7 @@ namespace jit {
  * This is used during Module::save(), to resolve type name collisions during
  * serialization.
  */
-class TORCH_API TypeNameUniquer {
+class TypeNameUniquer {
  public:
   c10::QualifiedName getUniqueName(c10::ConstNamedTypePtr t);
 

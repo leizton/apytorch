@@ -477,11 +477,11 @@ class VideoDecoder {
       Callback& callback);
 };
 
-TORCH_API void FreeDecodedData(
+void FreeDecodedData(
     std::vector<std::unique_ptr<DecodedFrame>>& sampledFrames,
     std::vector<std::unique_ptr<DecodedAudio>>& sampledAudio);
 
-TORCH_API bool DecodeMultipleClipsFromVideo(
+bool DecodeMultipleClipsFromVideo(
     const char* video_buffer,
     const std::string& video_filename,
     const int encoded_size,

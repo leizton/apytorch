@@ -9,13 +9,13 @@
 
 namespace caffe2 {
 
-struct TORCH_API Token {
+struct Token {
   int startDelimId;
   const char* start;
   const char* end;
 };
 
-class TORCH_API TokenizedString {
+class TokenizedString {
   // holder for strings that have been modified
   std::vector<std::shared_ptr<std::string>> modifiedStrings_;
   std::vector<Token> tokens_;
@@ -31,7 +31,7 @@ class TORCH_API TokenizedString {
   friend class Tokenizer;
 };
 
-class TORCH_API Tokenizer {
+class Tokenizer {
  private:
   int startDelimId_;
   // state of the tokenizer
@@ -48,18 +48,18 @@ class TORCH_API Tokenizer {
   void next(char* start, char* end, TokenizedString& tokenized);
 };
 
-struct TORCH_API CharRange {
+struct CharRange {
   char* start;
   char* end;
 };
 
-struct TORCH_API StringProvider {
+struct StringProvider {
   virtual void operator()(CharRange&) = 0;
   virtual void reset() = 0;
   virtual ~StringProvider() = default;
 };
 
-class TORCH_API BufferedTokenizer {
+class BufferedTokenizer {
  public:
   BufferedTokenizer(const Tokenizer& t, StringProvider* p, int numPasses = 1)
       : provider_(p), tokenizer_(t), tokenIndex_(0), numPasses_(numPasses) {}
@@ -104,7 +104,7 @@ class TORCH_API BufferedTokenizer {
   int pass_{0};
 };
 
-class TORCH_API FileReader : public StringProvider {
+class FileReader : public StringProvider {
  public:
   explicit FileReader(const std::string& path, size_t bufferSize = 65536);
   ~FileReader() override;

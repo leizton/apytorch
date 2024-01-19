@@ -8,7 +8,7 @@
 
 namespace torch::jit {
 
-struct TORCH_API JITException : public std::runtime_error {
+struct JITException : public std::runtime_error {
   explicit JITException(
       const std::string& msg,
       c10::optional<std::string> python_class_name = c10::nullopt,

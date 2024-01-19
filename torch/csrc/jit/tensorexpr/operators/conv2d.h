@@ -8,7 +8,7 @@ namespace jit {
 namespace tensorexpr {
 
 // An API to compute 2D depthwise convolutions with bias.
-TORCH_API Tensor conv2d_depthwise(
+Tensor conv2d_depthwise(
     BufHandle input,
     BufHandle weight,
     BufHandle bias,
@@ -17,14 +17,14 @@ TORCH_API Tensor conv2d_depthwise(
     int groups);
 
 // An API to compute 2D depthwise convolutions without bias.
-TORCH_API Tensor conv2d_depthwise(
+Tensor conv2d_depthwise(
     BufHandle input,
     BufHandle weight,
     int stride,
     int pad,
     int groups);
 
-TORCH_API Tensor conv2d_depthwise(
+Tensor conv2d_depthwise(
     BufHandle input,
     BufHandle weight,
     BufHandle bias,
@@ -40,7 +40,7 @@ TORCH_API Tensor conv2d_depthwise(
     ExprHandle pad,
     ExprHandle groups);
 
-TORCH_API Tensor conv2d_depthwise(
+Tensor conv2d_depthwise(
     BufHandle input,
     BufHandle weight,
     ExprHandle N,

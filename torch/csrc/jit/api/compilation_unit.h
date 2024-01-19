@@ -43,7 +43,7 @@ struct Self {
 // and Modules have a CompilationUnit holding the Functions that
 // are used to implement their Methods
 
-struct TORCH_API CompilationUnit {
+struct CompilationUnit {
   enum class FunctionType { Method, Hook, PreHook };
   // constructor that takes a set of functions to compile using the native
   // resolver

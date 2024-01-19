@@ -11,7 +11,7 @@ namespace nnc {
 
 // Performs Ahead Of Time compilation of a given method in a model
 // returning the compiled function and LLVM assembly code
-TORCH_API std::pair<std::unique_ptr<Function>, const std::string> aotCompile(
+std::pair<std::unique_ptr<Function>, const std::string> aotCompile(
     const std::string& method_name,
     std::shared_ptr<Graph>& subgraph,
     const std::vector<std::vector<int64_t>>& sizes,

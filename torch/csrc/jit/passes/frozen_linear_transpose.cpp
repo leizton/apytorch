@@ -89,7 +89,7 @@ class TransposeFrozenLinear {
 };
 } // namespace
 
-TORCH_API bool FrozenLinearTranspose(std::shared_ptr<Graph>& graph) {
+bool FrozenLinearTranspose(std::shared_ptr<Graph>& graph) {
   TransposeFrozenLinear transposeWeight(graph);
   GRAPH_DUMP("Before FrozenLinearTranspose", graph);
   bool changed = transposeWeight.run();

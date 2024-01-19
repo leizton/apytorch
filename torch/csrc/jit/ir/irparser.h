@@ -17,7 +17,7 @@ struct Value;
 // if parse_tensor_constants is true will construct empty tensors
 // for Tensor constants with random or unitialized contents, otherwise will
 // throw
-TORCH_API void parseIR(
+void parseIR(
     const std::string& str,
     torch::jit::Graph* graph,
     bool parse_tensor_constants = false);
@@ -30,7 +30,7 @@ TORCH_API void parseIR(
  * for Tensor constants with random or unitialized contents, otherwise will
  * throw
  */
-TORCH_API void parseIR(
+void parseIR(
     const std::string& str,
     torch::jit::Graph* graph,
     std::unordered_map<std::string, Value*>& vmap,

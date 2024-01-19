@@ -11,7 +11,7 @@ namespace jit {
 
 using TypePtr = c10::TypePtr;
 
-struct TORCH_API SchemaTypeParser {
+struct SchemaTypeParser {
   TypePtr parseBaseType();
   c10::optional<c10::AliasInfo> parseAliasAnnotation();
   std::pair<TypePtr, c10::optional<c10::AliasInfo>> parseType();

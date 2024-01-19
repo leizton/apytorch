@@ -10,20 +10,20 @@
 namespace caffe2 {
 namespace elementwise_ops_utils {
 
-TORCH_API std::tuple<size_t, size_t, size_t>
+std::tuple<size_t, size_t, size_t>
 ComputeLegacyBroadcastSizes(const Tensor& A, const Tensor& B, int axis);
 
-TORCH_API std::vector<int> ComputeBinaryBroadcastForwardDims(
+std::vector<int> ComputeBinaryBroadcastForwardDims(
     const c10::ArrayRef<int>& A_dims,
     const c10::ArrayRef<int>& B_dims);
 
-TORCH_API void ComputeBinaryBroadcastBackwardAxes(
+void ComputeBinaryBroadcastBackwardAxes(
     const std::vector<int>& A_dims,
     const std::vector<int>& B_dims,
     std::vector<int>* A_axes,
     std::vector<int>* B_axes);
 
-TORCH_API void ComputeBinaryBroadcastBackwardDims(
+void ComputeBinaryBroadcastBackwardDims(
     const std::vector<int>& A_dims,
     const std::vector<int>& B_dims,
     std::vector<int>* A_back_dims,

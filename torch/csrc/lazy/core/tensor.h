@@ -10,7 +10,7 @@
 namespace torch {
 namespace lazy {
 
-class TORCH_API SymNodeImpl : public c10::SymNodeImpl {
+class SymNodeImpl : public c10::SymNodeImpl {
  public:
   SymNodeImpl(NodePtr ptr) : node_(std::move(ptr)){};
   NodePtr node_;
@@ -19,7 +19,7 @@ class TORCH_API SymNodeImpl : public c10::SymNodeImpl {
 class LazyTensor;
 using LazyTensorPtr = c10::intrusive_ptr<LazyTensor>;
 
-class TORCH_API LazyTensor : public c10::intrusive_ptr_target {
+class LazyTensor : public c10::intrusive_ptr_target {
  public:
   // This is the core lazy tensor data structure where all the tensor data is
   // held. The lazy tensor is nothing more than a shared pointer to a Data
@@ -173,35 +173,35 @@ class TORCH_API LazyTensor : public c10::intrusive_ptr_target {
 // skips
 //       the LazyTensor wrappers, assuming that the list of underlying IR nodes
 //       is actually more useful for downstream computations.  TBD.
-TORCH_API torch::lazy::Value GetTensorList(at::ITensorListRef tensors);
+torch::lazy::Value GetTensorList(at::ITensorListRef tensors);
 
 // Section 1: at::Tensor => LazyTensor.
 // Extracts the LazyTensor out of an at::Tensor. Returns a null LazyTensor
 // if the tensor is not a lazy tensor.
-TORCH_API LazyTensorPtr TryGetLtcTensor(const at::Tensor& tensor);
+LazyTensorPtr TryGetLtcTensor(const at::Tensor& tensor);
 
 // Extracts the LazyTensor out of an at::Tensor. Throws an exception
 // if the tensor is not a lazy tensor.
-TORCH_API LazyTensorPtr GetLtcTensor(const at::Tensor& tensor);
+LazyTensorPtr GetLtcTensor(const at::Tensor& tensor);
 
 // Same as above, applied to a list of tensors.
-TORCH_API std::vector<LazyTensorPtr> GetLtcTensors(
+std::vector<LazyTensorPtr> GetLtcTensors(
     c10::ArrayRef<at::Tensor> tensors);
 
 // If tensor is a lazy tensor type, returns the LazyTensor embedded within it,
 // otherwise creates a new lazy tensor type with tensor as data.
-TORCH_API LazyTensorPtr GetOrCreateLtcTensor(
+LazyTensorPtr GetOrCreateLtcTensor(
     const c10::optional<at::Tensor>& tensor,
     const BackendDevice& device);
 
-TORCH_API LazyTensorPtr GetLtcTensorOrCreateForWrappedNumber(
+LazyTensorPtr GetLtcTensorOrCreateForWrappedNumber(
     const at::Tensor& tensor,
     const BackendDevice& device);
 
 // Section 2: LazyTensor => at::Tensor.
 // Creates an ATen tensor from an LazyTensor.
-TORCH_API at::Tensor CreateAtenFromLtcTensor(const LazyTensorPtr& ltc_tensor);
-TORCH_API at::Tensor CreateAtenFromLtcTensor(LazyTensor&& ltc_tensor);
+at::Tensor CreateAtenFromLtcTensor(const LazyTensorPtr& ltc_tensor);
+at::Tensor CreateAtenFromLtcTensor(LazyTensor&& ltc_tensor);
 
 // Note [Lazy Tensor Functionalization]
 // The functionalization pass is implemented by wrapping all TensorImpl
@@ -236,7 +236,7 @@ TORCH_API at::Tensor CreateAtenFromLtcTensor(LazyTensor&& ltc_tensor);
 //   Examples include:
 //   - CPU fallback (takes in lazy tensors, converts to cpu, calls kernel,
 //   converts returns back to lazy tensors).
-TORCH_API at::Tensor to_lazy_tensor(
+at::Tensor to_lazy_tensor(
     const at::Tensor& self,
     const c10::TensorOptions& options,
     at::Device device,

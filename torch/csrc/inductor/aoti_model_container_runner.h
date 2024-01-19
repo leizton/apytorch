@@ -12,7 +12,7 @@ struct DynamicLibrary;
 namespace torch::inductor {
 using TensorConstantMap = std::unordered_map<std::string, at::Tensor*>;
 
-class TORCH_API AOTIModelContainerRunner {
+class AOTIModelContainerRunner {
  public:
   AOTIModelContainerRunner() = delete;
   AOTIModelContainerRunner(const AOTIModelContainerRunner& other) = delete;
@@ -54,7 +54,7 @@ class TORCH_API AOTIModelContainerRunner {
   AOTInductorModelContainerHandle container_handle_ = nullptr;
 };
 
-class TORCH_API AOTIModelContainerRunnerCpu : public AOTIModelContainerRunner {
+class AOTIModelContainerRunnerCpu : public AOTIModelContainerRunner {
  public:
   AOTIModelContainerRunnerCpu(const char* model_path, size_t num_models = 1)
       : AOTIModelContainerRunner(model_path, num_models, true, nullptr) {}

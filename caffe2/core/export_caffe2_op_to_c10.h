@@ -198,7 +198,7 @@ inline FunctionSchema make_function_schema_for_c10(
 #define C10_DECLARE_EXPORT_CAFFE2_OP_TO_C10(OperatorName)  \
   namespace caffe2 {                                       \
   namespace _c10_ops {                                     \
-  TORCH_API const FunctionSchema& schema_##OperatorName(); \
+  const FunctionSchema& schema_##OperatorName(); \
   }                                                        \
   }
 

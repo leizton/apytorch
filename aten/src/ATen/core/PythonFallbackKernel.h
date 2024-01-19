@@ -4,7 +4,7 @@
 namespace at {
 namespace impl {
 
-struct TORCH_API RestorePythonTLSSnapshot {
+struct RestorePythonTLSSnapshot {
   RestorePythonTLSSnapshot();
   ~RestorePythonTLSSnapshot();
 
@@ -15,7 +15,7 @@ private:
 
 
 // RAII guard to make working with the above TLS safer.
-struct TORCH_API MaybeSetTLSOnEntryGuard {
+struct MaybeSetTLSOnEntryGuard {
 public:
   MaybeSetTLSOnEntryGuard();
   ~MaybeSetTLSOnEntryGuard();

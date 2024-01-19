@@ -11,7 +11,7 @@ namespace autograd {
 // just a placeholder and sends an empty message over the wire. The purpose of
 // this RPC command is to indicate whether or not the PropagateGradientsReq call
 // was successfully or not.
-class TORCH_API PropagateGradientsResp : public rpc::RpcCommandBase {
+class PropagateGradientsResp : public rpc::RpcCommandBase {
  public:
   PropagateGradientsResp() = default;
   c10::intrusive_ptr<rpc::Message> toMessageImpl() && override;

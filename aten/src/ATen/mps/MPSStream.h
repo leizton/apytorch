@@ -47,7 +47,7 @@ enum class SyncType {
   COMMIT_ADAPTIVE,    // commit adaptively based on available memory
 };
 
-class TORCH_API MPSStream
+class MPSStream
 {
 public:
   enum Unchecked { UNCHECKED };
@@ -106,18 +106,18 @@ private:
 /**
  * Get the current MPS stream
  */
-TORCH_API MPSStream* getCurrentMPSStream();
+MPSStream* getCurrentMPSStream();
 
 /**
  * Get the default MPS stream
  */
-TORCH_API MPSStream* getDefaultMPSStream();
+MPSStream* getDefaultMPSStream();
 
 //-----------------------------------------------------------------
 //  MPSStreamImpl
 //-----------------------------------------------------------------
 
-class TORCH_API MPSStreamImpl
+class MPSStreamImpl
 {
  public:
   /**

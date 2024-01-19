@@ -10,12 +10,12 @@ namespace jit {
 /** Replicate quantize node for prim::If blocks, so that we can match
  *  quantization patterns in prim::If blocks
  */
-TORCH_API void ReplicateQuant(std::shared_ptr<Graph>& graph);
+void ReplicateQuant(std::shared_ptr<Graph>& graph);
 
 /** Replicate dequantize node for each use, so that we can match
  *  quantization patterns
  */
-TORCH_API void ReplicateDeQuant(std::shared_ptr<Graph>& graph);
+void ReplicateDeQuant(std::shared_ptr<Graph>& graph);
 
 /** \brief Insert quantize - dequantize calls to the Tensors
  *  that are observed in insert_observers pass
@@ -28,14 +28,14 @@ TORCH_API void ReplicateDeQuant(std::shared_ptr<Graph>& graph);
  * \param module the input module
  * \param method_name the method we want to insert quantization calls for
  */
-TORCH_API Module InsertQuantDeQuant(
+Module InsertQuantDeQuant(
     Module& module,
     const std::string& method_name,
     bool inplace,
     bool debug,
     QuantType quant_type = QuantType::STATIC);
 
-TORCH_API Module InsertQuantDeQuantOnDevicePTQ(
+Module InsertQuantDeQuantOnDevicePTQ(
     Module& module,
     const std::string& method_name,
     bool inplace,

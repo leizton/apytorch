@@ -188,7 +188,7 @@ template int8_t quantize_val_arm<int8_t>(
     const int32_t zero_point,
     const float value);
 template <typename T>
-TORCH_API float dequantize_val(double scale, int64_t zero_point, T value) {
+float dequantize_val(double scale, int64_t zero_point, T value) {
   return static_cast<float>(scale) * (value.val_ - static_cast<int32_t>(zero_point));
 }
 #endif // USE_FBGEMM
@@ -234,67 +234,67 @@ DST_T requantize_from_int(double multiplier, int64_t zero_point, int64_t src) {
       std::min<int64_t>(std::max<int64_t>(quantize_down, min), max));
 }
 
-template TORCH_API qint8
+template qint8
 quantize_val<qint8>(double scale, int64_t zero_point, float value);
-template TORCH_API quint8
+template quint8
 quantize_val<quint8>(double scale, int64_t zero_point, float value);
-template TORCH_API qint32
+template qint32
 quantize_val<qint32>(double scale, int64_t zero_point, float value);
-template TORCH_API void quantize_vec<c10::qint8>(
+template void quantize_vec<c10::qint8>(
     double scale,
     int64_t zero_point,
     const float* src,
     c10::qint8* dst,
     size_t count);
-template TORCH_API void quantize_vec<c10::quint8>(
+template void quantize_vec<c10::quint8>(
     double scale,
     int64_t zero_point,
     const float* src,
     c10::quint8* dst,
     size_t count);
-template TORCH_API void quantize_vec<c10::qint32, 32>(
+template void quantize_vec<c10::qint32, 32>(
     double scale,
     int64_t zero_point,
     const float* src,
     c10::qint32* dst,
     size_t count);
 
-template TORCH_API float dequantize_val<qint8>(
+template float dequantize_val<qint8>(
     double scale,
     int64_t zero_point,
     qint8 value);
-template TORCH_API float dequantize_val<quint8>(
+template float dequantize_val<quint8>(
     double scale,
     int64_t zero_point,
     quint8 value);
-template TORCH_API float dequantize_val<qint32>(
+template float dequantize_val<qint32>(
     double scale,
     int64_t zero_point,
     qint32 value);
 
-template TORCH_API qint8
+template qint8
 requantize_val<qint8, qint8>(double, int64_t, double, int64_t, qint8);
-template TORCH_API quint8
+template quint8
 requantize_val<qint8, quint8>(double, int64_t, double, int64_t, qint8);
-template TORCH_API qint32
+template qint32
 requantize_val<qint8, qint32>(double, int64_t, double, int64_t, qint8);
-template TORCH_API qint8
+template qint8
 requantize_val<quint8, qint8>(double, int64_t, double, int64_t, quint8);
-template TORCH_API quint8
+template quint8
 requantize_val<quint8, quint8>(double, int64_t, double, int64_t, quint8);
-template TORCH_API qint32
+template qint32
 requantize_val<quint8, qint32>(double, int64_t, double, int64_t, quint8);
-template TORCH_API qint8
+template qint8
 requantize_val<qint32, qint8>(double, int64_t, double, int64_t, qint32);
-template TORCH_API quint8
+template quint8
 requantize_val<qint32, quint8>(double, int64_t, double, int64_t, qint32);
-template TORCH_API qint32
+template qint32
 requantize_val<qint32, qint32>(double, int64_t, double, int64_t, qint32);
 
-template TORCH_API qint8 requantize_from_int<qint8>(double, int64_t, int64_t);
-template TORCH_API quint8
+template qint8 requantize_from_int<qint8>(double, int64_t, int64_t);
+template quint8
 requantize_from_int<quint8>(double, int64_t, int64_t);
-template TORCH_API qint32
+template qint32
 requantize_from_int<qint32>(double, int64_t, int64_t);
 
 } // namespace native

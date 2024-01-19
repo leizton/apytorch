@@ -20,7 +20,7 @@ namespace rpc {
 //                  "dist_autograd_test::my_py_add"
 //   stack: a bag of IValue args passed to torchscriptFunctionName
 // It returns c10::intrusive_ptr<ivalue::Future>
-c10::intrusive_ptr<c10::ivalue::Future> TORCH_API rpcTorchscript(
+c10::intrusive_ptr<c10::ivalue::Future> rpcTorchscript(
     const std::string& dstWorkerName,
     const c10::QualifiedName& qualifiedName,
     const c10::FunctionSchema& functionSchema,
@@ -28,7 +28,7 @@ c10::intrusive_ptr<c10::ivalue::Future> TORCH_API rpcTorchscript(
     const float rpcTimeoutSeconds = torch::distributed::rpc::kUnsetRpcTimeout,
     const bool isAsyncExecution = false);
 
-c10::intrusive_ptr<RRef> TORCH_API remoteTorchscript(
+c10::intrusive_ptr<RRef> remoteTorchscript(
     const std::string& dstWorkerName,
     const c10::QualifiedName& qualifiedName,
     const c10::FunctionSchema& functionSchema,

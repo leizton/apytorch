@@ -44,7 +44,7 @@ class ComputeUnboxingFunctions:
             # (2) Under the hood it calls C++ API.
             return f"""
 // aten::{f.func}
-TORCH_API void {f.func.name.unambiguous_name()}(Stack & stack);
+void {f.func.name.unambiguous_name()}(Stack & stack);
 """
         else:
             sig_group = CppSignatureGroup.from_native_function(
@@ -73,7 +73,7 @@ TORCH_API void {f.func.name.unambiguous_name()}(Stack & stack);
                 """
             return f"""
 // aten::{f.func}
-TORCH_API void {f.func.name.unambiguous_name()}(Stack & stack) {{
+void {f.func.name.unambiguous_name()}(Stack & stack) {{
     {code_connector.join(code_list)}
 
     drop(stack, {len(binding_list)});

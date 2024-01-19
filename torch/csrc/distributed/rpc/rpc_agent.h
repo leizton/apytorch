@@ -36,7 +36,7 @@ using steady_clock_time_point =
 using TypeResolver =
     std::function<c10::StrongTypePtr(const c10::QualifiedName&)>;
 
-struct TORCH_API RpcBackendOptions {
+struct RpcBackendOptions {
   RpcBackendOptions()
       : RpcBackendOptions(kDefaultRpcTimeoutSeconds, kDefaultInitMethod) {}
 
@@ -51,7 +51,7 @@ struct TORCH_API RpcBackendOptions {
 };
 
 // A globally unique ID to identify an RpcAgent
-struct TORCH_API WorkerInfo : torch::CustomClassHolder {
+struct WorkerInfo : torch::CustomClassHolder {
   WorkerInfo(std::string name, int64_t id);
 
   WorkerInfo(std::string name, worker_id_t id);
@@ -66,16 +66,16 @@ struct TORCH_API WorkerInfo : torch::CustomClassHolder {
   const worker_id_t id_;
 };
 
-struct TORCH_API RegisterWorkerInfoOnce {
+struct RegisterWorkerInfoOnce {
   RegisterWorkerInfoOnce();
 };
 
-TORCH_API std::ostream& operator<<(
+std::ostream& operator<<(
     std::ostream& os,
     const WorkerInfo& workerInfo);
 
 // Struct for options to configure the RPC Retry protocol.
-struct TORCH_API RpcRetryOptions {
+struct RpcRetryOptions {
   // Using a default constructor like all other Options structs in the RPC
   // codebase. TORCH_CHECKs for input validation are done in the
   // sendWithRetries function.
@@ -90,7 +90,7 @@ struct TORCH_API RpcRetryOptions {
 };
 
 // Struct that stores all the metadata needed to retry a given RPC.
-struct TORCH_API RpcRetryInfo {
+struct RpcRetryInfo {
   RpcRetryInfo(
       const WorkerInfo& to,
       c10::intrusive_ptr<Message> message,
@@ -117,7 +117,7 @@ struct TORCH_API RpcRetryInfo {
 // will invoke the given ``RequestCallback`` to process received requests. It
 // should immediately become ready to serve request and accept response after
 // construction.
-class TORCH_API RpcAgent {
+class RpcAgent {
  public:
   // `WorkerInfo` is the globally unique identifier for this RpcAgent instance.
   // It contains a ``name_`` field and an ``id_`` field. ``name_`` is the

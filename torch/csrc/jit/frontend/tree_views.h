@@ -505,7 +505,7 @@ struct ClassDef : public TreeView {
       const List<Assign>& assigns);
 };
 
-TORCH_API std::vector<std::string> getUnresolvedClassAttributes(
+std::vector<std::string> getUnresolvedClassAttributes(
     const ClassDef& def);
 
 ////////////////////////////////////////////////////////////////////////////////

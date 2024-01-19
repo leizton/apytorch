@@ -32,7 +32,7 @@ class InputArchive;
 namespace torch {
 namespace optim {
 
-class TORCH_API OptimizerParamState {
+class OptimizerParamState {
  public:
   OptimizerParamState() = default;
   OptimizerParamState(const OptimizerParamState&) = default;
@@ -52,7 +52,7 @@ class OptimizerCloneableParamState : public OptimizerParamState {
   }
 };
 
-class TORCH_API OptimizerOptions {
+class OptimizerOptions {
  public:
   OptimizerOptions() = default;
   OptimizerOptions(const OptimizerOptions&) = default;
@@ -77,7 +77,7 @@ class OptimizerCloneableOptions : public OptimizerOptions {
 
 /// Stores parameters in the param_group and stores a pointer to the
 /// OptimizerOptions
-class TORCH_API OptimizerParamGroup {
+class OptimizerParamGroup {
  public:
   // NOTE: In order to store `OptimizerParamGroup` in a `std::vector`, it has to
   // be copy-constructible.
@@ -105,7 +105,7 @@ class TORCH_API OptimizerParamGroup {
   std::unique_ptr<OptimizerOptions> options_;
 };
 
-class TORCH_API Optimizer {
+class Optimizer {
  public:
   // The copy constructor is deleted, because the user should use the
   // `state_dict` / `load_state_dict` API to copy an optimizer instead.
@@ -204,12 +204,12 @@ equivalent to missing key in Python impl. Since we don't serialize missing keys
 in Python API, we skip c10::nullopt values when serializing the param state. */
 
 /// Serializes an `Optimizer` into an `OutputArchive`.
-TORCH_API serialize::OutputArchive& operator<<(
+serialize::OutputArchive& operator<<(
     serialize::OutputArchive& archive,
     const Optimizer& optimizer);
 
 /// Deserializes a `Tensor` from an `InputArchive`.
-TORCH_API serialize::InputArchive& operator>>(
+serialize::InputArchive& operator>>(
     serialize::InputArchive& archive,
     Optimizer& optimizer);
 

@@ -61,7 +61,7 @@ class CompilationUnit {
 //    file added after training)
 // 3. Compilation Unit (cu_)
 //
-class TORCH_API Module {
+class Module {
  public:
   Module(
       c10::intrusive_ptr<c10::ivalue::Object> object,
@@ -183,14 +183,14 @@ class TORCH_API Module {
   std::shared_ptr<char> mem_to_delete_;
 };
 
-struct TORCH_API ModuleInfo {
+struct ModuleInfo {
   uint64_t bytecode_version;
   uint64_t operator_version;
   std::unordered_map<std::string, int> opname_to_num_args;
   std::unordered_set<std::string> function_names;
   std::unordered_set<std::string> type_names;
 };
-TORCH_API ModuleInfo get_module_info(const mobile::Module& module);
+ModuleInfo get_module_info(const mobile::Module& module);
 
 } // namespace mobile
 } // namespace jit

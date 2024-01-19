@@ -18,7 +18,7 @@
 namespace torch {
 namespace lazy {
 
-struct TORCH_API Sample {
+struct Sample {
   Sample() = default;
   Sample(int64_t timestamp_ns, double value)
       : timestamp_ns(timestamp_ns), value(value) {}
@@ -31,7 +31,7 @@ using MetricReprFn = std::function<std::string(double)>;
 
 // Class used to collect time-stamped numeric samples. The samples are stored in
 // a circular buffer whose size can be configured at constructor time.
-class TORCH_API MetricData {
+class MetricData {
  public:
   // Creates a new MetricData object with the internal circular buffer storing
   // max_samples samples. The repr_fn argument allow to specify a function which
@@ -71,7 +71,7 @@ class TORCH_API MetricData {
 
 // Counters are a very lightweight form of metrics which do not need to track
 // sample time.
-class TORCH_API CounterData {
+class CounterData {
  public:
   CounterData() : value_(0) {}
 
@@ -95,7 +95,7 @@ class TORCH_API CounterData {
   std::atomic<int64_t> value_;
 };
 
-class TORCH_API MetricsArena {
+class MetricsArena {
  public:
   static MetricsArena* Get();
 
@@ -135,12 +135,12 @@ class TORCH_API MetricsArena {
 };
 
 // Emits the value in a to_string() conversion.
-TORCH_API std::string MetricFnValue(double value);
+std::string MetricFnValue(double value);
 // Emits the value in a humanized bytes representation.
-TORCH_API std::string MetricFnBytes(double value);
+std::string MetricFnBytes(double value);
 // Emits the value in a humanized time representation. The value is expressed in
 // nanoseconds EPOCH time.
-TORCH_API std::string MetricFnTime(double value);
+std::string MetricFnTime(double value);
 
 // The typical use of a Metric is one in which it gets created either in a
 // global scope context:
@@ -151,7 +151,7 @@ TORCH_API std::string MetricFnTime(double value);
 //     ...
 //     metric->AddSample(ts_nanos, some_value);
 //   }
-class TORCH_API Metric {
+class Metric {
  public:
   explicit Metric(
       std::string name,
@@ -188,7 +188,7 @@ class TORCH_API Metric {
 //   static Counter* counter = new Counter("MyCounter");
 //   ...
 //   counter->AddValue(+1);
-class TORCH_API Counter {
+class Counter {
  public:
   explicit Counter(std::string name);
 
@@ -225,37 +225,37 @@ class TORCH_API Counter {
   } while (0)
 
 // Creates a report with the current metrics statistics.
-TORCH_API std::string CreateMetricReport();
+std::string CreateMetricReport();
 
 // Creates a report with the selected metrics statistics.
-TORCH_API std::string CreateMetricReport(
+std::string CreateMetricReport(
     const std::vector<std::string>& counter_names,
     const std::vector<std::string>& metric_names);
 
 // Returns the currently registered metric names. Note that the list can grow
 // since metrics are usually function intialized (they are static function
 // variables).
-TORCH_API std::vector<std::string> GetMetricNames();
+std::vector<std::string> GetMetricNames();
 
 // Retrieves the metric data of a given metric, or nullptr if such metric does
 // not exist.
-TORCH_API MetricData* GetMetric(const std::string& name);
+MetricData* GetMetric(const std::string& name);
 
 // Returns the currently registered counter names. Note that the list can grow
 // since counters are usually function intialized (they are static function
 // variables).
-TORCH_API std::vector<std::string> GetCounterNames();
+std::vector<std::string> GetCounterNames();
 
 // Retrieves the counter data of a given counter, or nullptr if such counter
 // does not exist.
-TORCH_API CounterData* GetCounter(const std::string& name);
+CounterData* GetCounter(const std::string& name);
 
 // Retrieves the current EPOCH time in nanoseconds.
-TORCH_API int64_t NowNs();
+int64_t NowNs();
 
-// Scope based utility class TORCH_API to measure the time the code takes within
+// Scope based utility class to measure the time the code takes within
 // a given C++ scope.
-class TORCH_API TimedSection {
+class TimedSection {
  public:
   explicit TimedSection(Metric* metric) : metric_(metric), start_(NowNs()) {}
 

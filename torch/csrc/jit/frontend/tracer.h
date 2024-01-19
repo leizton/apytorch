@@ -39,9 +39,9 @@ using ::c10::ivalue::ConstantString;
 using torch::autograd::Variable;
 using variable_list = std::vector<Variable>;
 
-TORCH_API std::atomic<bool>& getTracerStateWarnMode();
+std::atomic<bool>& getTracerStateWarnMode();
 
-struct TORCH_API TracingState
+struct TracingState
     : public std::enable_shared_from_this<TracingState> {
   TracingState();
   ~TracingState();
@@ -112,7 +112,7 @@ struct ArgumentStash {
     return stash.intlists.empty();
   }
 
-  TORCH_API static void stashIntArrayRefElem(
+  static void stashIntArrayRefElem(
       const std::string& arg_name,
       size_t size,
       size_t idx,
@@ -131,7 +131,7 @@ struct ArgumentStash {
   // Value stashing: Use these methods to stash arguments which correspond
   // to regular Value*'s in the graph. i.e. they don't require special
   // handling like in the case of IntArrayRefs
-  TORCH_API static void stashValue(
+  static void stashValue(
       const std::string& arg_name,
       size_t idx,
       const Variable& var,
@@ -155,19 +155,19 @@ struct ArgumentStash {
 
 // Retrieve or set the current tracing state. Returns a nullptr if tracing is
 // disabled.
-TORCH_API const std::shared_ptr<TracingState>& getTracingState();
-TORCH_API void setTracingState(std::shared_ptr<TracingState> state);
+const std::shared_ptr<TracingState>& getTracingState();
+void setTracingState(std::shared_ptr<TracingState> state);
 
 inline bool isTracing() {
   return static_cast<bool>(getTracingState());
 }
 
 using warn_fn_type = void (*)(const std::string& msg);
-TORCH_API extern const char* WARN_PYTHON_DATAFLOW;
-TORCH_API extern const char* WARN_CONSTRUCTOR;
-TORCH_API extern const char* WARN_RESIZE;
-TORCH_API extern const char* STRICT_TRACER_MSG;
-TORCH_API void _do_warn(const char* _reason, const char* _kind);
+extern const char* WARN_PYTHON_DATAFLOW;
+extern const char* WARN_CONSTRUCTOR;
+extern const char* WARN_RESIZE;
+extern const char* STRICT_TRACER_MSG;
+void _do_warn(const char* _reason, const char* _kind);
 inline void warn(const char* _reason, const char* _kind = nullptr) {
   if (const auto& state = getTracingState()) {
     if (!state->warn)
@@ -175,9 +175,9 @@ inline void warn(const char* _reason, const char* _kind = nullptr) {
     _do_warn(_reason, _kind);
   }
 }
-TORCH_API void setWarn(warn_fn_type fn);
+void setWarn(warn_fn_type fn);
 
-struct TORCH_API NoWarn {
+struct NoWarn {
   NoWarn() : state(getTracingState()) {
     if (state) {
       prev = state->warn;
@@ -202,24 +202,24 @@ struct WithNestedTracingFrame {
     getTracingState()->leaveFrame();
   }
 };
-TORCH_API void recordSourceLocation(Node* n);
-TORCH_API void setRecordSourceLocation(void (*v)(Node*));
+void recordSourceLocation(Node* n);
+void setRecordSourceLocation(void (*v)(Node*));
 
-TORCH_API std::vector<StackEntry> pythonCallstack();
-TORCH_API void setPythonCallstack(std::vector<StackEntry> (*v)());
+std::vector<StackEntry> pythonCallstack();
+void setPythonCallstack(std::vector<StackEntry> (*v)());
 
 // Having finished adding a new 'node' to the graph IR 'setValueTrace'
 // associates this node with an output variable, so that further operations
 // involving this variable know which node in the IR to reference.
-TORCH_API void setValueTrace(const IValue& v, Value* value);
+void setValueTrace(const IValue& v, Value* value);
 
-TORCH_API void delValueTrace(const IValue& var);
+void delValueTrace(const IValue& var);
 
-TORCH_API std::function<void()> pauseTracing();
+std::function<void()> pauseTracing();
 
-TORCH_API Value* getValueTrace(const IValue& var);
+Value* getValueTrace(const IValue& var);
 
-TORCH_API std::pair<std::shared_ptr<TracingState>, Stack> trace(
+std::pair<std::shared_ptr<TracingState>, Stack> trace(
     Stack inputs,
     const std::function<Stack(Stack)>& traced_fn,
     std::function<std::string(const Variable&)> var_name_lookup_fn,
@@ -228,117 +228,117 @@ TORCH_API std::pair<std::shared_ptr<TracingState>, Stack> trace(
     Module* self = nullptr,
     const std::vector<std::string>& argument_names = {});
 
-TORCH_API void abandon();
+void abandon();
 
 // NB: those serve both as an intermediate steps in addInputs below,
 // as well as the overloads that terminate template recursion
-TORCH_API void addInputs(Node* n, const char* name, int64_t value);
-TORCH_API void addInputs(Node* n, const char* name, c10::SymInt value);
-TORCH_API void addInputs(
+void addInputs(Node* n, const char* name, int64_t value);
+void addInputs(Node* n, const char* name, c10::SymInt value);
+void addInputs(
     Node* n,
     const char* name,
     c10::optional<int64_t> value);
-TORCH_API void addInputs(Node* n, const char* name, bool value);
-TORCH_API void addInputs(
+void addInputs(Node* n, const char* name, bool value);
+void addInputs(
     Node* n,
     const char* name,
     const c10::optional<bool>& value);
-TORCH_API void addInputs(Node* n, const char* name, double value);
-TORCH_API void addInputs(
+void addInputs(Node* n, const char* name, double value);
+void addInputs(
     Node* n,
     const char* name,
     const c10::optional<double>& value);
-TORCH_API void addInputs(Node* n, const char* name, const at::Scalar& value);
-TORCH_API void addInputs(
+void addInputs(Node* n, const char* name, const at::Scalar& value);
+void addInputs(
     Node* n,
     const char* name,
     const c10::optional<at::Scalar>& value);
-TORCH_API void addInputs(Node* n, const char* name, const at::Tensor& value);
-TORCH_API void addInputs(
+void addInputs(Node* n, const char* name, const at::Tensor& value);
+void addInputs(
     Node* n,
     const char* name,
     const c10::optional<at::Tensor>& value);
-TORCH_API void addInputs(Node* n, const char* name, ArrayRef<int64_t> value);
-TORCH_API void addInputs(Node* n, const char* name, c10::SymIntArrayRef value);
-TORCH_API void addInputs(
+void addInputs(Node* n, const char* name, ArrayRef<int64_t> value);
+void addInputs(Node* n, const char* name, c10::SymIntArrayRef value);
+void addInputs(
     Node* n,
     const char* name,
     c10::optional<c10::SymInt> value);
-TORCH_API void addInputs(
+void addInputs(
     Node* n,
     const char* name,
     const c10::optional<ArrayRef<int64_t>>& value);
-TORCH_API void addInputs(
+void addInputs(
     Node* n,
     const char* name,
     const at::OptionalIntArrayRef& opt_value);
-TORCH_API void addInputs(
+void addInputs(
     Node* n,
     const char* name,
     const at::OptionalSymIntArrayRef& opt_value);
-TORCH_API void addInputs(
+void addInputs(
     Node* n,
     const char* name,
     ArrayRef<at::Tensor> value,
     bool allow_undefined = false);
-TORCH_API void addInputs(
+void addInputs(
     Node* n,
     const char* name,
     std::vector<at::Tensor> value,
     bool allow_undefined = false);
-TORCH_API void addInputs(
+void addInputs(
     Node* n,
     const char* name,
     at::ITensorListRef value,
     bool allow_undefined = false);
-TORCH_API void addInputs(
+void addInputs(
     Node* n,
     const char* name,
     const List<c10::optional<at::Tensor>>& value);
-TORCH_API void addInputs(
+void addInputs(
     Node* n,
     const char* name,
     ArrayRef<c10::intrusive_ptr<c10::ivalue::Object>> value,
     const c10::ClassTypePtr& class_type);
-TORCH_API void addInputs(Node* n, const char* name, ArrayRef<double> value);
-TORCH_API void addInputs(
+void addInputs(Node* n, const char* name, ArrayRef<double> value);
+void addInputs(
     Node* n,
     const char* name,
     const c10::optional<ArrayRef<double>>& value);
-TORCH_API void addInputs(
+void addInputs(
     Node* n,
     const char* name,
     const c10::string_view value);
-TORCH_API void addInputs(
+void addInputs(
     Node* n,
     const char* name,
     const c10::optional<c10::string_view>& value);
-TORCH_API void addInputs(Node* n, const char* name, at::Device value);
-TORCH_API void addInputs(Node* n, const char* name, c10::Stream stream);
-TORCH_API void addInputs(Node* n, const char* name, at::Layout value);
-TORCH_API void addInputs(Node* n, const char* name, at::ScalarType value);
-TORCH_API void addInputs(
+void addInputs(Node* n, const char* name, at::Device value);
+void addInputs(Node* n, const char* name, c10::Stream stream);
+void addInputs(Node* n, const char* name, at::Layout value);
+void addInputs(Node* n, const char* name, at::ScalarType value);
+void addInputs(
     Node* n,
     const char* name,
     const c10::optional<at::ScalarType>& value);
-TORCH_API void addInputs(
+void addInputs(
     Node* n,
     const char* name,
     const c10::optional<at::Device>& value);
-TORCH_API void addInputs(
+void addInputs(
     Node* n,
     const char* name,
     const c10::optional<at::Layout>& value);
-TORCH_API void addInputs(Node* n, const char* name, at::MemoryFormat value);
-TORCH_API void addInputs(
+void addInputs(Node* n, const char* name, at::MemoryFormat value);
+void addInputs(
     Node* n,
     const char* name,
     c10::optional<at::DimnameList> value);
-TORCH_API void addInputs(
+void addInputs(
     Node* n,
     const char* name,
     const c10::optional<at::MemoryFormat>& value);
-TORCH_API void addInputs(
+void addInputs(
     Node* n,
     const char* name,
     const c10::optional<at::Generator>& value);
@@ -368,15 +368,15 @@ void addInputs(Node* n, const char* name, std::array<bool, N> value) {
       "Found an unsupported argument type in the JIT tracer. File a bug report.");
 }
 
-TORCH_API void addInputs(
+void addInputs(
     Node* n,
     const char* name,
     const c10::intrusive_ptr<c10::ivalue::Object>& obj);
 
-TORCH_API void ensureUniqueIfOutOfPlaced(
+void ensureUniqueIfOutOfPlaced(
     const char* name,
     const at::Tensor& tensor);
-TORCH_API void ensureUniqueIfOutOfPlaced(
+void ensureUniqueIfOutOfPlaced(
     const char* name,
     const c10::optional<at::Tensor>& tensor);
 
@@ -395,19 +395,19 @@ void addOutput(Node* node, T&&) {
       c10::demangle_type<T>(),
       " in the JIT tracer. File a bug report.");
 }
-TORCH_API void addOutput(Node* node, const at::Tensor& tensor);
-TORCH_API void setOutput(Value* value, const at::Tensor& output);
-TORCH_API void addOutput(Node* node, const std::vector<at::Tensor>& list);
-TORCH_API void addOutput(Node* node, const c10::List<at::Tensor>& list);
-TORCH_API void addOutput(
+void addOutput(Node* node, const at::Tensor& tensor);
+void setOutput(Value* value, const at::Tensor& output);
+void addOutput(Node* node, const std::vector<at::Tensor>& list);
+void addOutput(Node* node, const c10::List<at::Tensor>& list);
+void addOutput(
     Node* node,
     const c10::intrusive_ptr<c10::ivalue::Object>& output);
 
-TORCH_API autograd::Variable getSizeOf(
+autograd::Variable getSizeOf(
     const autograd::Variable& var,
     int64_t dim);
 
-TORCH_API autograd::Variable getNumelOf(const autograd::Variable& var);
+autograd::Variable getNumelOf(const autograd::Variable& var);
 
 } // namespace tracer
 } // namespace jit

@@ -20,7 +20,7 @@
 // of the A rows. The column offsets are needed for the asymmetric quantization
 // (affine quantization) of input matrix.
 // Note that in JIT mode we can think of a way to fuse col_offsets with bias.
-struct TORCH_API PackedLinearWeight : public LinearPackedParamsBase {
+struct PackedLinearWeight : public LinearPackedParamsBase {
   PackedLinearWeight(
       std::unique_ptr<fbgemm::PackBMatrix<int8_t>> w,
       c10::optional<at::Tensor> bias,
@@ -107,7 +107,7 @@ struct TORCH_API PackedLinearWeight : public LinearPackedParamsBase {
   at::Tensor apply_dynamic_impl(at::Tensor input, bool reduce_range = false);
 };
 
-struct TORCH_API PackedLinearWeightFp16 : public LinearPackedParamsBase {
+struct PackedLinearWeightFp16 : public LinearPackedParamsBase {
   PackedLinearWeightFp16(
       std::unique_ptr<fbgemm::PackedGemmMatrixFP16> w,
       c10::optional<at::Tensor> bias)
@@ -161,7 +161,7 @@ struct TORCH_API PackedLinearWeightFp16 : public LinearPackedParamsBase {
 };
 
 template <int kSpatialDim = 2>
-struct TORCH_API PackedConvWeight : public ConvPackedParamsBase<kSpatialDim> {
+struct PackedConvWeight : public ConvPackedParamsBase<kSpatialDim> {
   PackedConvWeight(
       std::unique_ptr<fbgemm::PackWeightsForConv<kSpatialDim>> w,
       c10::optional<at::Tensor> bias,
@@ -352,7 +352,7 @@ Tensor ConvertConvWeightsToChannelLastTensor(
 
 #endif // USE_FBGEMM
 
-struct TORCH_API PackedEmbeddingBagWeight : public EmbeddingPackedParamsBase {
+struct PackedEmbeddingBagWeight : public EmbeddingPackedParamsBase {
   PackedEmbeddingBagWeight(
       at::Tensor packed_w,
       std::vector<float> w_scale,

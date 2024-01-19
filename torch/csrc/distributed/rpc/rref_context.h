@@ -26,7 +26,7 @@ finishCreatingOwnerRRef(const JitFuture& jitFuture, const RRefId& rrefId);
 } // namespace callback
 
 // Manages RRef lifetime and keeps track of RRef forks.
-class TORCH_API RRefContext {
+class RRefContext {
  public:
   static RRefContext& getInstance();
   // NB: This method must be called before destructing RRefContext singleton.

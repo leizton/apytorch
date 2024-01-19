@@ -6,7 +6,7 @@
 
 namespace torch::jit {
 
-struct TORCH_API GraphFunction : public Function {
+struct GraphFunction : public Function {
   // NOLINTNEXTLINE(cppcoreguidelines-pro-type-member-init)
   GraphFunction(
       c10::QualifiedName name,
@@ -187,8 +187,8 @@ struct TORCH_API GraphFunction : public Function {
 };
 
 // Short hands for dynamic_cast<GraphFunction*>.
-TORCH_API GraphFunction* tryToGraphFunction(Function&) noexcept;
-TORCH_API GraphFunction& toGraphFunction(Function&);
-TORCH_API const GraphFunction& toGraphFunction(const Function&);
+GraphFunction* tryToGraphFunction(Function&) noexcept;
+GraphFunction& toGraphFunction(Function&);
+const GraphFunction& toGraphFunction(const Function&);
 
 } // namespace torch::jit

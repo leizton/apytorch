@@ -8,13 +8,13 @@ namespace torch {
 namespace jit {
 namespace onnx {
 
-TORCH_API bool is_log_enabled();
+bool is_log_enabled();
 
-TORCH_API void set_log_enabled(bool enabled);
+void set_log_enabled(bool enabled);
 
-TORCH_API void set_log_output_stream(std::shared_ptr<std::ostream> out_stream);
+void set_log_output_stream(std::shared_ptr<std::ostream> out_stream);
 
-TORCH_API std::ostream& _get_log_output_stream();
+std::ostream& _get_log_output_stream();
 
 #define ONNX_LOG(...)                            \
   if (::torch::jit::onnx::is_log_enabled()) {    \

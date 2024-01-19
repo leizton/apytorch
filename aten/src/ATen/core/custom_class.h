@@ -12,7 +12,7 @@ namespace c10 {
 struct ClassType;
 using ClassTypePtr = std::shared_ptr<ClassType>;
 
-TORCH_API c10::ClassTypePtr getCustomClassTypeImpl(const std::type_index &tindex);
+c10::ClassTypePtr getCustomClassTypeImpl(const std::type_index &tindex);
 
 template <typename T>
 const c10::ClassTypePtr& getCustomClassType() {

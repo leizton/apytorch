@@ -7,7 +7,7 @@
 
 namespace at {
 
-struct TORCH_API CPUGeneratorImpl : public c10::GeneratorImpl {
+struct CPUGeneratorImpl : public c10::GeneratorImpl {
   // Constructors
   CPUGeneratorImpl(uint64_t seed_in = default_rng_seed_val);
   ~CPUGeneratorImpl() override = default;
@@ -40,8 +40,8 @@ struct TORCH_API CPUGeneratorImpl : public c10::GeneratorImpl {
 
 namespace detail {
 
-TORCH_API const Generator& getDefaultCPUGenerator();
-TORCH_API Generator
+const Generator& getDefaultCPUGenerator();
+Generator
 createCPUGenerator(uint64_t seed_val = default_rng_seed_val);
 
 } // namespace detail

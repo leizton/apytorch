@@ -5,7 +5,7 @@
 
 namespace torch {
 namespace jit {
-TORCH_API void FuseAddRelu(script::Module& module);
-TORCH_API void FuseAddRelu(std::shared_ptr<Graph>& graph);
+void FuseAddRelu(script::Module& module);
+void FuseAddRelu(std::shared_ptr<Graph>& graph);
 } // namespace jit
 } // namespace torch

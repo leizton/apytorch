@@ -84,11 +84,11 @@ struct Gradient {
   //   - Interpret df
   //   - Wrap outputs of df into Variables (that don't require grad)
 };
-TORCH_API Gradient differentiate(std::shared_ptr<Graph>& graph);
+Gradient differentiate(std::shared_ptr<Graph>& graph);
 
 // can we take a derivative of this node symbolically?
-TORCH_API bool isDifferentiable(const Node* n);
-TORCH_API bool isDifferentiable(Graph& g);
-TORCH_API bool isZero(Value* v);
+bool isDifferentiable(const Node* n);
+bool isDifferentiable(Graph& g);
+bool isZero(Value* v);
 
 } // namespace torch::jit

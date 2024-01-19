@@ -9,7 +9,7 @@ namespace c10 {
 struct EnumType;
 using EnumTypePtr = std::shared_ptr<EnumType>;
 using EnumNameValue = std::pair<std::string, IValue>;
-struct TORCH_API EnumType : public NamedType {
+struct EnumType : public NamedType {
   friend struct Type;
   static const TypeKind Kind = TypeKind::EnumType;
 

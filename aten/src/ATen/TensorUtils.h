@@ -19,7 +19,7 @@ namespace at {
 // make sense.  These are particularly useful for native functions,
 // which do NO argument checking by default.
 
-struct TORCH_API TensorArg {
+struct TensorArg {
   const Tensor& tensor;
   const char* name;
   int pos; // 1-indexed
@@ -35,7 +35,7 @@ struct TORCH_API TensorArg {
   }
 };
 
-struct TORCH_API TensorGeometryArg {
+struct TensorGeometryArg {
   TensorGeometry tensor;
   const char* name;
   int pos; // 1-indexed
@@ -66,118 +66,118 @@ using CheckedFrom = const char*;
 // not TensorGeometryArg, because the Tensor to TensorGeometry
 // conversion will blow up if you have undefined tensors.
 
-TORCH_API std::ostream& operator<<(std::ostream& out, TensorGeometryArg t);
-TORCH_API void checkDim(
+std::ostream& operator<<(std::ostream& out, TensorGeometryArg t);
+void checkDim(
     CheckedFrom c,
     const Tensor& tensor,
     const char* name,
     int pos, // 1-indexed
     int64_t dim);
-TORCH_API void checkDim(CheckedFrom c, const TensorGeometryArg& t, int64_t dim);
+void checkDim(CheckedFrom c, const TensorGeometryArg& t, int64_t dim);
 // NB: this is an inclusive-exclusive range
-TORCH_API void checkDimRange(
+void checkDimRange(
     CheckedFrom c,
     const TensorGeometryArg& t,
     int64_t dim_start,
     int64_t dim_end);
-TORCH_API void checkSameDim(
+void checkSameDim(
     CheckedFrom c,
     const TensorGeometryArg& t1,
     const TensorGeometryArg& t2);
-TORCH_API void checkContiguous(CheckedFrom c, const TensorGeometryArg& t);
-TORCH_API void checkAllContiguous(CheckedFrom c, at::ArrayRef<TensorArg> ts);
-TORCH_API void checkSize(
+void checkContiguous(CheckedFrom c, const TensorGeometryArg& t);
+void checkAllContiguous(CheckedFrom c, at::ArrayRef<TensorArg> ts);
+void checkSize(
     CheckedFrom c,
     const TensorGeometryArg& t,
     IntArrayRef sizes);
-TORCH_API void checkSize_symint(
+void checkSize_symint(
     CheckedFrom c,
     const TensorGeometryArg& t,
     c10::SymIntArrayRef sizes);
-TORCH_API void checkSize(
+void checkSize(
     CheckedFrom c,
     const TensorGeometryArg& t,
     int64_t dim,
     int64_t size);
-TORCH_API void checkSize_symint(
+void checkSize_symint(
     CheckedFrom c,
     const TensorGeometryArg& t,
     int64_t dim,
     c10::SymInt size);
-TORCH_API void checkNumel(
+void checkNumel(
     CheckedFrom c,
     const TensorGeometryArg& t,
     int64_t numel);
-TORCH_API void checkSameNumel(
+void checkSameNumel(
     CheckedFrom c,
     const TensorArg& t1,
     const TensorArg& t2);
-TORCH_API void checkAllSameNumel(CheckedFrom c, ArrayRef<TensorArg> tensors);
-TORCH_API void checkScalarType(CheckedFrom c, const TensorArg& t, ScalarType s);
-TORCH_API void checkScalarTypes(
+void checkAllSameNumel(CheckedFrom c, ArrayRef<TensorArg> tensors);
+void checkScalarType(CheckedFrom c, const TensorArg& t, ScalarType s);
+void checkScalarTypes(
     CheckedFrom c,
     const TensorArg& t,
     at::ArrayRef<ScalarType> l);
-TORCH_API void checkSameGPU(
+void checkSameGPU(
     CheckedFrom c,
     const TensorArg& t1,
     const TensorArg& t2);
-TORCH_API void checkAllSameGPU(CheckedFrom c, ArrayRef<TensorArg> tensors);
-TORCH_API void checkSameType(
+void checkAllSameGPU(CheckedFrom c, ArrayRef<TensorArg> tensors);
+void checkSameType(
     CheckedFrom c,
     const TensorArg& t1,
     const TensorArg& t2);
-TORCH_API void checkAllSameType(CheckedFrom c, ArrayRef<TensorArg> tensors);
-TORCH_API void checkSameSize(
+void checkAllSameType(CheckedFrom c, ArrayRef<TensorArg> tensors);
+void checkSameSize(
     CheckedFrom c,
     const TensorArg& t1,
     const TensorArg& t2);
-TORCH_API void checkAllSameSize(CheckedFrom c, ArrayRef<TensorArg> tensors);
-TORCH_API void checkDefined(CheckedFrom c, const TensorArg& t);
-TORCH_API void checkAllDefined(CheckedFrom c, at::ArrayRef<TensorArg> t);
+void checkAllSameSize(CheckedFrom c, ArrayRef<TensorArg> tensors);
+void checkDefined(CheckedFrom c, const TensorArg& t);
+void checkAllDefined(CheckedFrom c, at::ArrayRef<TensorArg> t);
 
 // FixMe: does TensorArg slow things down?
-TORCH_API void checkBackend(
+void checkBackend(
     CheckedFrom c,
     at::ArrayRef<Tensor> t,
     at::Backend backend);
 
-TORCH_API void checkDeviceType(
+void checkDeviceType(
     CheckedFrom c,
     at::ArrayRef<Tensor> tensors,
     at::DeviceType device_type);
 
-TORCH_API void checkLayout(CheckedFrom c, const Tensor& t, Layout layout);
+void checkLayout(CheckedFrom c, const Tensor& t, Layout layout);
 
-TORCH_API void checkLayout(
+void checkLayout(
     CheckedFrom c,
     at::ArrayRef<Tensor> tensors,
     at::Layout layout);
 
 // Methods for getting data_ptr if tensor is defined
-TORCH_API void* maybe_data_ptr(const Tensor& tensor);
-TORCH_API void* maybe_data_ptr(const TensorArg& tensor);
+void* maybe_data_ptr(const Tensor& tensor);
+void* maybe_data_ptr(const TensorArg& tensor);
 
-TORCH_API void check_dim_size(
+void check_dim_size(
     const Tensor& tensor,
     int64_t dim,
     int64_t dim_size,
     int64_t size);
 
 namespace detail {
-TORCH_API std::vector<int64_t> defaultStrides(IntArrayRef sizes);
+std::vector<int64_t> defaultStrides(IntArrayRef sizes);
 
-TORCH_API c10::optional<std::vector<int64_t>> computeStride(
+c10::optional<std::vector<int64_t>> computeStride(
     IntArrayRef oldshape,
     IntArrayRef oldstride,
     IntArrayRef newshape);
 
-TORCH_API c10::optional<SymDimVector> computeStride(
+c10::optional<SymDimVector> computeStride(
     c10::SymIntArrayRef oldshape,
     c10::SymIntArrayRef oldstride,
     c10::SymIntArrayRef newshape);
 
-TORCH_API c10::optional<DimVector> computeStride(
+c10::optional<DimVector> computeStride(
     IntArrayRef oldshape,
     IntArrayRef oldstride,
     const DimVector& newshape);

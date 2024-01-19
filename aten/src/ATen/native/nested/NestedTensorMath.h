@@ -7,7 +7,7 @@
 namespace at {
 namespace native {
 
-TORCH_API Tensor NestedTensor_to_padded_tensor_generic(
+Tensor NestedTensor_to_padded_tensor_generic(
     const Tensor& t,
     double padding,
     OptionalIntArrayRef output_size);

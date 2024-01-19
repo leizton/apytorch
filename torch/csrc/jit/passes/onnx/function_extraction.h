@@ -53,14 +53,14 @@ namespace onnx {
 using NodeAttrNameMap = std::
     unordered_map<const Node*, std::unordered_map<std::string, std::string>>;
 
-TORCH_API NodeAttrNameMap ONNXFunctionExtraction(
+NodeAttrNameMap ONNXFunctionExtraction(
     std::shared_ptr<Graph>& graph,
     const std::unordered_set<std::string>& module_names,
     const std::vector<std::string>& param_names);
 
-TORCH_API void ONNXClearScopeRecords();
+void ONNXClearScopeRecords();
 
-TORCH_API void ONNXTrackScopeAttributes(
+void ONNXTrackScopeAttributes(
     std::shared_ptr<Graph>& graph,
     std::map<std::string, IValue>& attributes);
 

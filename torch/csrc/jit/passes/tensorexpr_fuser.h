@@ -11,24 +11,24 @@ namespace jit {
 // If add_composed_op is true, creates a single operation that
 // performs both the runtime check that types align
 // and then the dispatch to the kernel/unoptimized graph
-TORCH_API void FuseTensorExprs(
+void FuseTensorExprs(
     std::shared_ptr<Graph>& graph,
     size_t min_group_size = 2,
     bool add_composed_op = false,
     bool fuse_to_dynamic_shapes = false);
 
-TORCH_API void setTensorExprFuserEnabled(bool val);
-TORCH_API bool tensorExprFuserEnabled();
-TORCH_API void setTensorExprDynamicShapeFusionEnabled(bool val);
-TORCH_API bool tensorExprDynamicShapeFusionEnabled();
-TORCH_API bool setTexprReductionsEnabled(bool value);
-TORCH_API bool texprReductionsEnabled();
+void setTensorExprFuserEnabled(bool val);
+bool tensorExprFuserEnabled();
+void setTensorExprDynamicShapeFusionEnabled(bool val);
+bool tensorExprDynamicShapeFusionEnabled();
+bool setTexprReductionsEnabled(bool value);
+bool texprReductionsEnabled();
 
-TORCH_API void RemoveProfileNodesAndSpecializeTypes(
+void RemoveProfileNodesAndSpecializeTypes(
     std::shared_ptr<Graph>& graph);
-TORCH_API bool hasTensorTypeSpecialization(Value* v);
-TORCH_API void RemoveTensorTypeSpecializations(std::shared_ptr<Graph>& graph);
-TORCH_API void removeTensorTypeSpecializations(Block* block);
+bool hasTensorTypeSpecialization(Value* v);
+void RemoveTensorTypeSpecializations(std::shared_ptr<Graph>& graph);
+void removeTensorTypeSpecializations(Block* block);
 
 using tensor_type_converter_t =
     c10::function_ref<TensorTypePtr(const TensorTypePtr& t)>;
@@ -49,16 +49,16 @@ using tensor_type_converter_t =
 //
 // The Fallback graph will have the same subgraph as the guarded node (with the
 // expectation that the guarded_node's subgraph will then be optimized.
-TORCH_API void insertTypeGuard(
+void insertTypeGuard(
     Node* guarded_node,
     tensor_type_converter_t type_converter,
     c10::Symbol kind);
 
-TORCH_API bool usedOnlyInSize(Value* v);
-TORCH_API Value* broadcastSizes(at::ArrayRef<Value*> sizes, AliasDb* db);
+bool usedOnlyInSize(Value* v);
+Value* broadcastSizes(at::ArrayRef<Value*> sizes, AliasDb* db);
 
 namespace tensorexpr {
-TORCH_API bool isSupported(Node* node);
+bool isSupported(Node* node);
 
 /// Get the modifiable custom operator set object.
 ///
@@ -69,7 +69,7 @@ TORCH_API bool isSupported(Node* node);
 ///
 /// @return Reference of the custome operator set
 ///
-TORCH_API OperatorSet& getCustomOperatorSet();
+OperatorSet& getCustomOperatorSet();
 } // namespace tensorexpr
 } // namespace jit
 } // namespace torch

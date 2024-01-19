@@ -10,7 +10,7 @@
 namespace torch {
 namespace lazy {
 
-class TORCH_API OpKindWrapper {
+class OpKindWrapper {
  public:
   explicit OpKindWrapper(const char* name) : name_(name) {}
 

@@ -10,7 +10,7 @@ namespace torch {
 namespace distributed {
 namespace autograd {
 
-class TORCH_API RpcWithProfilingReq : public rpc::RpcCommandBase {
+class RpcWithProfilingReq : public rpc::RpcCommandBase {
  public:
   // For sending RPCs, invoked when client is creating this RPC command.
   RpcWithProfilingReq(

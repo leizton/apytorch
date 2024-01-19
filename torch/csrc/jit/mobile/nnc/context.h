@@ -15,7 +15,7 @@ namespace nnc {
 
 // Specify the requirements on an input tensor.
 // TODO: support input tensor with dynamic shape (PR #54982)
-struct TORCH_API InputSpec {
+struct InputSpec {
   InputSpec() = default;
 
   // Deserialize the spec from an IValue.
@@ -33,7 +33,7 @@ struct TORCH_API InputSpec {
 
 // Specify the sizes/dtype/... of output tensor to preallocate the output.
 // TODO: support the case where kernel allocates output tensors dynamically.
-struct TORCH_API OutputSpec {
+struct OutputSpec {
   OutputSpec() = default;
 
   // Deserialize the spec from an IValue.
@@ -52,7 +52,7 @@ struct TORCH_API OutputSpec {
 };
 
 // Hold the temporary buffers / states needed during the execution.
-struct TORCH_API ExecutionState {
+struct ExecutionState {
   ExecutionState() = default;
   ExecutionState(const ExecutionState&) = delete;
   ExecutionState(ExecutionState&&) = default;
@@ -79,7 +79,7 @@ struct TORCH_API ExecutionState {
 };
 
 // Specify how to allocate temporary buffers at initialization.
-struct TORCH_API MemoryPlan {
+struct MemoryPlan {
   MemoryPlan() = default;
 
   explicit MemoryPlan(const c10::IValue& value);
@@ -92,7 +92,7 @@ struct TORCH_API MemoryPlan {
 };
 
 // Location of a symbolic shape among dimensions of the inputs
-struct TORCH_API SymbolicShapePosition {
+struct SymbolicShapePosition {
   SymbolicShapePosition() = default;
   SymbolicShapePosition(int64_t input_idx, int64_t dim_idx)
       : input_idx_(input_idx), dim_idx_(dim_idx) {}
@@ -103,7 +103,7 @@ struct TORCH_API SymbolicShapePosition {
 
 // Represents a compiled NNC function which has a 1-1 correspondence with a
 // `Method` (e.g. `forward`). It's similar as torch::jit::mobile::Function.
-class TORCH_API Function {
+class Function {
  public:
   explicit Function() = default;
 
@@ -193,7 +193,7 @@ class TORCH_API Function {
 // CompilationUnit consists of a set of compiled NNC functions. It has a 1-1
 // correspondence with a `Module`.
 // It's similar as torch::jit::mobile::CompilationUnit.
-class TORCH_API CompilationUnit {
+class CompilationUnit {
  public:
   CompilationUnit() = default;
   CompilationUnit(const CompilationUnit&) = delete;

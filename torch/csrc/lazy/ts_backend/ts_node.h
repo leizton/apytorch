@@ -13,7 +13,7 @@ namespace lazy {
 
 using TSOpVector = std::vector<torch::jit::Value*>;
 
-class TORCH_API TsNode : public lazy::Node {
+class TsNode : public lazy::Node {
  public:
   TsNode(
       OpKind op,
@@ -85,7 +85,7 @@ const OpKind tensor_list_opkind = OpKind::Get("lazy_tensors::tensor_list");
 // TODO(whc) once Shape() API is moved to Node base, also make it virtual, and
 // then implement it as NotImplemented for TensorList, also fixing the assertion
 // that would fail.
-struct TORCH_API TensorList : public TsNode {
+struct TensorList : public TsNode {
   static OpKind ClassOpKind() {
     return tensor_list_opkind;
   }

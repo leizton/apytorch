@@ -15,7 +15,7 @@ namespace detail {
  * binary.
  */
 #if defined ENABLE_RECORD_KERNEL_FUNCTION_DTYPE
-TORCH_API void record_custom_class(std::string name);
+void record_custom_class(std::string name);
 
 /**
  * Record an instance of a custom class being loaded
@@ -197,7 +197,7 @@ inline void checkValidIdent(const std::string& str, const char* type) {
   }
 }
 
-class TORCH_API class_base {
+class class_base {
  protected:
   explicit class_base(
       const std::string& namespaceName,
@@ -215,21 +215,21 @@ class TORCH_API class_base {
 
 } // namespace detail
 
-TORCH_API void registerCustomClass(at::ClassTypePtr class_type);
-TORCH_API void registerCustomClassMethod(std::unique_ptr<jit::Function> method);
+void registerCustomClass(at::ClassTypePtr class_type);
+void registerCustomClassMethod(std::unique_ptr<jit::Function> method);
 
 // Given a qualified name (e.g. __torch__.torch.classes.Foo), return
 // the ClassType pointer to the Type that describes that custom class,
 // or nullptr if no class by that name was found.
-TORCH_API at::ClassTypePtr getCustomClass(const std::string& name);
+at::ClassTypePtr getCustomClass(const std::string& name);
 
 // Given an IValue, return true if the object contained in that IValue
 // is a custom C++ class, otherwise return false.
-TORCH_API bool isCustomClass(const c10::IValue& v);
+bool isCustomClass(const c10::IValue& v);
 
 // This API is for testing purposes ONLY. It should not be used in
 // any load-bearing code.
-TORCH_API std::vector<c10::FunctionSchema> customClassSchemasForBCCheck();
+std::vector<c10::FunctionSchema> customClassSchemasForBCCheck();
 
 namespace jit {
 using ::torch::registerCustomClass;

@@ -17,7 +17,7 @@ namespace detail {
 
 enum class LogLevel { Trace, Debug, Info, Warning, Error };
 
-TORCH_API bool isLogLevelEnabled(LogLevel level) noexcept;
+bool isLogLevelEnabled(LogLevel level) noexcept;
 
 template <typename... T>
 std::string formatLogMessage(fmt::string_view fmt, T&&... args) {

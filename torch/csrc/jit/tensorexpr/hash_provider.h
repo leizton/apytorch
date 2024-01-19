@@ -11,7 +11,7 @@ namespace torch {
 namespace jit {
 namespace tensorexpr {
 
-struct TORCH_API SimplifierHashType {
+struct SimplifierHashType {
   SimplifierHashType() = default;
   explicit SimplifierHashType(size_t s) : _h(s) {}
 
@@ -52,7 +52,7 @@ class Polynomial;
 
 /* Expression hasher providing comparable values representing sub-exprs.
  * Uses memoization to avoid excessive recursion. */
-class TORCH_API HashProvider : public IRVisitor {
+class HashProvider : public IRVisitor {
  public:
   template <class T>
   SimplifierHashType hash(T e) {

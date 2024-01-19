@@ -5,7 +5,7 @@
 namespace torch {
 namespace jit {
 
-TORCH_API void ONNXFunctionCallSubstitution(Graph& graph);
+void ONNXFunctionCallSubstitution(Graph& graph);
 
 }
 } // namespace torch

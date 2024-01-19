@@ -19,9 +19,9 @@ enum MappedAllocatorModes {
 // the non-file descriptor constructor
 enum WithFd { WITH_FD };
 
-TORCH_API std::string NewProcessWideShmHandle();
+std::string NewProcessWideShmHandle();
 
-class TORCH_API MapAllocator {
+class MapAllocator {
  public:
   MapAllocator(c10::string_view filename, int flags, size_t size);
   MapAllocator(
@@ -92,11 +92,11 @@ class TORCH_API MapAllocator {
 };
 
 // Base-from-member idiom
-struct TORCH_API RefcountedMapAllocatorArgCheck {
+struct RefcountedMapAllocatorArgCheck {
   RefcountedMapAllocatorArgCheck(int flags);
 };
 
-class TORCH_API RefcountedMapAllocator : private RefcountedMapAllocatorArgCheck,
+class RefcountedMapAllocator : private RefcountedMapAllocatorArgCheck,
                                          public MapAllocator {
  public:
   RefcountedMapAllocator(const char* filename, int flags, size_t size);

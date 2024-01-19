@@ -20,7 +20,7 @@
 #include <utility>
 
 namespace torch {
-class TORCH_API CustomClassHolder : public c10::intrusive_ptr_target {};
+class CustomClassHolder : public c10::intrusive_ptr_target {};
 namespace jit {
 using ::torch::CustomClassHolder;
 struct Function;
@@ -43,17 +43,17 @@ class RRefInterface;
 struct ClassType;
 using ClassTypePtr = std::shared_ptr<ClassType>;
 
-TORCH_API bool _fastEqualsForContainer(const IValue& lhs, const IValue& rhs);
+bool _fastEqualsForContainer(const IValue& lhs, const IValue& rhs);
 
-TORCH_API torch::jit::Function* checkObjectSortSchema(
+torch::jit::Function* checkObjectSortSchema(
     const c10::ClassTypePtr& t,
     std::stringstream& why_not);
 
 // A comparator that checks ordering of two IValues of same type.
 typedef std::function<bool(const IValue& a, const IValue& b)> IValueComparator;
 
-TORCH_API IValueComparator getLessThanComparator(const IValue& v);
-TORCH_API IValueComparator getGreaterThanComparator(const IValue& v);
+IValueComparator getLessThanComparator(const IValue& v);
+IValueComparator getGreaterThanComparator(const IValue& v);
 
 namespace ivalue {
 struct Tuple;
@@ -220,7 +220,7 @@ struct Capsule {
 ///   // `my_ivalue` is tagged as an int and cannot be used as another type
 ///   torch::Tensor my_tensor = my_ivalue.toTensor();
 /// \endrst
-struct TORCH_API IValue final {
+struct IValue final {
   IValue(const IValue& rhs) : IValue(rhs.payload, rhs.tag) {
     if (isIntrusivePtr() &&
         payload.u.as_intrusive_ptr != c10::UndefinedTensorImpl::singleton()) {
@@ -278,8 +278,8 @@ struct TORCH_API IValue final {
    * This implements the same semantics as `bool(lhs == rhs)` in Python. which
    * is the same as `equals()` except for Tensor types.
    */
-  TORCH_API friend bool operator==(const IValue& lhs, const IValue& rhs);
-  TORCH_API friend bool operator!=(const IValue& lhs, const IValue& rhs);
+  friend bool operator==(const IValue& lhs, const IValue& rhs);
+  friend bool operator!=(const IValue& lhs, const IValue& rhs);
 
   /**
    * Identity comparison. Checks if `this` is the same object as `rhs`. The
@@ -320,7 +320,7 @@ struct TORCH_API IValue final {
    * compare identity) [tensor1] == [tensor1_copy] -> RuntimeError:
    * Boolean value of Tensor with more than one value is ambiguous
    */
-  TORCH_API friend bool _fastEqualsForContainer(
+  friend bool _fastEqualsForContainer(
       const IValue& lhs,
       const IValue& rhs);
 
@@ -1037,7 +1037,7 @@ struct TORCH_API IValue final {
   // This is different from `repr()` in that there is no expectation that we can
   // exactly reconstruct an IValue from the output; feel free to use a
   // concise/pretty form
-  TORCH_API friend std::ostream& operator<<(std::ostream& out, const IValue& v);
+  friend std::ostream& operator<<(std::ostream& out, const IValue& v);
 
   bool isPtrType() const {
     if (isTensor()) {
@@ -1345,7 +1345,7 @@ struct TORCH_API IValue final {
   friend struct WeakIValue;
 };
 
-struct TORCH_API WeakIValue final {
+struct WeakIValue final {
   WeakIValue() = default;
 
   WeakIValue(const WeakIValue& rhs)
@@ -1470,7 +1470,7 @@ struct TORCH_API WeakIValue final {
 // An owning pointer to a type. When the type is class type, it requires a pair
 // of shared_ptrs to the class type and its owning CU, so that the class type is
 // guaranteed to stay alive as long as we hold this object.
-struct TORCH_API StrongTypePtr {
+struct StrongTypePtr {
   StrongTypePtr(std::shared_ptr<torch::jit::CompilationUnit> cu, TypePtr type);
 
   std::shared_ptr<torch::jit::CompilationUnit> cu_;
@@ -1482,7 +1482,7 @@ struct TORCH_API StrongTypePtr {
 // into a graph, if we used a strong pointer we would have a circular reference
 // from Object -> CompilationUnit and CompilationUnit -> Graph (which owns the
 // Constant Object)
-struct TORCH_API WeakTypePtr {
+struct WeakTypePtr {
   WeakTypePtr(std::weak_ptr<torch::jit::CompilationUnit> cu, TypePtr type);
 
   std::weak_ptr<torch::jit::CompilationUnit> cu_;
@@ -1523,7 +1523,7 @@ struct WeakOrStrongCompilationUnit {
 
 // An Object will hold a non-owning Compilation Unit reference if it is a
 // Constant in the graph and a Owning reference otherwise
-struct TORCH_API WeakOrStrongTypePtr {
+struct WeakOrStrongTypePtr {
   explicit WeakOrStrongTypePtr(WeakTypePtr weak)
       : cu_(WeakOrStrongCompilationUnit(std::move(weak.cu_))),
         type_(std::move(weak.type_)) {}

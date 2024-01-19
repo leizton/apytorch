@@ -394,7 +394,7 @@ c10::optional<std::shared_ptr<Graph>> shapeComputeGraphForSchema(
   return c10::nullopt;
 }
 
-TORCH_API c10::optional<BoundedShapeGraphs> boundedGraphsForSchema(
+c10::optional<BoundedShapeGraphs> boundedGraphsForSchema(
     const FunctionSchema& schema) {
   std::lock_guard<std::mutex> guard(lock);
   if (cached_bounded_schema_to_graph.empty()) {

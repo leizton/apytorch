@@ -10,9 +10,9 @@ namespace at {
 // because it allows checking if a particular geometry is contiguous without
 // explicitly constructing a tensor, e.g., when you want to choose a kernel
 // strategy based on whether a subgeometry is contiguous.
-TORCH_API bool geometry_is_contiguous(IntArrayRef sizes, IntArrayRef strides);
+bool geometry_is_contiguous(IntArrayRef sizes, IntArrayRef strides);
 
-struct TORCH_API TensorGeometry {
+struct TensorGeometry {
   TensorGeometry() = default;
 
   explicit TensorGeometry(c10::SymIntArrayRef sizes)

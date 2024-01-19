@@ -22,7 +22,7 @@ namespace profiler {
 using experimental_event_t = std::shared_ptr<torch::profiler::impl::Result>;
 using extra_meta_t = std::unordered_map<std::string, std::string>;
 
-struct TORCH_API KinetoEvent {
+struct KinetoEvent {
   KinetoEvent(
       const std::shared_ptr<const torch::profiler::impl::Result>&,
       const bool verbose);
@@ -78,7 +78,7 @@ struct TORCH_API KinetoEvent {
 // Consolidating events returned directly from Kineto
 // with events manually created by us (e.g. start/stop marks,
 // memory allocation events)
-struct TORCH_API ProfilerResult {
+struct ProfilerResult {
   ProfilerResult();
   ProfilerResult(
       uint64_t start_time,
@@ -130,7 +130,7 @@ struct TORCH_API ProfilerResult {
  * @param event_name: name of the event, e.g. op name
  * @param backend_name: name of the backend where the event took place.
  */
-TORCH_API void reportBackendEventToActiveKinetoProfiler(
+void reportBackendEventToActiveKinetoProfiler(
     const int64_t start_time_us,
     const int64_t end_time_us,
     const int64_t debug_handle,
@@ -138,7 +138,7 @@ TORCH_API void reportBackendEventToActiveKinetoProfiler(
     const std::string& event_name,
     const std::string& backend_name);
 
-TORCH_API void enableProfiler(
+void enableProfiler(
     const torch::profiler::impl::ProfilerConfig& config,
     const std::set<torch::profiler::impl::ActivityType>& activities,
     const std::unordered_set<at::RecordScope>& scopes = {});
@@ -165,15 +165,15 @@ using post_process_t = std::function<void(
     /*debug_handle */ int64_t,
     /*jit_stack    */ std::vector<std::string>&,
     /*jit_modules  */ std::vector<std::string>&)>;
-TORCH_API void enableProfilerWithEventPostProcess(
+void enableProfilerWithEventPostProcess(
     const torch::profiler::impl::ProfilerConfig& config,
     const std::set<torch::profiler::impl::ActivityType>& activities,
     post_process_t&& cb,
     const std::unordered_set<at::RecordScope>& scopes = {});
 
-TORCH_API std::unique_ptr<ProfilerResult> disableProfiler();
+std::unique_ptr<ProfilerResult> disableProfiler();
 
-TORCH_API void prepareProfiler(
+void prepareProfiler(
     const torch::profiler::impl::ProfilerConfig& config,
     const std::set<torch::profiler::impl::ActivityType>& activities);
 
@@ -184,7 +184,7 @@ namespace profiler {
 namespace impl {
 
 // Experimental.
-TORCH_API void _reportVulkanEventToProfiler(vulkan_id_t id);
+void _reportVulkanEventToProfiler(vulkan_id_t id);
 
 } // namespace impl
 } // namespace profiler

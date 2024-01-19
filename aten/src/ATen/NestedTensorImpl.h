@@ -15,7 +15,7 @@ struct NestedTensorImpl;
 inline bool nested_tensor_impl_is_contiguous(const NestedTensorImpl* nt);
 int64_t get_numel_from_nested_size_tensor(const at::Tensor& tensor);
 
-struct TORCH_API NestedTensorImpl : public c10::TensorImpl {
+struct NestedTensorImpl : public c10::TensorImpl {
   explicit NestedTensorImpl(
       Storage storage,
       c10::DispatchKeySet key_set,

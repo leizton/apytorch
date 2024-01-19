@@ -9,7 +9,7 @@ namespace fuser {
 
 // Host-side view of TensorInfo
 // Note dims[0] - we need to dynamically allocate the dims.
-struct TORCH_API TensorInfo {
+struct TensorInfo {
   uint32_t* sizes(size_t nDim) {
     return &sizes_strides[0];
   }

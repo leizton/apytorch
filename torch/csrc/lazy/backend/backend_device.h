@@ -17,7 +17,7 @@ namespace torch {
 namespace lazy {
 
 // Backend should extend it and define their own supported hardware types.
-struct TORCH_API BackendDeviceType {
+struct BackendDeviceType {
   int8_t type{(int8_t)at::kCPU};
   // Note: previous default value was '0', which actually maps to at::kCPU, at
   // least now it is explicit, we may want to make default/undefined semantics
@@ -31,7 +31,7 @@ struct TORCH_API BackendDeviceType {
   }
 };
 
-class TORCH_API BackendDevice {
+class BackendDevice {
  public:
   // The default constructor will set both the device type and ordinal
   // to backend specific defaults.
@@ -63,27 +63,27 @@ class TORCH_API BackendDevice {
   int64_t ordinal_;
 };
 
-TORCH_API std::ostream& operator<<(
+std::ostream& operator<<(
     std::ostream& os,
     const BackendDevice& device);
 
 // Helpers for converting a c10::Device to BackendDevice and vice versa.
-TORCH_API BackendDevice atenDeviceToBackendDevice(const c10::Device& device);
-TORCH_API c10::Device backendDeviceToAtenDevice(const BackendDevice& device);
+BackendDevice atenDeviceToBackendDevice(const c10::Device& device);
+c10::Device backendDeviceToAtenDevice(const BackendDevice& device);
 
 // Tries to extract the backend device out of the lazy tensor. Returns nullopt
 // if the input is not a lazy tensor.
-TORCH_API c10::optional<BackendDevice> GetBackendDevice(
+c10::optional<BackendDevice> GetBackendDevice(
     const at::ITensorListRef tensors);
-TORCH_API c10::optional<BackendDevice> GetBackendDevice(
+c10::optional<BackendDevice> GetBackendDevice(
     const at::TensorList tensors);
-TORCH_API c10::optional<BackendDevice> GetBackendDevice(
+c10::optional<BackendDevice> GetBackendDevice(
     const at::Tensor& tensor);
-TORCH_API c10::optional<BackendDevice> GetBackendDevice(
+c10::optional<BackendDevice> GetBackendDevice(
     const c10::optional<c10::Device>& device);
 
 // For variadic template.
-TORCH_API c10::optional<BackendDevice> GetBackendDevice();
+c10::optional<BackendDevice> GetBackendDevice();
 
 template <typename T, typename... Args>
 c10::optional<BackendDevice> GetBackendDevice(

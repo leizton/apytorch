@@ -51,11 +51,11 @@ namespace jit {
  */
 class AliasDb {
  public:
-  TORCH_API explicit AliasDb(
+  explicit AliasDb(
       std::shared_ptr<Graph> graphi,
       bool isFrozen = false,
       bool descendFunctionCalls = false);
-  TORCH_API ~AliasDb();
+  ~AliasDb();
 
   // There are limitations to what effects the alias analysis can track. Two
   // kinds of nodes may have untracked effects:
@@ -69,46 +69,46 @@ class AliasDb {
 
   // Does `n` write to an alias of one of the values in `vs`?
   // if `recurseBlocks` is true, consider writes on the nodes in `n`s sub-blocks
-  TORCH_API bool writesToAlias(Node* n, const ValueSet& vs) const;
+  bool writesToAlias(Node* n, const ValueSet& vs) const;
 
   // Does `a` and `b` potentially share a memory location or do either
   // hold in memory any element that exists in the other
-  TORCH_API bool mayContainAlias(Value* a, Value* b) const;
+  bool mayContainAlias(Value* a, Value* b) const;
 
-  TORCH_API bool mayContainAlias(Value* a, const at::ArrayRef<Value*> b) const;
+  bool mayContainAlias(Value* a, const at::ArrayRef<Value*> b) const;
 
   // Do any values in group `a` share a memory location or hold in memory
   // any element that exists in group `b`
-  TORCH_API bool mayContainAlias(
+  bool mayContainAlias(
       const at::ArrayRef<Value*> a,
       const at::ArrayRef<Value*> b) const;
 
   // Do `a` and `b` potentially share a memory location?
-  TORCH_API bool mayAlias(const Value* a, const Value* b) const;
+  bool mayAlias(const Value* a, const Value* b) const;
   // Do any values in group `a` potentially share a memory location with any
   // value in group `b`? i.e. may they overlap?
-  TORCH_API bool mayAlias(const ValueSet& a, const ValueSet& b) const;
+  bool mayAlias(const ValueSet& a, const ValueSet& b) const;
 
   // Do any nodes write to an alias set input to `n`?
-  TORCH_API bool hasInputWriters(const Node* n) const;
+  bool hasInputWriters(const Node* n) const;
 
   // Do any nodes write to an alias set output by `n`?
-  TORCH_API bool hasOutputWriters(const Node* n) const;
+  bool hasOutputWriters(const Node* n) const;
 
   // Do any nodes write to an alias set inputed/outputed by `n`?
-  TORCH_API bool hasWriters(const Node* n) const;
+  bool hasWriters(const Node* n) const;
 
   // Do any nodes write to `v`s memory location?
-  TORCH_API bool hasWriters(const Value* v) const;
+  bool hasWriters(const Value* v) const;
 
   // Is the operation in-place? i.e. doesn't write anywhere but locations it
   // reads from.
-  TORCH_API bool isMutable(Node* n) const;
+  bool isMutable(Node* n) const;
 
-  TORCH_API bool escapesScope(const at::ArrayRef<Value*>& vs) const;
+  bool escapesScope(const at::ArrayRef<Value*>& vs) const;
 
   // Is it safe to change whether `a` and `b` alias each other ?
-  TORCH_API bool safeToChangeAliasingRelationship(
+  bool safeToChangeAliasingRelationship(
       const at::ArrayRef<Value*>& a,
       const at::ArrayRef<Value*>& b) const;
 
@@ -121,15 +121,15 @@ class AliasDb {
   //
   // Returns `false` if it's impossible to move `n` after `MovePoint` without
   // violating dependencies, otherwise executes the move and returns `true`
-  TORCH_API bool moveAfterTopologicallyValid(Node* n, Node* movePoint);
-  TORCH_API bool moveBeforeTopologicallyValid(Node* n, Node* movePoint);
+  bool moveAfterTopologicallyValid(Node* n, Node* movePoint);
+  bool moveBeforeTopologicallyValid(Node* n, Node* movePoint);
 
   bool couldMoveAfterTopologically(Node* n, Node* movePoint);
   bool couldMoveBeforeTopologically(Node* n, Node* movePoint);
 
   // For debugging: print alias db state to stdout
-  TORCH_API void dump() const;
-  TORCH_API std::string toString() const;
+  void dump() const;
+  std::string toString() const;
 
   // Generates a DOT (www.graphviz.org) graph representation
   //
@@ -139,8 +139,8 @@ class AliasDb {
   //  for example you can't use "~/temp/aliasdb.dot"
   //  (instead, use "/home/user/temp/aliasdb.dot")
   //
-  TORCH_API bool dumpToGraphvizFile(const char* filename) const;
-  TORCH_API std::string toGraphviz() const;
+  bool dumpToGraphvizFile(const char* filename) const;
+  std::string toGraphviz() const;
 
   // Returns `true` if the given element is mutable or if it is a
   // container type with an internal mutable element (e.g.
@@ -161,11 +161,11 @@ class AliasDb {
    * this.
    */
   // Copy `existing`s aliasing info to `new_value`, and remove `existing`.
-  TORCH_API void replaceWithNewValue(Value* existing, Value* new_value);
+  void replaceWithNewValue(Value* existing, Value* new_value);
   // Copy `from`s aliasing info to `to`.
-  TORCH_API void copyValue(Value* from, Value* to);
+  void copyValue(Value* from, Value* to);
   // Create a new `value` that does not alias anything else.
-  TORCH_API void createValue(const Value* value);
+  void createValue(const Value* value);
 
   // Enable more precise treatment of prim::TupleConstruct.
   void enablePreciseTupleContainerAnalysis();
@@ -241,7 +241,7 @@ class AliasDb {
    */
   void makeAllAlias(const std::vector<Value*>& values);
   void makePointerTo(const Value* value, const Value* to);
-  TORCH_API void addToContainedElements(
+  void addToContainedElements(
       const Value* element,
       const Value* container);
   void mapAliases(at::ArrayRef<Value*> to, at::ArrayRef<Value*> from);
@@ -316,7 +316,7 @@ class AliasDb {
 // Helper check that invariants over AliasDb are maintained.
 // Useful if you are using the AliasDb mutation API and want to check you did
 // the right thing.
-TORCH_API void Lint(const AliasDb* db);
+void Lint(const AliasDb* db);
 
 } // namespace jit
 } // namespace torch

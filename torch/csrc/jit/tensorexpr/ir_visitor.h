@@ -7,7 +7,7 @@ namespace torch {
 namespace jit {
 namespace tensorexpr {
 
-class TORCH_API IRVisitor {
+class IRVisitor {
  public:
   virtual ~IRVisitor() = default;
   virtual void visit(AddPtr v);

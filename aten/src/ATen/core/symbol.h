@@ -50,7 +50,7 @@ const std::string& domain_prefix();
 // A Symbol is like an interned string, but with a little extra
 // structure; it is namespaced via SymbolNamespace and the resulting
 // intern pointers support efficient namespace testing.
-struct TORCH_API Symbol {
+struct Symbol {
   explicit constexpr Symbol() : value(0) {};
   explicit constexpr Symbol(unique_t uniq)
   : value(uniq) {}

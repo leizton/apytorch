@@ -5,7 +5,7 @@
 
 namespace torch::jit {
 
-struct TORCH_API SimpleGraphExecutorImpl : public GraphExecutorImplBase {
+struct SimpleGraphExecutorImpl : public GraphExecutorImplBase {
   SimpleGraphExecutorImpl(
       const std::shared_ptr<Graph>& graph,
       std::string function_name);

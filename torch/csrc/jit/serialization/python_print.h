@@ -27,7 +27,7 @@ struct PrintDepsTable {
   std::unordered_set<c10::NamedTypePtr> non_unique_;
 };
 
-struct TORCH_API PythonPrint {
+struct PythonPrint {
   PythonPrint(
       std::vector<IValue>& constant_table,
       PrintDepsTable& deps_table,
@@ -46,9 +46,9 @@ struct TORCH_API PythonPrint {
   std::shared_ptr<PythonPrintImpl> pImpl;
 };
 
-TORCH_API bool printerHasSpecialCaseFor(c10::Symbol sym);
+bool printerHasSpecialCaseFor(c10::Symbol sym);
 
-TORCH_API void jitModuleToPythonCodeAndConstants(
+void jitModuleToPythonCodeAndConstants(
     const Module& module,
     ExtraFilesMap* jit_sources, // output
     std::vector<IValue>* constants // output

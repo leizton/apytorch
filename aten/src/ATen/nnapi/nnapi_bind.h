@@ -13,9 +13,9 @@ namespace nnapi {
 namespace bind {
 
 // NOLINTNEXTLINE(cppcoreguidelines-avoid-non-const-global-variables)
-TORCH_API extern nnapi_wrapper* nnapi;
+extern nnapi_wrapper* nnapi;
 // NOLINTNEXTLINE(cppcoreguidelines-avoid-non-const-global-variables)
-TORCH_API extern nnapi_wrapper* check_nnapi;
+extern nnapi_wrapper* check_nnapi;
 
 #define MAKE_SMART_PTR(type) \
   struct type ## Freer { \
@@ -37,12 +37,12 @@ struct NnapiCompilation : torch::jit::CustomClassHolder {
     ~NnapiCompilation() override = default;
 
     // only necessary for older models that still call init()
-    TORCH_API void init(
+    void init(
       at::Tensor serialized_model_tensor,
       std::vector<at::Tensor> parameter_buffers
     );
 
-    TORCH_API void init2(
+    void init2(
       at::Tensor serialized_model_tensor,
       const std::vector<at::Tensor>& parameter_buffers,
       int64_t compilation_preference,
@@ -50,7 +50,7 @@ struct NnapiCompilation : torch::jit::CustomClassHolder {
     );
 
 
-    TORCH_API void run(std::vector<at::Tensor> inputs, std::vector<at::Tensor> outputs);
+    void run(std::vector<at::Tensor> inputs, std::vector<at::Tensor> outputs);
     static void get_operand_type(const at::Tensor& t, ANeuralNetworksOperandType* operand, std::vector<uint32_t>* dims);
 
     ModelPtr model_;

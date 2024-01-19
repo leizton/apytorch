@@ -47,7 +47,7 @@ struct Link {
   int32_t window{1};
 };
 
-struct TORCH_API ScratchWorkspaces {
+struct ScratchWorkspaces {
   std::vector<std::shared_ptr<Workspace>> stepWorkspaces;
   std::shared_ptr<Workspace> sharedBlobsWs = nullptr;
 };
@@ -60,7 +60,7 @@ inline void UpdateTimestepBlob(Workspace* ws, std::string blob_name, int t) {
       t;
 }
 
-TORCH_API std::map<string, string> GetRecurrentMapping(
+std::map<string, string> GetRecurrentMapping(
     const std::vector<detail::Link>& links,
     bool backward);
 
@@ -159,15 +159,15 @@ void initializeRecurrentInput(
   }
 }
 
-TORCH_API void PrependOps(std::vector<OperatorDef> ops, NetDef* netdef);
+void PrependOps(std::vector<OperatorDef> ops, NetDef* netdef);
 
-TORCH_API void AddApplyLinkOps(
+void AddApplyLinkOps(
     const vector<Link>& links,
     std::string timestep,
     const DeviceOption& device_option,
     NetDef* netdef);
 
-TORCH_API void extractLinks(
+void extractLinks(
     OperatorBase* op,
     const std::string& internalArg,
     const std::string& externalArg,
@@ -175,7 +175,7 @@ TORCH_API void extractLinks(
     const std::string& windowArg,
     std::vector<detail::Link>* links);
 
-TORCH_API NetDef
+NetDef
 extractNetDef(const OperatorDef& op, const std::string& argName);
 } // namespace detail
 

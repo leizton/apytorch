@@ -33,27 +33,27 @@ using ::google::protobuf::MessageLite;
 // Note that we can't use DeviceType_Name, because that is only available in
 // protobuf-full, and some platforms (like mobile) may want to use
 // protobuf-lite instead.
-TORCH_API std::string DeviceTypeName(const int32_t& d);
+std::string DeviceTypeName(const int32_t& d);
 
-TORCH_API int DeviceId(const DeviceOption& option);
+int DeviceId(const DeviceOption& option);
 
 // Returns if the two DeviceOptions are pointing to the same device.
-TORCH_API bool IsSameDevice(const DeviceOption& lhs, const DeviceOption& rhs);
+bool IsSameDevice(const DeviceOption& lhs, const DeviceOption& rhs);
 
-TORCH_API bool IsCPUDeviceType(int device_type);
-TORCH_API bool IsGPUDeviceType(int device_type);
+bool IsCPUDeviceType(int device_type);
+bool IsGPUDeviceType(int device_type);
 
 // Common interfaces that reads file contents into a string.
-TORCH_API bool ReadStringFromFile(const char* filename, string* str);
-TORCH_API bool WriteStringToFile(const string& str, const char* filename);
+bool ReadStringFromFile(const char* filename, string* str);
+bool WriteStringToFile(const string& str, const char* filename);
 
 // Common interfaces that are supported by both lite and full protobuf.
-TORCH_API bool ReadProtoFromBinaryFile(const char* filename, MessageLite* proto);
+bool ReadProtoFromBinaryFile(const char* filename, MessageLite* proto);
 inline bool ReadProtoFromBinaryFile(const string filename, MessageLite* proto) {
   return ReadProtoFromBinaryFile(filename.c_str(), proto);
 }
 
-TORCH_API void WriteProtoToBinaryFile(const MessageLite& proto, const char* filename);
+void WriteProtoToBinaryFile(const MessageLite& proto, const char* filename);
 inline void WriteProtoToBinaryFile(const MessageLite& proto,
                                    const string& filename) {
   return WriteProtoToBinaryFile(proto, filename.c_str());
@@ -70,9 +70,9 @@ inline bool ParseFromString(const string& spec, MessageLite* proto) {
 } // namespace TextFormat
 
 
-TORCH_API string ProtoDebugString(const MessageLite& proto);
+string ProtoDebugString(const MessageLite& proto);
 
-TORCH_API bool ParseProtoFromLargeString(const string& str, MessageLite* proto);
+bool ParseProtoFromLargeString(const string& str, MessageLite* proto);
 
 // Text format MessageLite wrappers: these functions do nothing but just
 // allowing things to compile. It will produce a runtime error if you are using
@@ -115,19 +115,19 @@ inline bool ReadProtoFromFile(const string& filename, MessageLite* proto) {
 using ::google::protobuf::Message;
 
 namespace TextFormat {
-TORCH_API bool ParseFromString(const string& spec, Message* proto);
+bool ParseFromString(const string& spec, Message* proto);
 } // namespace TextFormat
 
-TORCH_API string ProtoDebugString(const Message& proto);
+string ProtoDebugString(const Message& proto);
 
-TORCH_API bool ParseProtoFromLargeString(const string& str, Message* proto);
+bool ParseProtoFromLargeString(const string& str, Message* proto);
 
-TORCH_API bool ReadProtoFromTextFile(const char* filename, Message* proto);
+bool ReadProtoFromTextFile(const char* filename, Message* proto);
 inline bool ReadProtoFromTextFile(const string filename, Message* proto) {
   return ReadProtoFromTextFile(filename.c_str(), proto);
 }
 
-TORCH_API void WriteProtoToTextFile(const Message& proto, const char* filename, bool throwIfError = true);
+void WriteProtoToTextFile(const Message& proto, const char* filename, bool throwIfError = true);
 inline void WriteProtoToTextFile(const Message& proto, const string& filename, bool throwIfError = true) {
   return WriteProtoToTextFile(proto, filename.c_str(), throwIfError);
 }
@@ -199,8 +199,8 @@ inline OperatorDef CreateOperatorDef(
       engine);
 }
 
-TORCH_API bool HasOutput(const OperatorDef& op, const std::string& output);
-TORCH_API bool HasInput(const OperatorDef& op, const std::string& input);
+bool HasOutput(const OperatorDef& op, const std::string& output);
+bool HasInput(const OperatorDef& op, const std::string& input);
 
 /**
  * @brief A helper class to index into arguments.
@@ -315,36 +315,36 @@ class C10_EXPORT ArgumentHelper {
 
 // Helper methods to get an argument from OperatorDef or NetDef given argument
 // name. Throws if argument does not exist.
-TORCH_API const Argument& GetArgument(const OperatorDef& def, c10::string_view name);
-TORCH_API const Argument& GetArgument(const NetDef& def, c10::string_view name);
+const Argument& GetArgument(const OperatorDef& def, c10::string_view name);
+const Argument& GetArgument(const NetDef& def, c10::string_view name);
 // Helper methods to get an argument from OperatorDef or NetDef given argument
 // name. Returns nullptr if argument does not exist.
-TORCH_API const Argument* GetArgumentPtr(const OperatorDef& def, c10::string_view name);
-TORCH_API const Argument* GetArgumentPtr(const NetDef& def, c10::string_view name);
+const Argument* GetArgumentPtr(const OperatorDef& def, c10::string_view name);
+const Argument* GetArgumentPtr(const NetDef& def, c10::string_view name);
 
 // Helper methods to query a boolean argument flag from OperatorDef or NetDef
 // given argument name. If argument does not exist, return default value.
 // Throws if argument exists but the type is not boolean.
-TORCH_API bool GetFlagArgument(
+bool GetFlagArgument(
     const OperatorDef& def,
     c10::string_view name,
     bool default_value = false);
-TORCH_API bool GetFlagArgument(
+bool GetFlagArgument(
     const NetDef& def,
     c10::string_view name,
     bool default_value = false);
 
-TORCH_API Argument* GetMutableArgument(
+Argument* GetMutableArgument(
     const string& name,
     const bool create_if_missing,
     OperatorDef* def);
-TORCH_API Argument* GetMutableArgument(
+Argument* GetMutableArgument(
     const string& name,
     const bool create_if_missing,
     NetDef* def);
 
 template <typename T>
-TORCH_API Argument MakeArgument(const string& name, const T& value);
+Argument MakeArgument(const string& name, const T& value);
 
 template <typename T, typename Def>
 inline void AddArgument(const string& name, const T& value, Def* def) {
@@ -363,7 +363,7 @@ bool inline operator==(const DeviceOption& dl, const DeviceOption& dr) {
 // - Going through list of ops in order, all op inputs must be outputs
 // from other ops, or registered as external inputs.
 // - All external outputs must be outputs of some operators.
-TORCH_API void cleanupExternalInputsAndOutputs(NetDef* net);
+void cleanupExternalInputsAndOutputs(NetDef* net);
 
 } // namespace caffe2
 

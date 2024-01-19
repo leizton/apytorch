@@ -17,7 +17,7 @@ constexpr const char* MTIA_HELP =
     "this error has occurred because you are trying "
     "to use some MTIA's functionality without MTIA extension included.";
 
-struct TORCH_API MTIAHooksInterface {
+struct MTIAHooksInterface {
   virtual ~MTIAHooksInterface() = default;
 
   virtual void initMTIA() const {
@@ -39,13 +39,13 @@ struct TORCH_API MTIAHooksInterface {
   }
 };
 
-struct TORCH_API MTIAHooksArgs {};
+struct MTIAHooksArgs {};
 
 C10_DECLARE_REGISTRY(MTIAHooksRegistry, MTIAHooksInterface, MTIAHooksArgs);
 #define REGISTER_MTIA_HOOKS(clsname) \
   C10_REGISTER_CLASS(MTIAHooksRegistry, clsname, clsname)
 
 namespace detail {
-TORCH_API const MTIAHooksInterface& getMTIAHooks();
+const MTIAHooksInterface& getMTIAHooks();
 } // namespace detail
 } // namespace at

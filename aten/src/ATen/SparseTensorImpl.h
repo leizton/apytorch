@@ -13,7 +13,7 @@
 #endif
 
 namespace at {
-struct TORCH_API SparseTensorImpl : public TensorImpl {
+struct SparseTensorImpl : public TensorImpl {
   // Stored in COO format, indices + values.
 
   // INVARIANTS:

@@ -33,7 +33,7 @@ namespace nn {
 /// TransformerEncoderLayer encoderLayer(TransformerEncoderLayerOptions(512,
 /// 8).dropout(0.1));
 /// ```
-class TORCH_API TransformerEncoderLayerImpl
+class TransformerEncoderLayerImpl
     : public Cloneable<TransformerEncoderLayerImpl> {
  public:
   TransformerEncoderLayerImpl(int64_t d_model, int64_t nhead)
@@ -108,7 +108,7 @@ TORCH_MODULE(TransformerEncoderLayer);
 /// TransformerDecoderLayer model(TransformerDecoderLayerOptions(512,
 /// 8).dropout(0.2));
 /// ```
-class TORCH_API TransformerDecoderLayerImpl
+class TransformerDecoderLayerImpl
     : public Cloneable<TransformerDecoderLayerImpl> {
  public:
   TransformerDecoderLayerImpl(int64_t d_model, int64_t nhead)

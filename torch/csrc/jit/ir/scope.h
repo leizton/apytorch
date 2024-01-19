@@ -27,7 +27,7 @@ struct Scope;
 using ScopePtr = c10::intrusive_ptr<Scope>;
 using c10::Symbol;
 
-struct TORCH_API Scope : public c10::intrusive_ptr_target {
+struct Scope : public c10::intrusive_ptr_target {
  private:
   ScopePtr parent_;
   Symbol name_;
@@ -122,7 +122,7 @@ using InlinedCallStackPtr = c10::intrusive_ptr<InlinedCallStack>;
 using InlinedCallStackEntry =
     std::tuple<Function*, SourceRange, c10::optional<ModuleInstanceInfo>>;
 
-struct TORCH_API InlinedCallStack : public c10::intrusive_ptr_target {
+struct InlinedCallStack : public c10::intrusive_ptr_target {
  private:
   c10::optional<InlinedCallStackPtr> callee_;
   Function* fn_;

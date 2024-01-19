@@ -22,7 +22,7 @@ class DeserializationStorageContext;
 // PickleOpCode::NEWOBJ, and the last_opcode_ member below that should be
 // deleted at some point, the Pickler doesn't produce it and it's only around to
 // support models saved before 1.1
-class TORCH_API Unpickler {
+class Unpickler {
   AT_DISALLOW_COPY_AND_ASSIGN(Unpickler);
 
   using TypeParserT = c10::TypePtr (*)(const std::string&);

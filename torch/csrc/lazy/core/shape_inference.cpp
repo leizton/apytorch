@@ -96,7 +96,7 @@ static std::vector<int64_t> expand_param_if_needed(
 #pragma GCC diagnostic push
 #pragma GCC diagnostic ignored "-Wunused-parameter"
 
-TORCH_API std::vector<Shape> compute_shape_arange_out(
+std::vector<Shape> compute_shape_arange_out(
     const at::Scalar& start,
     const at::Scalar& end,
     const at::Scalar& step,
@@ -522,7 +522,7 @@ std::vector<Shape> compute_shape_cat(at::TensorList tensors, int64_t dim) {
   return {Shape(tensors[0].scalar_type(), out_shape)};
 }
 
-TORCH_API std::vector<torch::lazy::Shape> compute_shape_cholesky(
+std::vector<torch::lazy::Shape> compute_shape_cholesky(
     const at::Tensor& self,
     bool upper) {
   return {Shape(self.scalar_type(), self.sizes().vec())};
@@ -734,7 +734,7 @@ std::vector<Shape> compute_shape_zero(const at::Tensor& self) {
   return {Shape(self.scalar_type(), self.sizes().vec())};
 }
 
-TORCH_API std::vector<torch::lazy::Shape> compute_shape_take(
+std::vector<torch::lazy::Shape> compute_shape_take(
     const at::Tensor& self,
     const at::Tensor& index) {
   return {Shape(self.scalar_type(), index.sizes().vec())};
@@ -1087,7 +1087,7 @@ std::vector<Shape> compute_shape__to_copy(
   return {Shape(self.scalar_type(), self.sizes().vec())};
 }
 
-TORCH_API std::vector<Shape> compute_shape_clone(
+std::vector<Shape> compute_shape_clone(
     const at::Tensor& self,
     c10::optional<at::MemoryFormat> memory_format) {
   return {Shape(self.scalar_type(), self.sizes().vec())};

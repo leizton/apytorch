@@ -15,7 +15,7 @@ namespace nn {
 /// Embedding model(EmbeddingOptions(10,
 /// 2).padding_idx(3).max_norm(2).norm_type(2.5).scale_grad_by_freq(true).sparse(true));
 /// ```
-struct TORCH_API EmbeddingOptions {
+struct EmbeddingOptions {
   EmbeddingOptions(int64_t num_embeddings, int64_t embedding_dim);
 
   /// The size of the dictionary of embeddings.
@@ -47,7 +47,7 @@ struct TORCH_API EmbeddingOptions {
 // ============================================================================
 
 /// Options for the `Embedding::from_pretrained` function.
-struct TORCH_API EmbeddingFromPretrainedOptions {
+struct EmbeddingFromPretrainedOptions {
   /// If ``true``, the tensor does not get updated in the learning process.
   /// Equivalent to ``embedding.weight.requires_grad_(false)``. Default:
   /// ``true``
@@ -80,7 +80,7 @@ namespace functional {
 /// F::embedding(input, weight,
 /// F::EmbeddingFuncOptions().norm_type(2.5).scale_grad_by_freq(true).sparse(true));
 /// ```
-struct TORCH_API EmbeddingFuncOptions {
+struct EmbeddingFuncOptions {
   /// If specified, the entries at `padding_idx` do not contribute to the
   /// gradient; therefore, the embedding vector at `padding_idx` is not updated
   /// during training, i.e. it remains as a fixed "pad".
@@ -111,7 +111,7 @@ typedef std::variant<enumtype::kSum, enumtype::kMean, enumtype::kMax>
 /// EmbeddingBag model(EmbeddingBagOptions(10,
 /// 2).max_norm(2).norm_type(2.5).scale_grad_by_freq(true).sparse(true).mode(torch::kSum));
 /// ```
-struct TORCH_API EmbeddingBagOptions {
+struct EmbeddingBagOptions {
   EmbeddingBagOptions(int64_t num_embeddings, int64_t embedding_dim);
 
   /// The size of the dictionary of embeddings.
@@ -154,7 +154,7 @@ struct TORCH_API EmbeddingBagOptions {
 // ============================================================================
 
 /// Options for the `EmbeddingBag::from_pretrained` function.
-struct TORCH_API EmbeddingBagFromPretrainedOptions {
+struct EmbeddingBagFromPretrainedOptions {
   /// If ``true``, the tensor does not get updated in the learning process.
   /// Equivalent to ``embeddingbag.weight.requires_grad_(false)``. Default:
   /// ``true``
@@ -199,7 +199,7 @@ namespace functional {
 /// F::embedding_bag(input, weight,
 /// F::EmbeddingBagFuncOptions().mode(torch::kSum).offsets(offsets));
 /// ```
-struct TORCH_API EmbeddingBagFuncOptions {
+struct EmbeddingBagFuncOptions {
   /// Only used when `input` is 1D. `offsets` determines
   /// the starting index position of each bag (sequence) in `input`.
   TORCH_ARG(torch::Tensor, offsets) = Tensor();

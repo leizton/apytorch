@@ -20,7 +20,7 @@ using VarNameMap = std::unordered_map<VarPtr, std::string>;
 // It starts with the name hints of the var and append "_" + $counter until it
 // hits a unique name.
 // NOLINTNEXTLINE(cppcoreguidelines-pro-type-member-init)
-class TORCH_API UniqueNameManager {
+class UniqueNameManager {
  public:
   const std::string& get_unique_name(const VarHandle& v);
 

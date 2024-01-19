@@ -5,19 +5,19 @@ namespace torch {
 namespace jit {
 namespace mobile {
 using c10::IValue;
-TORCH_API void parseInstructions(
+void parseInstructions(
     const std::string& function_name,
     c10::ivalue::TupleElements&& ins_list,
     c10::ivalue::TupleElements& debug_handles_m_tuple,
     mobile::Function* function);
-TORCH_API void parseConstants(
+void parseConstants(
     const c10::ivalue::TupleElements& consts_list,
     mobile::Function* function);
-TORCH_API void parseTypes(
+void parseTypes(
     const c10::ivalue::TupleElements& types_list,
     mobile::Function* function);
-TORCH_API void parseRegisterSize(size_t rsize, mobile::Function* function);
-TORCH_API void applyUpgrader(
+void parseRegisterSize(size_t rsize, mobile::Function* function);
+void applyUpgrader(
     mobile::Function* function,
     uint64_t operator_version);
 } // namespace mobile

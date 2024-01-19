@@ -48,7 +48,7 @@ namespace orc {
 
 class PytorchLLVMJITImpl;
 
-class TORCH_API PytorchLLVMJIT {
+class PytorchLLVMJIT {
  public:
   PytorchLLVMJIT(
       c10::optional<std::string> triple,

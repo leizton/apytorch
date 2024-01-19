@@ -7,7 +7,7 @@
 
 namespace caffe2 {
 
-class TORCH_API Predictor {
+class Predictor {
  public:
   using TensorList = std::vector<TensorCPU>;
   using TensorMap = std::unordered_map<std::string, TensorCPU>;

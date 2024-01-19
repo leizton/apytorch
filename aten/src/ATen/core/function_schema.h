@@ -207,14 +207,14 @@ inline bool operator!=(const Argument& lhs, const Argument& rhs) {
   return !(lhs == rhs);
 }
 
-enum struct TORCH_API SchemaArgType { input, output };
+enum struct SchemaArgType { input, output };
 
 /**
  * struct SchemaArgument
  *
  * Structure used to represent arguments or returns for a schema.
  */
-struct TORCH_API SchemaArgument {
+struct SchemaArgument {
   SchemaArgType type;
   size_t index;
   SchemaArgument(SchemaArgType tpe, size_t idx) : type(tpe), index(idx) {}
@@ -225,7 +225,7 @@ struct TORCH_API SchemaArgument {
 
 bool operator==(const FunctionSchema& lhs, const FunctionSchema& rhs);
 
-struct TORCH_API FunctionSchema {
+struct FunctionSchema {
   FunctionSchema(
       std::string name,
       std::string overload_name,

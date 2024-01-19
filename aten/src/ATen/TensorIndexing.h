@@ -31,12 +31,12 @@ enum class TensorIndexType { None, Ellipsis, SymInt, Boolean, Slice, Tensor };
 
 constexpr c10::nullopt_t None = c10::nullopt;
 
-struct TORCH_API EllipsisIndexType final {
+struct EllipsisIndexType final {
   EllipsisIndexType() = default;
 };
-TORCH_API extern const EllipsisIndexType Ellipsis;
+extern const EllipsisIndexType Ellipsis;
 
-struct TORCH_API Slice final {
+struct Slice final {
  public:
   Slice(
       c10::optional<c10::SymInt> start_index = c10::nullopt,
@@ -81,7 +81,7 @@ struct TORCH_API Slice final {
   c10::SymInt step_;
 };
 
-TORCH_API std::ostream& operator<<(std::ostream& stream, const Slice& slice);
+std::ostream& operator<<(std::ostream& stream, const Slice& slice);
 
 // `at::indexing::TensorIndex` is used for converting C++ tensor indices such as
 // `{None, "...", Ellipsis, 0, true, Slice(1, None, 2), torch::tensor({1, 2})}`
@@ -108,7 +108,7 @@ TORCH_API std::ostream& operator<<(std::ostream& stream, const Slice& slice);
 // `:3:2`                  | `Slice(None, 3, 2)`
 // `1:3:2`                 | `Slice(1, 3, 2)`
 // `torch.tensor([1, 2])`) | `torch::tensor({1, 2})`
-struct TORCH_API TensorIndex final {
+struct TensorIndex final {
   // Case 1: `at::indexing::None`
   TensorIndex(c10::nullopt_t) : type_(TensorIndexType::None) {}
 
@@ -191,10 +191,10 @@ struct TORCH_API TensorIndex final {
   TensorIndexType type_;
 };
 
-TORCH_API std::ostream& operator<<(
+std::ostream& operator<<(
     std::ostream& stream,
     const TensorIndex& tensor_index);
-TORCH_API std::ostream& operator<<(
+std::ostream& operator<<(
     std::ostream& stream,
     const std::vector<TensorIndex>& tensor_indices);
 

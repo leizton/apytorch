@@ -16,7 +16,7 @@ namespace at::detail {
 // but we also want to skip compute_types which in not avoidable
 // in TensorIterator for now.
 Tensor& scalar_fill(Tensor& self, const Scalar& value);
-TORCH_API Tensor scalar_tensor_static(
+Tensor scalar_tensor_static(
     const Scalar& s,
     c10::optional<ScalarType> dtype_opt,
     c10::optional<Device> device_opt);

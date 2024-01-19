@@ -15,7 +15,7 @@ using optional_variable_list = std::vector<c10::optional<Variable>>;
 using _jvp_fn_t = std::function<variable_list(variable_list, variable_list)>;
 using _view_as_self_fn_t = std::function<at::Tensor(at::Tensor)>;
 
-TORCH_API std::vector<c10::optional<Variable>> _wrap_outputs(
+std::vector<c10::optional<Variable>> _wrap_outputs(
     const variable_list& input_vars,
     const std::unordered_set<at::TensorImpl*>& non_differentiable,
     const std::unordered_set<at::TensorImpl*>& dirty_inputs,
@@ -25,7 +25,7 @@ TORCH_API std::vector<c10::optional<Variable>> _wrap_outputs(
     const std::unordered_set<at::TensorImpl*>& to_save_if_setup_context,
     const _view_as_self_fn_t& view_as_self_fn);
 
-TORCH_API void check_variable_result(
+void check_variable_result(
     const at::TensorBase& original,
     const at::TensorBase& result,
     const std::string& hook_name);
@@ -89,7 +89,7 @@ using forward_t = decltype(X::forward(nullptr, std::declval<Args>()...));
 /// y[0].sum().backward();
 /// ```
 template <class T>
-struct TORCH_API Function {
+struct Function {
   // We need to use a different template parameter than T here because T will
   // inherit from Function, and when Function<T> is instantiated, T::forward
   // is not declared yet.
@@ -103,7 +103,7 @@ struct TORCH_API Function {
 /// Context to save information during `forward` that can be accessed in
 /// `backward` in custom autograd operations (see `torch::autograd::Function`
 /// for details).
-struct TORCH_API AutogradContext {
+struct AutogradContext {
   AutogradContext() = default;
   AutogradContext(const AutogradContext& other) = delete;
   AutogradContext& operator=(const AutogradContext& other) = delete;
@@ -158,7 +158,7 @@ struct TORCH_API AutogradContext {
   friend struct CppNode;
 };
 
-struct TORCH_API VariableInfo {
+struct VariableInfo {
   explicit VariableInfo();
   explicit VariableInfo(const Variable& var);
 

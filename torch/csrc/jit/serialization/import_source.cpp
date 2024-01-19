@@ -27,7 +27,7 @@ struct OpsValue : public SugaredValue {
 
 // Represents nested namespaces, like `foo.bar.Baz`.
 // Right now these namespaces can only contain other namespaces or NamedTypes
-struct TORCH_API ClassNamespaceValue : public SugaredValue {
+struct ClassNamespaceValue : public SugaredValue {
   /**
    * @param  name  The fully qualified path, which can resolve either to a
    *               namespace or a NamedType

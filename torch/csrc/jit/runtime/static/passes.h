@@ -2,38 +2,38 @@
 
 namespace torch::jit {
 
-TORCH_API void FuseInferenceOpsForSparseNN(
+void FuseInferenceOpsForSparseNN(
     std::shared_ptr<torch::jit::Graph>& graph);
 
-TORCH_API void EliminateTrivialEquallySplit(
+void EliminateTrivialEquallySplit(
     std::shared_ptr<torch::jit::Graph>& graph);
 
-TORCH_API void FuseListUnpack(std::shared_ptr<torch::jit::Graph>& graph);
+void FuseListUnpack(std::shared_ptr<torch::jit::Graph>& graph);
 
 // If outputs_are_immutable is set to false, don't replace the view ops that
 // produce aliases of graph outputs with the copy version.
-TORCH_API void ReplaceWithCopy(
+void ReplaceWithCopy(
     std::shared_ptr<torch::jit::Graph>& graph,
     bool outputs_are_immutable = true);
 
-TORCH_API void ReplacePermuteWithCopy(
+void ReplacePermuteWithCopy(
     std::shared_ptr<torch::jit::Graph>& graph,
     bool outputs_are_immutable = true);
 
-TORCH_API void ReplaceWithMaybeCopy(
+void ReplaceWithMaybeCopy(
     std::shared_ptr<torch::jit::Graph>& graph,
     bool outputs_are_immutable = true);
 
-TORCH_API void RemoveImmutableInputDictLookups(
+void RemoveImmutableInputDictLookups(
     std::shared_ptr<torch::jit::Graph>& graph);
 
-TORCH_API bool graphHasOp(std::shared_ptr<Graph>& graph, const char* op_name);
+bool graphHasOp(std::shared_ptr<Graph>& graph, const char* op_name);
 
-TORCH_API bool forwardHasOp(const Module& module, const char* op_name);
+bool forwardHasOp(const Module& module, const char* op_name);
 
-TORCH_API void FuseSignLog1P(std::shared_ptr<Graph>& graph);
+void FuseSignLog1P(std::shared_ptr<Graph>& graph);
 
-TORCH_API void UseVariadicTupleUnpack(const std::shared_ptr<Graph>& graph);
+void UseVariadicTupleUnpack(const std::shared_ptr<Graph>& graph);
 
 // c10::Symbol::fromQualString is a bit long to type everywhere, and
 // we can't use a `using` statement since it's a static class function.
@@ -53,37 +53,37 @@ inline c10::Symbol fromQualString(const std::string& qual_string) {
 // this actually does a copy.
 // Note that we have to do the same thing if we are returning a value from an
 // outer scope in a sub-block.
-TORCH_API void CreateOwnedRefsForSpecialValues(Graph& graph);
+void CreateOwnedRefsForSpecialValues(Graph& graph);
 
 // [Force non-empty outputs]
 // It is technically possible for sub-blocks to not return anything. This is
 // problematic for StaticRuntimeBlockRunner because it assumes that at least one
 // output is being returned. Rather than slowing down SR with special logic for
 // this corner case, we simply force blocks that return nothing to return None.
-TORCH_API void ForceNonEmptyOutputs(Graph& graph);
+void ForceNonEmptyOutputs(Graph& graph);
 
-TORCH_API void UseVariadicGroupedAccessor(const std::shared_ptr<Graph>& graph);
+void UseVariadicGroupedAccessor(const std::shared_ptr<Graph>& graph);
 
-TORCH_API void EliminateExtraPermuteOps(std::shared_ptr<Graph>& graph);
+void EliminateExtraPermuteOps(std::shared_ptr<Graph>& graph);
 
-TORCH_API void EliminateNoOpSlice(std::shared_ptr<Graph>& graph);
+void EliminateNoOpSlice(std::shared_ptr<Graph>& graph);
 
-TORCH_API void UseSplitAndSqueeze(std::shared_ptr<Graph>& graph);
+void UseSplitAndSqueeze(std::shared_ptr<Graph>& graph);
 
 // [Remove unnecessary outputs]]
 // Removes outputs to reduce compute when it is not used later in the graph.
 // Currently used to remove the max_indices output of embedding_bag, which
 // isn't necessary to compute the main output.
-TORCH_API void RemoveUnnecessaryOutputs(std::shared_ptr<Graph>& graph);
+void RemoveUnnecessaryOutputs(std::shared_ptr<Graph>& graph);
 
-TORCH_API void RemoveUnnecessaryEmbeddingBagOutputs(
+void RemoveUnnecessaryEmbeddingBagOutputs(
     std::shared_ptr<Graph>& graph);
 
-TORCH_API void FuseClampNaNToNum(std::shared_ptr<Graph>& graph);
+void FuseClampNaNToNum(std::shared_ptr<Graph>& graph);
 
-TORCH_API void UseInPlaceGetRealInputsFromOptionalInputsV2(
+void UseInPlaceGetRealInputsFromOptionalInputsV2(
     std::shared_ptr<Graph>& graph);
 
-TORCH_API void PrepackWeights(std::shared_ptr<Graph>& graph);
+void PrepackWeights(std::shared_ptr<Graph>& graph);
 
 } // namespace torch::jit

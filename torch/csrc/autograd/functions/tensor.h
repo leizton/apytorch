@@ -14,7 +14,7 @@
 namespace torch {
 namespace autograd {
 
-struct TORCH_API CopyBackwards : public Node {
+struct CopyBackwards : public Node {
   variable_list apply(variable_list&& grads) override;
   void compiled_args(CompiledNodeArgs& args) override;
   variable_list apply_with_saved(
@@ -156,7 +156,7 @@ struct TORCH_API CopyBackwards : public Node {
 
 // See Note [View + Inplace update for view tensor] for what we do to view
 // tensor when an in-place operation happens.
-struct TORCH_API CopySlices : public Node {
+struct CopySlices : public Node {
   CopySlices(
       const Variable& base_var,
       at::TensorGeometry view_,

@@ -37,7 +37,7 @@ inline uint64_t fromVec(const std::vector<T>& values) {
   return num;
 }
 
-class TORCH_API SequenceNum {
+class SequenceNum {
  public:
   SequenceNum();
   explicit SequenceNum(const uint64_t num);

@@ -368,7 +368,7 @@ static void removeBailouts(Block* b) {
 }
 
 // see `bailout_graph.h`
-TORCH_API std::shared_ptr<Graph> BuildBailOutGraphFrom(
+std::shared_ptr<Graph> BuildBailOutGraphFrom(
     int64_t bailout_index,
     const std::shared_ptr<Graph>& orig,
     const std::shared_ptr<Graph>& target) {

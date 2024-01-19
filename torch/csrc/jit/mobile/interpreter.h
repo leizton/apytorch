@@ -10,8 +10,8 @@ namespace jit {
 namespace mobile {
 
 struct InterpreterState {
-  TORCH_API explicit InterpreterState(const Code& code);
-  TORCH_API bool run(Stack& stack);
+  explicit InterpreterState(const Code& code);
+  bool run(Stack& stack);
 
  private:
   void enterFrame(const Code&);

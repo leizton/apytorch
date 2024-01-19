@@ -44,7 +44,7 @@ struct GraphExecutorState {
   std::unordered_map<ArgumentSpec, ExecutionPlan> execution_plans;
 };
 
-struct TORCH_API EnableProfilingGuard {
+struct EnableProfilingGuard {
   EnableProfilingGuard();
   ~EnableProfilingGuard();
 
@@ -54,7 +54,7 @@ struct TORCH_API EnableProfilingGuard {
 };
 
 struct GraphExecutorImplBase;
-struct TORCH_API GraphExecutor {
+struct GraphExecutor {
   GraphExecutor() = default;
   GraphExecutor(const std::shared_ptr<Graph>& graph, std::string function_name);
 
@@ -92,27 +92,27 @@ struct TORCH_API GraphExecutor {
   std::shared_ptr<GraphExecutorImplBase> pImpl;
 };
 
-TORCH_API Node* replaceBlockWithFallbackGraph(
+Node* replaceBlockWithFallbackGraph(
     Block* b,
     ArrayRef<Value*> inputs);
 
 // These passes need to run before it is valid to pass to the interpreter
 // regardless of whether sizes have been specialized or not.
-TORCH_API void runRequiredPasses(const std::shared_ptr<Graph>& g);
+void runRequiredPasses(const std::shared_ptr<Graph>& g);
 
-TORCH_API void debugSetFusionGroupInlining(bool state);
-TORCH_API bool getFusionGroupInlining();
+void debugSetFusionGroupInlining(bool state);
+bool getFusionGroupInlining();
 
-TORCH_API void debugSetAutodiffSubgraphInlining(bool state);
-TORCH_API std::shared_ptr<Graph> lastExecutedOptimizedGraph();
+void debugSetAutodiffSubgraphInlining(bool state);
+std::shared_ptr<Graph> lastExecutedOptimizedGraph();
 
-TORCH_API std::atomic<bool>& getProfilingMode();
-TORCH_API std::atomic<bool>& getExecutorMode();
-TORCH_API std::atomic<size_t>& getNumProfiledRuns();
-TORCH_API size_t getBailoutDepth();
-TORCH_API bool IsNewExecutorEnabled();
+std::atomic<bool>& getProfilingMode();
+std::atomic<bool>& getExecutorMode();
+std::atomic<size_t>& getNumProfiledRuns();
+size_t getBailoutDepth();
+bool IsNewExecutorEnabled();
 
-struct TORCH_API GraphOptimizerEnabledGuard {
+struct GraphOptimizerEnabledGuard {
   GraphOptimizerEnabledGuard(bool state)
       : old_state_(getGraphExecutorOptimize()) {
     setGraphExecutorOptimize(state);

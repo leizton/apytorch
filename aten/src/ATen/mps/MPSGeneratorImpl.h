@@ -16,12 +16,12 @@ struct rng_data_pod {
   uint64_t seed = default_rng_seed_val;
 };
 
-TORCH_API const Generator& getDefaultMPSGenerator();
-TORCH_API Generator createMPSGenerator(uint64_t seed_val = default_rng_seed_val);
+const Generator& getDefaultMPSGenerator();
+Generator createMPSGenerator(uint64_t seed_val = default_rng_seed_val);
 
 } // namespace mps::detail
 
-struct TORCH_API MPSGeneratorImpl : public c10::GeneratorImpl {
+struct MPSGeneratorImpl : public c10::GeneratorImpl {
   // Constructors
   MPSGeneratorImpl(uint64_t seed_in = default_rng_seed_val);
   ~MPSGeneratorImpl() override = default;

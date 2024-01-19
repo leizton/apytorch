@@ -6,7 +6,7 @@
 namespace torch {
 namespace jit {
 
-TORCH_API void inlineForkedClosures(std::shared_ptr<Graph>& to_clean);
+void inlineForkedClosures(std::shared_ptr<Graph>& to_clean);
 
 } // namespace jit
 } // namespace torch

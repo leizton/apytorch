@@ -13,7 +13,7 @@ namespace lazy {
 
 using TSOpVector = std::vector<torch::jit::Value*>;
 
-class TORCH_API TSComputation : public Computation {
+class TSComputation : public Computation {
  public:
   TSComputation(const std::shared_ptr<torch::jit::Graph>& graph)
       : graph_(graph), graph_executor_(graph, "") {
@@ -64,7 +64,7 @@ class TORCH_API TSComputation : public Computation {
   Shape result_shape_;
 };
 
-class TORCH_API TSLoweringContext : public LoweringContext {
+class TSLoweringContext : public LoweringContext {
  public:
   TSLoweringContext(const std::string& name, const BackendDevice device);
 

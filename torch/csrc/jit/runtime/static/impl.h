@@ -22,14 +22,14 @@
 
 namespace torch::jit {
 
-TORCH_API bool canEnableStaticRuntime(
+bool canEnableStaticRuntime(
     const std::shared_ptr<torch::jit::Graph>& graph);
 
-TORCH_API std::string dumpValueSet(
+std::string dumpValueSet(
     const c10::FastSet<const Value*>& value_set,
     const char* set_name = "");
 
-TORCH_API inline bool doesNotHeapAllocateWhenStoredInIValue(const Type& type) {
+inline bool doesNotHeapAllocateWhenStoredInIValue(const Type& type) {
   switch (type.kind()) {
     // NOTE: NumberType may allocate because it includes complex.
     case TypeKind::NoneType:
@@ -44,11 +44,11 @@ TORCH_API inline bool doesNotHeapAllocateWhenStoredInIValue(const Type& type) {
   }
 }
 
-TORCH_API inline c10::Symbol getStaticRuntimeMetadataSymbol() {
+inline c10::Symbol getStaticRuntimeMetadataSymbol() {
   return Symbol::attr("static_runtime::metadata");
 }
 
-TORCH_API inline bool borrowsOutputs(c10::Symbol kind) {
+inline bool borrowsOutputs(c10::Symbol kind) {
   static const std::array<c10::Symbol, 4> symbols_with_borrowed_outputs = {
       c10::Symbol::fromQualString("static_runtime::select_tensor"),
       c10::Symbol::fromQualString("static_runtime::dict_unpack"),
@@ -101,7 +101,7 @@ class ValueGroup {
   c10::FastSet<const Value*> external_aliases_;
 };
 
-class TORCH_API ManagedTensorRanges {
+class ManagedTensorRanges {
  public:
   ManagedTensorRanges() = default;
   ManagedTensorRanges(
@@ -145,7 +145,7 @@ class TORCH_API ManagedTensorRanges {
   c10::FastMap<const Value*, Lifetime> value_lifetimes_{};
 };
 
-struct TORCH_API StaticModuleOptions {
+struct StaticModuleOptions {
   // enabling out variant allows Static Runtime to do memory planning
   bool enable_out_variant{true};
   // to reuse tensor storage for tensors whose live-range do not overlap to
@@ -181,7 +181,7 @@ struct TORCH_API StaticModuleOptions {
   This is needed to pass parent graph metadata to forked
   graph in presence of prim::fork operator
 */
-class TORCH_API StaticRuntimeMetadata : public torch::CustomClassHolder {
+class StaticRuntimeMetadata : public torch::CustomClassHolder {
  public:
   explicit StaticRuntimeMetadata(const StaticModuleOptions& opts)
       : opts_(opts) {}
@@ -247,7 +247,7 @@ class StaticRuntime;
 using SROperator = std::function<void(ProcessedNode*)>;
 
 #ifdef FBCODE_CAFFE2
-struct TORCH_API SROperatorObserver {
+struct SROperatorObserver {
   using OperatorCallback = void (*)(const Node*);
   OperatorCallback startCb = nullptr;
   OperatorCallback endCb = nullptr;
@@ -367,7 +367,7 @@ class BlockInfo {
   Block& block_;
 };
 
-class TORCH_API StaticModule {
+class StaticModule {
  public:
   explicit StaticModule(
       std::shared_ptr<torch::jit::Graph> g,
@@ -541,7 +541,7 @@ class TORCH_API StaticModule {
 // `StaticRuntime` stores a vector of IValues that all
 // `BlockRunner`s share. This vector is used to store all
 // constants, inputs, and intermediate tensors.
-class TORCH_API BlockRunner {
+class BlockRunner {
  public:
   BlockRunner(
       const StaticModule& sm,
@@ -778,7 +778,7 @@ class TORCH_API BlockRunner {
   std::vector<ProcessedNode> nodes_;
 };
 
-class TORCH_API ProcessedFunction {
+class ProcessedFunction {
  public:
   ProcessedFunction(
       Node* node,
@@ -815,7 +815,7 @@ class TORCH_API ProcessedFunction {
 };
 
 // NOLINTNEXTLINE(cppcoreguidelines-pro-type-member-init)
-class TORCH_API StaticNodeInfo {
+class StaticNodeInfo {
  public:
   // NOLINTNEXTLINE(cppcoreguidelines-pro-type-member-init)
   StaticNodeInfo(
@@ -858,7 +858,7 @@ inline size_t BlockInfo::num_nodes() const {
   - prim::fork op contains TaskLauncher (std::function) responsible for
     execution of forked subgraph
 */
-class TORCH_API ProcessedNodeMetadata {
+class ProcessedNodeMetadata {
  public:
   ProcessedNodeMetadata(
       std::vector<BlockRunner> runners,
@@ -895,7 +895,7 @@ class TORCH_API ProcessedNodeMetadata {
 };
 
 // NOLINTNEXTLINE(cppcoreguidelines-pro-type-member-init)
-class TORCH_API ProcessedNode {
+class ProcessedNode {
  public:
   // NOLINTNEXTLINE(cppcoreguidelines-pro-type-member-init)
   ProcessedNode() = default;
@@ -1043,7 +1043,7 @@ class TORCH_API ProcessedNode {
 // instance corresponds to one `StaticModule`. Multiple `StaticRuntime`
 // instances can be created; this is useful for multi-threaded execution, since
 // `operator()` is not thread-safe.
-class TORCH_API StaticRuntime {
+class StaticRuntime {
  public:
   explicit StaticRuntime(const StaticModule& sm);
 

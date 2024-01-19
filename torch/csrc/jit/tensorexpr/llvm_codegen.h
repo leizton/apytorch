@@ -19,7 +19,7 @@ namespace tensorexpr {
 class LLVMCodeGenImpl;
 class LLVMCodeGenCallee;
 
-class TORCH_API LLVMCodeGen : public CodeGen {
+class LLVMCodeGen : public CodeGen {
  public:
   explicit LLVMCodeGen(
       StmtPtr stmt,
@@ -41,9 +41,9 @@ class TORCH_API LLVMCodeGen : public CodeGen {
   // users can continue to call this kernel using `call` and `call_raw`.
   void cleanup_memory();
 
-  TORCH_API void call(const std::vector<CallArg>& args) override;
-  TORCH_API void call_raw(const std::vector<void*>& args) override;
-  TORCH_API void call_with_numel(void** args, int64_t numel) override;
+  void call(const std::vector<CallArg>& args) override;
+  void call_raw(const std::vector<void*>& args) override;
+  void call_with_numel(void** args, int64_t numel) override;
 
   at::Tensor empty_strided(
       c10::IntArrayRef size,
@@ -79,7 +79,7 @@ class TORCH_API LLVMCodeGen : public CodeGen {
   std::unique_ptr<LLVMCodeGenImpl> impl_;
 };
 
-struct TORCH_API LLVMCodeGenBuilder {
+struct LLVMCodeGenBuilder {
   using BufferArg = CodeGen::BufferArg;
 
   LLVMCodeGenBuilder(StmtPtr stmt, std::vector<BufferArg> args)
@@ -131,10 +131,10 @@ struct TORCH_API LLVMCodeGenBuilder {
   c10::optional<std::string> attrs_ = c10::nullopt;
 };
 
-TORCH_API c10::optional<std::string>& LLVMTargetTriple();
-TORCH_API c10::optional<std::string>& LLVMTargetCPU();
-TORCH_API c10::optional<std::string>& LLVMTargetAttrs();
-TORCH_API bool& LLVMAOTWorkflow();
+c10::optional<std::string>& LLVMTargetTriple();
+c10::optional<std::string>& LLVMTargetCPU();
+c10::optional<std::string>& LLVMTargetAttrs();
+bool& LLVMAOTWorkflow();
 
 } // namespace tensorexpr
 } // namespace jit

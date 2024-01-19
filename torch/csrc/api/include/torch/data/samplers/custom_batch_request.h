@@ -7,7 +7,7 @@ namespace torch {
 namespace data {
 namespace samplers {
 /// A base class for custom index types.
-struct TORCH_API CustomBatchRequest {
+struct CustomBatchRequest {
   CustomBatchRequest() = default;
   CustomBatchRequest(const CustomBatchRequest&) = default;
   CustomBatchRequest(CustomBatchRequest&&) noexcept = default;

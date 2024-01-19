@@ -3,27 +3,27 @@
 namespace caffe2 {
 
 // NOLINTNEXTLINE(cppcoreguidelines-avoid-c-arrays,cppcoreguidelines-avoid-non-const-global-variables,modernize-avoid-c-arrays)
-TORCH_API EventCreateFunction Event::event_creator_[MaxDeviceTypes];
+EventCreateFunction Event::event_creator_[MaxDeviceTypes];
 // NOLINTNEXTLINE(cppcoreguidelines-avoid-c-arrays,cppcoreguidelines-avoid-non-const-global-variables,modernize-avoid-c-arrays)
-TORCH_API EventRecordFunction Event::event_recorder_[MaxDeviceTypes];
+EventRecordFunction Event::event_recorder_[MaxDeviceTypes];
 // NOLINTNEXTLINE(cppcoreguidelines-avoid-c-arrays,modernize-avoid-c-arrays)
-TORCH_API EventWaitFunction
+EventWaitFunction
     Event::event_waiter_[MaxDeviceTypes][MaxDeviceTypes];
 // NOLINTNEXTLINE(cppcoreguidelines-avoid-c-arrays,cppcoreguidelines-avoid-non-const-global-variables,modernize-avoid-c-arrays)
-TORCH_API EventFinishFunction Event::event_finisher_[MaxDeviceTypes];
+EventFinishFunction Event::event_finisher_[MaxDeviceTypes];
 
 // NOLINTNEXTLINE(cppcoreguidelines-avoid-c-arrays,cppcoreguidelines-avoid-non-const-global-variables,modernize-avoid-c-arrays)
-TORCH_API EventQueryFunction Event::event_querier_[MaxDeviceTypes];
+EventQueryFunction Event::event_querier_[MaxDeviceTypes];
 // NOLINTNEXTLINE(cppcoreguidelines-avoid-c-arrays,modernize-avoid-c-arrays)
-TORCH_API EventErrorMessageFunction
+EventErrorMessageFunction
     Event::event_err_msg_getter_[MaxDeviceTypes];
 // NOLINTNEXTLINE(cppcoreguidelines-avoid-c-arrays,modernize-avoid-c-arrays)
-TORCH_API EventSetFinishedFunction
+EventSetFinishedFunction
     Event::event_finished_setter_[MaxDeviceTypes];
 // NOLINTNEXTLINE(cppcoreguidelines-avoid-c-arrays,cppcoreguidelines-avoid-non-const-global-variables,modernize-avoid-c-arrays)
-TORCH_API EventResetFunction Event::event_resetter_[MaxDeviceTypes];
+EventResetFunction Event::event_resetter_[MaxDeviceTypes];
 // NOLINTNEXTLINE(cppcoreguidelines-avoid-c-arrays,modernize-avoid-c-arrays)
-TORCH_API EventSetCallbackFunction
+EventSetCallbackFunction
     Event::event_callback_setter_[MaxDeviceTypes];
 
 namespace {

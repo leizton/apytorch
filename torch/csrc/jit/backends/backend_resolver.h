@@ -5,6 +5,6 @@
 namespace torch {
 namespace jit {
 // Create a Resolver for use in generating LoweredModules for specific backends.
-TORCH_API std::shared_ptr<Resolver> loweredModuleResolver();
+std::shared_ptr<Resolver> loweredModuleResolver();
 } // namespace jit
 } // namespace torch

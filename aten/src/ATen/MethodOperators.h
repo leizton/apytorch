@@ -20,7 +20,7 @@
 namespace at {
 namespace _ops {
 
-struct TORCH_API _backward {
+struct _backward {
   using schema = void (const at::Tensor &, at::TensorList, const c10::optional<at::Tensor> &, c10::optional<bool>, bool);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -31,7 +31,7 @@ struct TORCH_API _backward {
   static void redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self, at::TensorList inputs, const c10::optional<at::Tensor> & gradient, c10::optional<bool> retain_graph, bool create_graph);
 };
 
-struct TORCH_API set_data {
+struct set_data {
   using schema = void (at::Tensor &, const at::Tensor &);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -42,7 +42,7 @@ struct TORCH_API set_data {
   static void redispatch(c10::DispatchKeySet dispatchKeySet, at::Tensor & self, const at::Tensor & new_data);
 };
 
-struct TORCH_API data {
+struct data {
   using schema = at::Tensor (const at::Tensor &);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -53,7 +53,7 @@ struct TORCH_API data {
   static at::Tensor redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self);
 };
 
-struct TORCH_API is_leaf {
+struct is_leaf {
   using schema = bool (const at::Tensor &);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -64,7 +64,7 @@ struct TORCH_API is_leaf {
   static bool redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self);
 };
 
-struct TORCH_API output_nr {
+struct output_nr {
   using schema = int64_t (const at::Tensor &);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -75,7 +75,7 @@ struct TORCH_API output_nr {
   static int64_t redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self);
 };
 
-struct TORCH_API _version {
+struct _version {
   using schema = int64_t (const at::Tensor &);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -86,7 +86,7 @@ struct TORCH_API _version {
   static int64_t redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self);
 };
 
-struct TORCH_API requires_grad_ {
+struct requires_grad_ {
   using schema = at::Tensor & (at::Tensor &, bool);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -97,7 +97,7 @@ struct TORCH_API requires_grad_ {
   static at::Tensor & redispatch(c10::DispatchKeySet dispatchKeySet, at::Tensor & self, bool requires_grad);
 };
 
-struct TORCH_API retain_grad {
+struct retain_grad {
   using schema = void (at::Tensor &);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -108,7 +108,7 @@ struct TORCH_API retain_grad {
   static void redispatch(c10::DispatchKeySet dispatchKeySet, at::Tensor & self);
 };
 
-struct TORCH_API retains_grad {
+struct retains_grad {
   using schema = bool (const at::Tensor &);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -119,7 +119,7 @@ struct TORCH_API retains_grad {
   static bool redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self);
 };
 
-struct TORCH_API _fw_primal {
+struct _fw_primal {
   using schema = at::Tensor (const at::Tensor &, int64_t);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -130,7 +130,7 @@ struct TORCH_API _fw_primal {
   static at::Tensor redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self, int64_t level);
 };
 
-struct TORCH_API rename_ {
+struct rename_ {
   using schema = at::Tensor & (at::Tensor &, c10::optional<at::DimnameList>);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -141,7 +141,7 @@ struct TORCH_API rename_ {
   static at::Tensor & redispatch(c10::DispatchKeySet dispatchKeySet, at::Tensor & self, c10::optional<at::DimnameList> names);
 };
 
-struct TORCH_API rename {
+struct rename {
   using schema = at::Tensor (const at::Tensor &, c10::optional<at::DimnameList>);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -152,7 +152,7 @@ struct TORCH_API rename {
   static at::Tensor redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self, c10::optional<at::DimnameList> names);
 };
 
-struct TORCH_API align_to {
+struct align_to {
   using schema = at::Tensor (const at::Tensor &, at::DimnameList);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -163,7 +163,7 @@ struct TORCH_API align_to {
   static at::Tensor redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self, at::DimnameList names);
 };
 
-struct TORCH_API align_to_ellipsis_idx {
+struct align_to_ellipsis_idx {
   using schema = at::Tensor (const at::Tensor &, at::DimnameList, int64_t);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -174,7 +174,7 @@ struct TORCH_API align_to_ellipsis_idx {
   static at::Tensor redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self, at::DimnameList order, int64_t ellipsis_idx);
 };
 
-struct TORCH_API align_as {
+struct align_as {
   using schema = at::Tensor (const at::Tensor &, const at::Tensor &);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -185,7 +185,7 @@ struct TORCH_API align_as {
   static at::Tensor redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self, const at::Tensor & other);
 };
 
-struct TORCH_API refine_names {
+struct refine_names {
   using schema = at::Tensor (const at::Tensor &, at::DimnameList);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -196,7 +196,7 @@ struct TORCH_API refine_names {
   static at::Tensor redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self, at::DimnameList names);
 };
 
-struct TORCH_API abs {
+struct abs {
   using schema = at::Tensor (const at::Tensor &);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -207,7 +207,7 @@ struct TORCH_API abs {
   static at::Tensor redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self);
 };
 
-struct TORCH_API abs_ {
+struct abs_ {
   using schema = at::Tensor & (at::Tensor &);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -218,7 +218,7 @@ struct TORCH_API abs_ {
   static at::Tensor & redispatch(c10::DispatchKeySet dispatchKeySet, at::Tensor & self);
 };
 
-struct TORCH_API absolute {
+struct absolute {
   using schema = at::Tensor (const at::Tensor &);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -229,7 +229,7 @@ struct TORCH_API absolute {
   static at::Tensor redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self);
 };
 
-struct TORCH_API absolute_ {
+struct absolute_ {
   using schema = at::Tensor & (at::Tensor &);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -240,7 +240,7 @@ struct TORCH_API absolute_ {
   static at::Tensor & redispatch(c10::DispatchKeySet dispatchKeySet, at::Tensor & self);
 };
 
-struct TORCH_API angle {
+struct angle {
   using schema = at::Tensor (const at::Tensor &);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -251,7 +251,7 @@ struct TORCH_API angle {
   static at::Tensor redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self);
 };
 
-struct TORCH_API sgn {
+struct sgn {
   using schema = at::Tensor (const at::Tensor &);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -262,7 +262,7 @@ struct TORCH_API sgn {
   static at::Tensor redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self);
 };
 
-struct TORCH_API sgn_ {
+struct sgn_ {
   using schema = at::Tensor & (at::Tensor &);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -273,7 +273,7 @@ struct TORCH_API sgn_ {
   static at::Tensor & redispatch(c10::DispatchKeySet dispatchKeySet, at::Tensor & self);
 };
 
-struct TORCH_API chalf {
+struct chalf {
   using schema = at::Tensor (const at::Tensor &, c10::optional<at::MemoryFormat>);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -284,7 +284,7 @@ struct TORCH_API chalf {
   static at::Tensor redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self, c10::optional<at::MemoryFormat> memory_format);
 };
 
-struct TORCH_API _conj {
+struct _conj {
   using schema = at::Tensor (const at::Tensor &);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -295,7 +295,7 @@ struct TORCH_API _conj {
   static at::Tensor redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self);
 };
 
-struct TORCH_API conj {
+struct conj {
   using schema = at::Tensor (const at::Tensor &);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -306,7 +306,7 @@ struct TORCH_API conj {
   static at::Tensor redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self);
 };
 
-struct TORCH_API _conj_physical {
+struct _conj_physical {
   using schema = at::Tensor (const at::Tensor &);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -317,7 +317,7 @@ struct TORCH_API _conj_physical {
   static at::Tensor redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self);
 };
 
-struct TORCH_API conj_physical {
+struct conj_physical {
   using schema = at::Tensor (const at::Tensor &);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -328,7 +328,7 @@ struct TORCH_API conj_physical {
   static at::Tensor redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self);
 };
 
-struct TORCH_API conj_physical_ {
+struct conj_physical_ {
   using schema = at::Tensor & (at::Tensor &);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -339,7 +339,7 @@ struct TORCH_API conj_physical_ {
   static at::Tensor & redispatch(c10::DispatchKeySet dispatchKeySet, at::Tensor & self);
 };
 
-struct TORCH_API resolve_conj {
+struct resolve_conj {
   using schema = at::Tensor (const at::Tensor &);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -350,7 +350,7 @@ struct TORCH_API resolve_conj {
   static at::Tensor redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self);
 };
 
-struct TORCH_API resolve_neg {
+struct resolve_neg {
   using schema = at::Tensor (const at::Tensor &);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -361,7 +361,7 @@ struct TORCH_API resolve_neg {
   static at::Tensor redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self);
 };
 
-struct TORCH_API _neg_view {
+struct _neg_view {
   using schema = at::Tensor (const at::Tensor &);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -372,7 +372,7 @@ struct TORCH_API _neg_view {
   static at::Tensor redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self);
 };
 
-struct TORCH_API acos {
+struct acos {
   using schema = at::Tensor (const at::Tensor &);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -383,7 +383,7 @@ struct TORCH_API acos {
   static at::Tensor redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self);
 };
 
-struct TORCH_API acos_ {
+struct acos_ {
   using schema = at::Tensor & (at::Tensor &);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -394,7 +394,7 @@ struct TORCH_API acos_ {
   static at::Tensor & redispatch(c10::DispatchKeySet dispatchKeySet, at::Tensor & self);
 };
 
-struct TORCH_API arccos {
+struct arccos {
   using schema = at::Tensor (const at::Tensor &);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -405,7 +405,7 @@ struct TORCH_API arccos {
   static at::Tensor redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self);
 };
 
-struct TORCH_API arccos_ {
+struct arccos_ {
   using schema = at::Tensor & (at::Tensor &);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -416,7 +416,7 @@ struct TORCH_API arccos_ {
   static at::Tensor & redispatch(c10::DispatchKeySet dispatchKeySet, at::Tensor & self);
 };
 
-struct TORCH_API add_Tensor {
+struct add_Tensor {
   using schema = at::Tensor (const at::Tensor &, const at::Tensor &, const at::Scalar &);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -427,7 +427,7 @@ struct TORCH_API add_Tensor {
   static at::Tensor redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self, const at::Tensor & other, const at::Scalar & alpha);
 };
 
-struct TORCH_API add__Tensor {
+struct add__Tensor {
   using schema = at::Tensor & (at::Tensor &, const at::Tensor &, const at::Scalar &);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -438,7 +438,7 @@ struct TORCH_API add__Tensor {
   static at::Tensor & redispatch(c10::DispatchKeySet dispatchKeySet, at::Tensor & self, const at::Tensor & other, const at::Scalar & alpha);
 };
 
-struct TORCH_API add_Scalar {
+struct add_Scalar {
   using schema = at::Tensor (const at::Tensor &, const at::Scalar &, const at::Scalar &);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -449,7 +449,7 @@ struct TORCH_API add_Scalar {
   static at::Tensor redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self, const at::Scalar & other, const at::Scalar & alpha);
 };
 
-struct TORCH_API add__Scalar {
+struct add__Scalar {
   using schema = at::Tensor & (at::Tensor &, const at::Scalar &, const at::Scalar &);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -460,7 +460,7 @@ struct TORCH_API add__Scalar {
   static at::Tensor & redispatch(c10::DispatchKeySet dispatchKeySet, at::Tensor & self, const at::Scalar & other, const at::Scalar & alpha);
 };
 
-struct TORCH_API addmv {
+struct addmv {
   using schema = at::Tensor (const at::Tensor &, const at::Tensor &, const at::Tensor &, const at::Scalar &, const at::Scalar &);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -471,7 +471,7 @@ struct TORCH_API addmv {
   static at::Tensor redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self, const at::Tensor & mat, const at::Tensor & vec, const at::Scalar & beta, const at::Scalar & alpha);
 };
 
-struct TORCH_API addmv_ {
+struct addmv_ {
   using schema = at::Tensor & (at::Tensor &, const at::Tensor &, const at::Tensor &, const at::Scalar &, const at::Scalar &);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -482,7 +482,7 @@ struct TORCH_API addmv_ {
   static at::Tensor & redispatch(c10::DispatchKeySet dispatchKeySet, at::Tensor & self, const at::Tensor & mat, const at::Tensor & vec, const at::Scalar & beta, const at::Scalar & alpha);
 };
 
-struct TORCH_API addr {
+struct addr {
   using schema = at::Tensor (const at::Tensor &, const at::Tensor &, const at::Tensor &, const at::Scalar &, const at::Scalar &);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -493,7 +493,7 @@ struct TORCH_API addr {
   static at::Tensor redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self, const at::Tensor & vec1, const at::Tensor & vec2, const at::Scalar & beta, const at::Scalar & alpha);
 };
 
-struct TORCH_API addr_ {
+struct addr_ {
   using schema = at::Tensor & (at::Tensor &, const at::Tensor &, const at::Tensor &, const at::Scalar &, const at::Scalar &);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -504,7 +504,7 @@ struct TORCH_API addr_ {
   static at::Tensor & redispatch(c10::DispatchKeySet dispatchKeySet, at::Tensor & self, const at::Tensor & vec1, const at::Tensor & vec2, const at::Scalar & beta, const at::Scalar & alpha);
 };
 
-struct TORCH_API _is_all_true {
+struct _is_all_true {
   using schema = at::Tensor (const at::Tensor &);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -515,7 +515,7 @@ struct TORCH_API _is_all_true {
   static at::Tensor redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self);
 };
 
-struct TORCH_API _is_any_true {
+struct _is_any_true {
   using schema = at::Tensor (const at::Tensor &);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -526,7 +526,7 @@ struct TORCH_API _is_any_true {
   static at::Tensor redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self);
 };
 
-struct TORCH_API all_dim {
+struct all_dim {
   using schema = at::Tensor (const at::Tensor &, int64_t, bool);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -537,7 +537,7 @@ struct TORCH_API all_dim {
   static at::Tensor redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self, int64_t dim, bool keepdim);
 };
 
-struct TORCH_API all_dims {
+struct all_dims {
   using schema = at::Tensor (const at::Tensor &, at::OptionalIntArrayRef, bool);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -548,7 +548,7 @@ struct TORCH_API all_dims {
   static at::Tensor redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self, at::OptionalIntArrayRef dim, bool keepdim);
 };
 
-struct TORCH_API all_dimname {
+struct all_dimname {
   using schema = at::Tensor (const at::Tensor &, at::Dimname, bool);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -559,7 +559,7 @@ struct TORCH_API all_dimname {
   static at::Tensor redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self, at::Dimname dim, bool keepdim);
 };
 
-struct TORCH_API allclose {
+struct allclose {
   using schema = bool (const at::Tensor &, const at::Tensor &, double, double, bool);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -570,7 +570,7 @@ struct TORCH_API allclose {
   static bool redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self, const at::Tensor & other, double rtol, double atol, bool equal_nan);
 };
 
-struct TORCH_API any_dim {
+struct any_dim {
   using schema = at::Tensor (const at::Tensor &, int64_t, bool);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -581,7 +581,7 @@ struct TORCH_API any_dim {
   static at::Tensor redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self, int64_t dim, bool keepdim);
 };
 
-struct TORCH_API any_dims {
+struct any_dims {
   using schema = at::Tensor (const at::Tensor &, at::OptionalIntArrayRef, bool);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -592,7 +592,7 @@ struct TORCH_API any_dims {
   static at::Tensor redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self, at::OptionalIntArrayRef dim, bool keepdim);
 };
 
-struct TORCH_API any_dimname {
+struct any_dimname {
   using schema = at::Tensor (const at::Tensor &, at::Dimname, bool);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -603,7 +603,7 @@ struct TORCH_API any_dimname {
   static at::Tensor redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self, at::Dimname dim, bool keepdim);
 };
 
-struct TORCH_API argmax {
+struct argmax {
   using schema = at::Tensor (const at::Tensor &, c10::optional<int64_t>, bool);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -614,7 +614,7 @@ struct TORCH_API argmax {
   static at::Tensor redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self, c10::optional<int64_t> dim, bool keepdim);
 };
 
-struct TORCH_API argmin {
+struct argmin {
   using schema = at::Tensor (const at::Tensor &, c10::optional<int64_t>, bool);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -625,7 +625,7 @@ struct TORCH_API argmin {
   static at::Tensor redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self, c10::optional<int64_t> dim, bool keepdim);
 };
 
-struct TORCH_API acosh {
+struct acosh {
   using schema = at::Tensor (const at::Tensor &);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -636,7 +636,7 @@ struct TORCH_API acosh {
   static at::Tensor redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self);
 };
 
-struct TORCH_API acosh_ {
+struct acosh_ {
   using schema = at::Tensor & (at::Tensor &);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -647,7 +647,7 @@ struct TORCH_API acosh_ {
   static at::Tensor & redispatch(c10::DispatchKeySet dispatchKeySet, at::Tensor & self);
 };
 
-struct TORCH_API arccosh {
+struct arccosh {
   using schema = at::Tensor (const at::Tensor &);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -658,7 +658,7 @@ struct TORCH_API arccosh {
   static at::Tensor redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self);
 };
 
-struct TORCH_API arccosh_ {
+struct arccosh_ {
   using schema = at::Tensor & (at::Tensor &);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -669,7 +669,7 @@ struct TORCH_API arccosh_ {
   static at::Tensor & redispatch(c10::DispatchKeySet dispatchKeySet, at::Tensor & self);
 };
 
-struct TORCH_API asinh {
+struct asinh {
   using schema = at::Tensor (const at::Tensor &);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -680,7 +680,7 @@ struct TORCH_API asinh {
   static at::Tensor redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self);
 };
 
-struct TORCH_API asinh_ {
+struct asinh_ {
   using schema = at::Tensor & (at::Tensor &);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -691,7 +691,7 @@ struct TORCH_API asinh_ {
   static at::Tensor & redispatch(c10::DispatchKeySet dispatchKeySet, at::Tensor & self);
 };
 
-struct TORCH_API arcsinh {
+struct arcsinh {
   using schema = at::Tensor (const at::Tensor &);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -702,7 +702,7 @@ struct TORCH_API arcsinh {
   static at::Tensor redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self);
 };
 
-struct TORCH_API arcsinh_ {
+struct arcsinh_ {
   using schema = at::Tensor & (at::Tensor &);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -713,7 +713,7 @@ struct TORCH_API arcsinh_ {
   static at::Tensor & redispatch(c10::DispatchKeySet dispatchKeySet, at::Tensor & self);
 };
 
-struct TORCH_API atanh {
+struct atanh {
   using schema = at::Tensor (const at::Tensor &);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -724,7 +724,7 @@ struct TORCH_API atanh {
   static at::Tensor redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self);
 };
 
-struct TORCH_API atanh_ {
+struct atanh_ {
   using schema = at::Tensor & (at::Tensor &);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -735,7 +735,7 @@ struct TORCH_API atanh_ {
   static at::Tensor & redispatch(c10::DispatchKeySet dispatchKeySet, at::Tensor & self);
 };
 
-struct TORCH_API arctanh {
+struct arctanh {
   using schema = at::Tensor (const at::Tensor &);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -746,7 +746,7 @@ struct TORCH_API arctanh {
   static at::Tensor redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self);
 };
 
-struct TORCH_API arctanh_ {
+struct arctanh_ {
   using schema = at::Tensor & (at::Tensor &);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -757,7 +757,7 @@ struct TORCH_API arctanh_ {
   static at::Tensor & redispatch(c10::DispatchKeySet dispatchKeySet, at::Tensor & self);
 };
 
-struct TORCH_API as_strided {
+struct as_strided {
   using schema = at::Tensor (const at::Tensor &, c10::SymIntArrayRef, c10::SymIntArrayRef, c10::optional<c10::SymInt>);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -768,7 +768,7 @@ struct TORCH_API as_strided {
   static at::Tensor redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self, c10::SymIntArrayRef size, c10::SymIntArrayRef stride, c10::optional<c10::SymInt> storage_offset);
 };
 
-struct TORCH_API as_strided_ {
+struct as_strided_ {
   using schema = const at::Tensor & (const at::Tensor &, c10::SymIntArrayRef, c10::SymIntArrayRef, c10::optional<c10::SymInt>);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -779,7 +779,7 @@ struct TORCH_API as_strided_ {
   static const at::Tensor & redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self, c10::SymIntArrayRef size, c10::SymIntArrayRef stride, c10::optional<c10::SymInt> storage_offset);
 };
 
-struct TORCH_API asin {
+struct asin {
   using schema = at::Tensor (const at::Tensor &);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -790,7 +790,7 @@ struct TORCH_API asin {
   static at::Tensor redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self);
 };
 
-struct TORCH_API asin_ {
+struct asin_ {
   using schema = at::Tensor & (at::Tensor &);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -801,7 +801,7 @@ struct TORCH_API asin_ {
   static at::Tensor & redispatch(c10::DispatchKeySet dispatchKeySet, at::Tensor & self);
 };
 
-struct TORCH_API arcsin {
+struct arcsin {
   using schema = at::Tensor (const at::Tensor &);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -812,7 +812,7 @@ struct TORCH_API arcsin {
   static at::Tensor redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self);
 };
 
-struct TORCH_API arcsin_ {
+struct arcsin_ {
   using schema = at::Tensor & (at::Tensor &);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -823,7 +823,7 @@ struct TORCH_API arcsin_ {
   static at::Tensor & redispatch(c10::DispatchKeySet dispatchKeySet, at::Tensor & self);
 };
 
-struct TORCH_API atan {
+struct atan {
   using schema = at::Tensor (const at::Tensor &);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -834,7 +834,7 @@ struct TORCH_API atan {
   static at::Tensor redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self);
 };
 
-struct TORCH_API atan_ {
+struct atan_ {
   using schema = at::Tensor & (at::Tensor &);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -845,7 +845,7 @@ struct TORCH_API atan_ {
   static at::Tensor & redispatch(c10::DispatchKeySet dispatchKeySet, at::Tensor & self);
 };
 
-struct TORCH_API arctan {
+struct arctan {
   using schema = at::Tensor (const at::Tensor &);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -856,7 +856,7 @@ struct TORCH_API arctan {
   static at::Tensor redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self);
 };
 
-struct TORCH_API arctan_ {
+struct arctan_ {
   using schema = at::Tensor & (at::Tensor &);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -867,7 +867,7 @@ struct TORCH_API arctan_ {
   static at::Tensor & redispatch(c10::DispatchKeySet dispatchKeySet, at::Tensor & self);
 };
 
-struct TORCH_API baddbmm {
+struct baddbmm {
   using schema = at::Tensor (const at::Tensor &, const at::Tensor &, const at::Tensor &, const at::Scalar &, const at::Scalar &);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -878,7 +878,7 @@ struct TORCH_API baddbmm {
   static at::Tensor redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self, const at::Tensor & batch1, const at::Tensor & batch2, const at::Scalar & beta, const at::Scalar & alpha);
 };
 
-struct TORCH_API baddbmm_ {
+struct baddbmm_ {
   using schema = at::Tensor & (at::Tensor &, const at::Tensor &, const at::Tensor &, const at::Scalar &, const at::Scalar &);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -889,7 +889,7 @@ struct TORCH_API baddbmm_ {
   static at::Tensor & redispatch(c10::DispatchKeySet dispatchKeySet, at::Tensor & self, const at::Tensor & batch1, const at::Tensor & batch2, const at::Scalar & beta, const at::Scalar & alpha);
 };
 
-struct TORCH_API bernoulli {
+struct bernoulli {
   using schema = at::Tensor (const at::Tensor &, c10::optional<at::Generator>);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -900,7 +900,7 @@ struct TORCH_API bernoulli {
   static at::Tensor redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self, c10::optional<at::Generator> generator);
 };
 
-struct TORCH_API bernoulli__Tensor {
+struct bernoulli__Tensor {
   using schema = at::Tensor & (at::Tensor &, const at::Tensor &, c10::optional<at::Generator>);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -911,7 +911,7 @@ struct TORCH_API bernoulli__Tensor {
   static at::Tensor & redispatch(c10::DispatchKeySet dispatchKeySet, at::Tensor & self, const at::Tensor & p, c10::optional<at::Generator> generator);
 };
 
-struct TORCH_API bernoulli__float {
+struct bernoulli__float {
   using schema = at::Tensor & (at::Tensor &, double, c10::optional<at::Generator>);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -922,7 +922,7 @@ struct TORCH_API bernoulli__float {
   static at::Tensor & redispatch(c10::DispatchKeySet dispatchKeySet, at::Tensor & self, double p, c10::optional<at::Generator> generator);
 };
 
-struct TORCH_API bernoulli_p {
+struct bernoulli_p {
   using schema = at::Tensor (const at::Tensor &, double, c10::optional<at::Generator>);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -933,7 +933,7 @@ struct TORCH_API bernoulli_p {
   static at::Tensor redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self, double p, c10::optional<at::Generator> generator);
 };
 
-struct TORCH_API bincount {
+struct bincount {
   using schema = at::Tensor (const at::Tensor &, const c10::optional<at::Tensor> &, int64_t);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -944,7 +944,7 @@ struct TORCH_API bincount {
   static at::Tensor redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self, const c10::optional<at::Tensor> & weights, int64_t minlength);
 };
 
-struct TORCH_API bitwise_not {
+struct bitwise_not {
   using schema = at::Tensor (const at::Tensor &);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -955,7 +955,7 @@ struct TORCH_API bitwise_not {
   static at::Tensor redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self);
 };
 
-struct TORCH_API bitwise_not_ {
+struct bitwise_not_ {
   using schema = at::Tensor & (at::Tensor &);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -966,7 +966,7 @@ struct TORCH_API bitwise_not_ {
   static at::Tensor & redispatch(c10::DispatchKeySet dispatchKeySet, at::Tensor & self);
 };
 
-struct TORCH_API copysign_Tensor {
+struct copysign_Tensor {
   using schema = at::Tensor (const at::Tensor &, const at::Tensor &);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -977,7 +977,7 @@ struct TORCH_API copysign_Tensor {
   static at::Tensor redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self, const at::Tensor & other);
 };
 
-struct TORCH_API copysign__Tensor {
+struct copysign__Tensor {
   using schema = at::Tensor & (at::Tensor &, const at::Tensor &);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -988,7 +988,7 @@ struct TORCH_API copysign__Tensor {
   static at::Tensor & redispatch(c10::DispatchKeySet dispatchKeySet, at::Tensor & self, const at::Tensor & other);
 };
 
-struct TORCH_API copysign_Scalar {
+struct copysign_Scalar {
   using schema = at::Tensor (const at::Tensor &, const at::Scalar &);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -999,7 +999,7 @@ struct TORCH_API copysign_Scalar {
   static at::Tensor redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self, const at::Scalar & other);
 };
 
-struct TORCH_API copysign__Scalar {
+struct copysign__Scalar {
   using schema = at::Tensor & (at::Tensor &, const at::Scalar &);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -1010,7 +1010,7 @@ struct TORCH_API copysign__Scalar {
   static at::Tensor & redispatch(c10::DispatchKeySet dispatchKeySet, at::Tensor & self, const at::Scalar & other);
 };
 
-struct TORCH_API _lazy_clone {
+struct _lazy_clone {
   using schema = at::Tensor (const at::Tensor &);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -1021,7 +1021,7 @@ struct TORCH_API _lazy_clone {
   static at::Tensor redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self);
 };
 
-struct TORCH_API logical_not {
+struct logical_not {
   using schema = at::Tensor (const at::Tensor &);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -1032,7 +1032,7 @@ struct TORCH_API logical_not {
   static at::Tensor redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self);
 };
 
-struct TORCH_API logical_not_ {
+struct logical_not_ {
   using schema = at::Tensor & (at::Tensor &);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -1043,7 +1043,7 @@ struct TORCH_API logical_not_ {
   static at::Tensor & redispatch(c10::DispatchKeySet dispatchKeySet, at::Tensor & self);
 };
 
-struct TORCH_API logical_xor {
+struct logical_xor {
   using schema = at::Tensor (const at::Tensor &, const at::Tensor &);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -1054,7 +1054,7 @@ struct TORCH_API logical_xor {
   static at::Tensor redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self, const at::Tensor & other);
 };
 
-struct TORCH_API logical_xor_ {
+struct logical_xor_ {
   using schema = at::Tensor & (at::Tensor &, const at::Tensor &);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -1065,7 +1065,7 @@ struct TORCH_API logical_xor_ {
   static at::Tensor & redispatch(c10::DispatchKeySet dispatchKeySet, at::Tensor & self, const at::Tensor & other);
 };
 
-struct TORCH_API logical_and {
+struct logical_and {
   using schema = at::Tensor (const at::Tensor &, const at::Tensor &);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -1076,7 +1076,7 @@ struct TORCH_API logical_and {
   static at::Tensor redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self, const at::Tensor & other);
 };
 
-struct TORCH_API logical_and_ {
+struct logical_and_ {
   using schema = at::Tensor & (at::Tensor &, const at::Tensor &);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -1087,7 +1087,7 @@ struct TORCH_API logical_and_ {
   static at::Tensor & redispatch(c10::DispatchKeySet dispatchKeySet, at::Tensor & self, const at::Tensor & other);
 };
 
-struct TORCH_API logical_or {
+struct logical_or {
   using schema = at::Tensor (const at::Tensor &, const at::Tensor &);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -1098,7 +1098,7 @@ struct TORCH_API logical_or {
   static at::Tensor redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self, const at::Tensor & other);
 };
 
-struct TORCH_API logical_or_ {
+struct logical_or_ {
   using schema = at::Tensor & (at::Tensor &, const at::Tensor &);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -1109,7 +1109,7 @@ struct TORCH_API logical_or_ {
   static at::Tensor & redispatch(c10::DispatchKeySet dispatchKeySet, at::Tensor & self, const at::Tensor & other);
 };
 
-struct TORCH_API bmm {
+struct bmm {
   using schema = at::Tensor (const at::Tensor &, const at::Tensor &);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -1120,7 +1120,7 @@ struct TORCH_API bmm {
   static at::Tensor redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self, const at::Tensor & mat2);
 };
 
-struct TORCH_API broadcast_to {
+struct broadcast_to {
   using schema = at::Tensor (const at::Tensor &, c10::SymIntArrayRef);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -1131,7 +1131,7 @@ struct TORCH_API broadcast_to {
   static at::Tensor redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self, c10::SymIntArrayRef size);
 };
 
-struct TORCH_API ceil {
+struct ceil {
   using schema = at::Tensor (const at::Tensor &);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -1142,7 +1142,7 @@ struct TORCH_API ceil {
   static at::Tensor redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self);
 };
 
-struct TORCH_API ceil_ {
+struct ceil_ {
   using schema = at::Tensor & (at::Tensor &);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -1153,7 +1153,7 @@ struct TORCH_API ceil_ {
   static at::Tensor & redispatch(c10::DispatchKeySet dispatchKeySet, at::Tensor & self);
 };
 
-struct TORCH_API unsafe_chunk {
+struct unsafe_chunk {
   using schema = ::std::vector<at::Tensor> (const at::Tensor &, int64_t, int64_t);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -1164,7 +1164,7 @@ struct TORCH_API unsafe_chunk {
   static ::std::vector<at::Tensor> redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self, int64_t chunks, int64_t dim);
 };
 
-struct TORCH_API chunk {
+struct chunk {
   using schema = ::std::vector<at::Tensor> (const at::Tensor &, int64_t, int64_t);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -1175,7 +1175,7 @@ struct TORCH_API chunk {
   static ::std::vector<at::Tensor> redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self, int64_t chunks, int64_t dim);
 };
 
-struct TORCH_API tensor_split_sections {
+struct tensor_split_sections {
   using schema = ::std::vector<at::Tensor> (const at::Tensor &, c10::SymInt, int64_t);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -1186,7 +1186,7 @@ struct TORCH_API tensor_split_sections {
   static ::std::vector<at::Tensor> redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self, c10::SymInt sections, int64_t dim);
 };
 
-struct TORCH_API tensor_split_indices {
+struct tensor_split_indices {
   using schema = ::std::vector<at::Tensor> (const at::Tensor &, c10::SymIntArrayRef, int64_t);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -1197,7 +1197,7 @@ struct TORCH_API tensor_split_indices {
   static ::std::vector<at::Tensor> redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self, c10::SymIntArrayRef indices, int64_t dim);
 };
 
-struct TORCH_API tensor_split_tensor_indices_or_sections {
+struct tensor_split_tensor_indices_or_sections {
   using schema = ::std::vector<at::Tensor> (const at::Tensor &, const at::Tensor &, int64_t);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -1208,7 +1208,7 @@ struct TORCH_API tensor_split_tensor_indices_or_sections {
   static ::std::vector<at::Tensor> redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self, const at::Tensor & tensor_indices_or_sections, int64_t dim);
 };
 
-struct TORCH_API clamp {
+struct clamp {
   using schema = at::Tensor (const at::Tensor &, const c10::optional<at::Scalar> &, const c10::optional<at::Scalar> &);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -1219,7 +1219,7 @@ struct TORCH_API clamp {
   static at::Tensor redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self, const c10::optional<at::Scalar> & min, const c10::optional<at::Scalar> & max);
 };
 
-struct TORCH_API clamp_Tensor {
+struct clamp_Tensor {
   using schema = at::Tensor (const at::Tensor &, const c10::optional<at::Tensor> &, const c10::optional<at::Tensor> &);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -1230,7 +1230,7 @@ struct TORCH_API clamp_Tensor {
   static at::Tensor redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self, const c10::optional<at::Tensor> & min, const c10::optional<at::Tensor> & max);
 };
 
-struct TORCH_API clamp_ {
+struct clamp_ {
   using schema = at::Tensor & (at::Tensor &, const c10::optional<at::Scalar> &, const c10::optional<at::Scalar> &);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -1241,7 +1241,7 @@ struct TORCH_API clamp_ {
   static at::Tensor & redispatch(c10::DispatchKeySet dispatchKeySet, at::Tensor & self, const c10::optional<at::Scalar> & min, const c10::optional<at::Scalar> & max);
 };
 
-struct TORCH_API clamp__Tensor {
+struct clamp__Tensor {
   using schema = at::Tensor & (at::Tensor &, const c10::optional<at::Tensor> &, const c10::optional<at::Tensor> &);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -1252,7 +1252,7 @@ struct TORCH_API clamp__Tensor {
   static at::Tensor & redispatch(c10::DispatchKeySet dispatchKeySet, at::Tensor & self, const c10::optional<at::Tensor> & min, const c10::optional<at::Tensor> & max);
 };
 
-struct TORCH_API clamp_max {
+struct clamp_max {
   using schema = at::Tensor (const at::Tensor &, const at::Scalar &);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -1263,7 +1263,7 @@ struct TORCH_API clamp_max {
   static at::Tensor redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self, const at::Scalar & max);
 };
 
-struct TORCH_API clamp_max_Tensor {
+struct clamp_max_Tensor {
   using schema = at::Tensor (const at::Tensor &, const at::Tensor &);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -1274,7 +1274,7 @@ struct TORCH_API clamp_max_Tensor {
   static at::Tensor redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self, const at::Tensor & max);
 };
 
-struct TORCH_API clamp_max_ {
+struct clamp_max_ {
   using schema = at::Tensor & (at::Tensor &, const at::Scalar &);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -1285,7 +1285,7 @@ struct TORCH_API clamp_max_ {
   static at::Tensor & redispatch(c10::DispatchKeySet dispatchKeySet, at::Tensor & self, const at::Scalar & max);
 };
 
-struct TORCH_API clamp_max__Tensor {
+struct clamp_max__Tensor {
   using schema = at::Tensor & (at::Tensor &, const at::Tensor &);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -1296,7 +1296,7 @@ struct TORCH_API clamp_max__Tensor {
   static at::Tensor & redispatch(c10::DispatchKeySet dispatchKeySet, at::Tensor & self, const at::Tensor & max);
 };
 
-struct TORCH_API clamp_min {
+struct clamp_min {
   using schema = at::Tensor (const at::Tensor &, const at::Scalar &);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -1307,7 +1307,7 @@ struct TORCH_API clamp_min {
   static at::Tensor redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self, const at::Scalar & min);
 };
 
-struct TORCH_API clamp_min_Tensor {
+struct clamp_min_Tensor {
   using schema = at::Tensor (const at::Tensor &, const at::Tensor &);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -1318,7 +1318,7 @@ struct TORCH_API clamp_min_Tensor {
   static at::Tensor redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self, const at::Tensor & min);
 };
 
-struct TORCH_API clamp_min_ {
+struct clamp_min_ {
   using schema = at::Tensor & (at::Tensor &, const at::Scalar &);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -1329,7 +1329,7 @@ struct TORCH_API clamp_min_ {
   static at::Tensor & redispatch(c10::DispatchKeySet dispatchKeySet, at::Tensor & self, const at::Scalar & min);
 };
 
-struct TORCH_API clamp_min__Tensor {
+struct clamp_min__Tensor {
   using schema = at::Tensor & (at::Tensor &, const at::Tensor &);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -1340,7 +1340,7 @@ struct TORCH_API clamp_min__Tensor {
   static at::Tensor & redispatch(c10::DispatchKeySet dispatchKeySet, at::Tensor & self, const at::Tensor & min);
 };
 
-struct TORCH_API clip {
+struct clip {
   using schema = at::Tensor (const at::Tensor &, const c10::optional<at::Scalar> &, const c10::optional<at::Scalar> &);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -1351,7 +1351,7 @@ struct TORCH_API clip {
   static at::Tensor redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self, const c10::optional<at::Scalar> & min, const c10::optional<at::Scalar> & max);
 };
 
-struct TORCH_API clip_Tensor {
+struct clip_Tensor {
   using schema = at::Tensor (const at::Tensor &, const c10::optional<at::Tensor> &, const c10::optional<at::Tensor> &);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -1362,7 +1362,7 @@ struct TORCH_API clip_Tensor {
   static at::Tensor redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self, const c10::optional<at::Tensor> & min, const c10::optional<at::Tensor> & max);
 };
 
-struct TORCH_API clip_ {
+struct clip_ {
   using schema = at::Tensor & (at::Tensor &, const c10::optional<at::Scalar> &, const c10::optional<at::Scalar> &);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -1373,7 +1373,7 @@ struct TORCH_API clip_ {
   static at::Tensor & redispatch(c10::DispatchKeySet dispatchKeySet, at::Tensor & self, const c10::optional<at::Scalar> & min, const c10::optional<at::Scalar> & max);
 };
 
-struct TORCH_API clip__Tensor {
+struct clip__Tensor {
   using schema = at::Tensor & (at::Tensor &, const c10::optional<at::Tensor> &, const c10::optional<at::Tensor> &);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -1384,7 +1384,7 @@ struct TORCH_API clip__Tensor {
   static at::Tensor & redispatch(c10::DispatchKeySet dispatchKeySet, at::Tensor & self, const c10::optional<at::Tensor> & min, const c10::optional<at::Tensor> & max);
 };
 
-struct TORCH_API contiguous {
+struct contiguous {
   using schema = at::Tensor (const at::Tensor &, at::MemoryFormat);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -1395,7 +1395,7 @@ struct TORCH_API contiguous {
   static at::Tensor redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self, at::MemoryFormat memory_format);
 };
 
-struct TORCH_API copy_ {
+struct copy_ {
   using schema = at::Tensor & (at::Tensor &, const at::Tensor &, bool);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -1406,7 +1406,7 @@ struct TORCH_API copy_ {
   static at::Tensor & redispatch(c10::DispatchKeySet dispatchKeySet, at::Tensor & self, const at::Tensor & src, bool non_blocking);
 };
 
-struct TORCH_API cos {
+struct cos {
   using schema = at::Tensor (const at::Tensor &);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -1417,7 +1417,7 @@ struct TORCH_API cos {
   static at::Tensor redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self);
 };
 
-struct TORCH_API cos_ {
+struct cos_ {
   using schema = at::Tensor & (at::Tensor &);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -1428,7 +1428,7 @@ struct TORCH_API cos_ {
   static at::Tensor & redispatch(c10::DispatchKeySet dispatchKeySet, at::Tensor & self);
 };
 
-struct TORCH_API cosh {
+struct cosh {
   using schema = at::Tensor (const at::Tensor &);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -1439,7 +1439,7 @@ struct TORCH_API cosh {
   static at::Tensor redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self);
 };
 
-struct TORCH_API cosh_ {
+struct cosh_ {
   using schema = at::Tensor & (at::Tensor &);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -1450,7 +1450,7 @@ struct TORCH_API cosh_ {
   static at::Tensor & redispatch(c10::DispatchKeySet dispatchKeySet, at::Tensor & self);
 };
 
-struct TORCH_API count_nonzero_dim_IntList {
+struct count_nonzero_dim_IntList {
   using schema = at::Tensor (const at::Tensor &, at::IntArrayRef);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -1461,7 +1461,7 @@ struct TORCH_API count_nonzero_dim_IntList {
   static at::Tensor redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self, at::IntArrayRef dim);
 };
 
-struct TORCH_API count_nonzero {
+struct count_nonzero {
   using schema = at::Tensor (const at::Tensor &, c10::optional<int64_t>);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -1472,7 +1472,7 @@ struct TORCH_API count_nonzero {
   static at::Tensor redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self, c10::optional<int64_t> dim);
 };
 
-struct TORCH_API cov {
+struct cov {
   using schema = at::Tensor (const at::Tensor &, int64_t, const c10::optional<at::Tensor> &, const c10::optional<at::Tensor> &);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -1483,7 +1483,7 @@ struct TORCH_API cov {
   static at::Tensor redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self, int64_t correction, const c10::optional<at::Tensor> & fweights, const c10::optional<at::Tensor> & aweights);
 };
 
-struct TORCH_API corrcoef {
+struct corrcoef {
   using schema = at::Tensor (const at::Tensor &);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -1494,7 +1494,7 @@ struct TORCH_API corrcoef {
   static at::Tensor redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self);
 };
 
-struct TORCH_API cummax {
+struct cummax {
   using schema = ::std::tuple<at::Tensor,at::Tensor> (const at::Tensor &, int64_t);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -1505,7 +1505,7 @@ struct TORCH_API cummax {
   static ::std::tuple<at::Tensor,at::Tensor> redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self, int64_t dim);
 };
 
-struct TORCH_API cummax_dimname {
+struct cummax_dimname {
   using schema = ::std::tuple<at::Tensor,at::Tensor> (const at::Tensor &, at::Dimname);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -1516,7 +1516,7 @@ struct TORCH_API cummax_dimname {
   static ::std::tuple<at::Tensor,at::Tensor> redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self, at::Dimname dim);
 };
 
-struct TORCH_API cummin {
+struct cummin {
   using schema = ::std::tuple<at::Tensor,at::Tensor> (const at::Tensor &, int64_t);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -1527,7 +1527,7 @@ struct TORCH_API cummin {
   static ::std::tuple<at::Tensor,at::Tensor> redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self, int64_t dim);
 };
 
-struct TORCH_API cummin_dimname {
+struct cummin_dimname {
   using schema = ::std::tuple<at::Tensor,at::Tensor> (const at::Tensor &, at::Dimname);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -1538,7 +1538,7 @@ struct TORCH_API cummin_dimname {
   static ::std::tuple<at::Tensor,at::Tensor> redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self, at::Dimname dim);
 };
 
-struct TORCH_API cumprod {
+struct cumprod {
   using schema = at::Tensor (const at::Tensor &, int64_t, c10::optional<at::ScalarType>);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -1549,7 +1549,7 @@ struct TORCH_API cumprod {
   static at::Tensor redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self, int64_t dim, c10::optional<at::ScalarType> dtype);
 };
 
-struct TORCH_API cumprod_ {
+struct cumprod_ {
   using schema = at::Tensor & (at::Tensor &, int64_t, c10::optional<at::ScalarType>);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -1560,7 +1560,7 @@ struct TORCH_API cumprod_ {
   static at::Tensor & redispatch(c10::DispatchKeySet dispatchKeySet, at::Tensor & self, int64_t dim, c10::optional<at::ScalarType> dtype);
 };
 
-struct TORCH_API cumprod_dimname {
+struct cumprod_dimname {
   using schema = at::Tensor (const at::Tensor &, at::Dimname, c10::optional<at::ScalarType>);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -1571,7 +1571,7 @@ struct TORCH_API cumprod_dimname {
   static at::Tensor redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self, at::Dimname dim, c10::optional<at::ScalarType> dtype);
 };
 
-struct TORCH_API cumprod__dimname {
+struct cumprod__dimname {
   using schema = at::Tensor & (at::Tensor &, at::Dimname, c10::optional<at::ScalarType>);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -1582,7 +1582,7 @@ struct TORCH_API cumprod__dimname {
   static at::Tensor & redispatch(c10::DispatchKeySet dispatchKeySet, at::Tensor & self, at::Dimname dim, c10::optional<at::ScalarType> dtype);
 };
 
-struct TORCH_API cumsum {
+struct cumsum {
   using schema = at::Tensor (const at::Tensor &, int64_t, c10::optional<at::ScalarType>);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -1593,7 +1593,7 @@ struct TORCH_API cumsum {
   static at::Tensor redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self, int64_t dim, c10::optional<at::ScalarType> dtype);
 };
 
-struct TORCH_API cumsum_ {
+struct cumsum_ {
   using schema = at::Tensor & (at::Tensor &, int64_t, c10::optional<at::ScalarType>);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -1604,7 +1604,7 @@ struct TORCH_API cumsum_ {
   static at::Tensor & redispatch(c10::DispatchKeySet dispatchKeySet, at::Tensor & self, int64_t dim, c10::optional<at::ScalarType> dtype);
 };
 
-struct TORCH_API cumsum_dimname {
+struct cumsum_dimname {
   using schema = at::Tensor (const at::Tensor &, at::Dimname, c10::optional<at::ScalarType>);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -1615,7 +1615,7 @@ struct TORCH_API cumsum_dimname {
   static at::Tensor redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self, at::Dimname dim, c10::optional<at::ScalarType> dtype);
 };
 
-struct TORCH_API cumsum__dimname {
+struct cumsum__dimname {
   using schema = at::Tensor & (at::Tensor &, at::Dimname, c10::optional<at::ScalarType>);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -1626,7 +1626,7 @@ struct TORCH_API cumsum__dimname {
   static at::Tensor & redispatch(c10::DispatchKeySet dispatchKeySet, at::Tensor & self, at::Dimname dim, c10::optional<at::ScalarType> dtype);
 };
 
-struct TORCH_API diag_embed {
+struct diag_embed {
   using schema = at::Tensor (const at::Tensor &, int64_t, int64_t, int64_t);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -1637,7 +1637,7 @@ struct TORCH_API diag_embed {
   static at::Tensor redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self, int64_t offset, int64_t dim1, int64_t dim2);
 };
 
-struct TORCH_API diagflat {
+struct diagflat {
   using schema = at::Tensor (const at::Tensor &, int64_t);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -1648,7 +1648,7 @@ struct TORCH_API diagflat {
   static at::Tensor redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self, int64_t offset);
 };
 
-struct TORCH_API diagonal {
+struct diagonal {
   using schema = at::Tensor (const at::Tensor &, int64_t, int64_t, int64_t);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -1659,7 +1659,7 @@ struct TORCH_API diagonal {
   static at::Tensor redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self, int64_t offset, int64_t dim1, int64_t dim2);
 };
 
-struct TORCH_API diagonal_Dimname {
+struct diagonal_Dimname {
   using schema = at::Tensor (const at::Tensor &, at::Dimname, at::Dimname, at::Dimname, int64_t);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -1670,7 +1670,7 @@ struct TORCH_API diagonal_Dimname {
   static at::Tensor redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self, at::Dimname outdim, at::Dimname dim1, at::Dimname dim2, int64_t offset);
 };
 
-struct TORCH_API fill_diagonal_ {
+struct fill_diagonal_ {
   using schema = at::Tensor & (at::Tensor &, const at::Scalar &, bool);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -1681,7 +1681,7 @@ struct TORCH_API fill_diagonal_ {
   static at::Tensor & redispatch(c10::DispatchKeySet dispatchKeySet, at::Tensor & self, const at::Scalar & fill_value, bool wrap);
 };
 
-struct TORCH_API diff {
+struct diff {
   using schema = at::Tensor (const at::Tensor &, int64_t, int64_t, const c10::optional<at::Tensor> &, const c10::optional<at::Tensor> &);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -1692,7 +1692,7 @@ struct TORCH_API diff {
   static at::Tensor redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self, int64_t n, int64_t dim, const c10::optional<at::Tensor> & prepend, const c10::optional<at::Tensor> & append);
 };
 
-struct TORCH_API div_Tensor {
+struct div_Tensor {
   using schema = at::Tensor (const at::Tensor &, const at::Tensor &);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -1703,7 +1703,7 @@ struct TORCH_API div_Tensor {
   static at::Tensor redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self, const at::Tensor & other);
 };
 
-struct TORCH_API div__Tensor {
+struct div__Tensor {
   using schema = at::Tensor & (at::Tensor &, const at::Tensor &);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -1714,7 +1714,7 @@ struct TORCH_API div__Tensor {
   static at::Tensor & redispatch(c10::DispatchKeySet dispatchKeySet, at::Tensor & self, const at::Tensor & other);
 };
 
-struct TORCH_API div_Tensor_mode {
+struct div_Tensor_mode {
   using schema = at::Tensor (const at::Tensor &, const at::Tensor &, c10::optional<c10::string_view>);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -1725,7 +1725,7 @@ struct TORCH_API div_Tensor_mode {
   static at::Tensor redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self, const at::Tensor & other, c10::optional<c10::string_view> rounding_mode);
 };
 
-struct TORCH_API div__Tensor_mode {
+struct div__Tensor_mode {
   using schema = at::Tensor & (at::Tensor &, const at::Tensor &, c10::optional<c10::string_view>);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -1736,7 +1736,7 @@ struct TORCH_API div__Tensor_mode {
   static at::Tensor & redispatch(c10::DispatchKeySet dispatchKeySet, at::Tensor & self, const at::Tensor & other, c10::optional<c10::string_view> rounding_mode);
 };
 
-struct TORCH_API div_Scalar {
+struct div_Scalar {
   using schema = at::Tensor (const at::Tensor &, const at::Scalar &);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -1747,7 +1747,7 @@ struct TORCH_API div_Scalar {
   static at::Tensor redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self, const at::Scalar & other);
 };
 
-struct TORCH_API div__Scalar {
+struct div__Scalar {
   using schema = at::Tensor & (at::Tensor &, const at::Scalar &);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -1758,7 +1758,7 @@ struct TORCH_API div__Scalar {
   static at::Tensor & redispatch(c10::DispatchKeySet dispatchKeySet, at::Tensor & self, const at::Scalar & other);
 };
 
-struct TORCH_API div_Scalar_mode {
+struct div_Scalar_mode {
   using schema = at::Tensor (const at::Tensor &, const at::Scalar &, c10::optional<c10::string_view>);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -1769,7 +1769,7 @@ struct TORCH_API div_Scalar_mode {
   static at::Tensor redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self, const at::Scalar & other, c10::optional<c10::string_view> rounding_mode);
 };
 
-struct TORCH_API div__Scalar_mode {
+struct div__Scalar_mode {
   using schema = at::Tensor & (at::Tensor &, const at::Scalar &, c10::optional<c10::string_view>);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -1780,7 +1780,7 @@ struct TORCH_API div__Scalar_mode {
   static at::Tensor & redispatch(c10::DispatchKeySet dispatchKeySet, at::Tensor & self, const at::Scalar & other, c10::optional<c10::string_view> rounding_mode);
 };
 
-struct TORCH_API divide_Tensor {
+struct divide_Tensor {
   using schema = at::Tensor (const at::Tensor &, const at::Tensor &);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -1791,7 +1791,7 @@ struct TORCH_API divide_Tensor {
   static at::Tensor redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self, const at::Tensor & other);
 };
 
-struct TORCH_API divide__Tensor {
+struct divide__Tensor {
   using schema = at::Tensor & (at::Tensor &, const at::Tensor &);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -1802,7 +1802,7 @@ struct TORCH_API divide__Tensor {
   static at::Tensor & redispatch(c10::DispatchKeySet dispatchKeySet, at::Tensor & self, const at::Tensor & other);
 };
 
-struct TORCH_API divide_Scalar {
+struct divide_Scalar {
   using schema = at::Tensor (const at::Tensor &, const at::Scalar &);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -1813,7 +1813,7 @@ struct TORCH_API divide_Scalar {
   static at::Tensor redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self, const at::Scalar & other);
 };
 
-struct TORCH_API divide__Scalar {
+struct divide__Scalar {
   using schema = at::Tensor & (at::Tensor &, const at::Scalar &);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -1824,7 +1824,7 @@ struct TORCH_API divide__Scalar {
   static at::Tensor & redispatch(c10::DispatchKeySet dispatchKeySet, at::Tensor & self, const at::Scalar & other);
 };
 
-struct TORCH_API divide_Tensor_mode {
+struct divide_Tensor_mode {
   using schema = at::Tensor (const at::Tensor &, const at::Tensor &, c10::optional<c10::string_view>);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -1835,7 +1835,7 @@ struct TORCH_API divide_Tensor_mode {
   static at::Tensor redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self, const at::Tensor & other, c10::optional<c10::string_view> rounding_mode);
 };
 
-struct TORCH_API divide__Tensor_mode {
+struct divide__Tensor_mode {
   using schema = at::Tensor & (at::Tensor &, const at::Tensor &, c10::optional<c10::string_view>);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -1846,7 +1846,7 @@ struct TORCH_API divide__Tensor_mode {
   static at::Tensor & redispatch(c10::DispatchKeySet dispatchKeySet, at::Tensor & self, const at::Tensor & other, c10::optional<c10::string_view> rounding_mode);
 };
 
-struct TORCH_API divide_Scalar_mode {
+struct divide_Scalar_mode {
   using schema = at::Tensor (const at::Tensor &, const at::Scalar &, c10::optional<c10::string_view>);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -1857,7 +1857,7 @@ struct TORCH_API divide_Scalar_mode {
   static at::Tensor redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self, const at::Scalar & other, c10::optional<c10::string_view> rounding_mode);
 };
 
-struct TORCH_API divide__Scalar_mode {
+struct divide__Scalar_mode {
   using schema = at::Tensor & (at::Tensor &, const at::Scalar &, c10::optional<c10::string_view>);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -1868,7 +1868,7 @@ struct TORCH_API divide__Scalar_mode {
   static at::Tensor & redispatch(c10::DispatchKeySet dispatchKeySet, at::Tensor & self, const at::Scalar & other, c10::optional<c10::string_view> rounding_mode);
 };
 
-struct TORCH_API true_divide_Tensor {
+struct true_divide_Tensor {
   using schema = at::Tensor (const at::Tensor &, const at::Tensor &);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -1879,7 +1879,7 @@ struct TORCH_API true_divide_Tensor {
   static at::Tensor redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self, const at::Tensor & other);
 };
 
-struct TORCH_API true_divide__Tensor {
+struct true_divide__Tensor {
   using schema = at::Tensor & (at::Tensor &, const at::Tensor &);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -1890,7 +1890,7 @@ struct TORCH_API true_divide__Tensor {
   static at::Tensor & redispatch(c10::DispatchKeySet dispatchKeySet, at::Tensor & self, const at::Tensor & other);
 };
 
-struct TORCH_API true_divide_Scalar {
+struct true_divide_Scalar {
   using schema = at::Tensor (const at::Tensor &, const at::Scalar &);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -1901,7 +1901,7 @@ struct TORCH_API true_divide_Scalar {
   static at::Tensor redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self, const at::Scalar & other);
 };
 
-struct TORCH_API true_divide__Scalar {
+struct true_divide__Scalar {
   using schema = at::Tensor & (at::Tensor &, const at::Scalar &);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -1912,7 +1912,7 @@ struct TORCH_API true_divide__Scalar {
   static at::Tensor & redispatch(c10::DispatchKeySet dispatchKeySet, at::Tensor & self, const at::Scalar & other);
 };
 
-struct TORCH_API dot {
+struct dot {
   using schema = at::Tensor (const at::Tensor &, const at::Tensor &);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -1923,7 +1923,7 @@ struct TORCH_API dot {
   static at::Tensor redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self, const at::Tensor & tensor);
 };
 
-struct TORCH_API vdot {
+struct vdot {
   using schema = at::Tensor (const at::Tensor &, const at::Tensor &);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -1934,7 +1934,7 @@ struct TORCH_API vdot {
   static at::Tensor redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self, const at::Tensor & other);
 };
 
-struct TORCH_API new_empty {
+struct new_empty {
   using schema = at::Tensor (const at::Tensor &, c10::SymIntArrayRef, c10::optional<at::ScalarType>, c10::optional<at::Layout>, c10::optional<at::Device>, c10::optional<bool>);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -1945,7 +1945,7 @@ struct TORCH_API new_empty {
   static at::Tensor redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self, c10::SymIntArrayRef size, c10::optional<at::ScalarType> dtype, c10::optional<at::Layout> layout, c10::optional<at::Device> device, c10::optional<bool> pin_memory);
 };
 
-struct TORCH_API new_empty_strided {
+struct new_empty_strided {
   using schema = at::Tensor (const at::Tensor &, c10::SymIntArrayRef, c10::SymIntArrayRef, c10::optional<at::ScalarType>, c10::optional<at::Layout>, c10::optional<at::Device>, c10::optional<bool>);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -1956,7 +1956,7 @@ struct TORCH_API new_empty_strided {
   static at::Tensor redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self, c10::SymIntArrayRef size, c10::SymIntArrayRef stride, c10::optional<at::ScalarType> dtype, c10::optional<at::Layout> layout, c10::optional<at::Device> device, c10::optional<bool> pin_memory);
 };
 
-struct TORCH_API new_full {
+struct new_full {
   using schema = at::Tensor (const at::Tensor &, c10::SymIntArrayRef, const at::Scalar &, c10::optional<at::ScalarType>, c10::optional<at::Layout>, c10::optional<at::Device>, c10::optional<bool>);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -1967,7 +1967,7 @@ struct TORCH_API new_full {
   static at::Tensor redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self, c10::SymIntArrayRef size, const at::Scalar & fill_value, c10::optional<at::ScalarType> dtype, c10::optional<at::Layout> layout, c10::optional<at::Device> device, c10::optional<bool> pin_memory);
 };
 
-struct TORCH_API new_zeros {
+struct new_zeros {
   using schema = at::Tensor (const at::Tensor &, c10::SymIntArrayRef, c10::optional<at::ScalarType>, c10::optional<at::Layout>, c10::optional<at::Device>, c10::optional<bool>);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -1978,7 +1978,7 @@ struct TORCH_API new_zeros {
   static at::Tensor redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self, c10::SymIntArrayRef size, c10::optional<at::ScalarType> dtype, c10::optional<at::Layout> layout, c10::optional<at::Device> device, c10::optional<bool> pin_memory);
 };
 
-struct TORCH_API new_ones {
+struct new_ones {
   using schema = at::Tensor (const at::Tensor &, c10::SymIntArrayRef, c10::optional<at::ScalarType>, c10::optional<at::Layout>, c10::optional<at::Device>, c10::optional<bool>);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -1989,7 +1989,7 @@ struct TORCH_API new_ones {
   static at::Tensor redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self, c10::SymIntArrayRef size, c10::optional<at::ScalarType> dtype, c10::optional<at::Layout> layout, c10::optional<at::Device> device, c10::optional<bool> pin_memory);
 };
 
-struct TORCH_API resize_ {
+struct resize_ {
   using schema = const at::Tensor & (const at::Tensor &, c10::SymIntArrayRef, c10::optional<at::MemoryFormat>);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -2000,7 +2000,7 @@ struct TORCH_API resize_ {
   static const at::Tensor & redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self, c10::SymIntArrayRef size, c10::optional<at::MemoryFormat> memory_format);
 };
 
-struct TORCH_API erf {
+struct erf {
   using schema = at::Tensor (const at::Tensor &);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -2011,7 +2011,7 @@ struct TORCH_API erf {
   static at::Tensor redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self);
 };
 
-struct TORCH_API erf_ {
+struct erf_ {
   using schema = at::Tensor & (at::Tensor &);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -2022,7 +2022,7 @@ struct TORCH_API erf_ {
   static at::Tensor & redispatch(c10::DispatchKeySet dispatchKeySet, at::Tensor & self);
 };
 
-struct TORCH_API erfc {
+struct erfc {
   using schema = at::Tensor (const at::Tensor &);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -2033,7 +2033,7 @@ struct TORCH_API erfc {
   static at::Tensor redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self);
 };
 
-struct TORCH_API erfc_ {
+struct erfc_ {
   using schema = at::Tensor & (at::Tensor &);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -2044,7 +2044,7 @@ struct TORCH_API erfc_ {
   static at::Tensor & redispatch(c10::DispatchKeySet dispatchKeySet, at::Tensor & self);
 };
 
-struct TORCH_API exp {
+struct exp {
   using schema = at::Tensor (const at::Tensor &);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -2055,7 +2055,7 @@ struct TORCH_API exp {
   static at::Tensor redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self);
 };
 
-struct TORCH_API exp_ {
+struct exp_ {
   using schema = at::Tensor & (at::Tensor &);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -2066,7 +2066,7 @@ struct TORCH_API exp_ {
   static at::Tensor & redispatch(c10::DispatchKeySet dispatchKeySet, at::Tensor & self);
 };
 
-struct TORCH_API exp2 {
+struct exp2 {
   using schema = at::Tensor (const at::Tensor &);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -2077,7 +2077,7 @@ struct TORCH_API exp2 {
   static at::Tensor redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self);
 };
 
-struct TORCH_API exp2_ {
+struct exp2_ {
   using schema = at::Tensor & (at::Tensor &);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -2088,7 +2088,7 @@ struct TORCH_API exp2_ {
   static at::Tensor & redispatch(c10::DispatchKeySet dispatchKeySet, at::Tensor & self);
 };
 
-struct TORCH_API expm1 {
+struct expm1 {
   using schema = at::Tensor (const at::Tensor &);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -2099,7 +2099,7 @@ struct TORCH_API expm1 {
   static at::Tensor redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self);
 };
 
-struct TORCH_API expm1_ {
+struct expm1_ {
   using schema = at::Tensor & (at::Tensor &);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -2110,7 +2110,7 @@ struct TORCH_API expm1_ {
   static at::Tensor & redispatch(c10::DispatchKeySet dispatchKeySet, at::Tensor & self);
 };
 
-struct TORCH_API expand {
+struct expand {
   using schema = at::Tensor (const at::Tensor &, c10::SymIntArrayRef, bool);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -2121,7 +2121,7 @@ struct TORCH_API expand {
   static at::Tensor redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self, c10::SymIntArrayRef size, bool implicit);
 };
 
-struct TORCH_API expand_as {
+struct expand_as {
   using schema = at::Tensor (const at::Tensor &, const at::Tensor &);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -2132,7 +2132,7 @@ struct TORCH_API expand_as {
   static at::Tensor redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self, const at::Tensor & other);
 };
 
-struct TORCH_API flatten_using_ints {
+struct flatten_using_ints {
   using schema = at::Tensor (const at::Tensor &, int64_t, int64_t);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -2143,7 +2143,7 @@ struct TORCH_API flatten_using_ints {
   static at::Tensor redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self, int64_t start_dim, int64_t end_dim);
 };
 
-struct TORCH_API flatten_named_out_dim {
+struct flatten_named_out_dim {
   using schema = at::Tensor (const at::Tensor &, int64_t, int64_t, at::Dimname);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -2154,7 +2154,7 @@ struct TORCH_API flatten_named_out_dim {
   static at::Tensor redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self, int64_t start_dim, int64_t end_dim, at::Dimname out_dim);
 };
 
-struct TORCH_API flatten_using_names {
+struct flatten_using_names {
   using schema = at::Tensor (const at::Tensor &, at::Dimname, at::Dimname, at::Dimname);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -2165,7 +2165,7 @@ struct TORCH_API flatten_using_names {
   static at::Tensor redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self, at::Dimname start_dim, at::Dimname end_dim, at::Dimname out_dim);
 };
 
-struct TORCH_API flatten_DimnameList {
+struct flatten_DimnameList {
   using schema = at::Tensor (const at::Tensor &, at::DimnameList, at::Dimname);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -2176,7 +2176,7 @@ struct TORCH_API flatten_DimnameList {
   static at::Tensor redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self, at::DimnameList dims, at::Dimname out_dim);
 };
 
-struct TORCH_API unflatten_int {
+struct unflatten_int {
   using schema = at::Tensor (const at::Tensor &, int64_t, c10::SymIntArrayRef);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -2187,7 +2187,7 @@ struct TORCH_API unflatten_int {
   static at::Tensor redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self, int64_t dim, c10::SymIntArrayRef sizes);
 };
 
-struct TORCH_API unflatten_Dimname {
+struct unflatten_Dimname {
   using schema = at::Tensor (const at::Tensor &, at::Dimname, c10::SymIntArrayRef, at::DimnameList);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -2198,7 +2198,7 @@ struct TORCH_API unflatten_Dimname {
   static at::Tensor redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self, at::Dimname dim, c10::SymIntArrayRef sizes, at::DimnameList names);
 };
 
-struct TORCH_API fill__Scalar {
+struct fill__Scalar {
   using schema = at::Tensor & (at::Tensor &, const at::Scalar &);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -2209,7 +2209,7 @@ struct TORCH_API fill__Scalar {
   static at::Tensor & redispatch(c10::DispatchKeySet dispatchKeySet, at::Tensor & self, const at::Scalar & value);
 };
 
-struct TORCH_API fill__Tensor {
+struct fill__Tensor {
   using schema = at::Tensor & (at::Tensor &, const at::Tensor &);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -2220,7 +2220,7 @@ struct TORCH_API fill__Tensor {
   static at::Tensor & redispatch(c10::DispatchKeySet dispatchKeySet, at::Tensor & self, const at::Tensor & value);
 };
 
-struct TORCH_API floor {
+struct floor {
   using schema = at::Tensor (const at::Tensor &);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -2231,7 +2231,7 @@ struct TORCH_API floor {
   static at::Tensor redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self);
 };
 
-struct TORCH_API floor_ {
+struct floor_ {
   using schema = at::Tensor & (at::Tensor &);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -2242,7 +2242,7 @@ struct TORCH_API floor_ {
   static at::Tensor & redispatch(c10::DispatchKeySet dispatchKeySet, at::Tensor & self);
 };
 
-struct TORCH_API floor_divide {
+struct floor_divide {
   using schema = at::Tensor (const at::Tensor &, const at::Tensor &);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -2253,7 +2253,7 @@ struct TORCH_API floor_divide {
   static at::Tensor redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self, const at::Tensor & other);
 };
 
-struct TORCH_API floor_divide__Tensor {
+struct floor_divide__Tensor {
   using schema = at::Tensor & (at::Tensor &, const at::Tensor &);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -2264,7 +2264,7 @@ struct TORCH_API floor_divide__Tensor {
   static at::Tensor & redispatch(c10::DispatchKeySet dispatchKeySet, at::Tensor & self, const at::Tensor & other);
 };
 
-struct TORCH_API floor_divide_Scalar {
+struct floor_divide_Scalar {
   using schema = at::Tensor (const at::Tensor &, const at::Scalar &);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -2275,7 +2275,7 @@ struct TORCH_API floor_divide_Scalar {
   static at::Tensor redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self, const at::Scalar & other);
 };
 
-struct TORCH_API floor_divide__Scalar {
+struct floor_divide__Scalar {
   using schema = at::Tensor & (at::Tensor &, const at::Scalar &);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -2286,7 +2286,7 @@ struct TORCH_API floor_divide__Scalar {
   static at::Tensor & redispatch(c10::DispatchKeySet dispatchKeySet, at::Tensor & self, const at::Scalar & other);
 };
 
-struct TORCH_API frac {
+struct frac {
   using schema = at::Tensor (const at::Tensor &);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -2297,7 +2297,7 @@ struct TORCH_API frac {
   static at::Tensor redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self);
 };
 
-struct TORCH_API frac_ {
+struct frac_ {
   using schema = at::Tensor & (at::Tensor &);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -2308,7 +2308,7 @@ struct TORCH_API frac_ {
   static at::Tensor & redispatch(c10::DispatchKeySet dispatchKeySet, at::Tensor & self);
 };
 
-struct TORCH_API gcd {
+struct gcd {
   using schema = at::Tensor (const at::Tensor &, const at::Tensor &);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -2319,7 +2319,7 @@ struct TORCH_API gcd {
   static at::Tensor redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self, const at::Tensor & other);
 };
 
-struct TORCH_API gcd_ {
+struct gcd_ {
   using schema = at::Tensor & (at::Tensor &, const at::Tensor &);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -2330,7 +2330,7 @@ struct TORCH_API gcd_ {
   static at::Tensor & redispatch(c10::DispatchKeySet dispatchKeySet, at::Tensor & self, const at::Tensor & other);
 };
 
-struct TORCH_API lcm {
+struct lcm {
   using schema = at::Tensor (const at::Tensor &, const at::Tensor &);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -2341,7 +2341,7 @@ struct TORCH_API lcm {
   static at::Tensor redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self, const at::Tensor & other);
 };
 
-struct TORCH_API lcm_ {
+struct lcm_ {
   using schema = at::Tensor & (at::Tensor &, const at::Tensor &);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -2352,7 +2352,7 @@ struct TORCH_API lcm_ {
   static at::Tensor & redispatch(c10::DispatchKeySet dispatchKeySet, at::Tensor & self, const at::Tensor & other);
 };
 
-struct TORCH_API index_Tensor {
+struct index_Tensor {
   using schema = at::Tensor (const at::Tensor &, const c10::List<c10::optional<at::Tensor>> &);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -2363,7 +2363,7 @@ struct TORCH_API index_Tensor {
   static at::Tensor redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self, const c10::List<c10::optional<at::Tensor>> & indices);
 };
 
-struct TORCH_API index_copy_ {
+struct index_copy_ {
   using schema = at::Tensor & (at::Tensor &, int64_t, const at::Tensor &, const at::Tensor &);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -2374,7 +2374,7 @@ struct TORCH_API index_copy_ {
   static at::Tensor & redispatch(c10::DispatchKeySet dispatchKeySet, at::Tensor & self, int64_t dim, const at::Tensor & index, const at::Tensor & source);
 };
 
-struct TORCH_API index_copy {
+struct index_copy {
   using schema = at::Tensor (const at::Tensor &, int64_t, const at::Tensor &, const at::Tensor &);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -2385,7 +2385,7 @@ struct TORCH_API index_copy {
   static at::Tensor redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self, int64_t dim, const at::Tensor & index, const at::Tensor & source);
 };
 
-struct TORCH_API index_copy__dimname {
+struct index_copy__dimname {
   using schema = at::Tensor & (at::Tensor &, at::Dimname, const at::Tensor &, const at::Tensor &);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -2396,7 +2396,7 @@ struct TORCH_API index_copy__dimname {
   static at::Tensor & redispatch(c10::DispatchKeySet dispatchKeySet, at::Tensor & self, at::Dimname dim, const at::Tensor & index, const at::Tensor & source);
 };
 
-struct TORCH_API index_copy_dimname {
+struct index_copy_dimname {
   using schema = at::Tensor (const at::Tensor &, at::Dimname, const at::Tensor &, const at::Tensor &);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -2407,7 +2407,7 @@ struct TORCH_API index_copy_dimname {
   static at::Tensor redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self, at::Dimname dim, const at::Tensor & index, const at::Tensor & source);
 };
 
-struct TORCH_API index_put_ {
+struct index_put_ {
   using schema = at::Tensor & (at::Tensor &, const c10::List<c10::optional<at::Tensor>> &, const at::Tensor &, bool);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -2418,7 +2418,7 @@ struct TORCH_API index_put_ {
   static at::Tensor & redispatch(c10::DispatchKeySet dispatchKeySet, at::Tensor & self, const c10::List<c10::optional<at::Tensor>> & indices, const at::Tensor & values, bool accumulate);
 };
 
-struct TORCH_API index_put {
+struct index_put {
   using schema = at::Tensor (const at::Tensor &, const c10::List<c10::optional<at::Tensor>> &, const at::Tensor &, bool);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -2429,7 +2429,7 @@ struct TORCH_API index_put {
   static at::Tensor redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self, const c10::List<c10::optional<at::Tensor>> & indices, const at::Tensor & values, bool accumulate);
 };
 
-struct TORCH_API isclose {
+struct isclose {
   using schema = at::Tensor (const at::Tensor &, const at::Tensor &, double, double, bool);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -2440,7 +2440,7 @@ struct TORCH_API isclose {
   static at::Tensor redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self, const at::Tensor & other, double rtol, double atol, bool equal_nan);
 };
 
-struct TORCH_API isnan {
+struct isnan {
   using schema = at::Tensor (const at::Tensor &);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -2451,7 +2451,7 @@ struct TORCH_API isnan {
   static at::Tensor redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self);
 };
 
-struct TORCH_API is_distributed {
+struct is_distributed {
   using schema = bool (const at::Tensor &);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -2462,7 +2462,7 @@ struct TORCH_API is_distributed {
   static bool redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self);
 };
 
-struct TORCH_API is_floating_point {
+struct is_floating_point {
   using schema = bool (const at::Tensor &);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -2473,7 +2473,7 @@ struct TORCH_API is_floating_point {
   static bool redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self);
 };
 
-struct TORCH_API is_complex {
+struct is_complex {
   using schema = bool (const at::Tensor &);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -2484,7 +2484,7 @@ struct TORCH_API is_complex {
   static bool redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self);
 };
 
-struct TORCH_API is_conj {
+struct is_conj {
   using schema = bool (const at::Tensor &);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -2495,7 +2495,7 @@ struct TORCH_API is_conj {
   static bool redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self);
 };
 
-struct TORCH_API _is_zerotensor {
+struct _is_zerotensor {
   using schema = bool (const at::Tensor &);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -2506,7 +2506,7 @@ struct TORCH_API _is_zerotensor {
   static bool redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self);
 };
 
-struct TORCH_API is_neg {
+struct is_neg {
   using schema = bool (const at::Tensor &);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -2517,7 +2517,7 @@ struct TORCH_API is_neg {
   static bool redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self);
 };
 
-struct TORCH_API isreal {
+struct isreal {
   using schema = at::Tensor (const at::Tensor &);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -2528,7 +2528,7 @@ struct TORCH_API isreal {
   static at::Tensor redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self);
 };
 
-struct TORCH_API is_nonzero {
+struct is_nonzero {
   using schema = bool (const at::Tensor &);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -2539,7 +2539,7 @@ struct TORCH_API is_nonzero {
   static bool redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self);
 };
 
-struct TORCH_API is_same_size {
+struct is_same_size {
   using schema = bool (const at::Tensor &, const at::Tensor &);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -2550,7 +2550,7 @@ struct TORCH_API is_same_size {
   static bool redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self, const at::Tensor & other);
 };
 
-struct TORCH_API is_signed {
+struct is_signed {
   using schema = bool (const at::Tensor &);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -2561,7 +2561,7 @@ struct TORCH_API is_signed {
   static bool redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self);
 };
 
-struct TORCH_API is_inference {
+struct is_inference {
   using schema = bool (const at::Tensor &);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -2572,7 +2572,7 @@ struct TORCH_API is_inference {
   static bool redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self);
 };
 
-struct TORCH_API kron {
+struct kron {
   using schema = at::Tensor (const at::Tensor &, const at::Tensor &);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -2583,7 +2583,7 @@ struct TORCH_API kron {
   static at::Tensor redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self, const at::Tensor & other);
 };
 
-struct TORCH_API kthvalue {
+struct kthvalue {
   using schema = ::std::tuple<at::Tensor,at::Tensor> (const at::Tensor &, int64_t, int64_t, bool);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -2594,7 +2594,7 @@ struct TORCH_API kthvalue {
   static ::std::tuple<at::Tensor,at::Tensor> redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self, int64_t k, int64_t dim, bool keepdim);
 };
 
-struct TORCH_API kthvalue_dimname {
+struct kthvalue_dimname {
   using schema = ::std::tuple<at::Tensor,at::Tensor> (const at::Tensor &, int64_t, at::Dimname, bool);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -2605,7 +2605,7 @@ struct TORCH_API kthvalue_dimname {
   static ::std::tuple<at::Tensor,at::Tensor> redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self, int64_t k, at::Dimname dim, bool keepdim);
 };
 
-struct TORCH_API nan_to_num {
+struct nan_to_num {
   using schema = at::Tensor (const at::Tensor &, c10::optional<double>, c10::optional<double>, c10::optional<double>);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -2616,7 +2616,7 @@ struct TORCH_API nan_to_num {
   static at::Tensor redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self, c10::optional<double> nan, c10::optional<double> posinf, c10::optional<double> neginf);
 };
 
-struct TORCH_API nan_to_num_ {
+struct nan_to_num_ {
   using schema = at::Tensor & (at::Tensor &, c10::optional<double>, c10::optional<double>, c10::optional<double>);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -2627,7 +2627,7 @@ struct TORCH_API nan_to_num_ {
   static at::Tensor & redispatch(c10::DispatchKeySet dispatchKeySet, at::Tensor & self, c10::optional<double> nan, c10::optional<double> posinf, c10::optional<double> neginf);
 };
 
-struct TORCH_API ldexp_Tensor {
+struct ldexp_Tensor {
   using schema = at::Tensor (const at::Tensor &, const at::Tensor &);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -2638,7 +2638,7 @@ struct TORCH_API ldexp_Tensor {
   static at::Tensor redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self, const at::Tensor & other);
 };
 
-struct TORCH_API ldexp_ {
+struct ldexp_ {
   using schema = at::Tensor & (at::Tensor &, const at::Tensor &);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -2649,7 +2649,7 @@ struct TORCH_API ldexp_ {
   static at::Tensor & redispatch(c10::DispatchKeySet dispatchKeySet, at::Tensor & self, const at::Tensor & other);
 };
 
-struct TORCH_API log {
+struct log {
   using schema = at::Tensor (const at::Tensor &);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -2660,7 +2660,7 @@ struct TORCH_API log {
   static at::Tensor redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self);
 };
 
-struct TORCH_API log_ {
+struct log_ {
   using schema = at::Tensor & (at::Tensor &);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -2671,7 +2671,7 @@ struct TORCH_API log_ {
   static at::Tensor & redispatch(c10::DispatchKeySet dispatchKeySet, at::Tensor & self);
 };
 
-struct TORCH_API log10 {
+struct log10 {
   using schema = at::Tensor (const at::Tensor &);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -2682,7 +2682,7 @@ struct TORCH_API log10 {
   static at::Tensor redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self);
 };
 
-struct TORCH_API log10_ {
+struct log10_ {
   using schema = at::Tensor & (at::Tensor &);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -2693,7 +2693,7 @@ struct TORCH_API log10_ {
   static at::Tensor & redispatch(c10::DispatchKeySet dispatchKeySet, at::Tensor & self);
 };
 
-struct TORCH_API log1p {
+struct log1p {
   using schema = at::Tensor (const at::Tensor &);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -2704,7 +2704,7 @@ struct TORCH_API log1p {
   static at::Tensor redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self);
 };
 
-struct TORCH_API log1p_ {
+struct log1p_ {
   using schema = at::Tensor & (at::Tensor &);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -2715,7 +2715,7 @@ struct TORCH_API log1p_ {
   static at::Tensor & redispatch(c10::DispatchKeySet dispatchKeySet, at::Tensor & self);
 };
 
-struct TORCH_API log2 {
+struct log2 {
   using schema = at::Tensor (const at::Tensor &);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -2726,7 +2726,7 @@ struct TORCH_API log2 {
   static at::Tensor redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self);
 };
 
-struct TORCH_API log2_ {
+struct log2_ {
   using schema = at::Tensor & (at::Tensor &);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -2737,7 +2737,7 @@ struct TORCH_API log2_ {
   static at::Tensor & redispatch(c10::DispatchKeySet dispatchKeySet, at::Tensor & self);
 };
 
-struct TORCH_API logaddexp {
+struct logaddexp {
   using schema = at::Tensor (const at::Tensor &, const at::Tensor &);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -2748,7 +2748,7 @@ struct TORCH_API logaddexp {
   static at::Tensor redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self, const at::Tensor & other);
 };
 
-struct TORCH_API logaddexp2 {
+struct logaddexp2 {
   using schema = at::Tensor (const at::Tensor &, const at::Tensor &);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -2759,7 +2759,7 @@ struct TORCH_API logaddexp2 {
   static at::Tensor redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self, const at::Tensor & other);
 };
 
-struct TORCH_API xlogy_Tensor {
+struct xlogy_Tensor {
   using schema = at::Tensor (const at::Tensor &, const at::Tensor &);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -2770,7 +2770,7 @@ struct TORCH_API xlogy_Tensor {
   static at::Tensor redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self, const at::Tensor & other);
 };
 
-struct TORCH_API xlogy_Scalar_Other {
+struct xlogy_Scalar_Other {
   using schema = at::Tensor (const at::Tensor &, const at::Scalar &);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -2781,7 +2781,7 @@ struct TORCH_API xlogy_Scalar_Other {
   static at::Tensor redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self, const at::Scalar & other);
 };
 
-struct TORCH_API xlogy__Tensor {
+struct xlogy__Tensor {
   using schema = at::Tensor & (at::Tensor &, const at::Tensor &);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -2792,7 +2792,7 @@ struct TORCH_API xlogy__Tensor {
   static at::Tensor & redispatch(c10::DispatchKeySet dispatchKeySet, at::Tensor & self, const at::Tensor & other);
 };
 
-struct TORCH_API xlogy__Scalar_Other {
+struct xlogy__Scalar_Other {
   using schema = at::Tensor & (at::Tensor &, const at::Scalar &);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -2803,7 +2803,7 @@ struct TORCH_API xlogy__Scalar_Other {
   static at::Tensor & redispatch(c10::DispatchKeySet dispatchKeySet, at::Tensor & self, const at::Scalar & other);
 };
 
-struct TORCH_API log_softmax_int {
+struct log_softmax_int {
   using schema = at::Tensor (const at::Tensor &, int64_t, c10::optional<at::ScalarType>);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -2814,7 +2814,7 @@ struct TORCH_API log_softmax_int {
   static at::Tensor redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self, int64_t dim, c10::optional<at::ScalarType> dtype);
 };
 
-struct TORCH_API log_softmax_Dimname {
+struct log_softmax_Dimname {
   using schema = at::Tensor (const at::Tensor &, at::Dimname, c10::optional<at::ScalarType>);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -2825,7 +2825,7 @@ struct TORCH_API log_softmax_Dimname {
   static at::Tensor redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self, at::Dimname dim, c10::optional<at::ScalarType> dtype);
 };
 
-struct TORCH_API logcumsumexp {
+struct logcumsumexp {
   using schema = at::Tensor (const at::Tensor &, int64_t);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -2836,7 +2836,7 @@ struct TORCH_API logcumsumexp {
   static at::Tensor redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self, int64_t dim);
 };
 
-struct TORCH_API logcumsumexp_dimname {
+struct logcumsumexp_dimname {
   using schema = at::Tensor (const at::Tensor &, at::Dimname);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -2847,7 +2847,7 @@ struct TORCH_API logcumsumexp_dimname {
   static at::Tensor redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self, at::Dimname dim);
 };
 
-struct TORCH_API logsumexp {
+struct logsumexp {
   using schema = at::Tensor (const at::Tensor &, at::IntArrayRef, bool);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -2858,7 +2858,7 @@ struct TORCH_API logsumexp {
   static at::Tensor redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self, at::IntArrayRef dim, bool keepdim);
 };
 
-struct TORCH_API logsumexp_names {
+struct logsumexp_names {
   using schema = at::Tensor (const at::Tensor &, at::DimnameList, bool);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -2869,7 +2869,7 @@ struct TORCH_API logsumexp_names {
   static at::Tensor redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self, at::DimnameList dim, bool keepdim);
 };
 
-struct TORCH_API matmul {
+struct matmul {
   using schema = at::Tensor (const at::Tensor &, const at::Tensor &);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -2880,7 +2880,7 @@ struct TORCH_API matmul {
   static at::Tensor redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self, const at::Tensor & other);
 };
 
-struct TORCH_API matrix_power {
+struct matrix_power {
   using schema = at::Tensor (const at::Tensor &, int64_t);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -2891,7 +2891,7 @@ struct TORCH_API matrix_power {
   static at::Tensor redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self, int64_t n);
 };
 
-struct TORCH_API matrix_exp {
+struct matrix_exp {
   using schema = at::Tensor (const at::Tensor &);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -2902,7 +2902,7 @@ struct TORCH_API matrix_exp {
   static at::Tensor redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self);
 };
 
-struct TORCH_API aminmax {
+struct aminmax {
   using schema = ::std::tuple<at::Tensor,at::Tensor> (const at::Tensor &, c10::optional<int64_t>, bool);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -2913,7 +2913,7 @@ struct TORCH_API aminmax {
   static ::std::tuple<at::Tensor,at::Tensor> redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self, c10::optional<int64_t> dim, bool keepdim);
 };
 
-struct TORCH_API max_dim {
+struct max_dim {
   using schema = ::std::tuple<at::Tensor,at::Tensor> (const at::Tensor &, int64_t, bool);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -2924,7 +2924,7 @@ struct TORCH_API max_dim {
   static ::std::tuple<at::Tensor,at::Tensor> redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self, int64_t dim, bool keepdim);
 };
 
-struct TORCH_API max_names_dim {
+struct max_names_dim {
   using schema = ::std::tuple<at::Tensor,at::Tensor> (const at::Tensor &, at::Dimname, bool);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -2935,7 +2935,7 @@ struct TORCH_API max_names_dim {
   static ::std::tuple<at::Tensor,at::Tensor> redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self, at::Dimname dim, bool keepdim);
 };
 
-struct TORCH_API amax {
+struct amax {
   using schema = at::Tensor (const at::Tensor &, at::IntArrayRef, bool);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -2946,7 +2946,7 @@ struct TORCH_API amax {
   static at::Tensor redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self, at::IntArrayRef dim, bool keepdim);
 };
 
-struct TORCH_API mean {
+struct mean {
   using schema = at::Tensor (const at::Tensor &, c10::optional<at::ScalarType>);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -2957,7 +2957,7 @@ struct TORCH_API mean {
   static at::Tensor redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self, c10::optional<at::ScalarType> dtype);
 };
 
-struct TORCH_API mean_dim {
+struct mean_dim {
   using schema = at::Tensor (const at::Tensor &, at::OptionalIntArrayRef, bool, c10::optional<at::ScalarType>);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -2968,7 +2968,7 @@ struct TORCH_API mean_dim {
   static at::Tensor redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self, at::OptionalIntArrayRef dim, bool keepdim, c10::optional<at::ScalarType> dtype);
 };
 
-struct TORCH_API mean_names_dim {
+struct mean_names_dim {
   using schema = at::Tensor (const at::Tensor &, at::DimnameList, bool, c10::optional<at::ScalarType>);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -2979,7 +2979,7 @@ struct TORCH_API mean_names_dim {
   static at::Tensor redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self, at::DimnameList dim, bool keepdim, c10::optional<at::ScalarType> dtype);
 };
 
-struct TORCH_API nanmean {
+struct nanmean {
   using schema = at::Tensor (const at::Tensor &, at::OptionalIntArrayRef, bool, c10::optional<at::ScalarType>);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -2990,7 +2990,7 @@ struct TORCH_API nanmean {
   static at::Tensor redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self, at::OptionalIntArrayRef dim, bool keepdim, c10::optional<at::ScalarType> dtype);
 };
 
-struct TORCH_API median {
+struct median {
   using schema = at::Tensor (const at::Tensor &);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -3001,7 +3001,7 @@ struct TORCH_API median {
   static at::Tensor redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self);
 };
 
-struct TORCH_API median_dim {
+struct median_dim {
   using schema = ::std::tuple<at::Tensor,at::Tensor> (const at::Tensor &, int64_t, bool);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -3012,7 +3012,7 @@ struct TORCH_API median_dim {
   static ::std::tuple<at::Tensor,at::Tensor> redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self, int64_t dim, bool keepdim);
 };
 
-struct TORCH_API median_names_dim {
+struct median_names_dim {
   using schema = ::std::tuple<at::Tensor,at::Tensor> (const at::Tensor &, at::Dimname, bool);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -3023,7 +3023,7 @@ struct TORCH_API median_names_dim {
   static ::std::tuple<at::Tensor,at::Tensor> redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self, at::Dimname dim, bool keepdim);
 };
 
-struct TORCH_API nanmedian {
+struct nanmedian {
   using schema = at::Tensor (const at::Tensor &);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -3034,7 +3034,7 @@ struct TORCH_API nanmedian {
   static at::Tensor redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self);
 };
 
-struct TORCH_API nanmedian_dim {
+struct nanmedian_dim {
   using schema = ::std::tuple<at::Tensor,at::Tensor> (const at::Tensor &, int64_t, bool);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -3045,7 +3045,7 @@ struct TORCH_API nanmedian_dim {
   static ::std::tuple<at::Tensor,at::Tensor> redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self, int64_t dim, bool keepdim);
 };
 
-struct TORCH_API nanmedian_names_dim {
+struct nanmedian_names_dim {
   using schema = ::std::tuple<at::Tensor,at::Tensor> (const at::Tensor &, at::Dimname, bool);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -3056,7 +3056,7 @@ struct TORCH_API nanmedian_names_dim {
   static ::std::tuple<at::Tensor,at::Tensor> redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self, at::Dimname dim, bool keepdim);
 };
 
-struct TORCH_API min_dim {
+struct min_dim {
   using schema = ::std::tuple<at::Tensor,at::Tensor> (const at::Tensor &, int64_t, bool);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -3067,7 +3067,7 @@ struct TORCH_API min_dim {
   static ::std::tuple<at::Tensor,at::Tensor> redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self, int64_t dim, bool keepdim);
 };
 
-struct TORCH_API min_names_dim {
+struct min_names_dim {
   using schema = ::std::tuple<at::Tensor,at::Tensor> (const at::Tensor &, at::Dimname, bool);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -3078,7 +3078,7 @@ struct TORCH_API min_names_dim {
   static ::std::tuple<at::Tensor,at::Tensor> redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self, at::Dimname dim, bool keepdim);
 };
 
-struct TORCH_API amin {
+struct amin {
   using schema = at::Tensor (const at::Tensor &, at::IntArrayRef, bool);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -3089,7 +3089,7 @@ struct TORCH_API amin {
   static at::Tensor redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self, at::IntArrayRef dim, bool keepdim);
 };
 
-struct TORCH_API mm {
+struct mm {
   using schema = at::Tensor (const at::Tensor &, const at::Tensor &);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -3100,7 +3100,7 @@ struct TORCH_API mm {
   static at::Tensor redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self, const at::Tensor & mat2);
 };
 
-struct TORCH_API mode {
+struct mode {
   using schema = ::std::tuple<at::Tensor,at::Tensor> (const at::Tensor &, int64_t, bool);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -3111,7 +3111,7 @@ struct TORCH_API mode {
   static ::std::tuple<at::Tensor,at::Tensor> redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self, int64_t dim, bool keepdim);
 };
 
-struct TORCH_API mode_dimname {
+struct mode_dimname {
   using schema = ::std::tuple<at::Tensor,at::Tensor> (const at::Tensor &, at::Dimname, bool);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -3122,7 +3122,7 @@ struct TORCH_API mode_dimname {
   static ::std::tuple<at::Tensor,at::Tensor> redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self, at::Dimname dim, bool keepdim);
 };
 
-struct TORCH_API mul_Tensor {
+struct mul_Tensor {
   using schema = at::Tensor (const at::Tensor &, const at::Tensor &);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -3133,7 +3133,7 @@ struct TORCH_API mul_Tensor {
   static at::Tensor redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self, const at::Tensor & other);
 };
 
-struct TORCH_API mul__Tensor {
+struct mul__Tensor {
   using schema = at::Tensor & (at::Tensor &, const at::Tensor &);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -3144,7 +3144,7 @@ struct TORCH_API mul__Tensor {
   static at::Tensor & redispatch(c10::DispatchKeySet dispatchKeySet, at::Tensor & self, const at::Tensor & other);
 };
 
-struct TORCH_API mul_Scalar {
+struct mul_Scalar {
   using schema = at::Tensor (const at::Tensor &, const at::Scalar &);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -3155,7 +3155,7 @@ struct TORCH_API mul_Scalar {
   static at::Tensor redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self, const at::Scalar & other);
 };
 
-struct TORCH_API mul__Scalar {
+struct mul__Scalar {
   using schema = at::Tensor & (at::Tensor &, const at::Scalar &);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -3166,7 +3166,7 @@ struct TORCH_API mul__Scalar {
   static at::Tensor & redispatch(c10::DispatchKeySet dispatchKeySet, at::Tensor & self, const at::Scalar & other);
 };
 
-struct TORCH_API multiply_Tensor {
+struct multiply_Tensor {
   using schema = at::Tensor (const at::Tensor &, const at::Tensor &);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -3177,7 +3177,7 @@ struct TORCH_API multiply_Tensor {
   static at::Tensor redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self, const at::Tensor & other);
 };
 
-struct TORCH_API multiply__Tensor {
+struct multiply__Tensor {
   using schema = at::Tensor & (at::Tensor &, const at::Tensor &);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -3188,7 +3188,7 @@ struct TORCH_API multiply__Tensor {
   static at::Tensor & redispatch(c10::DispatchKeySet dispatchKeySet, at::Tensor & self, const at::Tensor & other);
 };
 
-struct TORCH_API multiply_Scalar {
+struct multiply_Scalar {
   using schema = at::Tensor (const at::Tensor &, const at::Scalar &);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -3199,7 +3199,7 @@ struct TORCH_API multiply_Scalar {
   static at::Tensor redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self, const at::Scalar & other);
 };
 
-struct TORCH_API multiply__Scalar {
+struct multiply__Scalar {
   using schema = at::Tensor & (at::Tensor &, const at::Scalar &);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -3210,7 +3210,7 @@ struct TORCH_API multiply__Scalar {
   static at::Tensor & redispatch(c10::DispatchKeySet dispatchKeySet, at::Tensor & self, const at::Scalar & other);
 };
 
-struct TORCH_API mv {
+struct mv {
   using schema = at::Tensor (const at::Tensor &, const at::Tensor &);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -3221,7 +3221,7 @@ struct TORCH_API mv {
   static at::Tensor redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self, const at::Tensor & vec);
 };
 
-struct TORCH_API mvlgamma {
+struct mvlgamma {
   using schema = at::Tensor (const at::Tensor &, int64_t);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -3232,7 +3232,7 @@ struct TORCH_API mvlgamma {
   static at::Tensor redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self, int64_t p);
 };
 
-struct TORCH_API mvlgamma_ {
+struct mvlgamma_ {
   using schema = at::Tensor & (at::Tensor &, int64_t);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -3243,7 +3243,7 @@ struct TORCH_API mvlgamma_ {
   static at::Tensor & redispatch(c10::DispatchKeySet dispatchKeySet, at::Tensor & self, int64_t p);
 };
 
-struct TORCH_API narrow_copy {
+struct narrow_copy {
   using schema = at::Tensor (const at::Tensor &, int64_t, c10::SymInt, c10::SymInt);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -3254,7 +3254,7 @@ struct TORCH_API narrow_copy {
   static at::Tensor redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self, int64_t dim, c10::SymInt start, c10::SymInt length);
 };
 
-struct TORCH_API narrow {
+struct narrow {
   using schema = at::Tensor (const at::Tensor &, int64_t, c10::SymInt, c10::SymInt);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -3265,7 +3265,7 @@ struct TORCH_API narrow {
   static at::Tensor redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self, int64_t dim, c10::SymInt start, c10::SymInt length);
 };
 
-struct TORCH_API narrow_Tensor {
+struct narrow_Tensor {
   using schema = at::Tensor (const at::Tensor &, int64_t, const at::Tensor &, c10::SymInt);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -3276,7 +3276,7 @@ struct TORCH_API narrow_Tensor {
   static at::Tensor redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self, int64_t dim, const at::Tensor & start, c10::SymInt length);
 };
 
-struct TORCH_API permute {
+struct permute {
   using schema = at::Tensor (const at::Tensor &, at::IntArrayRef);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -3287,7 +3287,7 @@ struct TORCH_API permute {
   static at::Tensor redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self, at::IntArrayRef dims);
 };
 
-struct TORCH_API movedim_intlist {
+struct movedim_intlist {
   using schema = at::Tensor (const at::Tensor &, at::IntArrayRef, at::IntArrayRef);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -3298,7 +3298,7 @@ struct TORCH_API movedim_intlist {
   static at::Tensor redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self, at::IntArrayRef source, at::IntArrayRef destination);
 };
 
-struct TORCH_API movedim_int {
+struct movedim_int {
   using schema = at::Tensor (const at::Tensor &, int64_t, int64_t);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -3309,7 +3309,7 @@ struct TORCH_API movedim_int {
   static at::Tensor redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self, int64_t source, int64_t destination);
 };
 
-struct TORCH_API moveaxis_intlist {
+struct moveaxis_intlist {
   using schema = at::Tensor (const at::Tensor &, at::IntArrayRef, at::IntArrayRef);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -3320,7 +3320,7 @@ struct TORCH_API moveaxis_intlist {
   static at::Tensor redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self, at::IntArrayRef source, at::IntArrayRef destination);
 };
 
-struct TORCH_API moveaxis_int {
+struct moveaxis_int {
   using schema = at::Tensor (const at::Tensor &, int64_t, int64_t);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -3331,7 +3331,7 @@ struct TORCH_API moveaxis_int {
   static at::Tensor redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self, int64_t source, int64_t destination);
 };
 
-struct TORCH_API numpy_T {
+struct numpy_T {
   using schema = at::Tensor (const at::Tensor &);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -3342,7 +3342,7 @@ struct TORCH_API numpy_T {
   static at::Tensor redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self);
 };
 
-struct TORCH_API matrix_H {
+struct matrix_H {
   using schema = at::Tensor (const at::Tensor &);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -3353,7 +3353,7 @@ struct TORCH_API matrix_H {
   static at::Tensor redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self);
 };
 
-struct TORCH_API mT {
+struct mT {
   using schema = at::Tensor (const at::Tensor &);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -3364,7 +3364,7 @@ struct TORCH_API mT {
   static at::Tensor redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self);
 };
 
-struct TORCH_API mH {
+struct mH {
   using schema = at::Tensor (const at::Tensor &);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -3375,7 +3375,7 @@ struct TORCH_API mH {
   static at::Tensor redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self);
 };
 
-struct TORCH_API adjoint {
+struct adjoint {
   using schema = at::Tensor (const at::Tensor &);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -3386,7 +3386,7 @@ struct TORCH_API adjoint {
   static at::Tensor redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self);
 };
 
-struct TORCH_API is_pinned {
+struct is_pinned {
   using schema = bool (const at::Tensor &, c10::optional<at::Device>);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -3397,7 +3397,7 @@ struct TORCH_API is_pinned {
   static bool redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self, c10::optional<at::Device> device);
 };
 
-struct TORCH_API pin_memory {
+struct pin_memory {
   using schema = at::Tensor (const at::Tensor &, c10::optional<at::Device>);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -3408,7 +3408,7 @@ struct TORCH_API pin_memory {
   static at::Tensor redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self, c10::optional<at::Device> device);
 };
 
-struct TORCH_API pinverse {
+struct pinverse {
   using schema = at::Tensor (const at::Tensor &, double);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -3419,7 +3419,7 @@ struct TORCH_API pinverse {
   static at::Tensor redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self, double rcond);
 };
 
-struct TORCH_API rad2deg {
+struct rad2deg {
   using schema = at::Tensor (const at::Tensor &);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -3430,7 +3430,7 @@ struct TORCH_API rad2deg {
   static at::Tensor redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self);
 };
 
-struct TORCH_API rad2deg_ {
+struct rad2deg_ {
   using schema = at::Tensor & (at::Tensor &);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -3441,7 +3441,7 @@ struct TORCH_API rad2deg_ {
   static at::Tensor & redispatch(c10::DispatchKeySet dispatchKeySet, at::Tensor & self);
 };
 
-struct TORCH_API deg2rad {
+struct deg2rad {
   using schema = at::Tensor (const at::Tensor &);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -3452,7 +3452,7 @@ struct TORCH_API deg2rad {
   static at::Tensor redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self);
 };
 
-struct TORCH_API deg2rad_ {
+struct deg2rad_ {
   using schema = at::Tensor & (at::Tensor &);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -3463,7 +3463,7 @@ struct TORCH_API deg2rad_ {
   static at::Tensor & redispatch(c10::DispatchKeySet dispatchKeySet, at::Tensor & self);
 };
 
-struct TORCH_API ravel {
+struct ravel {
   using schema = at::Tensor (const at::Tensor &);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -3474,7 +3474,7 @@ struct TORCH_API ravel {
   static at::Tensor redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self);
 };
 
-struct TORCH_API reciprocal {
+struct reciprocal {
   using schema = at::Tensor (const at::Tensor &);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -3485,7 +3485,7 @@ struct TORCH_API reciprocal {
   static at::Tensor redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self);
 };
 
-struct TORCH_API reciprocal_ {
+struct reciprocal_ {
   using schema = at::Tensor & (at::Tensor &);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -3496,7 +3496,7 @@ struct TORCH_API reciprocal_ {
   static at::Tensor & redispatch(c10::DispatchKeySet dispatchKeySet, at::Tensor & self);
 };
 
-struct TORCH_API neg {
+struct neg {
   using schema = at::Tensor (const at::Tensor &);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -3507,7 +3507,7 @@ struct TORCH_API neg {
   static at::Tensor redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self);
 };
 
-struct TORCH_API neg_ {
+struct neg_ {
   using schema = at::Tensor & (at::Tensor &);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -3518,7 +3518,7 @@ struct TORCH_API neg_ {
   static at::Tensor & redispatch(c10::DispatchKeySet dispatchKeySet, at::Tensor & self);
 };
 
-struct TORCH_API negative {
+struct negative {
   using schema = at::Tensor (const at::Tensor &);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -3529,7 +3529,7 @@ struct TORCH_API negative {
   static at::Tensor redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self);
 };
 
-struct TORCH_API negative_ {
+struct negative_ {
   using schema = at::Tensor & (at::Tensor &);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -3540,7 +3540,7 @@ struct TORCH_API negative_ {
   static at::Tensor & redispatch(c10::DispatchKeySet dispatchKeySet, at::Tensor & self);
 };
 
-struct TORCH_API repeat {
+struct repeat {
   using schema = at::Tensor (const at::Tensor &, c10::SymIntArrayRef);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -3551,7 +3551,7 @@ struct TORCH_API repeat {
   static at::Tensor redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self, c10::SymIntArrayRef repeats);
 };
 
-struct TORCH_API repeat_interleave_self_Tensor {
+struct repeat_interleave_self_Tensor {
   using schema = at::Tensor (const at::Tensor &, const at::Tensor &, c10::optional<int64_t>, c10::optional<c10::SymInt>);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -3562,7 +3562,7 @@ struct TORCH_API repeat_interleave_self_Tensor {
   static at::Tensor redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self, const at::Tensor & repeats, c10::optional<int64_t> dim, c10::optional<c10::SymInt> output_size);
 };
 
-struct TORCH_API repeat_interleave_self_int {
+struct repeat_interleave_self_int {
   using schema = at::Tensor (const at::Tensor &, c10::SymInt, c10::optional<int64_t>, c10::optional<c10::SymInt>);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -3573,7 +3573,7 @@ struct TORCH_API repeat_interleave_self_int {
   static at::Tensor redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self, c10::SymInt repeats, c10::optional<int64_t> dim, c10::optional<c10::SymInt> output_size);
 };
 
-struct TORCH_API reshape {
+struct reshape {
   using schema = at::Tensor (const at::Tensor &, c10::SymIntArrayRef);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -3584,7 +3584,7 @@ struct TORCH_API reshape {
   static at::Tensor redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self, c10::SymIntArrayRef shape);
 };
 
-struct TORCH_API _reshape_alias {
+struct _reshape_alias {
   using schema = at::Tensor (const at::Tensor &, c10::SymIntArrayRef, c10::SymIntArrayRef);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -3595,7 +3595,7 @@ struct TORCH_API _reshape_alias {
   static at::Tensor redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self, c10::SymIntArrayRef size, c10::SymIntArrayRef stride);
 };
 
-struct TORCH_API reshape_as {
+struct reshape_as {
   using schema = at::Tensor (const at::Tensor &, const at::Tensor &);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -3606,7 +3606,7 @@ struct TORCH_API reshape_as {
   static at::Tensor redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self, const at::Tensor & other);
 };
 
-struct TORCH_API round {
+struct round {
   using schema = at::Tensor (const at::Tensor &);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -3617,7 +3617,7 @@ struct TORCH_API round {
   static at::Tensor redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self);
 };
 
-struct TORCH_API round_ {
+struct round_ {
   using schema = at::Tensor & (at::Tensor &);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -3628,7 +3628,7 @@ struct TORCH_API round_ {
   static at::Tensor & redispatch(c10::DispatchKeySet dispatchKeySet, at::Tensor & self);
 };
 
-struct TORCH_API round_decimals {
+struct round_decimals {
   using schema = at::Tensor (const at::Tensor &, int64_t);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -3639,7 +3639,7 @@ struct TORCH_API round_decimals {
   static at::Tensor redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self, int64_t decimals);
 };
 
-struct TORCH_API round__decimals {
+struct round__decimals {
   using schema = at::Tensor & (at::Tensor &, int64_t);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -3650,7 +3650,7 @@ struct TORCH_API round__decimals {
   static at::Tensor & redispatch(c10::DispatchKeySet dispatchKeySet, at::Tensor & self, int64_t decimals);
 };
 
-struct TORCH_API relu {
+struct relu {
   using schema = at::Tensor (const at::Tensor &);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -3661,7 +3661,7 @@ struct TORCH_API relu {
   static at::Tensor redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self);
 };
 
-struct TORCH_API relu_ {
+struct relu_ {
   using schema = at::Tensor & (at::Tensor &);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -3672,7 +3672,7 @@ struct TORCH_API relu_ {
   static at::Tensor & redispatch(c10::DispatchKeySet dispatchKeySet, at::Tensor & self);
 };
 
-struct TORCH_API prelu {
+struct prelu {
   using schema = at::Tensor (const at::Tensor &, const at::Tensor &);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -3683,7 +3683,7 @@ struct TORCH_API prelu {
   static at::Tensor redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self, const at::Tensor & weight);
 };
 
-struct TORCH_API hardshrink {
+struct hardshrink {
   using schema = at::Tensor (const at::Tensor &, const at::Scalar &);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -3694,7 +3694,7 @@ struct TORCH_API hardshrink {
   static at::Tensor redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self, const at::Scalar & lambd);
 };
 
-struct TORCH_API hardshrink_backward {
+struct hardshrink_backward {
   using schema = at::Tensor (const at::Tensor &, const at::Tensor &, const at::Scalar &);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -3705,7 +3705,7 @@ struct TORCH_API hardshrink_backward {
   static at::Tensor redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & grad_out, const at::Tensor & self, const at::Scalar & lambd);
 };
 
-struct TORCH_API rsqrt {
+struct rsqrt {
   using schema = at::Tensor (const at::Tensor &);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -3716,7 +3716,7 @@ struct TORCH_API rsqrt {
   static at::Tensor redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self);
 };
 
-struct TORCH_API rsqrt_ {
+struct rsqrt_ {
   using schema = at::Tensor & (at::Tensor &);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -3727,7 +3727,7 @@ struct TORCH_API rsqrt_ {
   static at::Tensor & redispatch(c10::DispatchKeySet dispatchKeySet, at::Tensor & self);
 };
 
-struct TORCH_API select_Dimname {
+struct select_Dimname {
   using schema = at::Tensor (const at::Tensor &, at::Dimname, int64_t);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -3738,7 +3738,7 @@ struct TORCH_API select_Dimname {
   static at::Tensor redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self, at::Dimname dim, int64_t index);
 };
 
-struct TORCH_API select_int {
+struct select_int {
   using schema = at::Tensor (const at::Tensor &, int64_t, c10::SymInt);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -3749,7 +3749,7 @@ struct TORCH_API select_int {
   static at::Tensor redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self, int64_t dim, c10::SymInt index);
 };
 
-struct TORCH_API sigmoid {
+struct sigmoid {
   using schema = at::Tensor (const at::Tensor &);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -3760,7 +3760,7 @@ struct TORCH_API sigmoid {
   static at::Tensor redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self);
 };
 
-struct TORCH_API sigmoid_ {
+struct sigmoid_ {
   using schema = at::Tensor & (at::Tensor &);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -3771,7 +3771,7 @@ struct TORCH_API sigmoid_ {
   static at::Tensor & redispatch(c10::DispatchKeySet dispatchKeySet, at::Tensor & self);
 };
 
-struct TORCH_API logit {
+struct logit {
   using schema = at::Tensor (const at::Tensor &, c10::optional<double>);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -3782,7 +3782,7 @@ struct TORCH_API logit {
   static at::Tensor redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self, c10::optional<double> eps);
 };
 
-struct TORCH_API logit_ {
+struct logit_ {
   using schema = at::Tensor & (at::Tensor &, c10::optional<double>);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -3793,7 +3793,7 @@ struct TORCH_API logit_ {
   static at::Tensor & redispatch(c10::DispatchKeySet dispatchKeySet, at::Tensor & self, c10::optional<double> eps);
 };
 
-struct TORCH_API sin {
+struct sin {
   using schema = at::Tensor (const at::Tensor &);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -3804,7 +3804,7 @@ struct TORCH_API sin {
   static at::Tensor redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self);
 };
 
-struct TORCH_API sin_ {
+struct sin_ {
   using schema = at::Tensor & (at::Tensor &);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -3815,7 +3815,7 @@ struct TORCH_API sin_ {
   static at::Tensor & redispatch(c10::DispatchKeySet dispatchKeySet, at::Tensor & self);
 };
 
-struct TORCH_API sinc {
+struct sinc {
   using schema = at::Tensor (const at::Tensor &);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -3826,7 +3826,7 @@ struct TORCH_API sinc {
   static at::Tensor redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self);
 };
 
-struct TORCH_API sinc_ {
+struct sinc_ {
   using schema = at::Tensor & (at::Tensor &);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -3837,7 +3837,7 @@ struct TORCH_API sinc_ {
   static at::Tensor & redispatch(c10::DispatchKeySet dispatchKeySet, at::Tensor & self);
 };
 
-struct TORCH_API sinh {
+struct sinh {
   using schema = at::Tensor (const at::Tensor &);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -3848,7 +3848,7 @@ struct TORCH_API sinh {
   static at::Tensor redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self);
 };
 
-struct TORCH_API sinh_ {
+struct sinh_ {
   using schema = at::Tensor & (at::Tensor &);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -3859,7 +3859,7 @@ struct TORCH_API sinh_ {
   static at::Tensor & redispatch(c10::DispatchKeySet dispatchKeySet, at::Tensor & self);
 };
 
-struct TORCH_API detach {
+struct detach {
   using schema = at::Tensor (const at::Tensor &);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -3870,7 +3870,7 @@ struct TORCH_API detach {
   static at::Tensor redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self);
 };
 
-struct TORCH_API detach_ {
+struct detach_ {
   using schema = at::Tensor & (at::Tensor &);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -3881,7 +3881,7 @@ struct TORCH_API detach_ {
   static at::Tensor & redispatch(c10::DispatchKeySet dispatchKeySet, at::Tensor & self);
 };
 
-struct TORCH_API size_Dimname {
+struct size_Dimname {
   using schema = int64_t (const at::Tensor &, at::Dimname);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -3892,7 +3892,7 @@ struct TORCH_API size_Dimname {
   static int64_t redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self, at::Dimname dim);
 };
 
-struct TORCH_API slice_Tensor {
+struct slice_Tensor {
   using schema = at::Tensor (const at::Tensor &, int64_t, c10::optional<c10::SymInt>, c10::optional<c10::SymInt>, c10::SymInt);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -3903,7 +3903,7 @@ struct TORCH_API slice_Tensor {
   static at::Tensor redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self, int64_t dim, c10::optional<c10::SymInt> start, c10::optional<c10::SymInt> end, c10::SymInt step);
 };
 
-struct TORCH_API slice_inverse {
+struct slice_inverse {
   using schema = at::Tensor (const at::Tensor &, const at::Tensor &, int64_t, c10::optional<c10::SymInt>, c10::optional<c10::SymInt>, c10::SymInt);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -3914,7 +3914,7 @@ struct TORCH_API slice_inverse {
   static at::Tensor redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self, const at::Tensor & src, int64_t dim, c10::optional<c10::SymInt> start, c10::optional<c10::SymInt> end, c10::SymInt step);
 };
 
-struct TORCH_API slice_scatter {
+struct slice_scatter {
   using schema = at::Tensor (const at::Tensor &, const at::Tensor &, int64_t, c10::optional<c10::SymInt>, c10::optional<c10::SymInt>, c10::SymInt);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -3925,7 +3925,7 @@ struct TORCH_API slice_scatter {
   static at::Tensor redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self, const at::Tensor & src, int64_t dim, c10::optional<c10::SymInt> start, c10::optional<c10::SymInt> end, c10::SymInt step);
 };
 
-struct TORCH_API select_scatter {
+struct select_scatter {
   using schema = at::Tensor (const at::Tensor &, const at::Tensor &, int64_t, c10::SymInt);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -3936,7 +3936,7 @@ struct TORCH_API select_scatter {
   static at::Tensor redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self, const at::Tensor & src, int64_t dim, c10::SymInt index);
 };
 
-struct TORCH_API diagonal_scatter {
+struct diagonal_scatter {
   using schema = at::Tensor (const at::Tensor &, const at::Tensor &, int64_t, int64_t, int64_t);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -3947,7 +3947,7 @@ struct TORCH_API diagonal_scatter {
   static at::Tensor redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self, const at::Tensor & src, int64_t offset, int64_t dim1, int64_t dim2);
 };
 
-struct TORCH_API as_strided_scatter {
+struct as_strided_scatter {
   using schema = at::Tensor (const at::Tensor &, const at::Tensor &, c10::SymIntArrayRef, c10::SymIntArrayRef, c10::optional<c10::SymInt>);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -3958,7 +3958,7 @@ struct TORCH_API as_strided_scatter {
   static at::Tensor redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self, const at::Tensor & src, c10::SymIntArrayRef size, c10::SymIntArrayRef stride, c10::optional<c10::SymInt> storage_offset);
 };
 
-struct TORCH_API smm {
+struct smm {
   using schema = at::Tensor (const at::Tensor &, const at::Tensor &);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -3969,7 +3969,7 @@ struct TORCH_API smm {
   static at::Tensor redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self, const at::Tensor & mat2);
 };
 
-struct TORCH_API softmax_int {
+struct softmax_int {
   using schema = at::Tensor (const at::Tensor &, int64_t, c10::optional<at::ScalarType>);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -3980,7 +3980,7 @@ struct TORCH_API softmax_int {
   static at::Tensor redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self, int64_t dim, c10::optional<at::ScalarType> dtype);
 };
 
-struct TORCH_API softmax_Dimname {
+struct softmax_Dimname {
   using schema = at::Tensor (const at::Tensor &, at::Dimname, c10::optional<at::ScalarType>);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -3991,7 +3991,7 @@ struct TORCH_API softmax_Dimname {
   static at::Tensor redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self, at::Dimname dim, c10::optional<at::ScalarType> dtype);
 };
 
-struct TORCH_API unsafe_split_Tensor {
+struct unsafe_split_Tensor {
   using schema = ::std::vector<at::Tensor> (const at::Tensor &, c10::SymInt, int64_t);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -4002,7 +4002,7 @@ struct TORCH_API unsafe_split_Tensor {
   static ::std::vector<at::Tensor> redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self, c10::SymInt split_size, int64_t dim);
 };
 
-struct TORCH_API split_Tensor {
+struct split_Tensor {
   using schema = ::std::vector<at::Tensor> (const at::Tensor &, c10::SymInt, int64_t);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -4013,7 +4013,7 @@ struct TORCH_API split_Tensor {
   static ::std::vector<at::Tensor> redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self, c10::SymInt split_size, int64_t dim);
 };
 
-struct TORCH_API split_sizes {
+struct split_sizes {
   using schema = ::std::vector<at::Tensor> (const at::Tensor &, c10::SymIntArrayRef, int64_t);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -4024,7 +4024,7 @@ struct TORCH_API split_sizes {
   static ::std::vector<at::Tensor> redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self, c10::SymIntArrayRef split_size, int64_t dim);
 };
 
-struct TORCH_API unsafe_split_with_sizes {
+struct unsafe_split_with_sizes {
   using schema = ::std::vector<at::Tensor> (const at::Tensor &, c10::SymIntArrayRef, int64_t);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -4035,7 +4035,7 @@ struct TORCH_API unsafe_split_with_sizes {
   static ::std::vector<at::Tensor> redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self, c10::SymIntArrayRef split_sizes, int64_t dim);
 };
 
-struct TORCH_API split_with_sizes {
+struct split_with_sizes {
   using schema = ::std::vector<at::Tensor> (const at::Tensor &, c10::SymIntArrayRef, int64_t);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -4046,7 +4046,7 @@ struct TORCH_API split_with_sizes {
   static ::std::vector<at::Tensor> redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self, c10::SymIntArrayRef split_sizes, int64_t dim);
 };
 
-struct TORCH_API hsplit_int {
+struct hsplit_int {
   using schema = ::std::vector<at::Tensor> (const at::Tensor &, int64_t);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -4057,7 +4057,7 @@ struct TORCH_API hsplit_int {
   static ::std::vector<at::Tensor> redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self, int64_t sections);
 };
 
-struct TORCH_API hsplit_array {
+struct hsplit_array {
   using schema = ::std::vector<at::Tensor> (const at::Tensor &, at::IntArrayRef);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -4068,7 +4068,7 @@ struct TORCH_API hsplit_array {
   static ::std::vector<at::Tensor> redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self, at::IntArrayRef indices);
 };
 
-struct TORCH_API vsplit_int {
+struct vsplit_int {
   using schema = ::std::vector<at::Tensor> (const at::Tensor &, int64_t);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -4079,7 +4079,7 @@ struct TORCH_API vsplit_int {
   static ::std::vector<at::Tensor> redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self, int64_t sections);
 };
 
-struct TORCH_API vsplit_array {
+struct vsplit_array {
   using schema = ::std::vector<at::Tensor> (const at::Tensor &, at::IntArrayRef);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -4090,7 +4090,7 @@ struct TORCH_API vsplit_array {
   static ::std::vector<at::Tensor> redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self, at::IntArrayRef indices);
 };
 
-struct TORCH_API dsplit_int {
+struct dsplit_int {
   using schema = ::std::vector<at::Tensor> (const at::Tensor &, int64_t);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -4101,7 +4101,7 @@ struct TORCH_API dsplit_int {
   static ::std::vector<at::Tensor> redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self, int64_t sections);
 };
 
-struct TORCH_API dsplit_array {
+struct dsplit_array {
   using schema = ::std::vector<at::Tensor> (const at::Tensor &, at::IntArrayRef);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -4112,7 +4112,7 @@ struct TORCH_API dsplit_array {
   static ::std::vector<at::Tensor> redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self, at::IntArrayRef indices);
 };
 
-struct TORCH_API squeeze {
+struct squeeze {
   using schema = at::Tensor (const at::Tensor &);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -4123,7 +4123,7 @@ struct TORCH_API squeeze {
   static at::Tensor redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self);
 };
 
-struct TORCH_API squeeze_dim {
+struct squeeze_dim {
   using schema = at::Tensor (const at::Tensor &, int64_t);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -4134,7 +4134,7 @@ struct TORCH_API squeeze_dim {
   static at::Tensor redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self, int64_t dim);
 };
 
-struct TORCH_API squeeze_dimname {
+struct squeeze_dimname {
   using schema = at::Tensor (const at::Tensor &, at::Dimname);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -4145,7 +4145,7 @@ struct TORCH_API squeeze_dimname {
   static at::Tensor redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self, at::Dimname dim);
 };
 
-struct TORCH_API squeeze_dims {
+struct squeeze_dims {
   using schema = at::Tensor (const at::Tensor &, at::IntArrayRef);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -4156,7 +4156,7 @@ struct TORCH_API squeeze_dims {
   static at::Tensor redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self, at::IntArrayRef dim);
 };
 
-struct TORCH_API squeeze_ {
+struct squeeze_ {
   using schema = at::Tensor & (at::Tensor &);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -4167,7 +4167,7 @@ struct TORCH_API squeeze_ {
   static at::Tensor & redispatch(c10::DispatchKeySet dispatchKeySet, at::Tensor & self);
 };
 
-struct TORCH_API squeeze__dim {
+struct squeeze__dim {
   using schema = at::Tensor & (at::Tensor &, int64_t);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -4178,7 +4178,7 @@ struct TORCH_API squeeze__dim {
   static at::Tensor & redispatch(c10::DispatchKeySet dispatchKeySet, at::Tensor & self, int64_t dim);
 };
 
-struct TORCH_API squeeze__dims {
+struct squeeze__dims {
   using schema = at::Tensor & (at::Tensor &, at::IntArrayRef);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -4189,7 +4189,7 @@ struct TORCH_API squeeze__dims {
   static at::Tensor & redispatch(c10::DispatchKeySet dispatchKeySet, at::Tensor & self, at::IntArrayRef dim);
 };
 
-struct TORCH_API squeeze__dimname {
+struct squeeze__dimname {
   using schema = at::Tensor & (at::Tensor &, at::Dimname);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -4200,7 +4200,7 @@ struct TORCH_API squeeze__dimname {
   static at::Tensor & redispatch(c10::DispatchKeySet dispatchKeySet, at::Tensor & self, at::Dimname dim);
 };
 
-struct TORCH_API sspaddmm {
+struct sspaddmm {
   using schema = at::Tensor (const at::Tensor &, const at::Tensor &, const at::Tensor &, const at::Scalar &, const at::Scalar &);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -4211,7 +4211,7 @@ struct TORCH_API sspaddmm {
   static at::Tensor redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self, const at::Tensor & mat1, const at::Tensor & mat2, const at::Scalar & beta, const at::Scalar & alpha);
 };
 
-struct TORCH_API stft {
+struct stft {
   using schema = at::Tensor (const at::Tensor &, int64_t, c10::optional<int64_t>, c10::optional<int64_t>, const c10::optional<at::Tensor> &, bool, c10::optional<bool>, c10::optional<bool>);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -4222,7 +4222,7 @@ struct TORCH_API stft {
   static at::Tensor redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self, int64_t n_fft, c10::optional<int64_t> hop_length, c10::optional<int64_t> win_length, const c10::optional<at::Tensor> & window, bool normalized, c10::optional<bool> onesided, c10::optional<bool> return_complex);
 };
 
-struct TORCH_API stft_center {
+struct stft_center {
   using schema = at::Tensor (const at::Tensor &, int64_t, c10::optional<int64_t>, c10::optional<int64_t>, const c10::optional<at::Tensor> &, bool, c10::string_view, bool, c10::optional<bool>, c10::optional<bool>);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -4233,7 +4233,7 @@ struct TORCH_API stft_center {
   static at::Tensor redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self, int64_t n_fft, c10::optional<int64_t> hop_length, c10::optional<int64_t> win_length, const c10::optional<at::Tensor> & window, bool center, c10::string_view pad_mode, bool normalized, c10::optional<bool> onesided, c10::optional<bool> return_complex);
 };
 
-struct TORCH_API istft {
+struct istft {
   using schema = at::Tensor (const at::Tensor &, int64_t, c10::optional<int64_t>, c10::optional<int64_t>, const c10::optional<at::Tensor> &, bool, bool, c10::optional<bool>, c10::optional<int64_t>, bool);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -4244,7 +4244,7 @@ struct TORCH_API istft {
   static at::Tensor redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self, int64_t n_fft, c10::optional<int64_t> hop_length, c10::optional<int64_t> win_length, const c10::optional<at::Tensor> & window, bool center, bool normalized, c10::optional<bool> onesided, c10::optional<int64_t> length, bool return_complex);
 };
 
-struct TORCH_API stride_Dimname {
+struct stride_Dimname {
   using schema = int64_t (const at::Tensor &, at::Dimname);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -4255,7 +4255,7 @@ struct TORCH_API stride_Dimname {
   static int64_t redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self, at::Dimname dim);
 };
 
-struct TORCH_API sum {
+struct sum {
   using schema = at::Tensor (const at::Tensor &, c10::optional<at::ScalarType>);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -4266,7 +4266,7 @@ struct TORCH_API sum {
   static at::Tensor redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self, c10::optional<at::ScalarType> dtype);
 };
 
-struct TORCH_API sum_dim_IntList {
+struct sum_dim_IntList {
   using schema = at::Tensor (const at::Tensor &, at::OptionalIntArrayRef, bool, c10::optional<at::ScalarType>);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -4277,7 +4277,7 @@ struct TORCH_API sum_dim_IntList {
   static at::Tensor redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self, at::OptionalIntArrayRef dim, bool keepdim, c10::optional<at::ScalarType> dtype);
 };
 
-struct TORCH_API sum_dim_DimnameList {
+struct sum_dim_DimnameList {
   using schema = at::Tensor (const at::Tensor &, at::DimnameList, bool, c10::optional<at::ScalarType>);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -4288,7 +4288,7 @@ struct TORCH_API sum_dim_DimnameList {
   static at::Tensor redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self, at::DimnameList dim, bool keepdim, c10::optional<at::ScalarType> dtype);
 };
 
-struct TORCH_API nansum {
+struct nansum {
   using schema = at::Tensor (const at::Tensor &, at::OptionalIntArrayRef, bool, c10::optional<at::ScalarType>);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -4299,7 +4299,7 @@ struct TORCH_API nansum {
   static at::Tensor redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self, at::OptionalIntArrayRef dim, bool keepdim, c10::optional<at::ScalarType> dtype);
 };
 
-struct TORCH_API sum_to_size {
+struct sum_to_size {
   using schema = at::Tensor (const at::Tensor &, c10::SymIntArrayRef);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -4310,7 +4310,7 @@ struct TORCH_API sum_to_size {
   static at::Tensor redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self, c10::SymIntArrayRef size);
 };
 
-struct TORCH_API sqrt {
+struct sqrt {
   using schema = at::Tensor (const at::Tensor &);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -4321,7 +4321,7 @@ struct TORCH_API sqrt {
   static at::Tensor redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self);
 };
 
-struct TORCH_API sqrt_ {
+struct sqrt_ {
   using schema = at::Tensor & (at::Tensor &);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -4332,7 +4332,7 @@ struct TORCH_API sqrt_ {
   static at::Tensor & redispatch(c10::DispatchKeySet dispatchKeySet, at::Tensor & self);
 };
 
-struct TORCH_API square {
+struct square {
   using schema = at::Tensor (const at::Tensor &);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -4343,7 +4343,7 @@ struct TORCH_API square {
   static at::Tensor redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self);
 };
 
-struct TORCH_API square_ {
+struct square_ {
   using schema = at::Tensor & (at::Tensor &);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -4354,7 +4354,7 @@ struct TORCH_API square_ {
   static at::Tensor & redispatch(c10::DispatchKeySet dispatchKeySet, at::Tensor & self);
 };
 
-struct TORCH_API std {
+struct std {
   using schema = at::Tensor (const at::Tensor &, bool);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -4365,7 +4365,7 @@ struct TORCH_API std {
   static at::Tensor redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self, bool unbiased);
 };
 
-struct TORCH_API std_dim {
+struct std_dim {
   using schema = at::Tensor (const at::Tensor &, at::OptionalIntArrayRef, bool, bool);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -4376,7 +4376,7 @@ struct TORCH_API std_dim {
   static at::Tensor redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self, at::OptionalIntArrayRef dim, bool unbiased, bool keepdim);
 };
 
-struct TORCH_API std_correction {
+struct std_correction {
   using schema = at::Tensor (const at::Tensor &, at::OptionalIntArrayRef, const c10::optional<at::Scalar> &, bool);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -4387,7 +4387,7 @@ struct TORCH_API std_correction {
   static at::Tensor redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self, at::OptionalIntArrayRef dim, const c10::optional<at::Scalar> & correction, bool keepdim);
 };
 
-struct TORCH_API std_names_dim {
+struct std_names_dim {
   using schema = at::Tensor (const at::Tensor &, at::DimnameList, bool, bool);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -4398,7 +4398,7 @@ struct TORCH_API std_names_dim {
   static at::Tensor redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self, at::DimnameList dim, bool unbiased, bool keepdim);
 };
 
-struct TORCH_API std_correction_names {
+struct std_correction_names {
   using schema = at::Tensor (const at::Tensor &, at::DimnameList, const c10::optional<at::Scalar> &, bool);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -4409,7 +4409,7 @@ struct TORCH_API std_correction_names {
   static at::Tensor redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self, at::DimnameList dim, const c10::optional<at::Scalar> & correction, bool keepdim);
 };
 
-struct TORCH_API prod {
+struct prod {
   using schema = at::Tensor (const at::Tensor &, c10::optional<at::ScalarType>);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -4420,7 +4420,7 @@ struct TORCH_API prod {
   static at::Tensor redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self, c10::optional<at::ScalarType> dtype);
 };
 
-struct TORCH_API prod_dim_int {
+struct prod_dim_int {
   using schema = at::Tensor (const at::Tensor &, int64_t, bool, c10::optional<at::ScalarType>);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -4431,7 +4431,7 @@ struct TORCH_API prod_dim_int {
   static at::Tensor redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self, int64_t dim, bool keepdim, c10::optional<at::ScalarType> dtype);
 };
 
-struct TORCH_API prod_dim_Dimname {
+struct prod_dim_Dimname {
   using schema = at::Tensor (const at::Tensor &, at::Dimname, bool, c10::optional<at::ScalarType>);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -4442,7 +4442,7 @@ struct TORCH_API prod_dim_Dimname {
   static at::Tensor redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self, at::Dimname dim, bool keepdim, c10::optional<at::ScalarType> dtype);
 };
 
-struct TORCH_API t {
+struct t {
   using schema = at::Tensor (const at::Tensor &);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -4453,7 +4453,7 @@ struct TORCH_API t {
   static at::Tensor redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self);
 };
 
-struct TORCH_API t_ {
+struct t_ {
   using schema = at::Tensor & (at::Tensor &);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -4464,7 +4464,7 @@ struct TORCH_API t_ {
   static at::Tensor & redispatch(c10::DispatchKeySet dispatchKeySet, at::Tensor & self);
 };
 
-struct TORCH_API tan {
+struct tan {
   using schema = at::Tensor (const at::Tensor &);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -4475,7 +4475,7 @@ struct TORCH_API tan {
   static at::Tensor redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self);
 };
 
-struct TORCH_API tan_ {
+struct tan_ {
   using schema = at::Tensor & (at::Tensor &);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -4486,7 +4486,7 @@ struct TORCH_API tan_ {
   static at::Tensor & redispatch(c10::DispatchKeySet dispatchKeySet, at::Tensor & self);
 };
 
-struct TORCH_API tanh {
+struct tanh {
   using schema = at::Tensor (const at::Tensor &);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -4497,7 +4497,7 @@ struct TORCH_API tanh {
   static at::Tensor redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self);
 };
 
-struct TORCH_API tanh_ {
+struct tanh_ {
   using schema = at::Tensor & (at::Tensor &);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -4508,7 +4508,7 @@ struct TORCH_API tanh_ {
   static at::Tensor & redispatch(c10::DispatchKeySet dispatchKeySet, at::Tensor & self);
 };
 
-struct TORCH_API tile {
+struct tile {
   using schema = at::Tensor (const at::Tensor &, c10::SymIntArrayRef);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -4519,7 +4519,7 @@ struct TORCH_API tile {
   static at::Tensor redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self, c10::SymIntArrayRef dims);
 };
 
-struct TORCH_API transpose_int {
+struct transpose_int {
   using schema = at::Tensor (const at::Tensor &, int64_t, int64_t);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -4530,7 +4530,7 @@ struct TORCH_API transpose_int {
   static at::Tensor redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self, int64_t dim0, int64_t dim1);
 };
 
-struct TORCH_API transpose_Dimname {
+struct transpose_Dimname {
   using schema = at::Tensor (const at::Tensor &, at::Dimname, at::Dimname);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -4541,7 +4541,7 @@ struct TORCH_API transpose_Dimname {
   static at::Tensor redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self, at::Dimname dim0, at::Dimname dim1);
 };
 
-struct TORCH_API transpose_ {
+struct transpose_ {
   using schema = at::Tensor & (at::Tensor &, int64_t, int64_t);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -4552,7 +4552,7 @@ struct TORCH_API transpose_ {
   static at::Tensor & redispatch(c10::DispatchKeySet dispatchKeySet, at::Tensor & self, int64_t dim0, int64_t dim1);
 };
 
-struct TORCH_API flip {
+struct flip {
   using schema = at::Tensor (const at::Tensor &, at::IntArrayRef);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -4563,7 +4563,7 @@ struct TORCH_API flip {
   static at::Tensor redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self, at::IntArrayRef dims);
 };
 
-struct TORCH_API fliplr {
+struct fliplr {
   using schema = at::Tensor (const at::Tensor &);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -4574,7 +4574,7 @@ struct TORCH_API fliplr {
   static at::Tensor redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self);
 };
 
-struct TORCH_API flipud {
+struct flipud {
   using schema = at::Tensor (const at::Tensor &);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -4585,7 +4585,7 @@ struct TORCH_API flipud {
   static at::Tensor redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self);
 };
 
-struct TORCH_API roll {
+struct roll {
   using schema = at::Tensor (const at::Tensor &, c10::SymIntArrayRef, at::IntArrayRef);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -4596,7 +4596,7 @@ struct TORCH_API roll {
   static at::Tensor redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self, c10::SymIntArrayRef shifts, at::IntArrayRef dims);
 };
 
-struct TORCH_API rot90 {
+struct rot90 {
   using schema = at::Tensor (const at::Tensor &, int64_t, at::IntArrayRef);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -4607,7 +4607,7 @@ struct TORCH_API rot90 {
   static at::Tensor redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self, int64_t k, at::IntArrayRef dims);
 };
 
-struct TORCH_API _nested_tensor_size {
+struct _nested_tensor_size {
   using schema = at::Tensor (const at::Tensor &);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -4618,7 +4618,7 @@ struct TORCH_API _nested_tensor_size {
   static at::Tensor redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self);
 };
 
-struct TORCH_API _nested_tensor_strides {
+struct _nested_tensor_strides {
   using schema = at::Tensor (const at::Tensor &);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -4629,7 +4629,7 @@ struct TORCH_API _nested_tensor_strides {
   static at::Tensor redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self);
 };
 
-struct TORCH_API _nested_tensor_storage_offsets {
+struct _nested_tensor_storage_offsets {
   using schema = at::Tensor (const at::Tensor &);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -4640,7 +4640,7 @@ struct TORCH_API _nested_tensor_storage_offsets {
   static at::Tensor redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self);
 };
 
-struct TORCH_API trunc {
+struct trunc {
   using schema = at::Tensor (const at::Tensor &);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -4651,7 +4651,7 @@ struct TORCH_API trunc {
   static at::Tensor redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self);
 };
 
-struct TORCH_API trunc_ {
+struct trunc_ {
   using schema = at::Tensor & (at::Tensor &);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -4662,7 +4662,7 @@ struct TORCH_API trunc_ {
   static at::Tensor & redispatch(c10::DispatchKeySet dispatchKeySet, at::Tensor & self);
 };
 
-struct TORCH_API fix {
+struct fix {
   using schema = at::Tensor (const at::Tensor &);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -4673,7 +4673,7 @@ struct TORCH_API fix {
   static at::Tensor redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self);
 };
 
-struct TORCH_API fix_ {
+struct fix_ {
   using schema = at::Tensor & (at::Tensor &);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -4684,7 +4684,7 @@ struct TORCH_API fix_ {
   static at::Tensor & redispatch(c10::DispatchKeySet dispatchKeySet, at::Tensor & self);
 };
 
-struct TORCH_API type_as {
+struct type_as {
   using schema = at::Tensor (const at::Tensor &, const at::Tensor &);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -4695,7 +4695,7 @@ struct TORCH_API type_as {
   static at::Tensor redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self, const at::Tensor & other);
 };
 
-struct TORCH_API unsqueeze {
+struct unsqueeze {
   using schema = at::Tensor (const at::Tensor &, int64_t);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -4706,7 +4706,7 @@ struct TORCH_API unsqueeze {
   static at::Tensor redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self, int64_t dim);
 };
 
-struct TORCH_API unsqueeze_ {
+struct unsqueeze_ {
   using schema = at::Tensor & (at::Tensor &, int64_t);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -4717,7 +4717,7 @@ struct TORCH_API unsqueeze_ {
   static at::Tensor & redispatch(c10::DispatchKeySet dispatchKeySet, at::Tensor & self, int64_t dim);
 };
 
-struct TORCH_API var {
+struct var {
   using schema = at::Tensor (const at::Tensor &, bool);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -4728,7 +4728,7 @@ struct TORCH_API var {
   static at::Tensor redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self, bool unbiased);
 };
 
-struct TORCH_API var_dim {
+struct var_dim {
   using schema = at::Tensor (const at::Tensor &, at::OptionalIntArrayRef, bool, bool);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -4739,7 +4739,7 @@ struct TORCH_API var_dim {
   static at::Tensor redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self, at::OptionalIntArrayRef dim, bool unbiased, bool keepdim);
 };
 
-struct TORCH_API var_correction {
+struct var_correction {
   using schema = at::Tensor (const at::Tensor &, at::OptionalIntArrayRef, const c10::optional<at::Scalar> &, bool);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -4750,7 +4750,7 @@ struct TORCH_API var_correction {
   static at::Tensor redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self, at::OptionalIntArrayRef dim, const c10::optional<at::Scalar> & correction, bool keepdim);
 };
 
-struct TORCH_API var_names_dim {
+struct var_names_dim {
   using schema = at::Tensor (const at::Tensor &, at::DimnameList, bool, bool);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -4761,7 +4761,7 @@ struct TORCH_API var_names_dim {
   static at::Tensor redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self, at::DimnameList dim, bool unbiased, bool keepdim);
 };
 
-struct TORCH_API var_correction_names {
+struct var_correction_names {
   using schema = at::Tensor (const at::Tensor &, at::DimnameList, const c10::optional<at::Scalar> &, bool);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -4772,7 +4772,7 @@ struct TORCH_API var_correction_names {
   static at::Tensor redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self, at::DimnameList dim, const c10::optional<at::Scalar> & correction, bool keepdim);
 };
 
-struct TORCH_API view_as {
+struct view_as {
   using schema = at::Tensor (const at::Tensor &, const at::Tensor &);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -4783,7 +4783,7 @@ struct TORCH_API view_as {
   static at::Tensor redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self, const at::Tensor & other);
 };
 
-struct TORCH_API where_self {
+struct where_self {
   using schema = at::Tensor (const at::Tensor &, const at::Tensor &, const at::Tensor &);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -4794,7 +4794,7 @@ struct TORCH_API where_self {
   static at::Tensor redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & condition, const at::Tensor & self, const at::Tensor & other);
 };
 
-struct TORCH_API where_ScalarOther {
+struct where_ScalarOther {
   using schema = at::Tensor (const at::Tensor &, const at::Tensor &, const at::Scalar &);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -4805,7 +4805,7 @@ struct TORCH_API where_ScalarOther {
   static at::Tensor redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & condition, const at::Tensor & self, const at::Scalar & other);
 };
 
-struct TORCH_API norm_ScalarOpt_dtype {
+struct norm_ScalarOpt_dtype {
   using schema = at::Tensor (const at::Tensor &, const c10::optional<at::Scalar> &, at::ScalarType);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -4816,7 +4816,7 @@ struct TORCH_API norm_ScalarOpt_dtype {
   static at::Tensor redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self, const c10::optional<at::Scalar> & p, at::ScalarType dtype);
 };
 
-struct TORCH_API norm_Scalar {
+struct norm_Scalar {
   using schema = at::Tensor (const at::Tensor &, const at::Scalar &);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -4827,7 +4827,7 @@ struct TORCH_API norm_Scalar {
   static at::Tensor redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self, const at::Scalar & p);
 };
 
-struct TORCH_API norm_ScalarOpt_dim_dtype {
+struct norm_ScalarOpt_dim_dtype {
   using schema = at::Tensor (const at::Tensor &, const c10::optional<at::Scalar> &, at::IntArrayRef, bool, at::ScalarType);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -4838,7 +4838,7 @@ struct TORCH_API norm_ScalarOpt_dim_dtype {
   static at::Tensor redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self, const c10::optional<at::Scalar> & p, at::IntArrayRef dim, bool keepdim, at::ScalarType dtype);
 };
 
-struct TORCH_API norm_ScalarOpt_dim {
+struct norm_ScalarOpt_dim {
   using schema = at::Tensor (const at::Tensor &, const c10::optional<at::Scalar> &, at::IntArrayRef, bool);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -4849,7 +4849,7 @@ struct TORCH_API norm_ScalarOpt_dim {
   static at::Tensor redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self, const c10::optional<at::Scalar> & p, at::IntArrayRef dim, bool keepdim);
 };
 
-struct TORCH_API norm_names_ScalarOpt_dim_dtype {
+struct norm_names_ScalarOpt_dim_dtype {
   using schema = at::Tensor (const at::Tensor &, const c10::optional<at::Scalar> &, at::DimnameList, bool, at::ScalarType);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -4860,7 +4860,7 @@ struct TORCH_API norm_names_ScalarOpt_dim_dtype {
   static at::Tensor redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self, const c10::optional<at::Scalar> & p, at::DimnameList dim, bool keepdim, at::ScalarType dtype);
 };
 
-struct TORCH_API norm_names_ScalarOpt_dim {
+struct norm_names_ScalarOpt_dim {
   using schema = at::Tensor (const at::Tensor &, const c10::optional<at::Scalar> &, at::DimnameList, bool);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -4871,7 +4871,7 @@ struct TORCH_API norm_names_ScalarOpt_dim {
   static at::Tensor redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self, const c10::optional<at::Scalar> & p, at::DimnameList dim, bool keepdim);
 };
 
-struct TORCH_API frexp_Tensor {
+struct frexp_Tensor {
   using schema = ::std::tuple<at::Tensor,at::Tensor> (const at::Tensor &);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -4882,7 +4882,7 @@ struct TORCH_API frexp_Tensor {
   static ::std::tuple<at::Tensor,at::Tensor> redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self);
 };
 
-struct TORCH_API clone {
+struct clone {
   using schema = at::Tensor (const at::Tensor &, c10::optional<at::MemoryFormat>);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -4893,7 +4893,7 @@ struct TORCH_API clone {
   static at::Tensor redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self, c10::optional<at::MemoryFormat> memory_format);
 };
 
-struct TORCH_API positive {
+struct positive {
   using schema = at::Tensor (const at::Tensor &);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -4904,7 +4904,7 @@ struct TORCH_API positive {
   static at::Tensor redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self);
 };
 
-struct TORCH_API resize_as_ {
+struct resize_as_ {
   using schema = const at::Tensor & (const at::Tensor &, const at::Tensor &, c10::optional<at::MemoryFormat>);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -4915,7 +4915,7 @@ struct TORCH_API resize_as_ {
   static const at::Tensor & redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self, const at::Tensor & the_template, c10::optional<at::MemoryFormat> memory_format);
 };
 
-struct TORCH_API resize_as_sparse_ {
+struct resize_as_sparse_ {
   using schema = const at::Tensor & (const at::Tensor &, const at::Tensor &);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -4926,7 +4926,7 @@ struct TORCH_API resize_as_sparse_ {
   static const at::Tensor & redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self, const at::Tensor & the_template);
 };
 
-struct TORCH_API zero_ {
+struct zero_ {
   using schema = at::Tensor & (at::Tensor &);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -4937,7 +4937,7 @@ struct TORCH_API zero_ {
   static at::Tensor & redispatch(c10::DispatchKeySet dispatchKeySet, at::Tensor & self);
 };
 
-struct TORCH_API sub_Tensor {
+struct sub_Tensor {
   using schema = at::Tensor (const at::Tensor &, const at::Tensor &, const at::Scalar &);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -4948,7 +4948,7 @@ struct TORCH_API sub_Tensor {
   static at::Tensor redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self, const at::Tensor & other, const at::Scalar & alpha);
 };
 
-struct TORCH_API sub__Tensor {
+struct sub__Tensor {
   using schema = at::Tensor & (at::Tensor &, const at::Tensor &, const at::Scalar &);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -4959,7 +4959,7 @@ struct TORCH_API sub__Tensor {
   static at::Tensor & redispatch(c10::DispatchKeySet dispatchKeySet, at::Tensor & self, const at::Tensor & other, const at::Scalar & alpha);
 };
 
-struct TORCH_API sub_Scalar {
+struct sub_Scalar {
   using schema = at::Tensor (const at::Tensor &, const at::Scalar &, const at::Scalar &);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -4970,7 +4970,7 @@ struct TORCH_API sub_Scalar {
   static at::Tensor redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self, const at::Scalar & other, const at::Scalar & alpha);
 };
 
-struct TORCH_API sub__Scalar {
+struct sub__Scalar {
   using schema = at::Tensor & (at::Tensor &, const at::Scalar &, const at::Scalar &);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -4981,7 +4981,7 @@ struct TORCH_API sub__Scalar {
   static at::Tensor & redispatch(c10::DispatchKeySet dispatchKeySet, at::Tensor & self, const at::Scalar & other, const at::Scalar & alpha);
 };
 
-struct TORCH_API subtract_Tensor {
+struct subtract_Tensor {
   using schema = at::Tensor (const at::Tensor &, const at::Tensor &, const at::Scalar &);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -4992,7 +4992,7 @@ struct TORCH_API subtract_Tensor {
   static at::Tensor redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self, const at::Tensor & other, const at::Scalar & alpha);
 };
 
-struct TORCH_API subtract__Tensor {
+struct subtract__Tensor {
   using schema = at::Tensor & (at::Tensor &, const at::Tensor &, const at::Scalar &);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -5003,7 +5003,7 @@ struct TORCH_API subtract__Tensor {
   static at::Tensor & redispatch(c10::DispatchKeySet dispatchKeySet, at::Tensor & self, const at::Tensor & other, const at::Scalar & alpha);
 };
 
-struct TORCH_API subtract_Scalar {
+struct subtract_Scalar {
   using schema = at::Tensor (const at::Tensor &, const at::Scalar &, const at::Scalar &);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -5014,7 +5014,7 @@ struct TORCH_API subtract_Scalar {
   static at::Tensor redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self, const at::Scalar & other, const at::Scalar & alpha);
 };
 
-struct TORCH_API subtract__Scalar {
+struct subtract__Scalar {
   using schema = at::Tensor & (at::Tensor &, const at::Scalar &, const at::Scalar &);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -5025,7 +5025,7 @@ struct TORCH_API subtract__Scalar {
   static at::Tensor & redispatch(c10::DispatchKeySet dispatchKeySet, at::Tensor & self, const at::Scalar & other, const at::Scalar & alpha);
 };
 
-struct TORCH_API heaviside {
+struct heaviside {
   using schema = at::Tensor (const at::Tensor &, const at::Tensor &);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -5036,7 +5036,7 @@ struct TORCH_API heaviside {
   static at::Tensor redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self, const at::Tensor & values);
 };
 
-struct TORCH_API heaviside_ {
+struct heaviside_ {
   using schema = at::Tensor & (at::Tensor &, const at::Tensor &);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -5047,7 +5047,7 @@ struct TORCH_API heaviside_ {
   static at::Tensor & redispatch(c10::DispatchKeySet dispatchKeySet, at::Tensor & self, const at::Tensor & values);
 };
 
-struct TORCH_API addmm {
+struct addmm {
   using schema = at::Tensor (const at::Tensor &, const at::Tensor &, const at::Tensor &, const at::Scalar &, const at::Scalar &);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -5058,7 +5058,7 @@ struct TORCH_API addmm {
   static at::Tensor redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self, const at::Tensor & mat1, const at::Tensor & mat2, const at::Scalar & beta, const at::Scalar & alpha);
 };
 
-struct TORCH_API addmm_ {
+struct addmm_ {
   using schema = at::Tensor & (at::Tensor &, const at::Tensor &, const at::Tensor &, const at::Scalar &, const at::Scalar &);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -5069,7 +5069,7 @@ struct TORCH_API addmm_ {
   static at::Tensor & redispatch(c10::DispatchKeySet dispatchKeySet, at::Tensor & self, const at::Tensor & mat1, const at::Tensor & mat2, const at::Scalar & beta, const at::Scalar & alpha);
 };
 
-struct TORCH_API _addmm_activation {
+struct _addmm_activation {
   using schema = at::Tensor (const at::Tensor &, const at::Tensor &, const at::Tensor &, const at::Scalar &, const at::Scalar &, bool);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -5080,7 +5080,7 @@ struct TORCH_API _addmm_activation {
   static at::Tensor redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self, const at::Tensor & mat1, const at::Tensor & mat2, const at::Scalar & beta, const at::Scalar & alpha, bool use_gelu);
 };
 
-struct TORCH_API sparse_resize_ {
+struct sparse_resize_ {
   using schema = const at::Tensor & (const at::Tensor &, at::IntArrayRef, int64_t, int64_t);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -5091,7 +5091,7 @@ struct TORCH_API sparse_resize_ {
   static const at::Tensor & redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self, at::IntArrayRef size, int64_t sparse_dim, int64_t dense_dim);
 };
 
-struct TORCH_API sparse_resize_and_clear_ {
+struct sparse_resize_and_clear_ {
   using schema = const at::Tensor & (const at::Tensor &, at::IntArrayRef, int64_t, int64_t);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -5102,7 +5102,7 @@ struct TORCH_API sparse_resize_and_clear_ {
   static const at::Tensor & redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self, at::IntArrayRef size, int64_t sparse_dim, int64_t dense_dim);
 };
 
-struct TORCH_API sparse_mask {
+struct sparse_mask {
   using schema = at::Tensor (const at::Tensor &, const at::Tensor &);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -5113,7 +5113,7 @@ struct TORCH_API sparse_mask {
   static at::Tensor redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self, const at::Tensor & mask);
 };
 
-struct TORCH_API _sparse_mask_projection {
+struct _sparse_mask_projection {
   using schema = at::Tensor (const at::Tensor &, const at::Tensor &, bool);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -5124,7 +5124,7 @@ struct TORCH_API _sparse_mask_projection {
   static at::Tensor redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self, const at::Tensor & mask, bool accumulate_matches);
 };
 
-struct TORCH_API to_dense {
+struct to_dense {
   using schema = at::Tensor (const at::Tensor &, c10::optional<at::ScalarType>, c10::optional<bool>);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -5135,7 +5135,7 @@ struct TORCH_API to_dense {
   static at::Tensor redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self, c10::optional<at::ScalarType> dtype, c10::optional<bool> masked_grad);
 };
 
-struct TORCH_API _to_dense {
+struct _to_dense {
   using schema = at::Tensor (const at::Tensor &, c10::optional<at::ScalarType>, c10::optional<bool>);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -5146,7 +5146,7 @@ struct TORCH_API _to_dense {
   static at::Tensor redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self, c10::optional<at::ScalarType> dtype, c10::optional<bool> masked_grad);
 };
 
-struct TORCH_API sparse_dim {
+struct sparse_dim {
   using schema = int64_t (const at::Tensor &);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -5157,7 +5157,7 @@ struct TORCH_API sparse_dim {
   static int64_t redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self);
 };
 
-struct TORCH_API _dimI {
+struct _dimI {
   using schema = int64_t (const at::Tensor &);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -5168,7 +5168,7 @@ struct TORCH_API _dimI {
   static int64_t redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self);
 };
 
-struct TORCH_API dense_dim {
+struct dense_dim {
   using schema = int64_t (const at::Tensor &);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -5179,7 +5179,7 @@ struct TORCH_API dense_dim {
   static int64_t redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self);
 };
 
-struct TORCH_API _dimV {
+struct _dimV {
   using schema = int64_t (const at::Tensor &);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -5190,7 +5190,7 @@ struct TORCH_API _dimV {
   static int64_t redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self);
 };
 
-struct TORCH_API _nnz {
+struct _nnz {
   using schema = int64_t (const at::Tensor &);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -5201,7 +5201,7 @@ struct TORCH_API _nnz {
   static int64_t redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self);
 };
 
-struct TORCH_API coalesce {
+struct coalesce {
   using schema = at::Tensor (const at::Tensor &);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -5212,7 +5212,7 @@ struct TORCH_API coalesce {
   static at::Tensor redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self);
 };
 
-struct TORCH_API is_coalesced {
+struct is_coalesced {
   using schema = bool (const at::Tensor &);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -5223,7 +5223,7 @@ struct TORCH_API is_coalesced {
   static bool redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self);
 };
 
-struct TORCH_API _indices {
+struct _indices {
   using schema = at::Tensor (const at::Tensor &);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -5234,7 +5234,7 @@ struct TORCH_API _indices {
   static at::Tensor redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self);
 };
 
-struct TORCH_API _values {
+struct _values {
   using schema = at::Tensor (const at::Tensor &);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -5245,7 +5245,7 @@ struct TORCH_API _values {
   static at::Tensor redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self);
 };
 
-struct TORCH_API _coalesced_ {
+struct _coalesced_ {
   using schema = at::Tensor & (at::Tensor &, bool);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -5256,7 +5256,7 @@ struct TORCH_API _coalesced_ {
   static at::Tensor & redispatch(c10::DispatchKeySet dispatchKeySet, at::Tensor & self, bool coalesced);
 };
 
-struct TORCH_API indices {
+struct indices {
   using schema = at::Tensor (const at::Tensor &);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -5267,7 +5267,7 @@ struct TORCH_API indices {
   static at::Tensor redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self);
 };
 
-struct TORCH_API values {
+struct values {
   using schema = at::Tensor (const at::Tensor &);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -5278,7 +5278,7 @@ struct TORCH_API values {
   static at::Tensor redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self);
 };
 
-struct TORCH_API crow_indices {
+struct crow_indices {
   using schema = at::Tensor (const at::Tensor &);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -5289,7 +5289,7 @@ struct TORCH_API crow_indices {
   static at::Tensor redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self);
 };
 
-struct TORCH_API col_indices {
+struct col_indices {
   using schema = at::Tensor (const at::Tensor &);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -5300,7 +5300,7 @@ struct TORCH_API col_indices {
   static at::Tensor redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self);
 };
 
-struct TORCH_API ccol_indices {
+struct ccol_indices {
   using schema = at::Tensor (const at::Tensor &);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -5311,7 +5311,7 @@ struct TORCH_API ccol_indices {
   static at::Tensor redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self);
 };
 
-struct TORCH_API row_indices {
+struct row_indices {
   using schema = at::Tensor (const at::Tensor &);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -5322,7 +5322,7 @@ struct TORCH_API row_indices {
   static at::Tensor redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self);
 };
 
-struct TORCH_API unbind_int {
+struct unbind_int {
   using schema = ::std::vector<at::Tensor> (const at::Tensor &, int64_t);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -5333,7 +5333,7 @@ struct TORCH_API unbind_int {
   static ::std::vector<at::Tensor> redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self, int64_t dim);
 };
 
-struct TORCH_API unbind_Dimname {
+struct unbind_Dimname {
   using schema = ::std::vector<at::Tensor> (const at::Tensor &, at::Dimname);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -5344,7 +5344,7 @@ struct TORCH_API unbind_Dimname {
   static ::std::vector<at::Tensor> redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self, at::Dimname dim);
 };
 
-struct TORCH_API to_sparse_sparse_dim {
+struct to_sparse_sparse_dim {
   using schema = at::Tensor (const at::Tensor &, int64_t);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -5355,7 +5355,7 @@ struct TORCH_API to_sparse_sparse_dim {
   static at::Tensor redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self, int64_t sparse_dim);
 };
 
-struct TORCH_API _to_sparse_sparse_dim {
+struct _to_sparse_sparse_dim {
   using schema = at::Tensor (const at::Tensor &, int64_t);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -5366,7 +5366,7 @@ struct TORCH_API _to_sparse_sparse_dim {
   static at::Tensor redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self, int64_t sparse_dim);
 };
 
-struct TORCH_API to_sparse {
+struct to_sparse {
   using schema = at::Tensor (const at::Tensor &, c10::optional<at::Layout>, at::OptionalIntArrayRef, c10::optional<int64_t>);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -5377,7 +5377,7 @@ struct TORCH_API to_sparse {
   static at::Tensor redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self, c10::optional<at::Layout> layout, at::OptionalIntArrayRef blocksize, c10::optional<int64_t> dense_dim);
 };
 
-struct TORCH_API _to_sparse {
+struct _to_sparse {
   using schema = at::Tensor (const at::Tensor &, c10::optional<at::Layout>, at::OptionalIntArrayRef, c10::optional<int64_t>);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -5388,7 +5388,7 @@ struct TORCH_API _to_sparse {
   static at::Tensor redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self, c10::optional<at::Layout> layout, at::OptionalIntArrayRef blocksize, c10::optional<int64_t> dense_dim);
 };
 
-struct TORCH_API to_sparse_csr {
+struct to_sparse_csr {
   using schema = at::Tensor (const at::Tensor &, c10::optional<int64_t>);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -5399,7 +5399,7 @@ struct TORCH_API to_sparse_csr {
   static at::Tensor redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self, c10::optional<int64_t> dense_dim);
 };
 
-struct TORCH_API _to_sparse_csr {
+struct _to_sparse_csr {
   using schema = at::Tensor (const at::Tensor &, c10::optional<int64_t>);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -5410,7 +5410,7 @@ struct TORCH_API _to_sparse_csr {
   static at::Tensor redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self, c10::optional<int64_t> dense_dim);
 };
 
-struct TORCH_API to_sparse_csc {
+struct to_sparse_csc {
   using schema = at::Tensor (const at::Tensor &, c10::optional<int64_t>);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -5421,7 +5421,7 @@ struct TORCH_API to_sparse_csc {
   static at::Tensor redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self, c10::optional<int64_t> dense_dim);
 };
 
-struct TORCH_API _to_sparse_csc {
+struct _to_sparse_csc {
   using schema = at::Tensor (const at::Tensor &, c10::optional<int64_t>);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -5432,7 +5432,7 @@ struct TORCH_API _to_sparse_csc {
   static at::Tensor redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self, c10::optional<int64_t> dense_dim);
 };
 
-struct TORCH_API to_sparse_bsr {
+struct to_sparse_bsr {
   using schema = at::Tensor (const at::Tensor &, at::IntArrayRef, c10::optional<int64_t>);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -5443,7 +5443,7 @@ struct TORCH_API to_sparse_bsr {
   static at::Tensor redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self, at::IntArrayRef blocksize, c10::optional<int64_t> dense_dim);
 };
 
-struct TORCH_API _to_sparse_bsr {
+struct _to_sparse_bsr {
   using schema = at::Tensor (const at::Tensor &, at::IntArrayRef, c10::optional<int64_t>);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -5454,7 +5454,7 @@ struct TORCH_API _to_sparse_bsr {
   static at::Tensor redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self, at::IntArrayRef blocksize, c10::optional<int64_t> dense_dim);
 };
 
-struct TORCH_API to_sparse_bsc {
+struct to_sparse_bsc {
   using schema = at::Tensor (const at::Tensor &, at::IntArrayRef, c10::optional<int64_t>);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -5465,7 +5465,7 @@ struct TORCH_API to_sparse_bsc {
   static at::Tensor redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self, at::IntArrayRef blocksize, c10::optional<int64_t> dense_dim);
 };
 
-struct TORCH_API _to_sparse_bsc {
+struct _to_sparse_bsc {
   using schema = at::Tensor (const at::Tensor &, at::IntArrayRef, c10::optional<int64_t>);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -5476,7 +5476,7 @@ struct TORCH_API _to_sparse_bsc {
   static at::Tensor redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self, at::IntArrayRef blocksize, c10::optional<int64_t> dense_dim);
 };
 
-struct TORCH_API to_mkldnn {
+struct to_mkldnn {
   using schema = at::Tensor (const at::Tensor &, c10::optional<at::ScalarType>);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -5487,7 +5487,7 @@ struct TORCH_API to_mkldnn {
   static at::Tensor redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self, c10::optional<at::ScalarType> dtype);
 };
 
-struct TORCH_API dequantize_self {
+struct dequantize_self {
   using schema = at::Tensor (const at::Tensor &);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -5498,7 +5498,7 @@ struct TORCH_API dequantize_self {
   static at::Tensor redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self);
 };
 
-struct TORCH_API q_scale {
+struct q_scale {
   using schema = double (const at::Tensor &);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -5509,7 +5509,7 @@ struct TORCH_API q_scale {
   static double redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self);
 };
 
-struct TORCH_API q_zero_point {
+struct q_zero_point {
   using schema = int64_t (const at::Tensor &);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -5520,7 +5520,7 @@ struct TORCH_API q_zero_point {
   static int64_t redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self);
 };
 
-struct TORCH_API q_per_channel_scales {
+struct q_per_channel_scales {
   using schema = at::Tensor (const at::Tensor &);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -5531,7 +5531,7 @@ struct TORCH_API q_per_channel_scales {
   static at::Tensor redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self);
 };
 
-struct TORCH_API q_per_channel_zero_points {
+struct q_per_channel_zero_points {
   using schema = at::Tensor (const at::Tensor &);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -5542,7 +5542,7 @@ struct TORCH_API q_per_channel_zero_points {
   static at::Tensor redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self);
 };
 
-struct TORCH_API q_per_channel_axis {
+struct q_per_channel_axis {
   using schema = int64_t (const at::Tensor &);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -5553,7 +5553,7 @@ struct TORCH_API q_per_channel_axis {
   static int64_t redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self);
 };
 
-struct TORCH_API int_repr {
+struct int_repr {
   using schema = at::Tensor (const at::Tensor &);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -5564,7 +5564,7 @@ struct TORCH_API int_repr {
   static at::Tensor redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self);
 };
 
-struct TORCH_API qscheme {
+struct qscheme {
   using schema = at::QScheme (const at::Tensor &);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -5575,7 +5575,7 @@ struct TORCH_API qscheme {
   static at::QScheme redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self);
 };
 
-struct TORCH_API _autocast_to_reduced_precision {
+struct _autocast_to_reduced_precision {
   using schema = at::Tensor (const at::Tensor &, bool, bool, at::ScalarType, at::ScalarType);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -5586,7 +5586,7 @@ struct TORCH_API _autocast_to_reduced_precision {
   static at::Tensor redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self, bool cuda_enabled, bool cpu_enabled, at::ScalarType cuda_dtype, at::ScalarType cpu_dtype);
 };
 
-struct TORCH_API _autocast_to_full_precision {
+struct _autocast_to_full_precision {
   using schema = at::Tensor (const at::Tensor &, bool, bool);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -5597,7 +5597,7 @@ struct TORCH_API _autocast_to_full_precision {
   static at::Tensor redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self, bool cuda_enabled, bool cpu_enabled);
 };
 
-struct TORCH_API to_dtype_layout {
+struct to_dtype_layout {
   using schema = at::Tensor (const at::Tensor &, c10::optional<at::ScalarType>, c10::optional<at::Layout>, c10::optional<at::Device>, c10::optional<bool>, bool, bool, c10::optional<at::MemoryFormat>);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -5608,7 +5608,7 @@ struct TORCH_API to_dtype_layout {
   static at::Tensor redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self, c10::optional<at::ScalarType> dtype, c10::optional<at::Layout> layout, c10::optional<at::Device> device, c10::optional<bool> pin_memory, bool non_blocking, bool copy, c10::optional<at::MemoryFormat> memory_format);
 };
 
-struct TORCH_API to_device {
+struct to_device {
   using schema = at::Tensor (const at::Tensor &, at::Device, at::ScalarType, bool, bool, c10::optional<at::MemoryFormat>);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -5619,7 +5619,7 @@ struct TORCH_API to_device {
   static at::Tensor redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self, at::Device device, at::ScalarType dtype, bool non_blocking, bool copy, c10::optional<at::MemoryFormat> memory_format);
 };
 
-struct TORCH_API to_dtype {
+struct to_dtype {
   using schema = at::Tensor (const at::Tensor &, at::ScalarType, bool, bool, c10::optional<at::MemoryFormat>);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -5630,7 +5630,7 @@ struct TORCH_API to_dtype {
   static at::Tensor redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self, at::ScalarType dtype, bool non_blocking, bool copy, c10::optional<at::MemoryFormat> memory_format);
 };
 
-struct TORCH_API to_other {
+struct to_other {
   using schema = at::Tensor (const at::Tensor &, const at::Tensor &, bool, bool, c10::optional<at::MemoryFormat>);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -5641,7 +5641,7 @@ struct TORCH_API to_other {
   static at::Tensor redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self, const at::Tensor & other, bool non_blocking, bool copy, c10::optional<at::MemoryFormat> memory_format);
 };
 
-struct TORCH_API item {
+struct item {
   using schema = at::Scalar (const at::Tensor &);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -5652,7 +5652,7 @@ struct TORCH_API item {
   static at::Scalar redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self);
 };
 
-struct TORCH_API set__source_Storage {
+struct set__source_Storage {
   using schema = at::Tensor & (at::Tensor &, at::Storage);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -5663,7 +5663,7 @@ struct TORCH_API set__source_Storage {
   static at::Tensor & redispatch(c10::DispatchKeySet dispatchKeySet, at::Tensor & self, at::Storage source);
 };
 
-struct TORCH_API set__source_Storage_storage_offset {
+struct set__source_Storage_storage_offset {
   using schema = at::Tensor & (at::Tensor &, at::Storage, c10::SymInt, c10::SymIntArrayRef, c10::SymIntArrayRef);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -5674,7 +5674,7 @@ struct TORCH_API set__source_Storage_storage_offset {
   static at::Tensor & redispatch(c10::DispatchKeySet dispatchKeySet, at::Tensor & self, at::Storage source, c10::SymInt storage_offset, c10::SymIntArrayRef size, c10::SymIntArrayRef stride);
 };
 
-struct TORCH_API set__source_Tensor_storage_offset {
+struct set__source_Tensor_storage_offset {
   using schema = at::Tensor & (at::Tensor &, const at::Tensor &, c10::SymInt, c10::SymIntArrayRef, c10::SymIntArrayRef);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -5685,7 +5685,7 @@ struct TORCH_API set__source_Tensor_storage_offset {
   static at::Tensor & redispatch(c10::DispatchKeySet dispatchKeySet, at::Tensor & self, const at::Tensor & source, c10::SymInt storage_offset, c10::SymIntArrayRef size, c10::SymIntArrayRef stride);
 };
 
-struct TORCH_API set__source_Tensor {
+struct set__source_Tensor {
   using schema = at::Tensor & (at::Tensor &, const at::Tensor &);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -5696,7 +5696,7 @@ struct TORCH_API set__source_Tensor {
   static at::Tensor & redispatch(c10::DispatchKeySet dispatchKeySet, at::Tensor & self, const at::Tensor & source);
 };
 
-struct TORCH_API set_ {
+struct set_ {
   using schema = at::Tensor & (at::Tensor &);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -5707,7 +5707,7 @@ struct TORCH_API set_ {
   static at::Tensor & redispatch(c10::DispatchKeySet dispatchKeySet, at::Tensor & self);
 };
 
-struct TORCH_API is_set_to {
+struct is_set_to {
   using schema = bool (const at::Tensor &, const at::Tensor &);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -5718,7 +5718,7 @@ struct TORCH_API is_set_to {
   static bool redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self, const at::Tensor & tensor);
 };
 
-struct TORCH_API masked_fill__Scalar {
+struct masked_fill__Scalar {
   using schema = at::Tensor & (at::Tensor &, const at::Tensor &, const at::Scalar &);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -5729,7 +5729,7 @@ struct TORCH_API masked_fill__Scalar {
   static at::Tensor & redispatch(c10::DispatchKeySet dispatchKeySet, at::Tensor & self, const at::Tensor & mask, const at::Scalar & value);
 };
 
-struct TORCH_API masked_fill_Scalar {
+struct masked_fill_Scalar {
   using schema = at::Tensor (const at::Tensor &, const at::Tensor &, const at::Scalar &);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -5740,7 +5740,7 @@ struct TORCH_API masked_fill_Scalar {
   static at::Tensor redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self, const at::Tensor & mask, const at::Scalar & value);
 };
 
-struct TORCH_API masked_fill__Tensor {
+struct masked_fill__Tensor {
   using schema = at::Tensor & (at::Tensor &, const at::Tensor &, const at::Tensor &);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -5751,7 +5751,7 @@ struct TORCH_API masked_fill__Tensor {
   static at::Tensor & redispatch(c10::DispatchKeySet dispatchKeySet, at::Tensor & self, const at::Tensor & mask, const at::Tensor & value);
 };
 
-struct TORCH_API masked_fill_Tensor {
+struct masked_fill_Tensor {
   using schema = at::Tensor (const at::Tensor &, const at::Tensor &, const at::Tensor &);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -5762,7 +5762,7 @@ struct TORCH_API masked_fill_Tensor {
   static at::Tensor redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self, const at::Tensor & mask, const at::Tensor & value);
 };
 
-struct TORCH_API masked_scatter_ {
+struct masked_scatter_ {
   using schema = at::Tensor & (at::Tensor &, const at::Tensor &, const at::Tensor &);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -5773,7 +5773,7 @@ struct TORCH_API masked_scatter_ {
   static at::Tensor & redispatch(c10::DispatchKeySet dispatchKeySet, at::Tensor & self, const at::Tensor & mask, const at::Tensor & source);
 };
 
-struct TORCH_API masked_scatter {
+struct masked_scatter {
   using schema = at::Tensor (const at::Tensor &, const at::Tensor &, const at::Tensor &);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -5784,7 +5784,7 @@ struct TORCH_API masked_scatter {
   static at::Tensor redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self, const at::Tensor & mask, const at::Tensor & source);
 };
 
-struct TORCH_API view {
+struct view {
   using schema = at::Tensor (const at::Tensor &, c10::SymIntArrayRef);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -5795,7 +5795,7 @@ struct TORCH_API view {
   static at::Tensor redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self, c10::SymIntArrayRef size);
 };
 
-struct TORCH_API view_dtype {
+struct view_dtype {
   using schema = at::Tensor (const at::Tensor &, at::ScalarType);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -5806,7 +5806,7 @@ struct TORCH_API view_dtype {
   static at::Tensor redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self, at::ScalarType dtype);
 };
 
-struct TORCH_API put_ {
+struct put_ {
   using schema = at::Tensor & (at::Tensor &, const at::Tensor &, const at::Tensor &, bool);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -5817,7 +5817,7 @@ struct TORCH_API put_ {
   static at::Tensor & redispatch(c10::DispatchKeySet dispatchKeySet, at::Tensor & self, const at::Tensor & index, const at::Tensor & source, bool accumulate);
 };
 
-struct TORCH_API put {
+struct put {
   using schema = at::Tensor (const at::Tensor &, const at::Tensor &, const at::Tensor &, bool);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -5828,7 +5828,7 @@ struct TORCH_API put {
   static at::Tensor redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self, const at::Tensor & index, const at::Tensor & source, bool accumulate);
 };
 
-struct TORCH_API index_add_ {
+struct index_add_ {
   using schema = at::Tensor & (at::Tensor &, int64_t, const at::Tensor &, const at::Tensor &, const at::Scalar &);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -5839,7 +5839,7 @@ struct TORCH_API index_add_ {
   static at::Tensor & redispatch(c10::DispatchKeySet dispatchKeySet, at::Tensor & self, int64_t dim, const at::Tensor & index, const at::Tensor & source, const at::Scalar & alpha);
 };
 
-struct TORCH_API index_add {
+struct index_add {
   using schema = at::Tensor (const at::Tensor &, int64_t, const at::Tensor &, const at::Tensor &, const at::Scalar &);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -5850,7 +5850,7 @@ struct TORCH_API index_add {
   static at::Tensor redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self, int64_t dim, const at::Tensor & index, const at::Tensor & source, const at::Scalar & alpha);
 };
 
-struct TORCH_API index_add_dimname {
+struct index_add_dimname {
   using schema = at::Tensor (const at::Tensor &, at::Dimname, const at::Tensor &, const at::Tensor &, const at::Scalar &);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -5861,7 +5861,7 @@ struct TORCH_API index_add_dimname {
   static at::Tensor redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self, at::Dimname dim, const at::Tensor & index, const at::Tensor & source, const at::Scalar & alpha);
 };
 
-struct TORCH_API index_reduce_ {
+struct index_reduce_ {
   using schema = at::Tensor & (at::Tensor &, int64_t, const at::Tensor &, const at::Tensor &, c10::string_view, bool);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -5872,7 +5872,7 @@ struct TORCH_API index_reduce_ {
   static at::Tensor & redispatch(c10::DispatchKeySet dispatchKeySet, at::Tensor & self, int64_t dim, const at::Tensor & index, const at::Tensor & source, c10::string_view reduce, bool include_self);
 };
 
-struct TORCH_API index_reduce {
+struct index_reduce {
   using schema = at::Tensor (const at::Tensor &, int64_t, const at::Tensor &, const at::Tensor &, c10::string_view, bool);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -5883,7 +5883,7 @@ struct TORCH_API index_reduce {
   static at::Tensor redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self, int64_t dim, const at::Tensor & index, const at::Tensor & source, c10::string_view reduce, bool include_self);
 };
 
-struct TORCH_API index_fill__int_Scalar {
+struct index_fill__int_Scalar {
   using schema = at::Tensor & (at::Tensor &, int64_t, const at::Tensor &, const at::Scalar &);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -5894,7 +5894,7 @@ struct TORCH_API index_fill__int_Scalar {
   static at::Tensor & redispatch(c10::DispatchKeySet dispatchKeySet, at::Tensor & self, int64_t dim, const at::Tensor & index, const at::Scalar & value);
 };
 
-struct TORCH_API index_fill_int_Scalar {
+struct index_fill_int_Scalar {
   using schema = at::Tensor (const at::Tensor &, int64_t, const at::Tensor &, const at::Scalar &);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -5905,7 +5905,7 @@ struct TORCH_API index_fill_int_Scalar {
   static at::Tensor redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self, int64_t dim, const at::Tensor & index, const at::Scalar & value);
 };
 
-struct TORCH_API index_fill__int_Tensor {
+struct index_fill__int_Tensor {
   using schema = at::Tensor & (at::Tensor &, int64_t, const at::Tensor &, const at::Tensor &);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -5916,7 +5916,7 @@ struct TORCH_API index_fill__int_Tensor {
   static at::Tensor & redispatch(c10::DispatchKeySet dispatchKeySet, at::Tensor & self, int64_t dim, const at::Tensor & index, const at::Tensor & value);
 };
 
-struct TORCH_API index_fill_int_Tensor {
+struct index_fill_int_Tensor {
   using schema = at::Tensor (const at::Tensor &, int64_t, const at::Tensor &, const at::Tensor &);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -5927,7 +5927,7 @@ struct TORCH_API index_fill_int_Tensor {
   static at::Tensor redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self, int64_t dim, const at::Tensor & index, const at::Tensor & value);
 };
 
-struct TORCH_API index_fill__Dimname_Scalar {
+struct index_fill__Dimname_Scalar {
   using schema = at::Tensor & (at::Tensor &, at::Dimname, const at::Tensor &, const at::Scalar &);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -5938,7 +5938,7 @@ struct TORCH_API index_fill__Dimname_Scalar {
   static at::Tensor & redispatch(c10::DispatchKeySet dispatchKeySet, at::Tensor & self, at::Dimname dim, const at::Tensor & index, const at::Scalar & value);
 };
 
-struct TORCH_API index_fill__Dimname_Tensor {
+struct index_fill__Dimname_Tensor {
   using schema = at::Tensor & (at::Tensor &, at::Dimname, const at::Tensor &, const at::Tensor &);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -5949,7 +5949,7 @@ struct TORCH_API index_fill__Dimname_Tensor {
   static at::Tensor & redispatch(c10::DispatchKeySet dispatchKeySet, at::Tensor & self, at::Dimname dim, const at::Tensor & index, const at::Tensor & value);
 };
 
-struct TORCH_API index_fill_Dimname_Scalar {
+struct index_fill_Dimname_Scalar {
   using schema = at::Tensor (const at::Tensor &, at::Dimname, const at::Tensor &, const at::Scalar &);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -5960,7 +5960,7 @@ struct TORCH_API index_fill_Dimname_Scalar {
   static at::Tensor redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self, at::Dimname dim, const at::Tensor & index, const at::Scalar & value);
 };
 
-struct TORCH_API index_fill_Dimname_Tensor {
+struct index_fill_Dimname_Tensor {
   using schema = at::Tensor (const at::Tensor &, at::Dimname, const at::Tensor &, const at::Tensor &);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -5971,7 +5971,7 @@ struct TORCH_API index_fill_Dimname_Tensor {
   static at::Tensor redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self, at::Dimname dim, const at::Tensor & index, const at::Tensor & value);
 };
 
-struct TORCH_API scatter_src {
+struct scatter_src {
   using schema = at::Tensor (const at::Tensor &, int64_t, const at::Tensor &, const at::Tensor &);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -5982,7 +5982,7 @@ struct TORCH_API scatter_src {
   static at::Tensor redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self, int64_t dim, const at::Tensor & index, const at::Tensor & src);
 };
 
-struct TORCH_API scatter__src {
+struct scatter__src {
   using schema = at::Tensor & (at::Tensor &, int64_t, const at::Tensor &, const at::Tensor &);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -5993,7 +5993,7 @@ struct TORCH_API scatter__src {
   static at::Tensor & redispatch(c10::DispatchKeySet dispatchKeySet, at::Tensor & self, int64_t dim, const at::Tensor & index, const at::Tensor & src);
 };
 
-struct TORCH_API scatter_value {
+struct scatter_value {
   using schema = at::Tensor (const at::Tensor &, int64_t, const at::Tensor &, const at::Scalar &);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -6004,7 +6004,7 @@ struct TORCH_API scatter_value {
   static at::Tensor redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self, int64_t dim, const at::Tensor & index, const at::Scalar & value);
 };
 
-struct TORCH_API scatter__value {
+struct scatter__value {
   using schema = at::Tensor & (at::Tensor &, int64_t, const at::Tensor &, const at::Scalar &);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -6015,7 +6015,7 @@ struct TORCH_API scatter__value {
   static at::Tensor & redispatch(c10::DispatchKeySet dispatchKeySet, at::Tensor & self, int64_t dim, const at::Tensor & index, const at::Scalar & value);
 };
 
-struct TORCH_API scatter_reduce {
+struct scatter_reduce {
   using schema = at::Tensor (const at::Tensor &, int64_t, const at::Tensor &, const at::Tensor &, c10::string_view);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -6026,7 +6026,7 @@ struct TORCH_API scatter_reduce {
   static at::Tensor redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self, int64_t dim, const at::Tensor & index, const at::Tensor & src, c10::string_view reduce);
 };
 
-struct TORCH_API scatter__reduce {
+struct scatter__reduce {
   using schema = at::Tensor & (at::Tensor &, int64_t, const at::Tensor &, const at::Tensor &, c10::string_view);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -6037,7 +6037,7 @@ struct TORCH_API scatter__reduce {
   static at::Tensor & redispatch(c10::DispatchKeySet dispatchKeySet, at::Tensor & self, int64_t dim, const at::Tensor & index, const at::Tensor & src, c10::string_view reduce);
 };
 
-struct TORCH_API scatter_value_reduce {
+struct scatter_value_reduce {
   using schema = at::Tensor (const at::Tensor &, int64_t, const at::Tensor &, const at::Scalar &, c10::string_view);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -6048,7 +6048,7 @@ struct TORCH_API scatter_value_reduce {
   static at::Tensor redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self, int64_t dim, const at::Tensor & index, const at::Scalar & value, c10::string_view reduce);
 };
 
-struct TORCH_API scatter__value_reduce {
+struct scatter__value_reduce {
   using schema = at::Tensor & (at::Tensor &, int64_t, const at::Tensor &, const at::Scalar &, c10::string_view);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -6059,7 +6059,7 @@ struct TORCH_API scatter__value_reduce {
   static at::Tensor & redispatch(c10::DispatchKeySet dispatchKeySet, at::Tensor & self, int64_t dim, const at::Tensor & index, const at::Scalar & value, c10::string_view reduce);
 };
 
-struct TORCH_API scatter_dimname_src {
+struct scatter_dimname_src {
   using schema = at::Tensor (const at::Tensor &, at::Dimname, const at::Tensor &, const at::Tensor &);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -6070,7 +6070,7 @@ struct TORCH_API scatter_dimname_src {
   static at::Tensor redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self, at::Dimname dim, const at::Tensor & index, const at::Tensor & src);
 };
 
-struct TORCH_API scatter_dimname_value {
+struct scatter_dimname_value {
   using schema = at::Tensor (const at::Tensor &, at::Dimname, const at::Tensor &, const at::Scalar &);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -6081,7 +6081,7 @@ struct TORCH_API scatter_dimname_value {
   static at::Tensor redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self, at::Dimname dim, const at::Tensor & index, const at::Scalar & value);
 };
 
-struct TORCH_API scatter_add {
+struct scatter_add {
   using schema = at::Tensor (const at::Tensor &, int64_t, const at::Tensor &, const at::Tensor &);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -6092,7 +6092,7 @@ struct TORCH_API scatter_add {
   static at::Tensor redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self, int64_t dim, const at::Tensor & index, const at::Tensor & src);
 };
 
-struct TORCH_API scatter_add_ {
+struct scatter_add_ {
   using schema = at::Tensor & (at::Tensor &, int64_t, const at::Tensor &, const at::Tensor &);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -6103,7 +6103,7 @@ struct TORCH_API scatter_add_ {
   static at::Tensor & redispatch(c10::DispatchKeySet dispatchKeySet, at::Tensor & self, int64_t dim, const at::Tensor & index, const at::Tensor & src);
 };
 
-struct TORCH_API scatter_add_dimname {
+struct scatter_add_dimname {
   using schema = at::Tensor (const at::Tensor &, at::Dimname, const at::Tensor &, const at::Tensor &);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -6114,7 +6114,7 @@ struct TORCH_API scatter_add_dimname {
   static at::Tensor redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self, at::Dimname dim, const at::Tensor & index, const at::Tensor & src);
 };
 
-struct TORCH_API scatter_reduce_two {
+struct scatter_reduce_two {
   using schema = at::Tensor (const at::Tensor &, int64_t, const at::Tensor &, const at::Tensor &, c10::string_view, bool);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -6125,7 +6125,7 @@ struct TORCH_API scatter_reduce_two {
   static at::Tensor redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self, int64_t dim, const at::Tensor & index, const at::Tensor & src, c10::string_view reduce, bool include_self);
 };
 
-struct TORCH_API scatter_reduce__two {
+struct scatter_reduce__two {
   using schema = at::Tensor & (at::Tensor &, int64_t, const at::Tensor &, const at::Tensor &, c10::string_view, bool);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -6136,7 +6136,7 @@ struct TORCH_API scatter_reduce__two {
   static at::Tensor & redispatch(c10::DispatchKeySet dispatchKeySet, at::Tensor & self, int64_t dim, const at::Tensor & index, const at::Tensor & src, c10::string_view reduce, bool include_self);
 };
 
-struct TORCH_API eq__Scalar {
+struct eq__Scalar {
   using schema = at::Tensor & (at::Tensor &, const at::Scalar &);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -6147,7 +6147,7 @@ struct TORCH_API eq__Scalar {
   static at::Tensor & redispatch(c10::DispatchKeySet dispatchKeySet, at::Tensor & self, const at::Scalar & other);
 };
 
-struct TORCH_API eq__Tensor {
+struct eq__Tensor {
   using schema = at::Tensor & (at::Tensor &, const at::Tensor &);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -6158,7 +6158,7 @@ struct TORCH_API eq__Tensor {
   static at::Tensor & redispatch(c10::DispatchKeySet dispatchKeySet, at::Tensor & self, const at::Tensor & other);
 };
 
-struct TORCH_API bitwise_and_Scalar {
+struct bitwise_and_Scalar {
   using schema = at::Tensor (const at::Tensor &, const at::Scalar &);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -6169,7 +6169,7 @@ struct TORCH_API bitwise_and_Scalar {
   static at::Tensor redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self, const at::Scalar & other);
 };
 
-struct TORCH_API bitwise_and_Tensor {
+struct bitwise_and_Tensor {
   using schema = at::Tensor (const at::Tensor &, const at::Tensor &);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -6180,7 +6180,7 @@ struct TORCH_API bitwise_and_Tensor {
   static at::Tensor redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self, const at::Tensor & other);
 };
 
-struct TORCH_API bitwise_and__Scalar {
+struct bitwise_and__Scalar {
   using schema = at::Tensor & (at::Tensor &, const at::Scalar &);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -6191,7 +6191,7 @@ struct TORCH_API bitwise_and__Scalar {
   static at::Tensor & redispatch(c10::DispatchKeySet dispatchKeySet, at::Tensor & self, const at::Scalar & other);
 };
 
-struct TORCH_API bitwise_and__Tensor {
+struct bitwise_and__Tensor {
   using schema = at::Tensor & (at::Tensor &, const at::Tensor &);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -6202,7 +6202,7 @@ struct TORCH_API bitwise_and__Tensor {
   static at::Tensor & redispatch(c10::DispatchKeySet dispatchKeySet, at::Tensor & self, const at::Tensor & other);
 };
 
-struct TORCH_API __and___Scalar {
+struct __and___Scalar {
   using schema = at::Tensor (const at::Tensor &, const at::Scalar &);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -6213,7 +6213,7 @@ struct TORCH_API __and___Scalar {
   static at::Tensor redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self, const at::Scalar & other);
 };
 
-struct TORCH_API __and___Tensor {
+struct __and___Tensor {
   using schema = at::Tensor (const at::Tensor &, const at::Tensor &);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -6224,7 +6224,7 @@ struct TORCH_API __and___Tensor {
   static at::Tensor redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self, const at::Tensor & other);
 };
 
-struct TORCH_API __iand___Scalar {
+struct __iand___Scalar {
   using schema = at::Tensor & (at::Tensor &, const at::Scalar &);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -6235,7 +6235,7 @@ struct TORCH_API __iand___Scalar {
   static at::Tensor & redispatch(c10::DispatchKeySet dispatchKeySet, at::Tensor & self, const at::Scalar & other);
 };
 
-struct TORCH_API __iand___Tensor {
+struct __iand___Tensor {
   using schema = at::Tensor & (at::Tensor &, const at::Tensor &);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -6246,7 +6246,7 @@ struct TORCH_API __iand___Tensor {
   static at::Tensor & redispatch(c10::DispatchKeySet dispatchKeySet, at::Tensor & self, const at::Tensor & other);
 };
 
-struct TORCH_API bitwise_or_Scalar {
+struct bitwise_or_Scalar {
   using schema = at::Tensor (const at::Tensor &, const at::Scalar &);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -6257,7 +6257,7 @@ struct TORCH_API bitwise_or_Scalar {
   static at::Tensor redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self, const at::Scalar & other);
 };
 
-struct TORCH_API bitwise_or_Tensor {
+struct bitwise_or_Tensor {
   using schema = at::Tensor (const at::Tensor &, const at::Tensor &);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -6268,7 +6268,7 @@ struct TORCH_API bitwise_or_Tensor {
   static at::Tensor redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self, const at::Tensor & other);
 };
 
-struct TORCH_API bitwise_or__Scalar {
+struct bitwise_or__Scalar {
   using schema = at::Tensor & (at::Tensor &, const at::Scalar &);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -6279,7 +6279,7 @@ struct TORCH_API bitwise_or__Scalar {
   static at::Tensor & redispatch(c10::DispatchKeySet dispatchKeySet, at::Tensor & self, const at::Scalar & other);
 };
 
-struct TORCH_API bitwise_or__Tensor {
+struct bitwise_or__Tensor {
   using schema = at::Tensor & (at::Tensor &, const at::Tensor &);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -6290,7 +6290,7 @@ struct TORCH_API bitwise_or__Tensor {
   static at::Tensor & redispatch(c10::DispatchKeySet dispatchKeySet, at::Tensor & self, const at::Tensor & other);
 };
 
-struct TORCH_API __or___Scalar {
+struct __or___Scalar {
   using schema = at::Tensor (const at::Tensor &, const at::Scalar &);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -6301,7 +6301,7 @@ struct TORCH_API __or___Scalar {
   static at::Tensor redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self, const at::Scalar & other);
 };
 
-struct TORCH_API __or___Tensor {
+struct __or___Tensor {
   using schema = at::Tensor (const at::Tensor &, const at::Tensor &);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -6312,7 +6312,7 @@ struct TORCH_API __or___Tensor {
   static at::Tensor redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self, const at::Tensor & other);
 };
 
-struct TORCH_API __ior___Scalar {
+struct __ior___Scalar {
   using schema = at::Tensor & (at::Tensor &, const at::Scalar &);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -6323,7 +6323,7 @@ struct TORCH_API __ior___Scalar {
   static at::Tensor & redispatch(c10::DispatchKeySet dispatchKeySet, at::Tensor & self, const at::Scalar & other);
 };
 
-struct TORCH_API __ior___Tensor {
+struct __ior___Tensor {
   using schema = at::Tensor & (at::Tensor &, const at::Tensor &);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -6334,7 +6334,7 @@ struct TORCH_API __ior___Tensor {
   static at::Tensor & redispatch(c10::DispatchKeySet dispatchKeySet, at::Tensor & self, const at::Tensor & other);
 };
 
-struct TORCH_API bitwise_xor_Scalar {
+struct bitwise_xor_Scalar {
   using schema = at::Tensor (const at::Tensor &, const at::Scalar &);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -6345,7 +6345,7 @@ struct TORCH_API bitwise_xor_Scalar {
   static at::Tensor redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self, const at::Scalar & other);
 };
 
-struct TORCH_API bitwise_xor_Tensor {
+struct bitwise_xor_Tensor {
   using schema = at::Tensor (const at::Tensor &, const at::Tensor &);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -6356,7 +6356,7 @@ struct TORCH_API bitwise_xor_Tensor {
   static at::Tensor redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self, const at::Tensor & other);
 };
 
-struct TORCH_API bitwise_xor__Scalar {
+struct bitwise_xor__Scalar {
   using schema = at::Tensor & (at::Tensor &, const at::Scalar &);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -6367,7 +6367,7 @@ struct TORCH_API bitwise_xor__Scalar {
   static at::Tensor & redispatch(c10::DispatchKeySet dispatchKeySet, at::Tensor & self, const at::Scalar & other);
 };
 
-struct TORCH_API bitwise_xor__Tensor {
+struct bitwise_xor__Tensor {
   using schema = at::Tensor & (at::Tensor &, const at::Tensor &);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -6378,7 +6378,7 @@ struct TORCH_API bitwise_xor__Tensor {
   static at::Tensor & redispatch(c10::DispatchKeySet dispatchKeySet, at::Tensor & self, const at::Tensor & other);
 };
 
-struct TORCH_API __xor___Scalar {
+struct __xor___Scalar {
   using schema = at::Tensor (const at::Tensor &, const at::Scalar &);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -6389,7 +6389,7 @@ struct TORCH_API __xor___Scalar {
   static at::Tensor redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self, const at::Scalar & other);
 };
 
-struct TORCH_API __xor___Tensor {
+struct __xor___Tensor {
   using schema = at::Tensor (const at::Tensor &, const at::Tensor &);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -6400,7 +6400,7 @@ struct TORCH_API __xor___Tensor {
   static at::Tensor redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self, const at::Tensor & other);
 };
 
-struct TORCH_API __ixor___Scalar {
+struct __ixor___Scalar {
   using schema = at::Tensor & (at::Tensor &, const at::Scalar &);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -6411,7 +6411,7 @@ struct TORCH_API __ixor___Scalar {
   static at::Tensor & redispatch(c10::DispatchKeySet dispatchKeySet, at::Tensor & self, const at::Scalar & other);
 };
 
-struct TORCH_API __ixor___Tensor {
+struct __ixor___Tensor {
   using schema = at::Tensor & (at::Tensor &, const at::Tensor &);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -6422,7 +6422,7 @@ struct TORCH_API __ixor___Tensor {
   static at::Tensor & redispatch(c10::DispatchKeySet dispatchKeySet, at::Tensor & self, const at::Tensor & other);
 };
 
-struct TORCH_API __lshift___Scalar {
+struct __lshift___Scalar {
   using schema = at::Tensor (const at::Tensor &, const at::Scalar &);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -6433,7 +6433,7 @@ struct TORCH_API __lshift___Scalar {
   static at::Tensor redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self, const at::Scalar & other);
 };
 
-struct TORCH_API __lshift___Tensor {
+struct __lshift___Tensor {
   using schema = at::Tensor (const at::Tensor &, const at::Tensor &);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -6444,7 +6444,7 @@ struct TORCH_API __lshift___Tensor {
   static at::Tensor redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self, const at::Tensor & other);
 };
 
-struct TORCH_API __ilshift___Scalar {
+struct __ilshift___Scalar {
   using schema = at::Tensor & (at::Tensor &, const at::Scalar &);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -6455,7 +6455,7 @@ struct TORCH_API __ilshift___Scalar {
   static at::Tensor & redispatch(c10::DispatchKeySet dispatchKeySet, at::Tensor & self, const at::Scalar & other);
 };
 
-struct TORCH_API __ilshift___Tensor {
+struct __ilshift___Tensor {
   using schema = at::Tensor & (at::Tensor &, const at::Tensor &);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -6466,7 +6466,7 @@ struct TORCH_API __ilshift___Tensor {
   static at::Tensor & redispatch(c10::DispatchKeySet dispatchKeySet, at::Tensor & self, const at::Tensor & other);
 };
 
-struct TORCH_API bitwise_left_shift_Tensor {
+struct bitwise_left_shift_Tensor {
   using schema = at::Tensor (const at::Tensor &, const at::Tensor &);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -6477,7 +6477,7 @@ struct TORCH_API bitwise_left_shift_Tensor {
   static at::Tensor redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self, const at::Tensor & other);
 };
 
-struct TORCH_API bitwise_left_shift__Tensor {
+struct bitwise_left_shift__Tensor {
   using schema = at::Tensor & (at::Tensor &, const at::Tensor &);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -6488,7 +6488,7 @@ struct TORCH_API bitwise_left_shift__Tensor {
   static at::Tensor & redispatch(c10::DispatchKeySet dispatchKeySet, at::Tensor & self, const at::Tensor & other);
 };
 
-struct TORCH_API bitwise_left_shift_Tensor_Scalar {
+struct bitwise_left_shift_Tensor_Scalar {
   using schema = at::Tensor (const at::Tensor &, const at::Scalar &);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -6499,7 +6499,7 @@ struct TORCH_API bitwise_left_shift_Tensor_Scalar {
   static at::Tensor redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self, const at::Scalar & other);
 };
 
-struct TORCH_API bitwise_left_shift__Tensor_Scalar {
+struct bitwise_left_shift__Tensor_Scalar {
   using schema = at::Tensor & (at::Tensor &, const at::Scalar &);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -6510,7 +6510,7 @@ struct TORCH_API bitwise_left_shift__Tensor_Scalar {
   static at::Tensor & redispatch(c10::DispatchKeySet dispatchKeySet, at::Tensor & self, const at::Scalar & other);
 };
 
-struct TORCH_API __rshift___Scalar {
+struct __rshift___Scalar {
   using schema = at::Tensor (const at::Tensor &, const at::Scalar &);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -6521,7 +6521,7 @@ struct TORCH_API __rshift___Scalar {
   static at::Tensor redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self, const at::Scalar & other);
 };
 
-struct TORCH_API __rshift___Tensor {
+struct __rshift___Tensor {
   using schema = at::Tensor (const at::Tensor &, const at::Tensor &);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -6532,7 +6532,7 @@ struct TORCH_API __rshift___Tensor {
   static at::Tensor redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self, const at::Tensor & other);
 };
 
-struct TORCH_API __irshift___Scalar {
+struct __irshift___Scalar {
   using schema = at::Tensor & (at::Tensor &, const at::Scalar &);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -6543,7 +6543,7 @@ struct TORCH_API __irshift___Scalar {
   static at::Tensor & redispatch(c10::DispatchKeySet dispatchKeySet, at::Tensor & self, const at::Scalar & other);
 };
 
-struct TORCH_API __irshift___Tensor {
+struct __irshift___Tensor {
   using schema = at::Tensor & (at::Tensor &, const at::Tensor &);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -6554,7 +6554,7 @@ struct TORCH_API __irshift___Tensor {
   static at::Tensor & redispatch(c10::DispatchKeySet dispatchKeySet, at::Tensor & self, const at::Tensor & other);
 };
 
-struct TORCH_API bitwise_right_shift_Tensor {
+struct bitwise_right_shift_Tensor {
   using schema = at::Tensor (const at::Tensor &, const at::Tensor &);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -6565,7 +6565,7 @@ struct TORCH_API bitwise_right_shift_Tensor {
   static at::Tensor redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self, const at::Tensor & other);
 };
 
-struct TORCH_API bitwise_right_shift__Tensor {
+struct bitwise_right_shift__Tensor {
   using schema = at::Tensor & (at::Tensor &, const at::Tensor &);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -6576,7 +6576,7 @@ struct TORCH_API bitwise_right_shift__Tensor {
   static at::Tensor & redispatch(c10::DispatchKeySet dispatchKeySet, at::Tensor & self, const at::Tensor & other);
 };
 
-struct TORCH_API bitwise_right_shift_Tensor_Scalar {
+struct bitwise_right_shift_Tensor_Scalar {
   using schema = at::Tensor (const at::Tensor &, const at::Scalar &);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -6587,7 +6587,7 @@ struct TORCH_API bitwise_right_shift_Tensor_Scalar {
   static at::Tensor redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self, const at::Scalar & other);
 };
 
-struct TORCH_API bitwise_right_shift__Tensor_Scalar {
+struct bitwise_right_shift__Tensor_Scalar {
   using schema = at::Tensor & (at::Tensor &, const at::Scalar &);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -6598,7 +6598,7 @@ struct TORCH_API bitwise_right_shift__Tensor_Scalar {
   static at::Tensor & redispatch(c10::DispatchKeySet dispatchKeySet, at::Tensor & self, const at::Scalar & other);
 };
 
-struct TORCH_API tril_ {
+struct tril_ {
   using schema = at::Tensor & (at::Tensor &, int64_t);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -6609,7 +6609,7 @@ struct TORCH_API tril_ {
   static at::Tensor & redispatch(c10::DispatchKeySet dispatchKeySet, at::Tensor & self, int64_t diagonal);
 };
 
-struct TORCH_API triu_ {
+struct triu_ {
   using schema = at::Tensor & (at::Tensor &, int64_t);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -6620,7 +6620,7 @@ struct TORCH_API triu_ {
   static at::Tensor & redispatch(c10::DispatchKeySet dispatchKeySet, at::Tensor & self, int64_t diagonal);
 };
 
-struct TORCH_API digamma_ {
+struct digamma_ {
   using schema = at::Tensor & (at::Tensor &);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -6631,7 +6631,7 @@ struct TORCH_API digamma_ {
   static at::Tensor & redispatch(c10::DispatchKeySet dispatchKeySet, at::Tensor & self);
 };
 
-struct TORCH_API lerp__Scalar {
+struct lerp__Scalar {
   using schema = at::Tensor & (at::Tensor &, const at::Tensor &, const at::Scalar &);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -6642,7 +6642,7 @@ struct TORCH_API lerp__Scalar {
   static at::Tensor & redispatch(c10::DispatchKeySet dispatchKeySet, at::Tensor & self, const at::Tensor & end, const at::Scalar & weight);
 };
 
-struct TORCH_API lerp__Tensor {
+struct lerp__Tensor {
   using schema = at::Tensor & (at::Tensor &, const at::Tensor &, const at::Tensor &);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -6653,7 +6653,7 @@ struct TORCH_API lerp__Tensor {
   static at::Tensor & redispatch(c10::DispatchKeySet dispatchKeySet, at::Tensor & self, const at::Tensor & end, const at::Tensor & weight);
 };
 
-struct TORCH_API addbmm_ {
+struct addbmm_ {
   using schema = at::Tensor & (at::Tensor &, const at::Tensor &, const at::Tensor &, const at::Scalar &, const at::Scalar &);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -6664,7 +6664,7 @@ struct TORCH_API addbmm_ {
   static at::Tensor & redispatch(c10::DispatchKeySet dispatchKeySet, at::Tensor & self, const at::Tensor & batch1, const at::Tensor & batch2, const at::Scalar & beta, const at::Scalar & alpha);
 };
 
-struct TORCH_API addbmm {
+struct addbmm {
   using schema = at::Tensor (const at::Tensor &, const at::Tensor &, const at::Tensor &, const at::Scalar &, const at::Scalar &);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -6675,7 +6675,7 @@ struct TORCH_API addbmm {
   static at::Tensor redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self, const at::Tensor & batch1, const at::Tensor & batch2, const at::Scalar & beta, const at::Scalar & alpha);
 };
 
-struct TORCH_API random__from {
+struct random__from {
   using schema = at::Tensor & (at::Tensor &, int64_t, c10::optional<int64_t>, c10::optional<at::Generator>);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -6686,7 +6686,7 @@ struct TORCH_API random__from {
   static at::Tensor & redispatch(c10::DispatchKeySet dispatchKeySet, at::Tensor & self, int64_t from, c10::optional<int64_t> to, c10::optional<at::Generator> generator);
 };
 
-struct TORCH_API random__to {
+struct random__to {
   using schema = at::Tensor & (at::Tensor &, int64_t, c10::optional<at::Generator>);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -6697,7 +6697,7 @@ struct TORCH_API random__to {
   static at::Tensor & redispatch(c10::DispatchKeySet dispatchKeySet, at::Tensor & self, int64_t to, c10::optional<at::Generator> generator);
 };
 
-struct TORCH_API random_ {
+struct random_ {
   using schema = at::Tensor & (at::Tensor &, c10::optional<at::Generator>);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -6708,7 +6708,7 @@ struct TORCH_API random_ {
   static at::Tensor & redispatch(c10::DispatchKeySet dispatchKeySet, at::Tensor & self, c10::optional<at::Generator> generator);
 };
 
-struct TORCH_API uniform_ {
+struct uniform_ {
   using schema = at::Tensor & (at::Tensor &, double, double, c10::optional<at::Generator>);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -6719,7 +6719,7 @@ struct TORCH_API uniform_ {
   static at::Tensor & redispatch(c10::DispatchKeySet dispatchKeySet, at::Tensor & self, double from, double to, c10::optional<at::Generator> generator);
 };
 
-struct TORCH_API cauchy_ {
+struct cauchy_ {
   using schema = at::Tensor & (at::Tensor &, double, double, c10::optional<at::Generator>);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -6730,7 +6730,7 @@ struct TORCH_API cauchy_ {
   static at::Tensor & redispatch(c10::DispatchKeySet dispatchKeySet, at::Tensor & self, double median, double sigma, c10::optional<at::Generator> generator);
 };
 
-struct TORCH_API log_normal_ {
+struct log_normal_ {
   using schema = at::Tensor & (at::Tensor &, double, double, c10::optional<at::Generator>);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -6741,7 +6741,7 @@ struct TORCH_API log_normal_ {
   static at::Tensor & redispatch(c10::DispatchKeySet dispatchKeySet, at::Tensor & self, double mean, double std, c10::optional<at::Generator> generator);
 };
 
-struct TORCH_API exponential_ {
+struct exponential_ {
   using schema = at::Tensor & (at::Tensor &, double, c10::optional<at::Generator>);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -6752,7 +6752,7 @@ struct TORCH_API exponential_ {
   static at::Tensor & redispatch(c10::DispatchKeySet dispatchKeySet, at::Tensor & self, double lambd, c10::optional<at::Generator> generator);
 };
 
-struct TORCH_API geometric_ {
+struct geometric_ {
   using schema = at::Tensor & (at::Tensor &, double, c10::optional<at::Generator>);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -6763,7 +6763,7 @@ struct TORCH_API geometric_ {
   static at::Tensor & redispatch(c10::DispatchKeySet dispatchKeySet, at::Tensor & self, double p, c10::optional<at::Generator> generator);
 };
 
-struct TORCH_API diag {
+struct diag {
   using schema = at::Tensor (const at::Tensor &, int64_t);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -6774,7 +6774,7 @@ struct TORCH_API diag {
   static at::Tensor redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self, int64_t diagonal);
 };
 
-struct TORCH_API cross {
+struct cross {
   using schema = at::Tensor (const at::Tensor &, const at::Tensor &, c10::optional<int64_t>);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -6785,7 +6785,7 @@ struct TORCH_API cross {
   static at::Tensor redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self, const at::Tensor & other, c10::optional<int64_t> dim);
 };
 
-struct TORCH_API triu {
+struct triu {
   using schema = at::Tensor (const at::Tensor &, int64_t);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -6796,7 +6796,7 @@ struct TORCH_API triu {
   static at::Tensor redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self, int64_t diagonal);
 };
 
-struct TORCH_API tril {
+struct tril {
   using schema = at::Tensor (const at::Tensor &, int64_t);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -6807,7 +6807,7 @@ struct TORCH_API tril {
   static at::Tensor redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self, int64_t diagonal);
 };
 
-struct TORCH_API trace {
+struct trace {
   using schema = at::Tensor (const at::Tensor &);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -6818,7 +6818,7 @@ struct TORCH_API trace {
   static at::Tensor redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self);
 };
 
-struct TORCH_API ne_Scalar {
+struct ne_Scalar {
   using schema = at::Tensor (const at::Tensor &, const at::Scalar &);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -6829,7 +6829,7 @@ struct TORCH_API ne_Scalar {
   static at::Tensor redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self, const at::Scalar & other);
 };
 
-struct TORCH_API ne_Tensor {
+struct ne_Tensor {
   using schema = at::Tensor (const at::Tensor &, const at::Tensor &);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -6840,7 +6840,7 @@ struct TORCH_API ne_Tensor {
   static at::Tensor redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self, const at::Tensor & other);
 };
 
-struct TORCH_API ne__Scalar {
+struct ne__Scalar {
   using schema = at::Tensor & (at::Tensor &, const at::Scalar &);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -6851,7 +6851,7 @@ struct TORCH_API ne__Scalar {
   static at::Tensor & redispatch(c10::DispatchKeySet dispatchKeySet, at::Tensor & self, const at::Scalar & other);
 };
 
-struct TORCH_API ne__Tensor {
+struct ne__Tensor {
   using schema = at::Tensor & (at::Tensor &, const at::Tensor &);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -6862,7 +6862,7 @@ struct TORCH_API ne__Tensor {
   static at::Tensor & redispatch(c10::DispatchKeySet dispatchKeySet, at::Tensor & self, const at::Tensor & other);
 };
 
-struct TORCH_API not_equal_Scalar {
+struct not_equal_Scalar {
   using schema = at::Tensor (const at::Tensor &, const at::Scalar &);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -6873,7 +6873,7 @@ struct TORCH_API not_equal_Scalar {
   static at::Tensor redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self, const at::Scalar & other);
 };
 
-struct TORCH_API not_equal_Tensor {
+struct not_equal_Tensor {
   using schema = at::Tensor (const at::Tensor &, const at::Tensor &);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -6884,7 +6884,7 @@ struct TORCH_API not_equal_Tensor {
   static at::Tensor redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self, const at::Tensor & other);
 };
 
-struct TORCH_API not_equal__Scalar {
+struct not_equal__Scalar {
   using schema = at::Tensor & (at::Tensor &, const at::Scalar &);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -6895,7 +6895,7 @@ struct TORCH_API not_equal__Scalar {
   static at::Tensor & redispatch(c10::DispatchKeySet dispatchKeySet, at::Tensor & self, const at::Scalar & other);
 };
 
-struct TORCH_API not_equal__Tensor {
+struct not_equal__Tensor {
   using schema = at::Tensor & (at::Tensor &, const at::Tensor &);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -6906,7 +6906,7 @@ struct TORCH_API not_equal__Tensor {
   static at::Tensor & redispatch(c10::DispatchKeySet dispatchKeySet, at::Tensor & self, const at::Tensor & other);
 };
 
-struct TORCH_API eq_Scalar {
+struct eq_Scalar {
   using schema = at::Tensor (const at::Tensor &, const at::Scalar &);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -6917,7 +6917,7 @@ struct TORCH_API eq_Scalar {
   static at::Tensor redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self, const at::Scalar & other);
 };
 
-struct TORCH_API eq_Tensor {
+struct eq_Tensor {
   using schema = at::Tensor (const at::Tensor &, const at::Tensor &);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -6928,7 +6928,7 @@ struct TORCH_API eq_Tensor {
   static at::Tensor redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self, const at::Tensor & other);
 };
 
-struct TORCH_API ge_Scalar {
+struct ge_Scalar {
   using schema = at::Tensor (const at::Tensor &, const at::Scalar &);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -6939,7 +6939,7 @@ struct TORCH_API ge_Scalar {
   static at::Tensor redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self, const at::Scalar & other);
 };
 
-struct TORCH_API ge_Tensor {
+struct ge_Tensor {
   using schema = at::Tensor (const at::Tensor &, const at::Tensor &);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -6950,7 +6950,7 @@ struct TORCH_API ge_Tensor {
   static at::Tensor redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self, const at::Tensor & other);
 };
 
-struct TORCH_API ge__Scalar {
+struct ge__Scalar {
   using schema = at::Tensor & (at::Tensor &, const at::Scalar &);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -6961,7 +6961,7 @@ struct TORCH_API ge__Scalar {
   static at::Tensor & redispatch(c10::DispatchKeySet dispatchKeySet, at::Tensor & self, const at::Scalar & other);
 };
 
-struct TORCH_API ge__Tensor {
+struct ge__Tensor {
   using schema = at::Tensor & (at::Tensor &, const at::Tensor &);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -6972,7 +6972,7 @@ struct TORCH_API ge__Tensor {
   static at::Tensor & redispatch(c10::DispatchKeySet dispatchKeySet, at::Tensor & self, const at::Tensor & other);
 };
 
-struct TORCH_API greater_equal_Scalar {
+struct greater_equal_Scalar {
   using schema = at::Tensor (const at::Tensor &, const at::Scalar &);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -6983,7 +6983,7 @@ struct TORCH_API greater_equal_Scalar {
   static at::Tensor redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self, const at::Scalar & other);
 };
 
-struct TORCH_API greater_equal_Tensor {
+struct greater_equal_Tensor {
   using schema = at::Tensor (const at::Tensor &, const at::Tensor &);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -6994,7 +6994,7 @@ struct TORCH_API greater_equal_Tensor {
   static at::Tensor redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self, const at::Tensor & other);
 };
 
-struct TORCH_API greater_equal__Scalar {
+struct greater_equal__Scalar {
   using schema = at::Tensor & (at::Tensor &, const at::Scalar &);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -7005,7 +7005,7 @@ struct TORCH_API greater_equal__Scalar {
   static at::Tensor & redispatch(c10::DispatchKeySet dispatchKeySet, at::Tensor & self, const at::Scalar & other);
 };
 
-struct TORCH_API greater_equal__Tensor {
+struct greater_equal__Tensor {
   using schema = at::Tensor & (at::Tensor &, const at::Tensor &);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -7016,7 +7016,7 @@ struct TORCH_API greater_equal__Tensor {
   static at::Tensor & redispatch(c10::DispatchKeySet dispatchKeySet, at::Tensor & self, const at::Tensor & other);
 };
 
-struct TORCH_API le_Scalar {
+struct le_Scalar {
   using schema = at::Tensor (const at::Tensor &, const at::Scalar &);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -7027,7 +7027,7 @@ struct TORCH_API le_Scalar {
   static at::Tensor redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self, const at::Scalar & other);
 };
 
-struct TORCH_API le_Tensor {
+struct le_Tensor {
   using schema = at::Tensor (const at::Tensor &, const at::Tensor &);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -7038,7 +7038,7 @@ struct TORCH_API le_Tensor {
   static at::Tensor redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self, const at::Tensor & other);
 };
 
-struct TORCH_API le__Scalar {
+struct le__Scalar {
   using schema = at::Tensor & (at::Tensor &, const at::Scalar &);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -7049,7 +7049,7 @@ struct TORCH_API le__Scalar {
   static at::Tensor & redispatch(c10::DispatchKeySet dispatchKeySet, at::Tensor & self, const at::Scalar & other);
 };
 
-struct TORCH_API le__Tensor {
+struct le__Tensor {
   using schema = at::Tensor & (at::Tensor &, const at::Tensor &);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -7060,7 +7060,7 @@ struct TORCH_API le__Tensor {
   static at::Tensor & redispatch(c10::DispatchKeySet dispatchKeySet, at::Tensor & self, const at::Tensor & other);
 };
 
-struct TORCH_API less_equal_Scalar {
+struct less_equal_Scalar {
   using schema = at::Tensor (const at::Tensor &, const at::Scalar &);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -7071,7 +7071,7 @@ struct TORCH_API less_equal_Scalar {
   static at::Tensor redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self, const at::Scalar & other);
 };
 
-struct TORCH_API less_equal_Tensor {
+struct less_equal_Tensor {
   using schema = at::Tensor (const at::Tensor &, const at::Tensor &);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -7082,7 +7082,7 @@ struct TORCH_API less_equal_Tensor {
   static at::Tensor redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self, const at::Tensor & other);
 };
 
-struct TORCH_API less_equal__Scalar {
+struct less_equal__Scalar {
   using schema = at::Tensor & (at::Tensor &, const at::Scalar &);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -7093,7 +7093,7 @@ struct TORCH_API less_equal__Scalar {
   static at::Tensor & redispatch(c10::DispatchKeySet dispatchKeySet, at::Tensor & self, const at::Scalar & other);
 };
 
-struct TORCH_API less_equal__Tensor {
+struct less_equal__Tensor {
   using schema = at::Tensor & (at::Tensor &, const at::Tensor &);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -7104,7 +7104,7 @@ struct TORCH_API less_equal__Tensor {
   static at::Tensor & redispatch(c10::DispatchKeySet dispatchKeySet, at::Tensor & self, const at::Tensor & other);
 };
 
-struct TORCH_API gt_Scalar {
+struct gt_Scalar {
   using schema = at::Tensor (const at::Tensor &, const at::Scalar &);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -7115,7 +7115,7 @@ struct TORCH_API gt_Scalar {
   static at::Tensor redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self, const at::Scalar & other);
 };
 
-struct TORCH_API gt_Tensor {
+struct gt_Tensor {
   using schema = at::Tensor (const at::Tensor &, const at::Tensor &);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -7126,7 +7126,7 @@ struct TORCH_API gt_Tensor {
   static at::Tensor redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self, const at::Tensor & other);
 };
 
-struct TORCH_API gt__Scalar {
+struct gt__Scalar {
   using schema = at::Tensor & (at::Tensor &, const at::Scalar &);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -7137,7 +7137,7 @@ struct TORCH_API gt__Scalar {
   static at::Tensor & redispatch(c10::DispatchKeySet dispatchKeySet, at::Tensor & self, const at::Scalar & other);
 };
 
-struct TORCH_API gt__Tensor {
+struct gt__Tensor {
   using schema = at::Tensor & (at::Tensor &, const at::Tensor &);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -7148,7 +7148,7 @@ struct TORCH_API gt__Tensor {
   static at::Tensor & redispatch(c10::DispatchKeySet dispatchKeySet, at::Tensor & self, const at::Tensor & other);
 };
 
-struct TORCH_API greater_Scalar {
+struct greater_Scalar {
   using schema = at::Tensor (const at::Tensor &, const at::Scalar &);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -7159,7 +7159,7 @@ struct TORCH_API greater_Scalar {
   static at::Tensor redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self, const at::Scalar & other);
 };
 
-struct TORCH_API greater_Tensor {
+struct greater_Tensor {
   using schema = at::Tensor (const at::Tensor &, const at::Tensor &);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -7170,7 +7170,7 @@ struct TORCH_API greater_Tensor {
   static at::Tensor redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self, const at::Tensor & other);
 };
 
-struct TORCH_API greater__Scalar {
+struct greater__Scalar {
   using schema = at::Tensor & (at::Tensor &, const at::Scalar &);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -7181,7 +7181,7 @@ struct TORCH_API greater__Scalar {
   static at::Tensor & redispatch(c10::DispatchKeySet dispatchKeySet, at::Tensor & self, const at::Scalar & other);
 };
 
-struct TORCH_API greater__Tensor {
+struct greater__Tensor {
   using schema = at::Tensor & (at::Tensor &, const at::Tensor &);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -7192,7 +7192,7 @@ struct TORCH_API greater__Tensor {
   static at::Tensor & redispatch(c10::DispatchKeySet dispatchKeySet, at::Tensor & self, const at::Tensor & other);
 };
 
-struct TORCH_API lt_Scalar {
+struct lt_Scalar {
   using schema = at::Tensor (const at::Tensor &, const at::Scalar &);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -7203,7 +7203,7 @@ struct TORCH_API lt_Scalar {
   static at::Tensor redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self, const at::Scalar & other);
 };
 
-struct TORCH_API lt_Tensor {
+struct lt_Tensor {
   using schema = at::Tensor (const at::Tensor &, const at::Tensor &);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -7214,7 +7214,7 @@ struct TORCH_API lt_Tensor {
   static at::Tensor redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self, const at::Tensor & other);
 };
 
-struct TORCH_API lt__Scalar {
+struct lt__Scalar {
   using schema = at::Tensor & (at::Tensor &, const at::Scalar &);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -7225,7 +7225,7 @@ struct TORCH_API lt__Scalar {
   static at::Tensor & redispatch(c10::DispatchKeySet dispatchKeySet, at::Tensor & self, const at::Scalar & other);
 };
 
-struct TORCH_API lt__Tensor {
+struct lt__Tensor {
   using schema = at::Tensor & (at::Tensor &, const at::Tensor &);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -7236,7 +7236,7 @@ struct TORCH_API lt__Tensor {
   static at::Tensor & redispatch(c10::DispatchKeySet dispatchKeySet, at::Tensor & self, const at::Tensor & other);
 };
 
-struct TORCH_API less_Scalar {
+struct less_Scalar {
   using schema = at::Tensor (const at::Tensor &, const at::Scalar &);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -7247,7 +7247,7 @@ struct TORCH_API less_Scalar {
   static at::Tensor redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self, const at::Scalar & other);
 };
 
-struct TORCH_API less_Tensor {
+struct less_Tensor {
   using schema = at::Tensor (const at::Tensor &, const at::Tensor &);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -7258,7 +7258,7 @@ struct TORCH_API less_Tensor {
   static at::Tensor redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self, const at::Tensor & other);
 };
 
-struct TORCH_API less__Scalar {
+struct less__Scalar {
   using schema = at::Tensor & (at::Tensor &, const at::Scalar &);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -7269,7 +7269,7 @@ struct TORCH_API less__Scalar {
   static at::Tensor & redispatch(c10::DispatchKeySet dispatchKeySet, at::Tensor & self, const at::Scalar & other);
 };
 
-struct TORCH_API less__Tensor {
+struct less__Tensor {
   using schema = at::Tensor & (at::Tensor &, const at::Tensor &);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -7280,7 +7280,7 @@ struct TORCH_API less__Tensor {
   static at::Tensor & redispatch(c10::DispatchKeySet dispatchKeySet, at::Tensor & self, const at::Tensor & other);
 };
 
-struct TORCH_API take {
+struct take {
   using schema = at::Tensor (const at::Tensor &, const at::Tensor &);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -7291,7 +7291,7 @@ struct TORCH_API take {
   static at::Tensor redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self, const at::Tensor & index);
 };
 
-struct TORCH_API take_along_dim {
+struct take_along_dim {
   using schema = at::Tensor (const at::Tensor &, const at::Tensor &, c10::optional<int64_t>);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -7302,7 +7302,7 @@ struct TORCH_API take_along_dim {
   static at::Tensor redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self, const at::Tensor & indices, c10::optional<int64_t> dim);
 };
 
-struct TORCH_API index_select {
+struct index_select {
   using schema = at::Tensor (const at::Tensor &, int64_t, const at::Tensor &);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -7313,7 +7313,7 @@ struct TORCH_API index_select {
   static at::Tensor redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self, int64_t dim, const at::Tensor & index);
 };
 
-struct TORCH_API index_select_dimname {
+struct index_select_dimname {
   using schema = at::Tensor (const at::Tensor &, at::Dimname, const at::Tensor &);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -7324,7 +7324,7 @@ struct TORCH_API index_select_dimname {
   static at::Tensor redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self, at::Dimname dim, const at::Tensor & index);
 };
 
-struct TORCH_API masked_select {
+struct masked_select {
   using schema = at::Tensor (const at::Tensor &, const at::Tensor &);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -7335,7 +7335,7 @@ struct TORCH_API masked_select {
   static at::Tensor redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self, const at::Tensor & mask);
 };
 
-struct TORCH_API nonzero {
+struct nonzero {
   using schema = at::Tensor (const at::Tensor &);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -7346,7 +7346,7 @@ struct TORCH_API nonzero {
   static at::Tensor redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self);
 };
 
-struct TORCH_API nonzero_static {
+struct nonzero_static {
   using schema = at::Tensor (const at::Tensor &, int64_t, int64_t);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -7357,7 +7357,7 @@ struct TORCH_API nonzero_static {
   static at::Tensor redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self, int64_t size, int64_t fill_value);
 };
 
-struct TORCH_API nonzero_numpy {
+struct nonzero_numpy {
   using schema = ::std::vector<at::Tensor> (const at::Tensor &);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -7368,7 +7368,7 @@ struct TORCH_API nonzero_numpy {
   static ::std::vector<at::Tensor> redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self);
 };
 
-struct TORCH_API argwhere {
+struct argwhere {
   using schema = at::Tensor (const at::Tensor &);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -7379,7 +7379,7 @@ struct TORCH_API argwhere {
   static at::Tensor redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self);
 };
 
-struct TORCH_API gather {
+struct gather {
   using schema = at::Tensor (const at::Tensor &, int64_t, const at::Tensor &, bool);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -7390,7 +7390,7 @@ struct TORCH_API gather {
   static at::Tensor redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self, int64_t dim, const at::Tensor & index, bool sparse_grad);
 };
 
-struct TORCH_API gather_dimname {
+struct gather_dimname {
   using schema = at::Tensor (const at::Tensor &, at::Dimname, const at::Tensor &, bool);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -7401,7 +7401,7 @@ struct TORCH_API gather_dimname {
   static at::Tensor redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self, at::Dimname dim, const at::Tensor & index, bool sparse_grad);
 };
 
-struct TORCH_API addcmul {
+struct addcmul {
   using schema = at::Tensor (const at::Tensor &, const at::Tensor &, const at::Tensor &, const at::Scalar &);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -7412,7 +7412,7 @@ struct TORCH_API addcmul {
   static at::Tensor redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self, const at::Tensor & tensor1, const at::Tensor & tensor2, const at::Scalar & value);
 };
 
-struct TORCH_API addcmul_ {
+struct addcmul_ {
   using schema = at::Tensor & (at::Tensor &, const at::Tensor &, const at::Tensor &, const at::Scalar &);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -7423,7 +7423,7 @@ struct TORCH_API addcmul_ {
   static at::Tensor & redispatch(c10::DispatchKeySet dispatchKeySet, at::Tensor & self, const at::Tensor & tensor1, const at::Tensor & tensor2, const at::Scalar & value);
 };
 
-struct TORCH_API addcdiv {
+struct addcdiv {
   using schema = at::Tensor (const at::Tensor &, const at::Tensor &, const at::Tensor &, const at::Scalar &);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -7434,7 +7434,7 @@ struct TORCH_API addcdiv {
   static at::Tensor redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self, const at::Tensor & tensor1, const at::Tensor & tensor2, const at::Scalar & value);
 };
 
-struct TORCH_API addcdiv_ {
+struct addcdiv_ {
   using schema = at::Tensor & (at::Tensor &, const at::Tensor &, const at::Tensor &, const at::Scalar &);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -7445,7 +7445,7 @@ struct TORCH_API addcdiv_ {
   static at::Tensor & redispatch(c10::DispatchKeySet dispatchKeySet, at::Tensor & self, const at::Tensor & tensor1, const at::Tensor & tensor2, const at::Scalar & value);
 };
 
-struct TORCH_API triangular_solve {
+struct triangular_solve {
   using schema = ::std::tuple<at::Tensor,at::Tensor> (const at::Tensor &, const at::Tensor &, bool, bool, bool);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -7456,7 +7456,7 @@ struct TORCH_API triangular_solve {
   static ::std::tuple<at::Tensor,at::Tensor> redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self, const at::Tensor & A, bool upper, bool transpose, bool unitriangular);
 };
 
-struct TORCH_API svd {
+struct svd {
   using schema = ::std::tuple<at::Tensor,at::Tensor,at::Tensor> (const at::Tensor &, bool, bool);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -7467,7 +7467,7 @@ struct TORCH_API svd {
   static ::std::tuple<at::Tensor,at::Tensor,at::Tensor> redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self, bool some, bool compute_uv);
 };
 
-struct TORCH_API swapaxes {
+struct swapaxes {
   using schema = at::Tensor (const at::Tensor &, int64_t, int64_t);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -7478,7 +7478,7 @@ struct TORCH_API swapaxes {
   static at::Tensor redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self, int64_t axis0, int64_t axis1);
 };
 
-struct TORCH_API swapaxes_ {
+struct swapaxes_ {
   using schema = at::Tensor & (at::Tensor &, int64_t, int64_t);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -7489,7 +7489,7 @@ struct TORCH_API swapaxes_ {
   static at::Tensor & redispatch(c10::DispatchKeySet dispatchKeySet, at::Tensor & self, int64_t axis0, int64_t axis1);
 };
 
-struct TORCH_API swapdims {
+struct swapdims {
   using schema = at::Tensor (const at::Tensor &, int64_t, int64_t);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -7500,7 +7500,7 @@ struct TORCH_API swapdims {
   static at::Tensor redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self, int64_t dim0, int64_t dim1);
 };
 
-struct TORCH_API swapdims_ {
+struct swapdims_ {
   using schema = at::Tensor & (at::Tensor &, int64_t, int64_t);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -7511,7 +7511,7 @@ struct TORCH_API swapdims_ {
   static at::Tensor & redispatch(c10::DispatchKeySet dispatchKeySet, at::Tensor & self, int64_t dim0, int64_t dim1);
 };
 
-struct TORCH_API cholesky {
+struct cholesky {
   using schema = at::Tensor (const at::Tensor &, bool);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -7522,7 +7522,7 @@ struct TORCH_API cholesky {
   static at::Tensor redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self, bool upper);
 };
 
-struct TORCH_API cholesky_solve {
+struct cholesky_solve {
   using schema = at::Tensor (const at::Tensor &, const at::Tensor &, bool);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -7533,7 +7533,7 @@ struct TORCH_API cholesky_solve {
   static at::Tensor redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self, const at::Tensor & input2, bool upper);
 };
 
-struct TORCH_API cholesky_inverse {
+struct cholesky_inverse {
   using schema = at::Tensor (const at::Tensor &, bool);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -7544,7 +7544,7 @@ struct TORCH_API cholesky_inverse {
   static at::Tensor redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self, bool upper);
 };
 
-struct TORCH_API qr {
+struct qr {
   using schema = ::std::tuple<at::Tensor,at::Tensor> (const at::Tensor &, bool);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -7555,7 +7555,7 @@ struct TORCH_API qr {
   static ::std::tuple<at::Tensor,at::Tensor> redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self, bool some);
 };
 
-struct TORCH_API geqrf {
+struct geqrf {
   using schema = ::std::tuple<at::Tensor,at::Tensor> (const at::Tensor &);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -7566,7 +7566,7 @@ struct TORCH_API geqrf {
   static ::std::tuple<at::Tensor,at::Tensor> redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self);
 };
 
-struct TORCH_API orgqr {
+struct orgqr {
   using schema = at::Tensor (const at::Tensor &, const at::Tensor &);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -7577,7 +7577,7 @@ struct TORCH_API orgqr {
   static at::Tensor redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self, const at::Tensor & input2);
 };
 
-struct TORCH_API ormqr {
+struct ormqr {
   using schema = at::Tensor (const at::Tensor &, const at::Tensor &, const at::Tensor &, bool, bool);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -7588,7 +7588,7 @@ struct TORCH_API ormqr {
   static at::Tensor redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self, const at::Tensor & input2, const at::Tensor & input3, bool left, bool transpose);
 };
 
-struct TORCH_API lu_solve {
+struct lu_solve {
   using schema = at::Tensor (const at::Tensor &, const at::Tensor &, const at::Tensor &);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -7599,7 +7599,7 @@ struct TORCH_API lu_solve {
   static at::Tensor redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self, const at::Tensor & LU_data, const at::Tensor & LU_pivots);
 };
 
-struct TORCH_API multinomial {
+struct multinomial {
   using schema = at::Tensor (const at::Tensor &, int64_t, bool, c10::optional<at::Generator>);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -7610,7 +7610,7 @@ struct TORCH_API multinomial {
   static at::Tensor redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self, int64_t num_samples, bool replacement, c10::optional<at::Generator> generator);
 };
 
-struct TORCH_API lgamma_ {
+struct lgamma_ {
   using schema = at::Tensor & (at::Tensor &);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -7621,7 +7621,7 @@ struct TORCH_API lgamma_ {
   static at::Tensor & redispatch(c10::DispatchKeySet dispatchKeySet, at::Tensor & self);
 };
 
-struct TORCH_API lgamma {
+struct lgamma {
   using schema = at::Tensor (const at::Tensor &);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -7632,7 +7632,7 @@ struct TORCH_API lgamma {
   static at::Tensor redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self);
 };
 
-struct TORCH_API digamma {
+struct digamma {
   using schema = at::Tensor (const at::Tensor &);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -7643,7 +7643,7 @@ struct TORCH_API digamma {
   static at::Tensor redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self);
 };
 
-struct TORCH_API polygamma {
+struct polygamma {
   using schema = at::Tensor (int64_t, const at::Tensor &);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -7654,7 +7654,7 @@ struct TORCH_API polygamma {
   static at::Tensor redispatch(c10::DispatchKeySet dispatchKeySet, int64_t n, const at::Tensor & self);
 };
 
-struct TORCH_API polygamma_ {
+struct polygamma_ {
   using schema = at::Tensor & (at::Tensor &, int64_t);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -7665,7 +7665,7 @@ struct TORCH_API polygamma_ {
   static at::Tensor & redispatch(c10::DispatchKeySet dispatchKeySet, at::Tensor & self, int64_t n);
 };
 
-struct TORCH_API erfinv {
+struct erfinv {
   using schema = at::Tensor (const at::Tensor &);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -7676,7 +7676,7 @@ struct TORCH_API erfinv {
   static at::Tensor redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self);
 };
 
-struct TORCH_API erfinv_ {
+struct erfinv_ {
   using schema = at::Tensor & (at::Tensor &);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -7687,7 +7687,7 @@ struct TORCH_API erfinv_ {
   static at::Tensor & redispatch(c10::DispatchKeySet dispatchKeySet, at::Tensor & self);
 };
 
-struct TORCH_API i0 {
+struct i0 {
   using schema = at::Tensor (const at::Tensor &);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -7698,7 +7698,7 @@ struct TORCH_API i0 {
   static at::Tensor redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self);
 };
 
-struct TORCH_API i0_ {
+struct i0_ {
   using schema = at::Tensor & (at::Tensor &);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -7709,7 +7709,7 @@ struct TORCH_API i0_ {
   static at::Tensor & redispatch(c10::DispatchKeySet dispatchKeySet, at::Tensor & self);
 };
 
-struct TORCH_API sign {
+struct sign {
   using schema = at::Tensor (const at::Tensor &);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -7720,7 +7720,7 @@ struct TORCH_API sign {
   static at::Tensor redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self);
 };
 
-struct TORCH_API sign_ {
+struct sign_ {
   using schema = at::Tensor & (at::Tensor &);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -7731,7 +7731,7 @@ struct TORCH_API sign_ {
   static at::Tensor & redispatch(c10::DispatchKeySet dispatchKeySet, at::Tensor & self);
 };
 
-struct TORCH_API signbit {
+struct signbit {
   using schema = at::Tensor (const at::Tensor &);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -7742,7 +7742,7 @@ struct TORCH_API signbit {
   static at::Tensor redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self);
 };
 
-struct TORCH_API dist {
+struct dist {
   using schema = at::Tensor (const at::Tensor &, const at::Tensor &, const at::Scalar &);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -7753,7 +7753,7 @@ struct TORCH_API dist {
   static at::Tensor redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self, const at::Tensor & other, const at::Scalar & p);
 };
 
-struct TORCH_API atan2_ {
+struct atan2_ {
   using schema = at::Tensor & (at::Tensor &, const at::Tensor &);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -7764,7 +7764,7 @@ struct TORCH_API atan2_ {
   static at::Tensor & redispatch(c10::DispatchKeySet dispatchKeySet, at::Tensor & self, const at::Tensor & other);
 };
 
-struct TORCH_API atan2 {
+struct atan2 {
   using schema = at::Tensor (const at::Tensor &, const at::Tensor &);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -7775,7 +7775,7 @@ struct TORCH_API atan2 {
   static at::Tensor redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self, const at::Tensor & other);
 };
 
-struct TORCH_API arctan2 {
+struct arctan2 {
   using schema = at::Tensor (const at::Tensor &, const at::Tensor &);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -7786,7 +7786,7 @@ struct TORCH_API arctan2 {
   static at::Tensor redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self, const at::Tensor & other);
 };
 
-struct TORCH_API arctan2_ {
+struct arctan2_ {
   using schema = at::Tensor & (at::Tensor &, const at::Tensor &);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -7797,7 +7797,7 @@ struct TORCH_API arctan2_ {
   static at::Tensor & redispatch(c10::DispatchKeySet dispatchKeySet, at::Tensor & self, const at::Tensor & other);
 };
 
-struct TORCH_API lerp_Scalar {
+struct lerp_Scalar {
   using schema = at::Tensor (const at::Tensor &, const at::Tensor &, const at::Scalar &);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -7808,7 +7808,7 @@ struct TORCH_API lerp_Scalar {
   static at::Tensor redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self, const at::Tensor & end, const at::Scalar & weight);
 };
 
-struct TORCH_API lerp_Tensor {
+struct lerp_Tensor {
   using schema = at::Tensor (const at::Tensor &, const at::Tensor &, const at::Tensor &);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -7819,7 +7819,7 @@ struct TORCH_API lerp_Tensor {
   static at::Tensor redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self, const at::Tensor & end, const at::Tensor & weight);
 };
 
-struct TORCH_API histc {
+struct histc {
   using schema = at::Tensor (const at::Tensor &, int64_t, const at::Scalar &, const at::Scalar &);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -7830,7 +7830,7 @@ struct TORCH_API histc {
   static at::Tensor redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self, int64_t bins, const at::Scalar & min, const at::Scalar & max);
 };
 
-struct TORCH_API histogram_bins_tensor {
+struct histogram_bins_tensor {
   using schema = ::std::tuple<at::Tensor,at::Tensor> (const at::Tensor &, const at::Tensor &, const c10::optional<at::Tensor> &, bool);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -7841,7 +7841,7 @@ struct TORCH_API histogram_bins_tensor {
   static ::std::tuple<at::Tensor,at::Tensor> redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self, const at::Tensor & bins, const c10::optional<at::Tensor> & weight, bool density);
 };
 
-struct TORCH_API histogram_bin_ct {
+struct histogram_bin_ct {
   using schema = ::std::tuple<at::Tensor,at::Tensor> (const at::Tensor &, int64_t, c10::optional<at::ArrayRef<double>>, const c10::optional<at::Tensor> &, bool);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -7852,7 +7852,7 @@ struct TORCH_API histogram_bin_ct {
   static ::std::tuple<at::Tensor,at::Tensor> redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self, int64_t bins, c10::optional<at::ArrayRef<double>> range, const c10::optional<at::Tensor> & weight, bool density);
 };
 
-struct TORCH_API fmod_Scalar {
+struct fmod_Scalar {
   using schema = at::Tensor (const at::Tensor &, const at::Scalar &);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -7863,7 +7863,7 @@ struct TORCH_API fmod_Scalar {
   static at::Tensor redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self, const at::Scalar & other);
 };
 
-struct TORCH_API fmod__Scalar {
+struct fmod__Scalar {
   using schema = at::Tensor & (at::Tensor &, const at::Scalar &);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -7874,7 +7874,7 @@ struct TORCH_API fmod__Scalar {
   static at::Tensor & redispatch(c10::DispatchKeySet dispatchKeySet, at::Tensor & self, const at::Scalar & other);
 };
 
-struct TORCH_API fmod_Tensor {
+struct fmod_Tensor {
   using schema = at::Tensor (const at::Tensor &, const at::Tensor &);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -7885,7 +7885,7 @@ struct TORCH_API fmod_Tensor {
   static at::Tensor redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self, const at::Tensor & other);
 };
 
-struct TORCH_API fmod__Tensor {
+struct fmod__Tensor {
   using schema = at::Tensor & (at::Tensor &, const at::Tensor &);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -7896,7 +7896,7 @@ struct TORCH_API fmod__Tensor {
   static at::Tensor & redispatch(c10::DispatchKeySet dispatchKeySet, at::Tensor & self, const at::Tensor & other);
 };
 
-struct TORCH_API hypot {
+struct hypot {
   using schema = at::Tensor (const at::Tensor &, const at::Tensor &);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -7907,7 +7907,7 @@ struct TORCH_API hypot {
   static at::Tensor redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self, const at::Tensor & other);
 };
 
-struct TORCH_API hypot_ {
+struct hypot_ {
   using schema = at::Tensor & (at::Tensor &, const at::Tensor &);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -7918,7 +7918,7 @@ struct TORCH_API hypot_ {
   static at::Tensor & redispatch(c10::DispatchKeySet dispatchKeySet, at::Tensor & self, const at::Tensor & other);
 };
 
-struct TORCH_API igamma {
+struct igamma {
   using schema = at::Tensor (const at::Tensor &, const at::Tensor &);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -7929,7 +7929,7 @@ struct TORCH_API igamma {
   static at::Tensor redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self, const at::Tensor & other);
 };
 
-struct TORCH_API igamma_ {
+struct igamma_ {
   using schema = at::Tensor & (at::Tensor &, const at::Tensor &);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -7940,7 +7940,7 @@ struct TORCH_API igamma_ {
   static at::Tensor & redispatch(c10::DispatchKeySet dispatchKeySet, at::Tensor & self, const at::Tensor & other);
 };
 
-struct TORCH_API igammac {
+struct igammac {
   using schema = at::Tensor (const at::Tensor &, const at::Tensor &);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -7951,7 +7951,7 @@ struct TORCH_API igammac {
   static at::Tensor redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self, const at::Tensor & other);
 };
 
-struct TORCH_API igammac_ {
+struct igammac_ {
   using schema = at::Tensor & (at::Tensor &, const at::Tensor &);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -7962,7 +7962,7 @@ struct TORCH_API igammac_ {
   static at::Tensor & redispatch(c10::DispatchKeySet dispatchKeySet, at::Tensor & self, const at::Tensor & other);
 };
 
-struct TORCH_API nextafter {
+struct nextafter {
   using schema = at::Tensor (const at::Tensor &, const at::Tensor &);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -7973,7 +7973,7 @@ struct TORCH_API nextafter {
   static at::Tensor redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self, const at::Tensor & other);
 };
 
-struct TORCH_API nextafter_ {
+struct nextafter_ {
   using schema = at::Tensor & (at::Tensor &, const at::Tensor &);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -7984,7 +7984,7 @@ struct TORCH_API nextafter_ {
   static at::Tensor & redispatch(c10::DispatchKeySet dispatchKeySet, at::Tensor & self, const at::Tensor & other);
 };
 
-struct TORCH_API remainder_Scalar {
+struct remainder_Scalar {
   using schema = at::Tensor (const at::Tensor &, const at::Scalar &);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -7995,7 +7995,7 @@ struct TORCH_API remainder_Scalar {
   static at::Tensor redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self, const at::Scalar & other);
 };
 
-struct TORCH_API remainder__Scalar {
+struct remainder__Scalar {
   using schema = at::Tensor & (at::Tensor &, const at::Scalar &);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -8006,7 +8006,7 @@ struct TORCH_API remainder__Scalar {
   static at::Tensor & redispatch(c10::DispatchKeySet dispatchKeySet, at::Tensor & self, const at::Scalar & other);
 };
 
-struct TORCH_API remainder_Tensor {
+struct remainder_Tensor {
   using schema = at::Tensor (const at::Tensor &, const at::Tensor &);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -8017,7 +8017,7 @@ struct TORCH_API remainder_Tensor {
   static at::Tensor redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self, const at::Tensor & other);
 };
 
-struct TORCH_API remainder__Tensor {
+struct remainder__Tensor {
   using schema = at::Tensor & (at::Tensor &, const at::Tensor &);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -8028,7 +8028,7 @@ struct TORCH_API remainder__Tensor {
   static at::Tensor & redispatch(c10::DispatchKeySet dispatchKeySet, at::Tensor & self, const at::Tensor & other);
 };
 
-struct TORCH_API min {
+struct min {
   using schema = at::Tensor (const at::Tensor &);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -8039,7 +8039,7 @@ struct TORCH_API min {
   static at::Tensor redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self);
 };
 
-struct TORCH_API fmin {
+struct fmin {
   using schema = at::Tensor (const at::Tensor &, const at::Tensor &);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -8050,7 +8050,7 @@ struct TORCH_API fmin {
   static at::Tensor redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self, const at::Tensor & other);
 };
 
-struct TORCH_API max {
+struct max {
   using schema = at::Tensor (const at::Tensor &);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -8061,7 +8061,7 @@ struct TORCH_API max {
   static at::Tensor redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self);
 };
 
-struct TORCH_API fmax {
+struct fmax {
   using schema = at::Tensor (const at::Tensor &, const at::Tensor &);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -8072,7 +8072,7 @@ struct TORCH_API fmax {
   static at::Tensor redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self, const at::Tensor & other);
 };
 
-struct TORCH_API maximum {
+struct maximum {
   using schema = at::Tensor (const at::Tensor &, const at::Tensor &);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -8083,7 +8083,7 @@ struct TORCH_API maximum {
   static at::Tensor redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self, const at::Tensor & other);
 };
 
-struct TORCH_API max_other {
+struct max_other {
   using schema = at::Tensor (const at::Tensor &, const at::Tensor &);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -8094,7 +8094,7 @@ struct TORCH_API max_other {
   static at::Tensor redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self, const at::Tensor & other);
 };
 
-struct TORCH_API minimum {
+struct minimum {
   using schema = at::Tensor (const at::Tensor &, const at::Tensor &);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -8105,7 +8105,7 @@ struct TORCH_API minimum {
   static at::Tensor redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self, const at::Tensor & other);
 };
 
-struct TORCH_API min_other {
+struct min_other {
   using schema = at::Tensor (const at::Tensor &, const at::Tensor &);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -8116,7 +8116,7 @@ struct TORCH_API min_other {
   static at::Tensor redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self, const at::Tensor & other);
 };
 
-struct TORCH_API quantile {
+struct quantile {
   using schema = at::Tensor (const at::Tensor &, const at::Tensor &, c10::optional<int64_t>, bool, c10::string_view);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -8127,7 +8127,7 @@ struct TORCH_API quantile {
   static at::Tensor redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self, const at::Tensor & q, c10::optional<int64_t> dim, bool keepdim, c10::string_view interpolation);
 };
 
-struct TORCH_API quantile_scalar {
+struct quantile_scalar {
   using schema = at::Tensor (const at::Tensor &, double, c10::optional<int64_t>, bool, c10::string_view);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -8138,7 +8138,7 @@ struct TORCH_API quantile_scalar {
   static at::Tensor redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self, double q, c10::optional<int64_t> dim, bool keepdim, c10::string_view interpolation);
 };
 
-struct TORCH_API nanquantile {
+struct nanquantile {
   using schema = at::Tensor (const at::Tensor &, const at::Tensor &, c10::optional<int64_t>, bool, c10::string_view);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -8149,7 +8149,7 @@ struct TORCH_API nanquantile {
   static at::Tensor redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self, const at::Tensor & q, c10::optional<int64_t> dim, bool keepdim, c10::string_view interpolation);
 };
 
-struct TORCH_API nanquantile_scalar {
+struct nanquantile_scalar {
   using schema = at::Tensor (const at::Tensor &, double, c10::optional<int64_t>, bool, c10::string_view);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -8160,7 +8160,7 @@ struct TORCH_API nanquantile_scalar {
   static at::Tensor redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self, double q, c10::optional<int64_t> dim, bool keepdim, c10::string_view interpolation);
 };
 
-struct TORCH_API sort {
+struct sort {
   using schema = ::std::tuple<at::Tensor,at::Tensor> (const at::Tensor &, int64_t, bool);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -8171,7 +8171,7 @@ struct TORCH_API sort {
   static ::std::tuple<at::Tensor,at::Tensor> redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self, int64_t dim, bool descending);
 };
 
-struct TORCH_API sort_stable {
+struct sort_stable {
   using schema = ::std::tuple<at::Tensor,at::Tensor> (const at::Tensor &, c10::optional<bool>, int64_t, bool);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -8182,7 +8182,7 @@ struct TORCH_API sort_stable {
   static ::std::tuple<at::Tensor,at::Tensor> redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self, c10::optional<bool> stable, int64_t dim, bool descending);
 };
 
-struct TORCH_API sort_dimname {
+struct sort_dimname {
   using schema = ::std::tuple<at::Tensor,at::Tensor> (const at::Tensor &, at::Dimname, bool);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -8193,7 +8193,7 @@ struct TORCH_API sort_dimname {
   static ::std::tuple<at::Tensor,at::Tensor> redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self, at::Dimname dim, bool descending);
 };
 
-struct TORCH_API sort_dimname_stable {
+struct sort_dimname_stable {
   using schema = ::std::tuple<at::Tensor,at::Tensor> (const at::Tensor &, c10::optional<bool>, at::Dimname, bool);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -8204,7 +8204,7 @@ struct TORCH_API sort_dimname_stable {
   static ::std::tuple<at::Tensor,at::Tensor> redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self, c10::optional<bool> stable, at::Dimname dim, bool descending);
 };
 
-struct TORCH_API msort {
+struct msort {
   using schema = at::Tensor (const at::Tensor &);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -8215,7 +8215,7 @@ struct TORCH_API msort {
   static at::Tensor redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self);
 };
 
-struct TORCH_API argsort {
+struct argsort {
   using schema = at::Tensor (const at::Tensor &, int64_t, bool);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -8226,7 +8226,7 @@ struct TORCH_API argsort {
   static at::Tensor redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self, int64_t dim, bool descending);
 };
 
-struct TORCH_API argsort_stable {
+struct argsort_stable {
   using schema = at::Tensor (const at::Tensor &, bool, int64_t, bool);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -8237,7 +8237,7 @@ struct TORCH_API argsort_stable {
   static at::Tensor redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self, bool stable, int64_t dim, bool descending);
 };
 
-struct TORCH_API argsort_dimname {
+struct argsort_dimname {
   using schema = at::Tensor (const at::Tensor &, at::Dimname, bool);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -8248,7 +8248,7 @@ struct TORCH_API argsort_dimname {
   static at::Tensor redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self, at::Dimname dim, bool descending);
 };
 
-struct TORCH_API topk {
+struct topk {
   using schema = ::std::tuple<at::Tensor,at::Tensor> (const at::Tensor &, c10::SymInt, int64_t, bool, bool);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -8259,7 +8259,7 @@ struct TORCH_API topk {
   static ::std::tuple<at::Tensor,at::Tensor> redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self, c10::SymInt k, int64_t dim, bool largest, bool sorted);
 };
 
-struct TORCH_API all {
+struct all {
   using schema = at::Tensor (const at::Tensor &);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -8270,7 +8270,7 @@ struct TORCH_API all {
   static at::Tensor redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self);
 };
 
-struct TORCH_API any {
+struct any {
   using schema = at::Tensor (const at::Tensor &);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -8281,7 +8281,7 @@ struct TORCH_API any {
   static at::Tensor redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self);
 };
 
-struct TORCH_API renorm {
+struct renorm {
   using schema = at::Tensor (const at::Tensor &, const at::Scalar &, int64_t, const at::Scalar &);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -8292,7 +8292,7 @@ struct TORCH_API renorm {
   static at::Tensor redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self, const at::Scalar & p, int64_t dim, const at::Scalar & maxnorm);
 };
 
-struct TORCH_API renorm_ {
+struct renorm_ {
   using schema = at::Tensor & (at::Tensor &, const at::Scalar &, int64_t, const at::Scalar &);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -8303,7 +8303,7 @@ struct TORCH_API renorm_ {
   static at::Tensor & redispatch(c10::DispatchKeySet dispatchKeySet, at::Tensor & self, const at::Scalar & p, int64_t dim, const at::Scalar & maxnorm);
 };
 
-struct TORCH_API unfold {
+struct unfold {
   using schema = at::Tensor (const at::Tensor &, int64_t, int64_t, int64_t);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -8314,7 +8314,7 @@ struct TORCH_API unfold {
   static at::Tensor redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self, int64_t dimension, int64_t size, int64_t step);
 };
 
-struct TORCH_API equal {
+struct equal {
   using schema = bool (const at::Tensor &, const at::Tensor &);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -8325,7 +8325,7 @@ struct TORCH_API equal {
   static bool redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self, const at::Tensor & other);
 };
 
-struct TORCH_API pow_Tensor_Tensor {
+struct pow_Tensor_Tensor {
   using schema = at::Tensor (const at::Tensor &, const at::Tensor &);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -8336,7 +8336,7 @@ struct TORCH_API pow_Tensor_Tensor {
   static at::Tensor redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self, const at::Tensor & exponent);
 };
 
-struct TORCH_API pow_Tensor_Scalar {
+struct pow_Tensor_Scalar {
   using schema = at::Tensor (const at::Tensor &, const at::Scalar &);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -8347,7 +8347,7 @@ struct TORCH_API pow_Tensor_Scalar {
   static at::Tensor redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self, const at::Scalar & exponent);
 };
 
-struct TORCH_API pow__Scalar {
+struct pow__Scalar {
   using schema = at::Tensor & (at::Tensor &, const at::Scalar &);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -8358,7 +8358,7 @@ struct TORCH_API pow__Scalar {
   static at::Tensor & redispatch(c10::DispatchKeySet dispatchKeySet, at::Tensor & self, const at::Scalar & exponent);
 };
 
-struct TORCH_API pow__Tensor {
+struct pow__Tensor {
   using schema = at::Tensor & (at::Tensor &, const at::Tensor &);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -8369,7 +8369,7 @@ struct TORCH_API pow__Tensor {
   static at::Tensor & redispatch(c10::DispatchKeySet dispatchKeySet, at::Tensor & self, const at::Tensor & exponent);
 };
 
-struct TORCH_API float_power_Tensor_Tensor {
+struct float_power_Tensor_Tensor {
   using schema = at::Tensor (const at::Tensor &, const at::Tensor &);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -8380,7 +8380,7 @@ struct TORCH_API float_power_Tensor_Tensor {
   static at::Tensor redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self, const at::Tensor & exponent);
 };
 
-struct TORCH_API float_power_Tensor_Scalar {
+struct float_power_Tensor_Scalar {
   using schema = at::Tensor (const at::Tensor &, const at::Scalar &);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -8391,7 +8391,7 @@ struct TORCH_API float_power_Tensor_Scalar {
   static at::Tensor redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self, const at::Scalar & exponent);
 };
 
-struct TORCH_API float_power__Scalar {
+struct float_power__Scalar {
   using schema = at::Tensor & (at::Tensor &, const at::Scalar &);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -8402,7 +8402,7 @@ struct TORCH_API float_power__Scalar {
   static at::Tensor & redispatch(c10::DispatchKeySet dispatchKeySet, at::Tensor & self, const at::Scalar & exponent);
 };
 
-struct TORCH_API float_power__Tensor {
+struct float_power__Tensor {
   using schema = at::Tensor & (at::Tensor &, const at::Tensor &);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -8413,7 +8413,7 @@ struct TORCH_API float_power__Tensor {
   static at::Tensor & redispatch(c10::DispatchKeySet dispatchKeySet, at::Tensor & self, const at::Tensor & exponent);
 };
 
-struct TORCH_API normal_ {
+struct normal_ {
   using schema = at::Tensor & (at::Tensor &, double, double, c10::optional<at::Generator>);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -8424,7 +8424,7 @@ struct TORCH_API normal_ {
   static at::Tensor & redispatch(c10::DispatchKeySet dispatchKeySet, at::Tensor & self, double mean, double std, c10::optional<at::Generator> generator);
 };
 
-struct TORCH_API alias {
+struct alias {
   using schema = at::Tensor (const at::Tensor &);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -8435,7 +8435,7 @@ struct TORCH_API alias {
   static at::Tensor redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self);
 };
 
-struct TORCH_API isfinite {
+struct isfinite {
   using schema = at::Tensor (const at::Tensor &);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -8446,7 +8446,7 @@ struct TORCH_API isfinite {
   static at::Tensor redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self);
 };
 
-struct TORCH_API isinf {
+struct isinf {
   using schema = at::Tensor (const at::Tensor &);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -8457,7 +8457,7 @@ struct TORCH_API isinf {
   static at::Tensor redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self);
 };
 
-struct TORCH_API record_stream {
+struct record_stream {
   using schema = void (at::Tensor &, at::Stream);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -8468,7 +8468,7 @@ struct TORCH_API record_stream {
   static void redispatch(c10::DispatchKeySet dispatchKeySet, at::Tensor & self, at::Stream s);
 };
 
-struct TORCH_API isposinf {
+struct isposinf {
   using schema = at::Tensor (const at::Tensor &);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -8479,7 +8479,7 @@ struct TORCH_API isposinf {
   static at::Tensor redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self);
 };
 
-struct TORCH_API isneginf {
+struct isneginf {
   using schema = at::Tensor (const at::Tensor &);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -8490,7 +8490,7 @@ struct TORCH_API isneginf {
   static at::Tensor redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self);
 };
 
-struct TORCH_API det {
+struct det {
   using schema = at::Tensor (const at::Tensor &);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -8501,7 +8501,7 @@ struct TORCH_API det {
   static at::Tensor redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self);
 };
 
-struct TORCH_API slogdet {
+struct slogdet {
   using schema = ::std::tuple<at::Tensor,at::Tensor> (const at::Tensor &);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -8512,7 +8512,7 @@ struct TORCH_API slogdet {
   static ::std::tuple<at::Tensor,at::Tensor> redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self);
 };
 
-struct TORCH_API logdet {
+struct logdet {
   using schema = at::Tensor (const at::Tensor &);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -8523,7 +8523,7 @@ struct TORCH_API logdet {
   static at::Tensor redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self);
 };
 
-struct TORCH_API inverse {
+struct inverse {
   using schema = at::Tensor (const at::Tensor &);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -8534,7 +8534,7 @@ struct TORCH_API inverse {
   static at::Tensor redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self);
 };
 
-struct TORCH_API inner {
+struct inner {
   using schema = at::Tensor (const at::Tensor &, const at::Tensor &);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -8545,7 +8545,7 @@ struct TORCH_API inner {
   static at::Tensor redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self, const at::Tensor & other);
 };
 
-struct TORCH_API outer {
+struct outer {
   using schema = at::Tensor (const at::Tensor &, const at::Tensor &);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -8556,7 +8556,7 @@ struct TORCH_API outer {
   static at::Tensor redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self, const at::Tensor & vec2);
 };
 
-struct TORCH_API ger {
+struct ger {
   using schema = at::Tensor (const at::Tensor &, const at::Tensor &);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]
@@ -8567,7 +8567,7 @@ struct TORCH_API ger {
   static at::Tensor redispatch(c10::DispatchKeySet dispatchKeySet, const at::Tensor & self, const at::Tensor & vec2);
 };
 
-struct TORCH_API to_padded_tensor {
+struct to_padded_tensor {
   using schema = at::Tensor (const at::Tensor &, double, at::OptionalSymIntArrayRef);
   using ptr_schema = schema*;
   // See Note [static constexpr char* members for windows NVCC]

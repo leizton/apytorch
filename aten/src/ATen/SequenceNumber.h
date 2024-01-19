@@ -7,7 +7,7 @@
 // ops and is used by autograd and observers framework
 namespace at::sequence_number {
 
-TORCH_API uint64_t peek();
-TORCH_API uint64_t get_and_increment();
+uint64_t peek();
+uint64_t get_and_increment();
 
 } // namespace at::sequence_number

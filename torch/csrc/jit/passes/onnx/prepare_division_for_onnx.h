@@ -13,7 +13,7 @@ namespace jit {
 // - aten::div(int, int) -> float is the python truediv operator. This doesn't
 //   exist in ONNX so we cast the ints to FloatTensors
 //
-TORCH_API void PrepareDivisionForONNX(const std::shared_ptr<Graph>& graph);
+void PrepareDivisionForONNX(const std::shared_ptr<Graph>& graph);
 
 } // namespace jit
 } // namespace torch

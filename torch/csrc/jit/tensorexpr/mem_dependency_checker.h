@@ -36,7 +36,7 @@ using DependencySet = std::unordered_set<std::shared_ptr<AccessInfo>>;
  * a Store. Holds information relating to the specific access and links to
  * connected accesses in the dependency graph.
  */
-class TORCH_API AccessInfo {
+class AccessInfo {
  public:
   AccessInfo(
       size_t id,
@@ -176,7 +176,7 @@ using VarBoundMap = std::unordered_map<VarPtr, Bound>;
  *  analyzer.hasIndirectDependency(BufA, BufB); or,
  *  analyzer.hasDirectDependency(LoadA, StoreB);
  */
-class TORCH_API MemDependencyChecker : public IRVisitor {
+class MemDependencyChecker : public IRVisitor {
   struct Scope;
 
  public:

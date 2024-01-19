@@ -9,7 +9,7 @@ namespace mobile {
 
 class Module;
 
-struct TORCH_API Method {
+struct Method {
   Method(const Module* owner, Function* function);
 
   void run(Stack& stack) const;

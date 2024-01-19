@@ -9,7 +9,7 @@
 
 namespace torch {
 
-class TORCH_API ParamCommsDebugInfo : public c10::DebugInfoBase {
+class ParamCommsDebugInfo : public c10::DebugInfoBase {
  public:
   ParamCommsDebugInfo() = default;
   ParamCommsDebugInfo(

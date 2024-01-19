@@ -65,19 +65,19 @@ struct TensorGroup {
 // enough tensors for all data types until the size_limit, and then split
 // the accumulated tensors into different groups by data types, therefore:
 // it will output: {{tensor_a}, {tensor_b}, {tensor_c}}
-TORCH_API std::vector<TensorGroup> take_tensors(
+std::vector<TensorGroup> take_tensors(
     at::TensorList tensors,
     size_t size_limit,
     bool fine_grained = false);
 
-TORCH_API void reorder_tensors_like(
+void reorder_tensors_like(
     std::vector<at::Tensor>& tensors,
     at::TensorList order);
 
-TORCH_API std::pair<at::Tensor, at::Tensor> flatten_sparse_tensors(
+std::pair<at::Tensor, at::Tensor> flatten_sparse_tensors(
     at::TensorList tensors);
 
-TORCH_API std::vector<at::Tensor> unflatten_sparse_tensors(
+std::vector<at::Tensor> unflatten_sparse_tensors(
     const at::Tensor& flat_indices,
     const at::Tensor& flat_values,
     at::TensorList tensors);

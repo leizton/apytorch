@@ -12,7 +12,7 @@ Dtype Dtype::scalar_dtype() const {
 }
 
 // NOLINTNEXTLINE
-#define DTYPE_DEFINE(_1, n) TORCH_API Dtype k##n(ScalarType::n, 1);
+#define DTYPE_DEFINE(_1, n) Dtype k##n(ScalarType::n, 1);
 
 AT_FORALL_SCALAR_TYPES_AND7(
     Bool,
@@ -28,7 +28,7 @@ DTYPE_DEFINE(c10::qint8, QInt8);
 
 #undef DTYPE_DEFINE
 
-TORCH_API Dtype kHandle(ScalarType::Undefined, 1);
+Dtype kHandle(ScalarType::Undefined, 1);
 
 Dtype ToDtype(ScalarType type) {
   switch (type) {
@@ -56,7 +56,7 @@ Dtype ToDtype(ScalarType type) {
   }
 }
 
-TORCH_API std::ostream& operator<<(std::ostream& stream, const Dtype& dtype) {
+std::ostream& operator<<(std::ostream& stream, const Dtype& dtype) {
   stream << dtype.scalar_type_;
   if (dtype.lanes() > 1) {
     stream << "x" << dtype.lanes();

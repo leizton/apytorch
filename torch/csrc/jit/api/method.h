@@ -18,7 +18,7 @@ using ObjectPtr = c10::intrusive_ptr<c10::ivalue::Object>;
 //     ...
 // Note: because Method/Module are exposed to python these
 // classes use python method naming conventions
-struct TORCH_API Method : public torch::IMethod {
+struct Method : public torch::IMethod {
   Method(ObjectPtr owner, Function* function);
 
   // the module that contains this method.

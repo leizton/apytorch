@@ -11,9 +11,9 @@
 namespace at {
 namespace vitals {
 
-TORCH_API bool torchVitalEnabled();
+bool torchVitalEnabled();
 
-struct TORCH_API TorchVitalAttr {
+struct TorchVitalAttr {
   // always initialized to empty
   std::string value = "";
   template <typename T>
@@ -36,7 +36,7 @@ struct TORCH_API TorchVitalAttr {
   }
 };
 
-struct TORCH_API TorchVital {
+struct TorchVital {
   std::string name;
   std::unordered_map<std::string, TorchVitalAttr> attrs;
 
@@ -56,7 +56,7 @@ std::ostream& operator<<(std::ostream& os, TorchVital const& tv);
 
 // A way to access vitals by string names instead of by global reference.
 // This enables access to vitals from the PythonAPI.
-class TORCH_API APIVitals {
+class APIVitals {
  public:
   bool vitals_enabled;
 
@@ -80,16 +80,16 @@ class TORCH_API APIVitals {
   std::unordered_map<std::string, TorchVital> name_map_;
 };
 
-extern TORCH_API APIVitals VitalsAPI;
+extern APIVitals VitalsAPI;
 
 } // namespace vitals
 } // namespace at
 
 #define TORCH_VITAL_DECLARE(name) \
-  TORCH_API at::vitals::TorchVital TorchVital_##name;
+  at::vitals::TorchVital TorchVital_##name;
 
 #define TORCH_VITAL_DEFINE(name) \
-  TORCH_API at::vitals::TorchVital TorchVital_##name(#name);
+  at::vitals::TorchVital TorchVital_##name(#name);
 
 #define TORCH_VITAL_BASE(name) TorchVital_##name
 

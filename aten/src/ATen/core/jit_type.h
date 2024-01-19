@@ -62,7 +62,7 @@ struct AnyType;
 using AnyTypePtr = SingletonTypePtr<AnyType>;
 // Any is the top of the type hierarchy, all other types are subtypes
 // T <: Any, forall T
-struct TORCH_API AnyType : public Type {
+struct AnyType : public Type {
   bool equals(const Type& rhs) const override {
     return rhs.kind() == kind();
   }
@@ -129,7 +129,7 @@ struct SingleElementType : public SharedType {
 
 struct UnionType;
 using UnionTypePtr = std::shared_ptr<UnionType>;
-struct TORCH_API UnionType : public SharedType {
+struct UnionType : public SharedType {
   friend struct Type;
 
   static const TypeKind Kind = TypeKind::UnionType;
@@ -194,7 +194,7 @@ using OptionalTypePtr = std::shared_ptr<OptionalType>;
 //     - T <: Optional[R] if T <: R
 //     - None <: Optional[T] for all T
 //     - Optional[T] == Union[T, None] for all T
-struct TORCH_API OptionalType : public UnionType {
+struct OptionalType : public UnionType {
   static OptionalTypePtr create(const TypePtr& contained);
 
   static const TypeKind Kind = TypeKind::OptionalType;
@@ -272,7 +272,7 @@ inline c10::optional<T> merge_primitive(
 // `stride_indices` A contiguity marker on the smallest stride (c0) indicates
 // the stride is precisely 1, otherwise a contiguity marker means that $stride_n
 // = size_{n-1}*stride_{n-1}$
-struct TORCH_API Stride {
+struct Stride {
   Stride() = default;
   Stride(
       const c10::optional<size_t>& stride_index,
@@ -321,7 +321,7 @@ inline c10::optional<Stride> merge_primitive(
   return r;
 }
 
-struct TORCH_API ShapeSymbol {
+struct ShapeSymbol {
   // needed for use in `std::map`
   ShapeSymbol() : value_(-1) {}
   // is this symbol a fixed/static dimension
@@ -350,7 +350,7 @@ struct TORCH_API ShapeSymbol {
   static ShapeSymbol newSymbol() {
     return fromStaticSize(-static_cast<int64_t>(++num_symbols));
   };
-  friend TORCH_API std::ostream& operator<<(
+  friend std::ostream& operator<<(
       std::ostream& os,
       const ShapeSymbol& s);
 
@@ -371,7 +371,7 @@ inline ShapeSymbol merge_primitive(
 
 // Shape of a Tensor represented with ShapeSymbol's. Unranked, ranked unknown
 // dims, partially known and fully known shapes are all supported.
-struct TORCH_API SymbolicShape {
+struct SymbolicShape {
   // Unranked shape constructor.
   SymbolicShape() : dims_(c10::nullopt) {}
 
@@ -539,7 +539,7 @@ struct VaryingShape {
     return dims_;
   }
 
-  TORCH_API VaryingShape merge(const VaryingShape& other) const;
+  VaryingShape merge(const VaryingShape& other) const;
 
   c10::optional<std::vector<T>> concrete_sizes() const {
     if (!dims_) {
@@ -575,7 +575,7 @@ struct TensorType;
 // TODO: investigate making this SingletonOrSharedTypePtr<TensorType>
 using TensorTypePtr = std::shared_ptr<TensorType>;
 // This type represents a single Tensor with a specific size
-struct TORCH_API TensorType : public SharedType {
+struct TensorType : public SharedType {
   static TensorTypePtr create(const at::Tensor& t);
 
   // used by TensorType::create(size_t dim) which in turn used by
@@ -864,7 +864,7 @@ struct TORCH_API TensorType : public SharedType {
 
 struct ListType;
 using ListTypePtr = std::shared_ptr<ListType>;
-struct TORCH_API ListType
+struct ListType
     : public SingleElementType<TypeKind::ListType, ListType> {
   // It's not exactly a singleton, but there should be exactly one instance of
   // List[T] for every T
@@ -918,7 +918,7 @@ struct TORCH_API ListType
 
 struct DictType;
 using DictTypePtr = std::shared_ptr<DictType>;
-struct TORCH_API DictType : public SharedType {
+struct DictType : public SharedType {
   friend struct Type;
   static const TypeKind Kind = TypeKind::DictType;
 
@@ -1012,7 +1012,7 @@ struct TORCH_API DictType : public SharedType {
 struct FutureType;
 using FutureTypePtr = std::shared_ptr<FutureType>;
 
-struct TORCH_API FutureType
+struct FutureType
     : public SingleElementType<TypeKind::FutureType, FutureType> {
   friend struct Type;
   template <typename... T>
@@ -1054,7 +1054,7 @@ struct TORCH_API FutureType
 struct AwaitType;
 using AwaitTypePtr = std::shared_ptr<AwaitType>;
 
-struct TORCH_API AwaitType
+struct AwaitType
     : public SingleElementType<TypeKind::AwaitType, AwaitType> {
   friend struct Type;
   template <typename... T>
@@ -1096,7 +1096,7 @@ struct TORCH_API AwaitType
 struct RRefType;
 using RRefTypePtr = std::shared_ptr<RRefType>;
 
-struct TORCH_API RRefType
+struct RRefType
     : public SingleElementType<TypeKind::RRefType, RRefType> {
   friend struct Type;
   template <typename... T>
@@ -1132,7 +1132,7 @@ struct TORCH_API RRefType
 // static types in named types to reconstruct type tags of loaded
 // values. Lifting this restriction requires solving the serialization
 // problem first.
-TORCH_API void checkNoAny(
+void checkNoAny(
     const Type& base,
     const char* what,
     const std::string& attrname,
@@ -1142,7 +1142,7 @@ struct TupleType;
 using TupleTypePtr = std::shared_ptr<TupleType>;
 using NameList = std::vector<std::string>;
 // This type represents a Tuple
-struct TORCH_API TupleType : public NamedType {
+struct TupleType : public NamedType {
 
   static TupleTypePtr createNamed(const c10::optional<c10::QualifiedName>& name,
       const std::vector<std::string>& field_names,
@@ -1236,7 +1236,7 @@ struct TORCH_API TupleType : public NamedType {
 // EnumType <: AnyEnumType for all Enums
 struct AnyEnumType;
 using AnyEnumTypePtr = SingletonTypePtr<AnyEnumType>;
-struct TORCH_API AnyEnumType final : public Type {
+struct AnyEnumType final : public Type {
   bool equals(const Type& rhs) const override {
     return rhs.kind() == kind();
   }
@@ -1263,7 +1263,7 @@ using NumberTypePtr = SingletonTypePtr<NumberType>;
 // represented by a global singleton, you need to change NumberTypePtr
 // to a SingletonOrSharedTypePtr and deal with NumberType needing to
 // both inherit and not inherit from SharedType!
-struct TORCH_API NumberType : public Type {
+struct NumberType : public Type {
   bool equals(const Type& rhs) const override;
 
   bool isSubtypeOfExt(const Type& rhs, std::ostream* why_not) const override;
@@ -1288,7 +1288,7 @@ struct TORCH_API NumberType : public Type {
 struct FloatType;
 using FloatTypePtr = SingletonTypePtr<FloatType>;
 // This type represents a Python float number
-struct TORCH_API FloatType : public NumberType {
+struct FloatType : public NumberType {
   bool equals(const Type& rhs) const override {
     return rhs.kind() == kind();
   }
@@ -1313,7 +1313,7 @@ struct TORCH_API FloatType : public NumberType {
 struct ComplexType;
 using ComplexTypePtr = SingletonTypePtr<ComplexType>;
 // This type represents a Python float number
-struct TORCH_API ComplexType : public NumberType {
+struct ComplexType : public NumberType {
   bool equals(const Type& rhs) const override {
     return rhs.kind() == kind();
   }
@@ -1341,7 +1341,7 @@ struct TORCH_API ComplexType : public NumberType {
 // dimension values. Please see [SymInt.h] for more information
 struct SymIntType;
 using SymIntTypePtr = SingletonTypePtr<SymIntType>;
-struct TORCH_API SymIntType : public Type {
+struct SymIntType : public Type {
   bool equals(const Type& rhs) const override {
     return rhs.kind() == kind();
   }
@@ -1361,7 +1361,7 @@ struct TORCH_API SymIntType : public Type {
 
 struct SymFloatType;
 using SymFloatTypePtr = SingletonTypePtr<SymFloatType>;
-struct TORCH_API SymFloatType : public Type {
+struct SymFloatType : public Type {
   bool equals(const Type& rhs) const override {
     return rhs.kind() == kind();
   }
@@ -1381,7 +1381,7 @@ struct TORCH_API SymFloatType : public Type {
 
 struct SymBoolType;
 using SymBoolTypePtr = SingletonTypePtr<SymBoolType>;
-struct TORCH_API SymBoolType : public Type {
+struct SymBoolType : public Type {
   bool equals(const Type& rhs) const override {
     return rhs.kind() == kind();
   }
@@ -1402,7 +1402,7 @@ struct TORCH_API SymBoolType : public Type {
 struct IntType;
 using IntTypePtr = SingletonTypePtr<IntType>;
 // This type represents a Python int number
-struct TORCH_API IntType : public NumberType {
+struct IntType : public NumberType {
   bool equals(const Type& rhs) const override {
     return rhs.kind() == kind();
   }
@@ -1427,7 +1427,7 @@ struct TORCH_API IntType : public NumberType {
 struct BoolType;
 using BoolTypePtr = SingletonTypePtr<BoolType>;
 // This node represents a Python bool value
-struct TORCH_API BoolType : public Type {
+struct BoolType : public Type {
   bool equals(const Type& rhs) const override {
     return rhs.kind() == kind();
   }
@@ -1445,7 +1445,7 @@ struct TORCH_API BoolType : public Type {
 struct StringType;
 using StringTypePtr = SingletonTypePtr<StringType>;
 // This type represents a Python string
-struct TORCH_API StringType : public Type {
+struct StringType : public Type {
   bool equals(const Type& rhs) const override {
     return rhs.kind() == kind();
   }
@@ -1466,7 +1466,7 @@ struct TORCH_API StringType : public Type {
 
 struct StorageType;
 using StorageTypePtr = SingletonTypePtr<StorageType>;
-struct TORCH_API StorageType : public Type {
+struct StorageType : public Type {
   bool equals(const Type& rhs) const override {
     return rhs.kind() == kind();
   }
@@ -1486,7 +1486,7 @@ struct TORCH_API StorageType : public Type {
 
 struct FunctionType;
 using FunctionTypePtr = std::shared_ptr<FunctionType>;
-struct TORCH_API FunctionType : public NamedType {
+struct FunctionType : public NamedType {
   static FunctionTypePtr create(torch::jit::Function* function) {
     return FunctionTypePtr(
         new FunctionType(function)); // NOLINT(modernize-make-shared)
@@ -1518,7 +1518,7 @@ struct TORCH_API FunctionType : public NamedType {
 struct NoneType;
 using NoneTypePtr = SingletonTypePtr<NoneType>;
 // This type represents a Python None
-struct TORCH_API NoneType : public Type {
+struct NoneType : public Type {
   bool equals(const Type& rhs) const override {
     return rhs.kind() == kind();
   }
@@ -1538,7 +1538,7 @@ struct TORCH_API NoneType : public Type {
 struct GeneratorType;
 using GeneratorTypePtr = SingletonTypePtr<GeneratorType>;
 // This type represents a Generator
-struct TORCH_API GeneratorType : public Type {
+struct GeneratorType : public Type {
   bool equals(const Type& rhs) const override {
     return rhs.kind() == kind();
   }
@@ -1556,7 +1556,7 @@ struct TORCH_API GeneratorType : public Type {
 struct QuantizerType;
 using QuantizerTypePtr = SingletonTypePtr<QuantizerType>;
 // This type represents a Quantizer
-struct TORCH_API QuantizerType : public Type {
+struct QuantizerType : public Type {
   bool equals(const Type& rhs) const override {
     return rhs.kind() == kind();
   }
@@ -1574,7 +1574,7 @@ struct TORCH_API QuantizerType : public Type {
 struct QSchemeType;
 using QSchemeTypePtr = SingletonTypePtr<QSchemeType>;
 // This type represents a QScheme
-struct TORCH_API QSchemeType : public Type {
+struct QSchemeType : public Type {
   bool equals(const Type& rhs) const override {
     return rhs.kind() == kind();
   }
@@ -1592,7 +1592,7 @@ struct TORCH_API QSchemeType : public Type {
 struct DeviceObjType;
 using DeviceObjTypePtr = SingletonTypePtr<DeviceObjType>;
 // This type represents a Device
-struct TORCH_API DeviceObjType : public Type {
+struct DeviceObjType : public Type {
   bool equals(const Type& rhs) const override {
     return rhs.kind() == kind();
   }
@@ -1610,7 +1610,7 @@ struct TORCH_API DeviceObjType : public Type {
 struct StreamObjType;
 using StreamObjTypePtr = SingletonTypePtr<StreamObjType>;
 // This type represents a Generator
-struct TORCH_API StreamObjType : public Type {
+struct StreamObjType : public Type {
   bool equals(const Type& rhs) const override {
     return rhs.kind() == kind();
   }
@@ -1656,7 +1656,7 @@ struct CapsuleType;
 using CapsuleTypePtr = SingletonTypePtr<CapsuleType>;
 // This type represents a Python Capsule.
 // It does not appear in the IR and is only used during runtime
-struct TORCH_API CapsuleType : public Type {
+struct CapsuleType : public Type {
   bool equals(const Type& rhs) const override {
     return rhs.kind() == kind();
   }
@@ -1674,7 +1674,7 @@ private:
 struct PyObjectType;
 using PyObjectTypePtr = SingletonTypePtr<PyObjectType>;
 // This type represents a PyObject Type
-struct TORCH_API PyObjectType : public Type {
+struct PyObjectType : public Type {
   bool equals(const Type& rhs) const override {
     return rhs.kind() == kind();
   }
@@ -1698,16 +1698,16 @@ enum class TypeVerbosity {
   Default = Full,
 };
 
-TORCH_API TypeVerbosity type_verbosity();
+TypeVerbosity type_verbosity();
 
-TORCH_API std::ostream& operator<<(std::ostream& out, const Type& t);
+std::ostream& operator<<(std::ostream& out, const Type& t);
 template <typename T>
-TORCH_API std::ostream& operator<<(
+std::ostream& operator<<(
     std::ostream& out,
     const VaryingShape<T>& t);
-TORCH_API std::ostream& operator<<(std::ostream& os, const SymbolicShape& s);
-TORCH_API std::ostream& operator<<(std::ostream& os, const ShapeSymbol& s);
-TORCH_API std::ostream& operator<<(std::ostream& os, const Stride& s);
+std::ostream& operator<<(std::ostream& os, const SymbolicShape& s);
+std::ostream& operator<<(std::ostream& os, const ShapeSymbol& s);
+std::ostream& operator<<(std::ostream& os, const Stride& s);
 // what is the type, ignoring extra size/shape information?
 // e.g. Tensor(2x3) -> Dynamic, and Tuple(Tensor(2x3),...) -> Tuple(Dynamic,...)
 
@@ -1782,13 +1782,13 @@ inline at::ScalarType scalarTypeFromJitType(const Type& type) {
 // If `type_hint` is an `InterfaceType`, then we can use that as a
 // potential supertype for `ClassType`s in the list. Otherwise, we have
 // no way to find and use some common interface type
-TORCH_API c10::optional<TypePtr> unifyTypes(
+c10::optional<TypePtr> unifyTypes(
     const TypePtr& t1,
     const TypePtr& t2,
     bool default_to_union = false,
     const TypePtr& type_hint = nullptr);
 
-TORCH_API c10::optional<TypePtr> unifyTypeList(
+c10::optional<TypePtr> unifyTypeList(
     at::ArrayRef<TypePtr> elements,
     std::ostream& why_not,
     bool default_to_union = false,
@@ -2141,15 +2141,15 @@ struct MatchTypeReturn {
 // note: It is possible to successfully match a formal, but for type variables
 // in the formal to still not be defined. In particular, None matches Optional[T]
 // but does not define the value of T.
-TORCH_API MatchTypeReturn
+MatchTypeReturn
 matchTypeVariables(const TypePtr& formal, const TypePtr& actual, TypeEnv& type_env);
 
 // replace type variables appearing in `type` with the values in
 // `type_env`. Returns nullptr if a variable used in `type`
 // does not appear in `type_env`
-TORCH_API TypePtr tryEvalTypeVariables(const TypePtr& type, TypeEnv& type_env);
+TypePtr tryEvalTypeVariables(const TypePtr& type, TypeEnv& type_env);
 
-TORCH_API bool elementTypeCanBeInferredFromMembers(const TypePtr& elem_type);
+bool elementTypeCanBeInferredFromMembers(const TypePtr& elem_type);
 
 struct InterfaceType;
 using InterfaceTypePtr = std::shared_ptr<InterfaceType>;
@@ -2161,7 +2161,7 @@ using InterfaceTypePtr = std::shared_ptr<InterfaceType>;
 // lhs (ClassType or InterfaceType) is a subtype of rhs if:
 // 1. lhs methods are a superset of rhs methods
 // 2. if rhs is module interface, the lhs must be module interface or module itself
-struct TORCH_API InterfaceType : public NamedType {
+struct InterfaceType : public NamedType {
   static InterfaceTypePtr create(
       QualifiedName qualifiedName, bool is_module=false);
 
@@ -2228,7 +2228,7 @@ EnumerationType() : Type(Kind) {}
 
 struct ScalarTypeType;
 using ScalarTypeTypePtr = SingletonTypePtr<ScalarTypeType>;
-struct TORCH_API ScalarTypeType : public EnumerationType<TypeKind::ScalarTypeType> {
+struct ScalarTypeType : public EnumerationType<TypeKind::ScalarTypeType> {
 std::string str() const override {
 return "ScalarType";
 }
@@ -2242,7 +2242,7 @@ ScalarTypeType() : EnumerationType() {}
 
 struct MemoryFormatType;
 using MemoryFormatTypePtr = SingletonTypePtr<MemoryFormatType>;
-struct TORCH_API MemoryFormatType : public EnumerationType<TypeKind::MemoryFormatType> {
+struct MemoryFormatType : public EnumerationType<TypeKind::MemoryFormatType> {
 std::string str() const override {
 return "MemoryFormat";
 }
@@ -2256,7 +2256,7 @@ MemoryFormatType() : EnumerationType() {}
 
 struct LayoutType;
 using LayoutTypePtr = SingletonTypePtr<LayoutType>;
-struct TORCH_API LayoutType : public EnumerationType<TypeKind::LayoutType> {
+struct LayoutType : public EnumerationType<TypeKind::LayoutType> {
 std::string str() const override {
 return "Layout";
 }
@@ -2311,7 +2311,7 @@ struct getMaybeFakeTypePtr_<c10::MemoryFormat, true> final {
 // List[T] <: AnyList for all T
 struct AnyListType;
 using AnyListTypePtr = SingletonTypePtr<AnyListType>;
-struct TORCH_API AnyListType : public Type {
+struct AnyListType : public Type {
   bool equals(const Type& rhs) const override {
     return rhs.kind() == kind();
   }
@@ -2330,7 +2330,7 @@ private:
 // Tuple[T...] <: AnyTuple for all T
 struct AnyTupleType;
 using AnyTupleTypePtr = SingletonTypePtr<AnyTupleType>;
-struct TORCH_API AnyTupleType : public Type {
+struct AnyTupleType : public Type {
   bool equals(const Type& rhs) const override {
     return rhs.kind() == kind();
   }
@@ -2351,7 +2351,7 @@ private:
 // ClassType <: AnyClassType for all classes
 struct AnyClassType;
 using AnyClassTypePtr = SingletonTypePtr<AnyClassType>;
-struct TORCH_API AnyClassType : public Type {
+struct AnyClassType : public Type {
   bool equals(const Type& rhs) const override {
     return rhs.kind() == kind();
   }
@@ -2419,6 +2419,6 @@ private:
   std::string reason_;
 };
 
-TORCH_API bool containsAnyType(const TypePtr& type);
+bool containsAnyType(const TypePtr& type);
 
 } // namespace c10

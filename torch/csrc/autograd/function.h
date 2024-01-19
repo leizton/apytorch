@@ -40,7 +40,7 @@ using torch::dynamo::autograd::CompiledNodeArgs;
 using torch::dynamo::autograd::SwapSavedVariables;
 
 // Custom deleter to prevent stack overflows.
-TORCH_API void deleteNode(Node* function);
+void deleteNode(Node* function);
 
 // Guard that sets and restores the evaluating node
 class NodeGuard {
@@ -55,7 +55,7 @@ class NodeGuard {
 // Return the Node currently being evaluated (if any)
 // This is only set during the backward pass while a Node is being
 // executed.
-TORCH_API std::shared_ptr<Node> get_current_node();
+std::shared_ptr<Node> get_current_node();
 
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 //                               Node
@@ -107,7 +107,7 @@ TORCH_API std::shared_ptr<Node> get_current_node();
 // See NOTE [ Sequence Number] for more details on the usages of sequence
 // number.
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-struct TORCH_API Node : std::enable_shared_from_this<Node> {
+struct Node : std::enable_shared_from_this<Node> {
  public:
   /// Construct a new `Node` with the given `next_edges`
   explicit Node(uint64_t sequence_nr, edge_list&& next_edges = edge_list())
@@ -153,33 +153,8 @@ struct TORCH_API Node : std::enable_shared_from_this<Node> {
     // operates on unnamed tensors. In the long term, autograd should
     // probably operate with names.
     at::NoNamesGuard no_names_guard;
-
-#ifdef USE_ROCM
-    // Keep track of backward pass for rocblas.
-    at::ROCmBackwardPassGuard in_backward;
-#endif
-
-    auto step_callbacks =
-        at::getStepCallbacksUnlessEmpty(at::RecordScope::BACKWARD_FUNCTION);
-    if (C10_UNLIKELY(step_callbacks.has_value())) {
-      at::RecordFunction guard(std::move(*step_callbacks));
-      // Using sequence number and thread id to correlate with
-      // the forward pass function
-      guard.setForwardThreadId(thread_id_);
-      if (guard.needsInputs()) {
-        std::vector<c10::IValue> inputs_vec(inputs.begin(), inputs.end());
-        guard.before(
-            name(),
-            c10::ArrayRef<const c10::IValue>(
-                inputs_vec.data(), inputs_vec.size()),
-            static_cast<int64_t>(sequence_nr()));
-      } else {
-        guard.before(name(), static_cast<int64_t>(sequence_nr()));
-      }
-      return apply(std::move(inputs));
-    } else {
-      return apply(std::move(inputs));
-    }
+    
+    return apply(std::move(inputs));
   }
 
   // Graph Connectivity API

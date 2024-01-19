@@ -343,12 +343,12 @@ C10_NODISCARD c10::string_view TypeParser::cur() const {
   return next_token_;
 }
 
-TORCH_API at::TypePtr parseType(const std::string& pythonStr) {
+at::TypePtr parseType(const std::string& pythonStr) {
   at::TypeParser parser(pythonStr);
   return parser.parse();
 }
 
-TORCH_API std::vector<at::TypePtr> parseType(
+std::vector<at::TypePtr> parseType(
     std::vector<std::string>& pythonStrs) {
   at::TypeParser parser(pythonStrs);
   return parser.parseList();

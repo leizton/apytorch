@@ -12,7 +12,7 @@ namespace at {
 
 namespace impl {
 
-struct TORCH_API SavedTensorDefaultHooksTLS {
+struct SavedTensorDefaultHooksTLS {
   // PyObject is defined in c10/util/python_stub.h
   std::stack<std::pair<PyObject*, PyObject*>> stack;
 
@@ -26,7 +26,7 @@ struct TORCH_API SavedTensorDefaultHooksTLS {
 
 } // namespace impl
 
-struct TORCH_API SavedTensorDefaultHooks {
+struct SavedTensorDefaultHooks {
   static void push_hooks(PyObject* pack_hook, PyObject* unpack_hook);
   static void pop_hooks();
   static std::pair<PyObject*, PyObject*> get_hooks();

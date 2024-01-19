@@ -19,7 +19,7 @@ namespace data {
 namespace samplers {
 
 /// A `Sampler` that returns random indices.
-class TORCH_API RandomSampler : public Sampler<> {
+class RandomSampler : public Sampler<> {
  public:
   /// Constructs a `RandomSampler` with a size and dtype for the stored indices.
   ///

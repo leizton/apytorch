@@ -13,7 +13,7 @@
 namespace torch {
 namespace optim {
 
-struct TORCH_API LBFGSOptions : public OptimizerCloneableOptions<LBFGSOptions> {
+struct LBFGSOptions : public OptimizerCloneableOptions<LBFGSOptions> {
   LBFGSOptions(double lr = 1);
   TORCH_ARG(double, lr) = 1;
   TORCH_ARG(int64_t, max_iter) = 20;
@@ -26,14 +26,14 @@ struct TORCH_API LBFGSOptions : public OptimizerCloneableOptions<LBFGSOptions> {
  public:
   void serialize(torch::serialize::InputArchive& archive) override;
   void serialize(torch::serialize::OutputArchive& archive) const override;
-  TORCH_API friend bool operator==(
+  friend bool operator==(
       const LBFGSOptions& lhs,
       const LBFGSOptions& rhs);
   double get_lr() const override;
   void set_lr(const double lr) override;
 };
 
-struct TORCH_API LBFGSParamState
+struct LBFGSParamState
     : public OptimizerCloneableParamState<LBFGSParamState> {
   TORCH_ARG(int64_t, func_evals) = 0;
   TORCH_ARG(int64_t, n_iter) = 0;
@@ -50,12 +50,12 @@ struct TORCH_API LBFGSParamState
  public:
   void serialize(torch::serialize::InputArchive& archive) override;
   void serialize(torch::serialize::OutputArchive& archive) const override;
-  TORCH_API friend bool operator==(
+  friend bool operator==(
       const LBFGSParamState& lhs,
       const LBFGSParamState& rhs);
 };
 
-class TORCH_API LBFGS : public Optimizer {
+class LBFGS : public Optimizer {
  public:
   explicit LBFGS(
       std::vector<OptimizerParamGroup> param_groups,

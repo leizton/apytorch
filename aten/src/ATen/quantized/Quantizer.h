@@ -25,7 +25,7 @@ namespace at {
  * unknown quantizer, and then the quantization kernel decides what the final
  * quantizer will be.
  */
-struct TORCH_API UnknownQuantizer : public Quantizer {
+struct UnknownQuantizer : public Quantizer {
   explicit UnknownQuantizer(ScalarType scalar_type)
     : Quantizer(scalar_type) {}
 
@@ -42,7 +42,7 @@ struct TORCH_API UnknownQuantizer : public Quantizer {
  * the quantized value. For example, affine quantizer is
  * the most commonly used scheme in this category.
  */
-struct TORCH_API UniformQuantizer : public Quantizer {
+struct UniformQuantizer : public Quantizer {
   explicit UniformQuantizer(ScalarType scalar_type) : Quantizer(scalar_type) {}
 };
 
@@ -51,7 +51,7 @@ struct TORCH_API UniformQuantizer : public Quantizer {
  * These quantization scheme may map float value non-uniformly to the quantized
  * value. K-means quantization is a representative example in this category.
  */
-struct TORCH_API NonUniformQuantizer : public Quantizer {
+struct NonUniformQuantizer : public Quantizer {
   explicit NonUniformQuantizer(ScalarType scalar_type) : Quantizer(scalar_type) {}
 };
 
@@ -65,7 +65,7 @@ struct TORCH_API NonUniformQuantizer : public Quantizer {
  * For dequantize:
  * X = (Y - zero_point) * scale
  */
-struct TORCH_API AffineQuantizer : public UniformQuantizer {
+struct AffineQuantizer : public UniformQuantizer {
   explicit AffineQuantizer(ScalarType scalar_type) : UniformQuantizer(scalar_type) {}
 };
 
@@ -76,7 +76,7 @@ struct TORCH_API AffineQuantizer : public UniformQuantizer {
  * PerTensorAffineQuantizer stores a scale and a zero_point, which is used for
  * all the values in the Tensor.
  */
-struct TORCH_API PerTensorAffineQuantizer : public AffineQuantizer {
+struct PerTensorAffineQuantizer : public AffineQuantizer {
   explicit PerTensorAffineQuantizer(ScalarType scalar_type, double scale, int64_t zero_point)
     : AffineQuantizer(scalar_type),
         scale_(scale),
@@ -126,7 +126,7 @@ struct TORCH_API PerTensorAffineQuantizer : public AffineQuantizer {
  * processors since it requires each multiplication result within a single
  * dot-product to have a different scale.
  */
-struct TORCH_API PerChannelAffineQuantizer : public AffineQuantizer {
+struct PerChannelAffineQuantizer : public AffineQuantizer {
   explicit PerChannelAffineQuantizer(
       ScalarType scalar_type,
       Tensor scales,
@@ -189,7 +189,7 @@ struct TORCH_API PerChannelAffineQuantizer : public AffineQuantizer {
  * be exactly represented in the quantized space. We can get additional precision by
  * using floating point values for zero point.
  */
-struct TORCH_API PerChannelAffineFloatQParamsQuantizer : public PerChannelAffineQuantizer {
+struct PerChannelAffineFloatQParamsQuantizer : public PerChannelAffineQuantizer {
   explicit PerChannelAffineFloatQParamsQuantizer(
       ScalarType scalar_type,
       Tensor scales,
@@ -226,31 +226,31 @@ struct TORCH_API PerChannelAffineFloatQParamsQuantizer : public PerChannelAffine
 // setters/getters for QTensorImpl fields; otherwise, you should use
 // the low level setters/getters that were implemented using this.
 // This may be called repeatedly, so make sure it's pretty cheap.
-TORCH_API QTensorImpl* get_qtensorimpl(const TensorBase& self);
+QTensorImpl* get_qtensorimpl(const TensorBase& self);
 
 // double and int64_t are because of the native function API, we only have these
 // argument types right now in native functions
-TORCH_API QuantizerPtr
+QuantizerPtr
 make_per_tensor_affine_quantizer(
     double scale, int64_t zero_point, ScalarType scalar_type);
 
-TORCH_API QuantizerPtr make_per_channel_affine_quantizer(
+QuantizerPtr make_per_channel_affine_quantizer(
     const Tensor& scales,
     const Tensor& zero_points,
     int64_t axis,
     ScalarType scalar_type);
 
-TORCH_API QuantizerPtr make_unknown_quantizer(ScalarType scalar_type);
+QuantizerPtr make_unknown_quantizer(ScalarType scalar_type);
 
 // Create a Quantized Tensor given arguments for normal Tensor and a quantizer
-TORCH_API Tensor new_qtensor(
+Tensor new_qtensor(
     IntArrayRef sizes,
     const TensorOptions& options,
     QuantizerPtr quantizer);
 
-TORCH_API void set_quantizer_(const Tensor& self, ConstQuantizerPtr quantizer);
+void set_quantizer_(const Tensor& self, ConstQuantizerPtr quantizer);
 
-TORCH_API Tensor from_blob_quantized_per_tensor_affine(
+Tensor from_blob_quantized_per_tensor_affine(
     void* data,
     IntArrayRef sizes,
     IntArrayRef strides,
@@ -259,7 +259,7 @@ TORCH_API Tensor from_blob_quantized_per_tensor_affine(
     const int64_t zeroPoint,
     const TensorOptions& options);
 
-TORCH_API Tensor from_blob_quantized_per_tensor_affine(
+Tensor from_blob_quantized_per_tensor_affine(
     void* data,
     IntArrayRef sizes,
     std::function<void(void*)> deleter,
@@ -267,7 +267,7 @@ TORCH_API Tensor from_blob_quantized_per_tensor_affine(
     const int64_t zeroPoint,
     const TensorOptions& options);
 
-TORCH_API Tensor from_blob_quantized_per_channel_affine(
+Tensor from_blob_quantized_per_channel_affine(
     void* data,
     IntArrayRef sizes,
     std::function<void(void*)> deleter,

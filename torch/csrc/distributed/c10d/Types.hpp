@@ -14,7 +14,7 @@
 namespace c10d {
 
 // Base class for supplementary data potentially needed by ReduceOps
-struct TORCH_API _SupplementBase : torch::CustomClassHolder {
+struct _SupplementBase : torch::CustomClassHolder {
   ~_SupplementBase() override = default;
 };
 
@@ -31,7 +31,7 @@ struct NCCLPreMulSumSupplement : _SupplementBase {
 
 // Other ReduceOps that need different supplementary data can also
 // derive from _SupplementBase.
-struct TORCH_API ReduceOp : torch::CustomClassHolder {
+struct ReduceOp : torch::CustomClassHolder {
   // note(crcrpar): RedOpType could be defined outside of `ReduceOp`
   enum RedOpType : uint8_t {
     SUM = 0,

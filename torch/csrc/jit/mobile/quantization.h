@@ -25,7 +25,7 @@ namespace quantization {
  * mutated `m` whose size should be smaller due to weight quantization and whose
  * <method_name> method should use quantized ops
  */
-class TORCH_API PTQQuanizationHelper {
+class PTQQuanizationHelper {
  public:
   PTQQuanizationHelper() = default;
   void quantize_dynamic(

@@ -18,7 +18,7 @@ class CppVarNameRewriter;
 // C[0] = A[0] + B[0];
 // C[1] = A[2] + B[3];
 // C[2] = A[4] + B[6];
-class TORCH_API CppPrinter : public IRPrinter {
+class CppPrinter : public IRPrinter {
  public:
   explicit CppPrinter(std::ostream* os);
   ~CppPrinter() override;
@@ -63,7 +63,7 @@ class TORCH_API CppPrinter : public IRPrinter {
   std::unordered_map<VarPtr, ExprPtr> vector_vars_;
 };
 
-class TORCH_API CppCodeGen : public CodeGen {
+class CppCodeGen : public CodeGen {
  public:
   CppCodeGen(
       StmtPtr stmt,

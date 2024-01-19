@@ -11,9 +11,9 @@ namespace jit {
  * The weight and bias of the Conv2d are correspondingly updated. Should only be
  * used on modules in eval mode.
  */
-TORCH_API Module FoldConvBatchNorm(const Module& module);
+Module FoldConvBatchNorm(const Module& module);
 
-struct TORCH_API ConvBNParameters {
+struct ConvBNParameters {
   at::Tensor conv_w;
   at::Tensor conv_b;
   at::Tensor bn_rm;
@@ -30,7 +30,7 @@ struct TORCH_API ConvBNParameters {
  *
  * The function is basically copied from torch/nn/utils/fusion.py
  */
-TORCH_API std::tuple<at::Tensor, at::Tensor> computeUpdatedConvWeightAndBias(
+std::tuple<at::Tensor, at::Tensor> computeUpdatedConvWeightAndBias(
     const ConvBNParameters& p);
 
 } // namespace jit

@@ -11,14 +11,14 @@ namespace torch::jit::logging {
 
 class LoggerBase {
  public:
-  TORCH_API virtual void addStatValue(
+  virtual void addStatValue(
       const std::string& stat_name,
       int64_t val) = 0;
   virtual ~LoggerBase() = default;
 };
 
-TORCH_API LoggerBase* getLogger();
-TORCH_API LoggerBase* setLogger(LoggerBase* logger);
+LoggerBase* getLogger();
+LoggerBase* setLogger(LoggerBase* logger);
 
 // No-op logger. This is the default and is meant to incur almost no runtime
 // overhead.
@@ -34,7 +34,7 @@ class NoopLogger : public LoggerBase {
 //
 // NOTE: this is not written in a scalable way and should probably only be used
 // in the single-threaded case or for testing.
-class TORCH_API LockingLogger : public LoggerBase {
+class LockingLogger : public LoggerBase {
  public:
   void addStatValue(const std::string& stat_name, int64_t val) override;
   virtual int64_t getCounterValue(const std::string& name) const;
@@ -58,8 +58,8 @@ struct JITTimePoint {
   std::chrono::time_point<std::chrono::high_resolution_clock> point;
 };
 
-TORCH_API JITTimePoint timePoint();
-TORCH_API void recordDurationSince(
+JITTimePoint timePoint();
+void recordDurationSince(
     const std::string& name,
     const JITTimePoint& tp);
 

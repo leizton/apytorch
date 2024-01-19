@@ -19,8 +19,8 @@ inline bool has_names(const ITensorListRef& tensors) {
 
 // Converts dim to an positional index. Errors if `dim` cannot be used to
 // refer to any dimension of tensor.
-TORCH_API int64_t dimname_to_position(const Tensor& tensor, Dimname dim);
-TORCH_API std::vector<int64_t> dimnames_to_positions(
+int64_t dimname_to_position(const Tensor& tensor, Dimname dim);
+std::vector<int64_t> dimnames_to_positions(
     const Tensor& tensor,
     DimnameList dims);
 
@@ -33,7 +33,7 @@ TORCH_API std::vector<int64_t> dimnames_to_positions(
 //    the same index from the right in other.
 // 3) The output names are obtained by unifying the names individually from the
 // right.
-TORCH_API std::vector<Dimname> unify_from_right(
+std::vector<Dimname> unify_from_right(
     DimnameList names,
     DimnameList other,
     const char* action = "broadcast");
@@ -87,65 +87,65 @@ const Tensor& propagate_names_if_present_and_nonempty(
 // `names` can be empty; see [NOTE] Writing name inference rules
 // If `names` is not empty, `names.size()` should equal `result.dim()`.
 // When in doubt, use this overload instead of the others.
-TORCH_API const Tensor& propagate_names_if_nonempty(
+const Tensor& propagate_names_if_nonempty(
     const Tensor& result,
     DimnameList maybe_names,
     bool validate_names = false);
 
 // Propagates `names` to `result`. Only use this if we are certain that there
 // are names to propagate (that names is not empty).
-TORCH_API const Tensor& propagate_names(
+const Tensor& propagate_names(
     const Tensor& result,
     DimnameList names,
     bool validate_names = false);
 
 // Propagates all names from src to result.
-TORCH_API void propagate_names(const Tensor& result, const Tensor& src);
+void propagate_names(const Tensor& result, const Tensor& src);
 
 // Propagates all names except for those at the excluded_idxs.
-TORCH_API void propagate_names_except(
+void propagate_names_except(
     const Tensor& result,
     const Tensor& src,
     IntArrayRef excluded_idxs);
 
 // Used for reduction ops that have a `keepdim` arg.
-TORCH_API void propagate_names_for_reduction(
+void propagate_names_for_reduction(
     const Tensor& result,
     const Tensor& src,
     IntArrayRef excluded_idxs,
     bool keepdim);
 
-TORCH_API void propagate_names_for_expand(
+void propagate_names_for_expand(
     const Tensor& result,
     const Tensor& self);
 
-TORCH_API std::vector<Dimname> compute_cat_outnames(
+std::vector<Dimname> compute_cat_outnames(
     const MaterializedITensorListRef& tensors);
 
-TORCH_API std::vector<Dimname> compute_broadcast_outnames(
+std::vector<Dimname> compute_broadcast_outnames(
     const Tensor& self,
     const Tensor& other);
 
-TORCH_API std::vector<Dimname> broadcast_to_outnames(
+std::vector<Dimname> broadcast_to_outnames(
     const Tensor& tensor,
     const Tensor& reference_tensor,
     const char* op_name);
 
-TORCH_API std::vector<Dimname> compute_matmul_outnames(
+std::vector<Dimname> compute_matmul_outnames(
     const Tensor& self,
     const Tensor& other);
 
-TORCH_API std::vector<Dimname> compute_cdist_outnames(
+std::vector<Dimname> compute_cdist_outnames(
     const Tensor& self,
     const Tensor& other);
 
-TORCH_API std::vector<Dimname> compute_bmm_outnames(
+std::vector<Dimname> compute_bmm_outnames(
     const Tensor& result,
     const Tensor& self,
     const Tensor& other);
 
-TORCH_API std::vector<Dimname> compute_squeeze_outnames(const Tensor& tensor);
-TORCH_API std::vector<Dimname> compute_squeeze_outnames(
+std::vector<Dimname> compute_squeeze_outnames(const Tensor& tensor);
+std::vector<Dimname> compute_squeeze_outnames(
     const Tensor& tensor,
     std::bitset<dim_bitset_size> dims);
 
@@ -156,26 +156,26 @@ std::vector<Dimname> compute_diagonal_outnames(
 
 // TensorImpl* overloads for Legacy TH/THC code. Use these sparingly.
 
-TORCH_API TensorImpl* propagate_names_if_nonempty(
+TensorImpl* propagate_names_if_nonempty(
     TensorImpl* result,
     DimnameList maybe_names,
     bool validate_names = false);
 
-TORCH_API TensorImpl* propagate_names(
+TensorImpl* propagate_names(
     TensorImpl* result,
     DimnameList names,
     bool validate_names = false);
 
-TORCH_API void propagate_names(TensorImpl* result, /*const */ TensorImpl* src);
+void propagate_names(TensorImpl* result, /*const */ TensorImpl* src);
 
-TORCH_API inline void propagate_names(
+inline void propagate_names(
     const TensorBase& result,
     DimnameList names,
     bool validate_names = false) {
   propagate_names(result.unsafeGetTensorImpl(), names, validate_names);
 }
 
-TORCH_API inline void propagate_names_if_nonempty(
+inline void propagate_names_if_nonempty(
     const TensorBase& result,
     DimnameList names,
     bool validate_names = false) {
@@ -183,32 +183,32 @@ TORCH_API inline void propagate_names_if_nonempty(
       result.unsafeGetTensorImpl(), names, validate_names);
 }
 
-TORCH_API inline void propagate_names(
+inline void propagate_names(
     const TensorBase& result,
     const TensorBase& src) {
   propagate_names(result.unsafeGetTensorImpl(), src.unsafeGetTensorImpl());
 }
 
 // result = m1 @ m2 + bias
-TORCH_API std::vector<Dimname> propagate_names_for_addmm(
+std::vector<Dimname> propagate_names_for_addmm(
     const Tensor& m1,
     const Tensor& m2,
     const Tensor& bias);
 
-TORCH_API std::vector<Dimname> propagate_names_for_addmv(
+std::vector<Dimname> propagate_names_for_addmv(
     const Tensor& mat,
     const Tensor& vec,
     const Tensor& bias);
 
-TORCH_API void check_names_for_dot(TensorImpl* vec1, TensorImpl* vec2);
+void check_names_for_dot(TensorImpl* vec1, TensorImpl* vec2);
 
-TORCH_API std::vector<Dimname> compute_baddbmm_outnames(
+std::vector<Dimname> compute_baddbmm_outnames(
     const Tensor& result,
     const Tensor& self,
     const Tensor& other,
     const Tensor& bias);
 
-TORCH_API bool are_names_equal(TensorImpl* self, TensorImpl* other);
+bool are_names_equal(TensorImpl* self, TensorImpl* other);
 
 } // namespace namedinference
 

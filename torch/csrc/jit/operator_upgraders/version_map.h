@@ -15,19 +15,19 @@ struct UpgraderEntry {
 // Toggle the behaviour of calculating version for the module.
 // If this is true, we calculate solely based on upgraders
 // If this is false, we calculate it based on historic per op version map
-TORCH_API void calculate_package_version_based_on_upgraders(bool val);
+void calculate_package_version_based_on_upgraders(bool val);
 
-TORCH_API bool get_version_calculator_flag();
+bool get_version_calculator_flag();
 
-TORCH_API const std::unordered_map<std::string, std::vector<UpgraderEntry>>&
+const std::unordered_map<std::string, std::vector<UpgraderEntry>>&
 get_operator_version_map();
 
-TORCH_API void test_only_add_entry(
+void test_only_add_entry(
     const std::string& op_name,
     UpgraderEntry entry);
 
-TORCH_API void test_only_remove_entry(const std::string& op_name);
+void test_only_remove_entry(const std::string& op_name);
 
-TORCH_API void test_only_reset_flag();
+void test_only_reset_flag();
 
 } // namespace torch::jit

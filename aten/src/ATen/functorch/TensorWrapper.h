@@ -32,7 +32,7 @@ namespace at::functorch {
 // the VariableType kernel can pull out the AutogradMeta struct from where it
 // expects and extend the autograd graph
 
-struct TORCH_API TensorWrapper : public c10::TensorImpl {
+struct TensorWrapper : public c10::TensorImpl {
   explicit TensorWrapper(
       c10::DispatchKeySet key_set,
       Tensor value,
@@ -94,10 +94,10 @@ struct TORCH_API TensorWrapper : public c10::TensorImpl {
 //
 // In practice this isn't a problem: when we're constructing TensorWrapper in
 // Python, the corresponding interpreter is on the stack.
-TORCH_API Tensor makeTensorWrapper(const Tensor& tensor, int64_t level, bool is_immutable=false);
-TORCH_API Tensor makeTensorWrapper(const Tensor& tensor, const Interpreter& interpreter, bool is_immutable=false);
-TORCH_API TensorWrapper* maybeGetTensorWrapper(const Tensor& tensor);
-TORCH_API void dumpTensor(std::ostream & ss, const Tensor& tensor);
-TORCH_API void dumpTensorCout(const Tensor& tensor);
+Tensor makeTensorWrapper(const Tensor& tensor, int64_t level, bool is_immutable=false);
+Tensor makeTensorWrapper(const Tensor& tensor, const Interpreter& interpreter, bool is_immutable=false);
+TensorWrapper* maybeGetTensorWrapper(const Tensor& tensor);
+void dumpTensor(std::ostream & ss, const Tensor& tensor);
+void dumpTensorCout(const Tensor& tensor);
 
 } // namespace at::functorch

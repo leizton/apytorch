@@ -7,7 +7,7 @@
 namespace torch {
 namespace lazy {
 
-class TORCH_API DeviceData : public TsNode {
+class DeviceData : public TsNode {
  public:
   static OpKind ClassOpKind() {
     return ltc_device_data;

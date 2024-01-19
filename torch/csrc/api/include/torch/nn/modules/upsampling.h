@@ -29,7 +29,7 @@ namespace nn {
 /// Upsample
 /// model(UpsampleOptions().scale_factor({3}).mode(torch::kLinear).align_corners(false));
 /// ```
-class TORCH_API UpsampleImpl : public Cloneable<UpsampleImpl> {
+class UpsampleImpl : public Cloneable<UpsampleImpl> {
  public:
   explicit UpsampleImpl(const UpsampleOptions& options_ = {});
 

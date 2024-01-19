@@ -32,7 +32,7 @@ namespace jit {
 struct Function;
 struct CompilationUnit;
 } // namespace jit
-TORCH_API bool isCustomClass(const c10::IValue& v);
+bool isCustomClass(const c10::IValue& v);
 } // namespace torch
 namespace c10 {
 struct IValue;
@@ -292,7 +292,7 @@ template <typename T>
 using Shared = c10::intrusive_ptr<T>;
 
 // string
-struct TORCH_API ConstantString final : c10::intrusive_ptr_target {
+struct ConstantString final : c10::intrusive_ptr_target {
  private:
    // NOLINTNEXTLINE(cppcoreguidelines-avoid-const-or-ref-data-members)
   const std::string str_;
@@ -314,14 +314,14 @@ struct TORCH_API ConstantString final : c10::intrusive_ptr_target {
   operator const std::string&() const {
     return string();
   }
-  TORCH_API friend std::ostream& operator<<(
+  friend std::ostream& operator<<(
       std::ostream& out,
       const ConstantString& v);
 };
 
 struct Future;
 
-struct TORCH_API TupleElements {
+struct TupleElements {
  private:
   size_t inlineSize_;
   // We represent TupleElements this way to save doing a heap
@@ -648,7 +648,7 @@ template <typename T>
 struct TupleTypeFactory {};
 
 template <>
-struct TORCH_API TupleTypeFactory<TupleType> {
+struct TupleTypeFactory<TupleType> {
   static TupleTypePtr create(std::vector<TypePtr> types) {
     return TupleType::create(std::move(types));
   }
@@ -656,12 +656,12 @@ struct TORCH_API TupleTypeFactory<TupleType> {
 };
 
 template <>
-struct TORCH_API TupleTypeFactory<c10::DynamicType> {
+struct TupleTypeFactory<c10::DynamicType> {
   static DynamicTypePtr create(const std::vector<TypePtr>& elemTypes);
   static DynamicTypePtr fallback(const Type&);
 };
 
-struct TORCH_API Tuple : c10::intrusive_ptr_target {
+struct Tuple : c10::intrusive_ptr_target {
  private:
   TupleElements elements_;
   mutable c10::TypePtr type_; // lazily computed for unnamed tuples
@@ -787,7 +787,7 @@ struct TORCH_API Tuple : c10::intrusive_ptr_target {
     return c10::get_hash(t.elements());
   }
 
-  TORCH_API friend bool operator==(
+  friend bool operator==(
       const ivalue::Tuple& lhs,
       const ivalue::Tuple& rhs);
 
@@ -862,7 +862,7 @@ struct C10_EXPORT ivalue::Future final : c10::intrusive_ptr_target {
   Future& operator=(const Future&) = delete;
   Future& operator=(Future&&) = delete;
 
-  struct TORCH_API FutureError final : public std::exception {
+  struct FutureError final : public std::exception {
     explicit FutureError(std::string&& error_msg_)
         : error_msg(std::move(error_msg_)) {}
 
@@ -1139,7 +1139,7 @@ struct C10_EXPORT ivalue::Future final : c10::intrusive_ptr_target {
     return eptr_;
   }
 
-  TORCH_API friend std::ostream& operator<<(
+  friend std::ostream& operator<<(
       std::ostream& out,
       const Future& v);
 
@@ -1445,7 +1445,7 @@ struct C10_EXPORT ivalue::Await final : c10::intrusive_ptr_target {
     completed_ = true;
   }
 
-  TORCH_API friend std::ostream& operator<<(
+  friend std::ostream& operator<<(
       std::ostream& out,
       const Await& v);
 
@@ -1476,11 +1476,11 @@ struct C10_EXPORT ivalue::Await final : c10::intrusive_ptr_target {
 
 // Input is a list of Futures with the same target type.
 // Output is a Future to the List of completed Futures.
-TORCH_API intrusive_ptr<ivalue::Future> collectAll(
+intrusive_ptr<ivalue::Future> collectAll(
     const c10::List<c10::intrusive_ptr<ivalue::Future>>& srcs);
 // Input is a List of Futures with the same target type.
 // Output is a Future that will be updated with a seen value.
-TORCH_API intrusive_ptr<ivalue::Future> collectAny(
+intrusive_ptr<ivalue::Future> collectAny(
     const c10::List<c10::intrusive_ptr<ivalue::Future>>& srcs);
 
 // User-defined object.
@@ -1641,11 +1641,11 @@ struct ivalue::EnumHolder : c10::intrusive_ptr_target {
       const ivalue::EnumHolder& lhs,
       const ivalue::EnumHolder& rhs);
 
-  TORCH_API friend std::ostream& operator<<(
+  friend std::ostream& operator<<(
       std::ostream& out,
       const ivalue::EnumHolder& v);
 
-  TORCH_API const std::string& qualifiedClassName() const;
+  const std::string& qualifiedClassName() const;
 
   const std::string& unqualifiedClassName() const;
 
@@ -2496,12 +2496,12 @@ struct MaybeOwnedTraits<IValue> {
 
 template <>
 struct IValue::TagType<c10::Type> {
-  static TORCH_API c10::TypePtr get(const IValue&);
+  static c10::TypePtr get(const IValue&);
 };
 
 template <>
 struct IValue::TagType<c10::DynamicType> {
-  static TORCH_API c10::TypePtr get(const IValue&);
+  static c10::TypePtr get(const IValue&);
 };
 
 template <typename T>

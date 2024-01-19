@@ -21,7 +21,7 @@ enum Mode { READ, WRITE, NEW };
 /**
  * An abstract class for the cursor of the database while reading.
  */
-class TORCH_API Cursor {
+class Cursor {
  public:
   Cursor() {}
   virtual ~Cursor() {}
@@ -62,7 +62,7 @@ class TORCH_API Cursor {
 /**
  * An abstract class for the current database transaction while writing.
  */
-class TORCH_API Transaction {
+class Transaction {
  public:
   Transaction() {}
   virtual ~Transaction() {}
@@ -81,7 +81,7 @@ class TORCH_API Transaction {
 /**
  * An abstract class for accessing a database of key-value pairs.
  */
-class TORCH_API DB {
+class DB {
  public:
   DB(const string& /*source*/, Mode mode) : mode_(mode) {}
   virtual ~DB() {}
@@ -158,7 +158,7 @@ inline bool DBExists(const string& db_type, const string& full_db_name) {
 /**
  * A reader wrapper for DB that also allows us to serialize it.
  */
-class TORCH_API DBReader {
+class DBReader {
  public:
   friend class DBReaderSerializer;
   DBReader() {}
@@ -313,7 +313,7 @@ class TORCH_API DBReader {
   C10_DISABLE_COPY_AND_ASSIGN(DBReader);
 };
 
-class TORCH_API DBReaderSerializer : public BlobSerializerBase {
+class DBReaderSerializer : public BlobSerializerBase {
  public:
   /**
    * Serializes a DBReader. Note that this blob has to contain DBReader,
@@ -326,7 +326,7 @@ class TORCH_API DBReaderSerializer : public BlobSerializerBase {
       BlobSerializerBase::SerializationAcceptor acceptor) override;
 };
 
-class TORCH_API DBReaderDeserializer : public BlobDeserializerBase {
+class DBReaderDeserializer : public BlobDeserializerBase {
  public:
   void Deserialize(const BlobProto& proto, Blob* blob) override;
 };

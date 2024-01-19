@@ -1128,7 +1128,7 @@ PropagateShapesAndBuildLargeShapeComputeGraph(
   return SymbolicShapeGraphAnalyzer(graph, beg, end).run();
 }
 
-TORCH_API c10::optional<std::vector<c10::SymbolicShape>>
+c10::optional<std::vector<c10::SymbolicShape>>
 calculateSymbolicShapesOnOp(
     const FunctionSchema* schema,
     const std::vector<SSAInput>& inputs) {

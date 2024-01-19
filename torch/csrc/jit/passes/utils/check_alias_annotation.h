@@ -14,7 +14,7 @@ namespace jit {
 //
 // This function expects a graph with a single op with `unqualifiedOpName`, plus
 // the inputs that you would otherwise have passed to the graph executor.
-TORCH_API void checkAliasAnnotation(
+void checkAliasAnnotation(
     const std::shared_ptr<Graph>& graph,
     std::vector<IValue> pythonInputs,
     const std::string& unqualifiedOpName);

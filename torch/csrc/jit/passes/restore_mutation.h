@@ -56,7 +56,7 @@ class FunctionalToInplaceRewriter {
 // so that we won't lose the performance benefit coming from memory reduction.
 
 // Replaces functional aten activation ops with their in-place equivalents
-TORCH_API bool FunctionalToInplaceActivation(
+bool FunctionalToInplaceActivation(
     const std::shared_ptr<Graph>& graph);
 
 } // namespace jit

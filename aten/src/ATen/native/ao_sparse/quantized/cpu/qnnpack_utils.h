@@ -14,7 +14,7 @@
 namespace ao {
 namespace sparse {
 
-struct TORCH_API PackedLinearWeightQnnp
+struct PackedLinearWeightQnnp
     : public LinearPackedParamsBase {
   PackedLinearWeightQnnp(const at::Tensor& weight, const c10::optional<at::Tensor>& bias, const int64_t out_features_block_size /* block sparsity size across output_features */, const int64_t in_features_block_size /* block sparsity size across input_features */);
   explicit PackedLinearWeightQnnp(const BCSRSerializationType& serialized);

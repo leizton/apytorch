@@ -5,13 +5,13 @@
 namespace torch {
 namespace jit {
 
-TORCH_API bool canFuseOnCPULegacy();
-TORCH_API void overrideCanFuseOnCPULegacy(bool value);
+bool canFuseOnCPULegacy();
+void overrideCanFuseOnCPULegacy(bool value);
 
 // NB: Be sure to run DCE before fusion, because dead instructions
 // can prevent fusion opportunities from being exploited.
 // On Windows will noop, NYI
-TORCH_API void FuseGraph(
+void FuseGraph(
     std::shared_ptr<Graph>& graph,
     bool strict_fuser_check = false);
 
@@ -27,7 +27,7 @@ TORCH_API void FuseGraph(
 // \arg arg_limit The maximum number of args the resultant fused subgraph
 //                should have.  Note: This will likely develop into a general
 //                post condition on the fused subgraph.
-TORCH_API void CustomFuseGraph(
+void CustomFuseGraph(
     std::shared_ptr<Graph>& graph,
     const std::function<bool(Node*)>& is_fusable,
     Symbol kind,

@@ -12,12 +12,12 @@ namespace c10d {
 
 enum class DebugLevel { Off = 0, Info = 1, Detail = 2 };
 
-TORCH_API void setDebugLevel(DebugLevel level);
+void setDebugLevel(DebugLevel level);
 
 // Sets the debug level based on the value of the `TORCH_DISTRIBUTED_DEBUG`
 // environment variable.
-TORCH_API void setDebugLevelFromEnvironment();
+void setDebugLevelFromEnvironment();
 
-TORCH_API DebugLevel debug_level() noexcept;
+DebugLevel debug_level() noexcept;
 
 } // namespace c10d

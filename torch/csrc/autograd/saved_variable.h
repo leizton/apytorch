@@ -15,11 +15,11 @@ namespace autograd {
 using Variable = at::Tensor;
 struct Node;
 
-TORCH_API extern const char* ERR_BACKWARD_TWICE;
+extern const char* ERR_BACKWARD_TWICE;
 
 /// A snapshot of a variable at a certain version. A `SavedVariable` stores
 /// enough information to reconstruct a variable from a certain point in time.
-class TORCH_API SavedVariable {
+class SavedVariable {
  public:
   SavedVariable() = default;
   SavedVariable(

@@ -18,7 +18,7 @@ namespace lazy {
 
 using size_t = std::size_t;
 
-class TORCH_API hash_t : public c10::uint128 {
+class hash_t : public c10::uint128 {
  public:
   // Swich from typedef hash_t = uint128 to provide explicit casters
   hash_t(int8_t val) : uint128(static_cast<uint32_t>(val)) {}
@@ -33,21 +33,21 @@ class TORCH_API hash_t : public c10::uint128 {
 };
 
 // Std* functions use 64-bit hash
-size_t TORCH_API StdDataHash(const void* data, size_t size);
+size_t StdDataHash(const void* data, size_t size);
 
-size_t TORCH_API StdHashCombine(uintmax_t a, uintmax_t b);
+size_t StdHashCombine(uintmax_t a, uintmax_t b);
 
 // Other functions are all 128-bit
-hash_t TORCH_API HashBlock(const void* data, size_t n, const hash_t& seed);
+hash_t HashBlock(const void* data, size_t n, const hash_t& seed);
 
-hash_t TORCH_API DataHash(const void* data, size_t size);
+hash_t DataHash(const void* data, size_t size);
 
-hash_t TORCH_API HashCombine(const hash_t& a, const hash_t& b);
+hash_t HashCombine(const hash_t& a, const hash_t& b);
 
-size_t TORCH_API HashReduce(const hash_t& a);
+size_t HashReduce(const hash_t& a);
 
 // Returns a string representation of a hash
-std::string TORCH_API HashToString(const hash_t& a);
+std::string HashToString(const hash_t& a);
 
 struct HashReducer {
   size_t operator()(const hash_t& value) const {
@@ -69,7 +69,7 @@ hash_t Hash(const T& value) {
 
 // added because on macos builds the vector<bool> specialization
 // breaks falling through to the templated arithmetic types above
-hash_t TORCH_API Hash(const std::vector<bool>& value);
+hash_t Hash(const std::vector<bool>& value);
 
 // Specialiazed implementations for proprietary types
 static inline hash_t Hash(const c10::ScalarType& value) {

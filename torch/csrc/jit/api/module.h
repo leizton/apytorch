@@ -58,10 +58,10 @@ using NameValue = Named<IValue>;
 using NameTensor = Named<at::Tensor>;
 
 namespace detail {
-struct TORCH_API ModulePolicy;
-struct TORCH_API ParameterPolicy;
-struct TORCH_API AttributePolicy;
-struct TORCH_API BufferPolicy;
+struct ModulePolicy;
+struct ParameterPolicy;
+struct AttributePolicy;
+struct BufferPolicy;
 template <typename P>
 struct NamedPolicy;
 } // namespace detail
@@ -84,7 +84,7 @@ using named_buffer_list =
 
 using ModuleLookup = std::function<Module(const std::vector<std::string>&)>;
 
-struct TORCH_API Module : public Object {
+struct Module : public Object {
   explicit Module(c10::QualifiedName class_name);
   Module(std::shared_ptr<CompilationUnit> cu, const c10::ClassTypePtr& type);
   Module() = default;
@@ -331,7 +331,7 @@ struct TORCH_API Module : public Object {
 
 // C++ equivalent api of `torch.jit.freeze`. See documentation there for
 // details.
-TORCH_API Module freeze(
+Module freeze(
     const Module& module,
     const c10::optional<std::vector<std::string>>& preserved_attrs =
         c10::nullopt,
@@ -339,7 +339,7 @@ TORCH_API Module freeze(
 
 // C++ equivalent api of `torch.jit.optimize_for_inference`. See documentation
 // there for details.
-TORCH_API Module optimize_for_inference(
+Module optimize_for_inference(
     Module& module,
     const std::vector<std::string>& other_methods = {});
 
@@ -378,13 +378,13 @@ NB: in the future, if more as more fusion backends are added there may be more g
 apis for specific fusers.
 */
 // clang-format on
-TORCH_API FusionStrategy getFusionStrategy();
+FusionStrategy getFusionStrategy();
 // returns previous strategy
-TORCH_API FusionStrategy setFusionStrategy(FusionStrategy& fusion_strategy);
+FusionStrategy setFusionStrategy(FusionStrategy& fusion_strategy);
 
 namespace detail {
 
-struct TORCH_API SlotCursor {
+struct SlotCursor {
   Module module_;
   int64_t i_; // slot offset, -1 indicates the module itself
 };
@@ -575,7 +575,7 @@ namespace detail {
 // slot_iterator_impl always iterate over all the slots in a module,
 // the Policy template argument determines slots should be returned and their
 // types
-struct TORCH_API ModulePolicy {
+struct ModulePolicy {
   // the type of the value being returned
   using value_type = Module;
 
@@ -596,7 +596,7 @@ struct TORCH_API ModulePolicy {
   static CONSTEXPR_EXCEPT_WIN_CUDA bool all_slots = false;
 };
 
-struct TORCH_API ParameterPolicy {
+struct ParameterPolicy {
   using value_type = at::Tensor;
   static value_type create(
       const std::vector<detail::SlotCursor>& cursors,
@@ -609,7 +609,7 @@ struct TORCH_API ParameterPolicy {
   static CONSTEXPR_EXCEPT_WIN_CUDA bool all_slots = false;
 };
 
-struct TORCH_API BufferPolicy {
+struct BufferPolicy {
   using value_type = at::Tensor;
   static value_type create(
       const std::vector<detail::SlotCursor>& cursors,
@@ -623,7 +623,7 @@ struct TORCH_API BufferPolicy {
   static CONSTEXPR_EXCEPT_WIN_CUDA bool all_slots = false;
 };
 
-struct TORCH_API AttributePolicy {
+struct AttributePolicy {
   using value_type = IValue;
   static value_type create(
       const std::vector<detail::SlotCursor>& cursors,
@@ -673,7 +673,7 @@ struct NamedPolicy {
 
 } // namespace detail
 
-TORCH_API bool& getInlineEverythingMode();
+bool& getInlineEverythingMode();
 
 namespace script {
 // We once had a `script::` namespace that was deleted. This is for backcompat

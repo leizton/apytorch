@@ -12,7 +12,7 @@ namespace jit {
 // grad properties of other nodes like graph inputs bc the only downstream
 // user of the grad property is the profiling executor, which just uses
 // the types of prim::profiles
-TORCH_API void UpdateDifferentiableGraphRequiresGrad(
+void UpdateDifferentiableGraphRequiresGrad(
     std::shared_ptr<Graph>& diff_forward_graph,
     c10::optional<bool> new_requires_grad);
 

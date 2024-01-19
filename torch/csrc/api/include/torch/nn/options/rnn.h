@@ -11,7 +11,7 @@ namespace nn {
 namespace detail {
 
 /// Common options for RNN, LSTM and GRU modules.
-struct TORCH_API RNNOptionsBase {
+struct RNNOptionsBase {
   typedef std::variant<
       enumtype::kLSTM,
       enumtype::kGRU,
@@ -56,7 +56,7 @@ struct TORCH_API RNNOptionsBase {
 /// RNN model(RNNOptions(128,
 /// 64).num_layers(3).dropout(0.2).nonlinearity(torch::kTanh));
 /// ```
-struct TORCH_API RNNOptions {
+struct RNNOptions {
   typedef std::variant<enumtype::kTanh, enumtype::kReLU> nonlinearity_t;
 
   RNNOptions(int64_t input_size, int64_t hidden_size);
@@ -94,7 +94,7 @@ struct TORCH_API RNNOptions {
 /// LSTM model(LSTMOptions(2,
 /// 4).num_layers(3).batch_first(false).bidirectional(true));
 /// ```
-struct TORCH_API LSTMOptions {
+struct LSTMOptions {
   LSTMOptions(int64_t input_size, int64_t hidden_size);
 
   /// The number of expected features in the input `x`
@@ -129,7 +129,7 @@ struct TORCH_API LSTMOptions {
 /// GRU model(GRUOptions(2,
 /// 4).num_layers(3).batch_first(false).bidirectional(true));
 /// ```
-struct TORCH_API GRUOptions {
+struct GRUOptions {
   GRUOptions(int64_t input_size, int64_t hidden_size);
 
   /// The number of expected features in the input `x`
@@ -158,7 +158,7 @@ struct TORCH_API GRUOptions {
 namespace detail {
 
 /// Common options for RNNCell, LSTMCell and GRUCell modules
-struct TORCH_API RNNCellOptionsBase {
+struct RNNCellOptionsBase {
   RNNCellOptionsBase(
       int64_t input_size,
       int64_t hidden_size,
@@ -179,7 +179,7 @@ struct TORCH_API RNNCellOptionsBase {
 /// RNNCell model(RNNCellOptions(20,
 /// 10).bias(false).nonlinearity(torch::kReLU));
 /// ```
-struct TORCH_API RNNCellOptions {
+struct RNNCellOptions {
   typedef std::variant<enumtype::kTanh, enumtype::kReLU> nonlinearity_t;
 
   RNNCellOptions(int64_t input_size, int64_t hidden_size);
@@ -202,7 +202,7 @@ struct TORCH_API RNNCellOptions {
 /// ```
 /// LSTMCell model(LSTMCellOptions(20, 10).bias(false));
 /// ```
-struct TORCH_API LSTMCellOptions {
+struct LSTMCellOptions {
   LSTMCellOptions(int64_t input_size, int64_t hidden_size);
 
   /// The number of expected features in the input `x`
@@ -220,7 +220,7 @@ struct TORCH_API LSTMCellOptions {
 /// ```
 /// GRUCell model(GRUCellOptions(20, 10).bias(false));
 /// ```
-struct TORCH_API GRUCellOptions {
+struct GRUCellOptions {
   GRUCellOptions(int64_t input_size, int64_t hidden_size);
 
   /// The number of expected features in the input `x`

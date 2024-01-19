@@ -81,7 +81,7 @@ namespace torch::jit {
 using ::c10::TensorTypePtr;
 using Dimension = int64_t;
 
-TORCH_API void RegisterProfilingNode(const std::function<bool(const Node*)>&);
+void RegisterProfilingNode(const std::function<bool(const Node*)>&);
 
 struct ProfilingRecord;
 
@@ -175,10 +175,10 @@ struct ProfilingRecord {
   // are captured in callbacks_
   ProfilingRecord(const ProfilingRecord&) = delete;
   ProfilingRecord(ProfilingRecord&&) noexcept = delete;
-  TORCH_API static std::unique_ptr<ProfilingRecord> instrumentGraph(
+  static std::unique_ptr<ProfilingRecord> instrumentGraph(
       const std::shared_ptr<Graph>& graph);
-  TORCH_API static void removeProfilingNodes(Block* b);
-  TORCH_API static void removeProfileCounter(Block* b);
+  static void removeProfilingNodes(Block* b);
+  static void removeProfileCounter(Block* b);
 
   std::shared_ptr<Graph> profiled_graph_;
   mutable std::mutex mutex_;
@@ -190,8 +190,8 @@ struct ProfilingRecord {
     return profiled_graph_;
   }
 
-  TORCH_API ProfileIValueOp* createProfileIValueNode(Value* in_val);
-  TORCH_API ProfileIValueOp* createProfileIValueNode(ArrayRef<Value*> inputs);
+  ProfileIValueOp* createProfileIValueNode(Value* in_val);
+  ProfileIValueOp* createProfileIValueNode(ArrayRef<Value*> inputs);
 
  private:
   ProfileOp* createProfileNode(
