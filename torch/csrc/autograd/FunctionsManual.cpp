@@ -79,8 +79,7 @@ Tensor toNonOptPrimal(const c10::optional<Tensor>& t) {
 
 void copy_range(variable_list& out, IndexRange range, const Tensor& t) {
   TORCH_CHECK(range.second <= out.size());
-  TORCH_CHECK(
-      range.second - range.first == 1, "inconsistent range for Tensor output");
+  TORCH_CHECK(range.second - range.first == 1, "inconsistent range for Tensor output");
   out[range.first] = t;
 }
 

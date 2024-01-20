@@ -140,8 +140,8 @@ Variable SavedVariable::unpack(std::shared_ptr<Node> saved_for) const {
   // if versions don't match
 
   auto grad_fn = is_inplace_on_view_ ? weak_grad_fn_.lock()
-      : !hooks_ ? saved_original_ ? data_.grad_fn() : nullptr
-                : grad_fn_;
+      : hooks_ ? grad_fn_
+          : saved_original_ ? data_.grad_fn() : nullptr;
 
   if (!is_leaf_ && !grad_fn) {
     // This issue was introduced when we added logic to save the original

@@ -1295,8 +1295,7 @@ static C10_NOINLINE c10::TypedOperatorHandle<_conj::schema> create__conj_typed_h
 }
 
 // aten::_conj(Tensor(a) self) -> Tensor(a)
-at::Tensor _conj::call(const at::Tensor & self) {
-    
+at::Tensor _conj::call(const at::Tensor& self) {
     static auto op = create__conj_typed_handle();
     return op.call(self);
 }
