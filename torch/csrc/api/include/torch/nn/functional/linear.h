@@ -1,6 +1,7 @@
 #pragma once
 
 #include <torch/types.h>
+#include <ATen/core/Tensor.h>
 
 namespace torch {
 namespace nn {

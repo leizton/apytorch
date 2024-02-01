@@ -33,6 +33,7 @@ file(GLOB pytorch_src
         "aten/src/ATen/*/*/*.cc"
         "aten/src/ATen/*/*/*/*.h"
         "aten/src/ATen/*/*/*/*.cc"
+        "torch/types.h"
 )
 
 add_executable(pytorch_bin ${pytorch_src})

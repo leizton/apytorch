@@ -7,6 +7,7 @@
 #include <c10/core/MemoryFormat.h>
 #include <c10/core/Scalar.h>
 #include <ATen/core/Reduction.h>
+#include <ATen/core/Tensor.h>
 
 #if defined(AT_PER_OPERATOR_HEADERS) && defined(TORCH_ASSERT_ONLY_METHOD_OPERATORS)
 #error This change adds a dependency on all pytorch operators, meaning the     \

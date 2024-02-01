@@ -1,5 +1,7 @@
 #pragma once
 
+#include <ATen/core/Tensor.h>
+
 namespace at {
 namespace Reduction {
 
